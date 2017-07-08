@@ -1,0 +1,163 @@
+﻿.overviewCenter {
+    min-height: 150px;
+    /*font-size: 0.93em;*/
+    border: 1px solid #e3e3e3;
+    background-color: #fcfcfc
+}
+
+#patientBalanceOverview {
+    /*font-size: 0.93em;*/
+    margin-bottom: 25px;
+}
+
+.balancewell {
+  min-height: 15px;
+  padding: 7px;
+  margin-bottom: 20px;
+  background-color: #fcfcfc;
+  border: 1px solid #e3e3e3;
+}
+#imgUploaderContainer,
+#patientNameDOB {
+  margin-left: 15px;
+  margin-top: 10px;
+}
+
+#patientInfo .form-group {
+    margin-bottom: 0px; 
+}
+#patientPhoto {
+    margin-bottom: 10px;
+}
+
+.quicklink_complete {
+    display: block;
+    font-size: 1em;
+    font-weight: bold;
+    position: relative;
+    color: #00bb08;
+}
+
+.quicklink_incomplete {
+    display: block;
+    font-size: 1em;
+    font-weight: bold;
+    position: relative;
+    color:red;
+}
+#dob {
+    margin-top: -10px;
+}
+
+#noteTable td , #dependentsTable td, #appointmentsTable td, #dependentsTable td, #recallTable td, #ordersTable td , #rxTable td{
+  border-color:  #e3e3e3;	
+}
+
+#noteTable th, #dependentsTable th, #appointmentsTable th, #dependentsTable th, #recallTable th, #ordersTable th , #rxTable th {
+  border-color: white !important;
+  border-color: #e3e3e3 !important;
+  cursor: default;
+}
+ .hides {
+       display: none;
+  }
+
+@media (min-width: 320px) {
+  .sm-patient {
+    margin-left: 15px;
+  }
+  #logo {
+      width: 30%;
+  }
+  table td:nth-child(3), td:nth-child(2) {
+    word-break: break-all;
+  }
+}
+
+@media (min-width: 768px) {
+  .sm-patient {
+      margin: 0;
+  }
+   #logo {
+      width: 80%;
+  }
+  table td:nth-child(3), td:nth-child(2) {
+     word-break: normal;
+  }
+  #email {
+       word-break: break-all; 
+  }
+}
+
+
+
+@media print {
+    .col-sm-1, .col-sm-2, .col-sm-3, .col-sm-4, .col-sm-5,
+    .col-sm-6, .col-sm-7, .col-sm-8, .col-sm-9,
+    .col-sm-10, .col-sm-11, .col-sm-12 {
+        float: left;
+    }
+
+    .col-sm-12 {
+        width: 100%;
+    }
+
+    .col-sm-11 {
+        width: 91.66666667%;
+    }
+
+    .col-sm-10 {
+        width: 83.33333333%;
+    }
+
+    .col-lg-2 {
+        width: 10% !important;
+    }
+
+    .col-lg-4 {
+        width: 30% !important;
+    }
+
+    .col-lg-6 {
+        width: 50% !important;
+    }
+
+    .container {
+        min-width: 2050px;
+    }
+
+   .pull-right {
+        display: none;
+    }
+   
+   body 
+    {
+     height: auto; 
+        margin:0; 
+        font-family: geneva, arial, helvetica, sans-serif;
+    }
+    a[href]:after {
+    content: none !important;
+   }
+   .container {
+        min-width: 2850px
+    }
+  
+   body 
+    {
+        height: auto; 
+        margin:0; 
+        font-family: geneva, arial, helvetica, sans-serif;
+    }
+   .hides {
+       display: inline;
+   }
+   #insuranceDetail {
+       margin-left: 100px;
+   }
+    #insuranceDetail .form-control-static {
+        margin-left: -40px;
+   }
+ 
+   
+}

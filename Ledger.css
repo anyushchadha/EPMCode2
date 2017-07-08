@@ -1,0 +1,19 @@
+﻿
+@media print {
+
+    #controls, .footer, .footerarea {
+        display: none;
+    }
+
+    html, body {
+        height: 100%;
+        overflow: hidden;
+        background: #FFF;
+        font-size: 7.5pt;
+    }
+
+    #btnPrintAtGlance, #btnReturn {
+        display: none;
+    }
+    
+}

@@ -1,0 +1,52 @@
+﻿.patientMergeTable {
+    padding-top: 10px;
+}
+
+.patientMergeTable .form-group {
+    margin-bottom: 0px;
+}
+
+.patientMergeTable tr:hover {
+    background-color:#f0f0f0;
+}
+
+.patientMergeTable #dob {
+    margin-top: -10px;
+}
+
+.balancewell {
+  min-height: 15px;
+  padding: 7px;
+  margin-bottom: 20px;
+  background-color: #fcfcfc;
+  border: 1px solid #e3e3e3;
+}
+
+.quicklink_complete {
+    display: block;
+    font-size: 1em;
+    font-weight: bold;
+    position: relative;
+    color: #00bb08;
+}
+
+.quicklink_incomplete {
+    display: block;
+    font-size: 1em;
+    font-weight: bold;
+    position: relative;
+    color:red;
+}
+
+.patientProfileContainer {
+    cursor: pointer!important;
+}
+
+.selected {
+    background:url(../../../themes/app/images/KeepThis.png); 
+    background-repeat: no-repeat;
+     /*background-color: #f0f0f0;*/
+}
+
+#mergeConfirmationDialog .modal-body, #mergeConfirmationDialog .modal-footer {
+   }
