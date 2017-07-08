@@ -1,0 +1,43 @@
+﻿
+@functions{
+    public string GetAntiForgeryToken()
+    {
+        string cookieToken, formToken;
+        AntiForgery.GetTokens(null, out cookieToken, out formToken);
+        return cookieToken + ":" + formToken;
+    }
+}
+
+<div id="quickListModal" class="modal fade">
+    <div class="modal-dialog modal-dialog-wide">
+        <div class="vertical-align-middle">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button id="btnCloseQuickList" type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                    <h3 class="modal-title">Quick List </h3>
+                </div>
+                <div class="modal-body">
+                    <div class=" form-horizontal">
+                        <div class="form-group">
+                            <label for="viewOptions" class="control-label col-lg-3 col-lg-offset-7 col-md-5">View</label>
+                            <div class="col-lg-2 col-md-5">
+                                <select id="viewOptions" name="viewOptions"></select>
+                            </div>
+                        </div>
+                        <button id="btnPrint" title="Print QuickList" class="btn btn-primary"><i class="icon-print"></i>Print Quick List</button>
+                    </div>
+                    <div>
+                        <table id="quickListTable"></table>
+                        <input id="antiForgeryToken" type="hidden" value="@GetAntiForgeryToken()"/>
+                    </div>
+                </div>
+                <div class="clearfix"></div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default pull-right" id="btnExceptionCancel" data-dismiss="modal">Close</button>
+                </div>
+            </div><!-- /.modal-content -->
+        </div>
+    </div><!-- /.modal-dialog -->
+</div>
+
+@Styles.Render("~/content/themes/app/Patient/quicklist")

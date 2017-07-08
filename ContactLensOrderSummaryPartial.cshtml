@@ -1,0 +1,966 @@
+﻿<form id="clOrderSummaryForm" class="form-horizontal col-lg-10 col-md-12 col-sm-12">
+
+    <!-- Shipping Information -->
+    <div id="shippingPanelContainer" class="col-lg-6 col-md-6 col-sm-12">
+        <div id="shippingInfoPanel" class="panel">
+            <div class="panel-heading">Shipping Information</div>
+            <div class="panel-body">
+                <div class="form-group">
+                    <div class="col-lg-3 col-md-3 col-sm-3 control-label">
+                        <span class="required">*</span>
+                        <label class="fieldLabel">Ship To</label>
+                    </div>
+                    <div class="col-lg-9 col-md-9 col-sm-9">
+                        <select name="shipTo" id="shipTo" data-bind="options: shipToList, value: shipTo, optionsText: 'Description', optionsValue: 'Key', css: { requiredField: shipTo() <= 0 }"></select>
+                    </div>
+                </div>
+                <div class="col-lg-offset-3 fieldMessages"></div>
+                <div class="clearfix"></div>
+
+                <div class="form-group">
+                    <div class="col-lg-3 col-md-3 col-sm-3 control-label">
+                        <span class="required">*</span>
+                        <label class="fieldLabel">Address</label>
+                    </div>
+                    <div class="col-lg-9 col-md-9 col-sm-9">
+                        <select name="address" id="address" data-bind="options: addressList, value: address, optionsText: 'Description', optionsValue: 'Key', css: { requiredField: address() <= 0 }"></select>
+                    </div>
+                </div>
+                <div class="col-lg-offset-3 fieldMessages"></div>
+                <div class="clearfix"></div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Order Information -->
+    <div class="col-lg-6 col-md-6 col-sm-12" id="orderInformationPanelContainer">
+        <div id="orderInfoPanel" class="panel">
+            <div class="panel-heading">Order Information</div>
+            <div class="panel-body">
+                <div class="form-group">
+                    <div class="col-lg-3 col-md-3 col-sm-3 control-label">
+                        <label class="fieldLabel">Order Type</label>
+                    </div>
+                    <div class="col-lg-9 col-md-9 col-sm-9 form-control-static">
+                        <span id="orderType" data-bind="text:orderType"></span>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <div class="col-lg-3 col-md-3 col-sm-3 control-label">
+                        <span class="required">*</span><label class="fieldLabel">Resource</label>
+                    </div>
+                    <div class="col-lg-9 col-md-9 col-sm-9">
+                        <select name="staff" id="staff" data-bind="options: staffList, value: staff, optionsText: 'Description', optionsValue: 'Key', css: { requiredField: staff() <= 0 }" data-live-search="true" data-size="10" data-dropup-auto="false"></select>
+                    </div>
+                </div>
+                <div class="col-lg-offset-3 fieldMessages"></div>
+                <div class="clearfix"></div>
+
+                <div class="form-group">
+                    <div class="col-lg-3 col-md-3 col-sm-3 control-label">
+                        <label class="fieldLabel">Doctor</label>
+                    </div>
+                    <div class="col-lg-9 col-md-9 col-sm-9 form-control-static">
+                        <span id="doctor" data-bind="text:doctor"></span>
+                    </div>
+                </div>
+
+                <div class="form-group hidden" data-bind="css:{'hidden': !remake()}">
+                    <div class="col-lg-3 col-md-3 col-sm-3 control-label">
+                        <label class="fieldLabel">Remake Reasons</label>
+                    </div>
+                    <div class="col-lg-9 col-md-9 col-sm-9">
+                        <select name="remakeReasons" id="remakeReasons" data-bind="options: remakeReasons, value: remakeTypeId, optionsText: 'Description', optionsValue: 'Key'" data-live-search="true" data-size="10" data-dropup-auto="false"></select>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <div class="col-lg-3 col-md-3 col-sm-3 control-label">
+                        <label class="fieldLabel">Parts To Supply</label>
+                    </div>
+                    <div class="col-lg-9 col-md-9 col-sm-9">
+                        <label class="checkbox-inline">
+                            <input type="checkbox" id="rightLens" value="option1" data-bind="checked:toSupplyRightLens"> Right Lens
+                        </label>
+                        <label class="checkbox-inline">
+                            <input type="checkbox" id="leftLens" value="option1" data-bind="checked:toSupplyLeftLens"> Left Lens
+                        </label>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <div class="col-lg-3 col-md-3 col-sm-3 control-label">
+                        <span class="required">*</span><label class="fieldLabel">Supplied By</label>
+                    </div>
+                    <div class="col-lg-9 col-md-9 col-sm-9">
+                        <select name="suppliedBy" id="suppliedBy" data-bind="options: suppliedByList, value: suppliedBy, optionsText: 'Description', optionsValue: 'Key', css: { requiredField: suppliedBy() <= 0 }"></select>
+                    </div>
+                </div>
+                <div class="col-lg-offset-3 fieldMessages"></div>
+                <div class="clearfix"></div>
+
+                <div id="instructionsGroupFields" class="form-group hidden">
+                    <div class="col-lg-3 col-md-3 col-sm-3 control-label">
+                        <label class="fieldLabel">Instructions</label>
+                    </div>
+                    <div class="col-lg-9 col-md-9 col-sm-9">
+                        <textarea name="instructions" id="instructions" class="form-control" rows="3" maxlength="200" data-bind="value:labInstructions"></textarea>
+                    </div>
+                </div>
+                <div id="instructionsGroupAdd" class="form-group">
+                    <div class="col-lg-3 col-md-3 col-sm-3 control-label">
+                        <label class="fieldLabel"></label>
+                    </div>
+                    <div class="col-lg-9 col-md-9 col-sm-9">
+                        <a href="" id="linkAddInstructions">Add Instructions</a>
+                    </div>
+                </div>
+                <div class="col-lg-offset-3 fieldMessages"></div>
+                <div class="clearfix"></div>
+
+                <div class="form-group">
+                    <div class="col-lg-3 col-md-3 col-sm-3 control-label fieldLabelWrap">
+                        <label class="fieldLabel"><span class="required">*</span>Dispensing <br />Status</label>
+                    </div>
+                    <div class="col-lg-9 col-md-9 col-sm-9">
+                        <select name="dispensingStatus" id="dispensingStatus" data-bind="options: dispenseTypeList, value: dispenseType, optionsText: 'Description', optionsValue: 'Key', css: { requiredField: dispenseType() <= 0 }"></select>
+                    </div>
+                </div>
+                <div class="col-lg-offset-3 fieldMessages"></div>
+                <div class="clearfix"></div>
+
+                <div id="dispensingNotesGroupFields" class="form-group hidden">
+                    <div class="col-lg-3 col-md-3 col-sm-3 control-label">
+                        <label class="fieldLabel">Dispensing Note</label>
+                    </div>
+                    <div class="col-lg-9 col-md-9 col-sm-9">
+                        <textarea name="dispenseNote" id="dispenseNote" class="form-control" rows="3" maxlength="200" data-bind="value:dispenseNote"></textarea>
+                    </div>
+                </div>
+                <div id="dispensingNotesGroupAdd" class="form-group">
+                    <div class="col-lg-3 col-md-3 col-sm-3 control-label">
+                        <label class="fieldLabel"></label>
+                    </div>
+                    <div class="col-lg-9 col-md-9 col-sm-9">
+                        <a href="" id="linkAddDispensingNotes">Add Dispensing Notes</a>
+                    </div>
+                </div>
+                <div class="col-lg-offset-3 fieldMessages"></div>
+                <div class="clearfix"></div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Contact Lenses -->
+    <div class="col-lg-6 col-md-6 col-sm-12" id="contactLensesPanelContainer">
+
+        <!-- Soft Contact Lens -->
+        <div id="softContactLensesPanel" class="panel hidden">
+            <div class="panel-heading">
+                Soft Contact Lenses
+                <button id="btnSummaryChangeHardClRx" class="btn btn-default btn-xs pull-right"><i class="icon-undo-2"></i>Change</button>
+            </div>
+            <div class="panel-body" data-bind="with: contactLens">
+                <div class="row margin-bottom">
+                    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                        <div class="col-lg-offset-3 col-lg-4 col-md-offset-3 col-md-4 col-sm-offset-2 col-sm-5 col-xs-offset-4 col-xs-4">
+                            <strong>Right</strong>
+                        </div>
+                        <div class="col-lg-4 col-md-4 col-sm-5 col-xs-4">
+                            <strong>Left</strong>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                        <div class="col-lg-3 col-md-3 col-sm-2 col-xs-4 control-label text-right">
+                            <label class="fieldLabel">Underlying Condition</label>
+                        </div>
+                        <div class="col-lg-4 col-md-4 col-sm-5 col-xs-4 form-control-static">
+                            <span data-bind="text:RightUlCondition || '--', css:{'color-10': !RightUlCondition}"></span>
+                        </div>
+                        <div class="col-lg-4 col-md-4 col-sm-5 col-xs-4 form-control-static">
+                            <span data-bind="text:LeftUlCondition || '--', css:{'color-10': !LeftUlCondition}"></span>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                        <div class="col-lg-3 col-md-3 col-sm-2 col-xs-4 control-label text-right">
+                            <label class="fieldLabel">Supplier</label>
+                        </div>
+                        <div class="col-lg-4 col-md-4 col-sm-5 col-xs-4 form-control-static">
+                            <span data-bind="text:RightSupplier || '--', css:{'color-10': !RightSupplier}"></span>
+                        </div>
+                        <div class="col-lg-4 col-md-4 col-sm-5 col-xs-4 form-control-static">
+                            <span data-bind="text:LeftSupplier || '--', css:{'color-10': !LeftSupplier}"></span>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                        <div class="col-lg-3 col-md-3 col-sm-2 col-xs-4 control-label text-right">
+                            <label class="fieldLabel">Manufacturer</label>
+                        </div>
+                        <div class="col-lg-4 col-md-4 col-sm-5 col-xs-4 form-control-static">
+                            <span data-bind="text:RightManufacturer || '--', css:{'color-10': !RightManufacturer}"></span>
+                        </div>
+                        <div class="col-lg-4 col-md-4 col-sm-5 col-xs-4 form-control-static">
+                            <span data-bind="text:LeftManufacturer || '--', css:{'color-10': !LeftManufacturer}"></span>
+                        </div>
+                    </div>
+                </div>
+                <div class="row border-bottom">
+                    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                        <div class="col-lg-3 col-md-3 col-sm-2 col-xs-4 control-label text-right">
+                            <label class="fieldLabel">Style</label>
+                        </div>
+                        <div class="col-lg-4 col-md-4 col-sm-5 col-xs-4 form-control-static">
+                            <span data-bind="text:RightStyle || '--', css:{'color-10': !RightStyle}"></span>
+                        </div>
+                        <div class="col-lg-4 col-md-4 col-sm-5 col-xs-4 form-control-static">
+                            <span data-bind="text:LeftStyle || '--', css:{'color-10': !LeftStyle}"></span>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                        <div class="col-lg-3 col-md-3 col-sm-2 col-xs-4 control-label text-right">
+                            <label class="fieldLabel">Sphere</label>
+                        </div>
+                        <div class="col-lg-4 col-md-4 col-sm-5 col-xs-4 form-control-static">
+                            <span data-bind="text:RightSphere || '--', css:{'color-10': !RightSphere}"></span>
+                        </div>
+                        <div class="col-lg-4 col-md-4 col-sm-5 col-xs-4 form-control-static">
+                            <span data-bind="text:LeftSphere || '--', css:{'color-10': !LeftSphere}"></span>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                        <div class="col-lg-3 col-md-3 col-sm-2 col-xs-4 control-label text-right">
+                            <label class="fieldLabel">Cylinder</label>
+                        </div>
+                        <div class="col-lg-4 col-md-4 col-sm-5 col-xs-4 form-control-static">
+                            <span data-bind="text:RightCylinderId || '--', css:{'color-10': !RightCylinderId}"></span>
+                        </div>
+                        <div class="col-lg-4 col-md-4 col-sm-5 col-xs-4 form-control-static">
+                            <span data-bind="text:LeftCylinderId || '--', css:{'color-10': !LeftCylinderId}"></span>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                        <div class="col-lg-3 col-md-3 col-sm-2 col-xs-4 control-label text-right">
+                            <label class="fieldLabel">Axis</label>
+                        </div>
+                        <div class="col-lg-4 col-md-4 col-sm-5 col-xs-4 form-control-static">
+                            <span data-bind="text:RightAxisId || '--', css:{'color-10': !RightAxisId}"></span>
+                        </div>
+                        <div class="col-lg-4 col-md-4 col-sm-5 col-xs-4 form-control-static">
+                            <span data-bind="text:LeftAxisId || '--', css:{'color-10': !LeftAxisId}"></span>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                        <div class="col-lg-3 col-md-3 col-sm-2 col-xs-4 control-label text-right">
+                            <label class="fieldLabel">Add</label>
+                        </div>
+                        <div class="col-lg-4 col-md-4 col-sm-5 col-xs-4 form-control-static">
+                            <span data-bind="text:RightAddId || '--', css:{'color-10': !RightAddId}"></span>
+                        </div>
+                        <div class="col-lg-4 col-md-4 col-sm-5 col-xs-4 form-control-static">
+                            <span data-bind="text:LeftAddId || '--', css:{'color-10': !LeftAddId}"></span>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                        <div class="col-lg-3 col-md-3 col-sm-2 col-xs-4 control-label text-right">
+                            <label class="fieldLabel">Base Curve</label>
+                        </div>
+                        <div class="col-lg-4 col-md-4 col-sm-5 col-xs-4 form-control-static">
+                            <span data-bind="text:RightBase || '--', css:{'color-10': !RightBase}"></span>
+                        </div>
+                        <div class="col-lg-4 col-md-4 col-sm-5 col-xs-4 form-control-static">
+                            <span data-bind="text:LeftBase || '--', css:{'color-10': !LeftBase}"></span>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                        <div class="col-lg-3 col-md-3 col-sm-2 col-xs-4 control-label text-right">
+                            <label class="fieldLabel">Diameter</label>
+                        </div>
+                        <div class="col-lg-4 col-md-4 col-sm-5 col-xs-4 form-control-static">
+                            <span data-bind="text:RightDiameter || '--', css:{'color-10': !RightDiameter}"></span>
+                        </div>
+                        <div class="col-lg-4 col-md-4 col-sm-5 col-xs-4 form-control-static">
+                            <span data-bind="text:LeftDiameter || '--', css:{'color-10': !LeftDiameter}"></span>
+                        </div>
+                    </div>
+                </div>
+                <div class="row border-bottom">
+                    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                        <div class="col-lg-3 col-md-3 col-sm-2 col-xs-4 control-label text-right">
+                            <label class="fieldLabel">Color</label>
+                        </div>
+                        <div class="col-lg-4 col-md-4 col-sm-5 col-xs-4 form-control-static">
+                            <span data-bind="text:RightColor || '--', css:{'color-10': !RightColor}"></span>
+                        </div>
+                        <div class="col-lg-4 col-md-4 col-sm-5 col-xs-4 form-control-static">
+                            <span data-bind="text:LeftColor || '--', css:{'color-10': !LeftColor}"></span>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                        <div class="col-lg-3 col-md-3 col-sm-2 col-xs-4 control-label text-right">
+                            <label class="fieldLabel">Quantity</label>
+                        </div>
+                        <div class="col-lg-4 col-md-4 col-sm-5 col-xs-4 form-control-static">
+                            <span data-bind="text:RightQuantity > 0 ?RightQuantity : '--', css:{'color-10': RightQuantity <= 0}"></span>
+                        </div>
+                        <div class="col-lg-4 col-md-4 col-sm-5 col-xs-4 form-control-static">
+                            <span data-bind="text:LeftQuantity > 0 ? LeftQuantity : '--', css:{'color-10': LeftQuantity <= 0}"></span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Hard Contact Lens -->
+        <div id="hardContactLensesPanel" class="panel hidden">
+            <div class="panel-heading">
+                Hard Contact Lenses
+                <button id="btnSummaryChangeSoftClRx" class="btn btn-default btn-xs pull-right"><i class="icon-undo-2"></i>Change</button>
+            </div>
+            <div class="panel-body" data-bind="with: contactLens">
+
+                <div class="row margin-bottom">
+                    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                        <div class="col-lg-offset-3 col-lg-4 col-md-offset-3 col-md-4 col-sm-offset-2 col-sm-5 col-xs-offset-4 col-xs-4">
+                            <strong>Right</strong>
+                        </div>
+                        <div class="col-lg-4 col-md-4 col-sm-5 col-xs-4">
+                            <strong>Left</strong>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                        <div class="col-lg-3 col-md-3 col-sm-2 col-xs-4 control-label text-right">
+                            <label class="fieldLabel">Underlying Condition</label>
+                        </div>
+                        <div class="col-lg-4 col-md-4 col-sm-5 col-xs-4 form-control-static">
+                            <span data-bind="text:RightUlCondition || '--', css:{'color-10': !RightUlCondition}"></span>
+                        </div>
+                        <div class="col-lg-4 col-md-4 col-sm-5 col-xs-4 form-control-static">
+                            <span data-bind="text:LeftUlCondition || '--', css:{'color-10': !LeftUlCondition}"></span>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                        <div class="col-lg-3 col-md-3 col-sm-2 col-xs-4 control-label text-right">
+                            <label class="fieldLabel">Supplier</label>
+                        </div>
+                        <div class="col-lg-4 col-md-4 col-sm-5 col-xs-4 form-control-static">
+                            <span data-bind="text:RightSupplier || '--', css:{'color-10': !RightSupplier}"></span>
+                        </div>
+                        <div class="col-lg-4 col-md-4 col-sm-5 col-xs-4 form-control-static">
+                            <span data-bind="text:LeftSupplier || '--', css:{'color-10': !LeftSupplier}"></span>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                        <div class="col-lg-3 col-md-3 col-sm-2 col-xs-4 control-label text-right">
+                            <label class="fieldLabel">Manufacturer</label>
+                        </div>
+                        <div class="col-lg-4 col-md-4 col-sm-5 col-xs-4 form-control-static">
+                            <span data-bind="text:RightManufacturer || '--', css:{'color-10': !RightManufacturer}"></span>
+                        </div>
+                        <div class="col-lg-4 col-md-4 col-sm-5 col-xs-4 form-control-static">
+                            <span data-bind="text:LeftManufacturer || '--', css:{'color-10': !LeftManufacturer}"></span>
+                        </div>
+                    </div>
+                </div>
+                <div class="row border-bottom">
+                    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                        <div class="col-lg-3 col-md-3 col-sm-2 col-xs-4 control-label text-right">
+                            <label class="fieldLabel">Style</label>
+                        </div>
+                        <div class="col-lg-4 col-md-4 col-sm-5 col-xs-4 form-control-static">
+                            <span data-bind="text:RightStyle || '--', css:{'color-10': !RightStyle}"></span>
+                        </div>
+                        <div class="col-lg-4 col-md-4 col-sm-5 col-xs-4 form-control-static">
+                            <span data-bind="text:LeftStyle || '--', css:{'color-10': !LeftStyle}"></span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                        <div class="col-lg-3 col-md-3 col-sm-2 col-xs-4 control-label text-right">
+                            <label class="fieldLabel">Base Curve</label>
+                        </div>
+                        <div class="col-lg-4 col-md-4 col-sm-5 col-xs-4 form-control-static">
+                            <span data-bind="text:RightBase || '--', css:{'color-10': !RightBase}"></span>
+                        </div>
+                        <div class="col-lg-4 col-md-4 col-sm-5 col-xs-4 form-control-static">
+                            <span data-bind="text:LeftBase || '--', css:{'color-10': !LeftBase}"></span>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                        <div class="col-lg-3 col-md-3 col-sm-2 col-xs-4 control-label text-right">
+                            <label class="fieldLabel">Diameter</label>
+                        </div>
+                        <div class="col-lg-4 col-md-4 col-sm-5 col-xs-4 form-control-static">
+                            <span data-bind="text:RightDiameter || '--', css:{'color-10': !RightDiameter}"></span>
+                        </div>
+                        <div class="col-lg-4 col-md-4 col-sm-5 col-xs-4 form-control-static">
+                            <span data-bind="text:LeftDiameter || '--', css:{'color-10': !LeftDiameter}"></span>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                        <div class="col-lg-3 col-md-3 col-sm-2 col-xs-4 control-label text-right">
+                            <label class="fieldLabel">Sphere</label>
+                        </div>
+                        <div class="col-lg-4 col-md-4 col-sm-5 col-xs-4 form-control-static">
+                            <span data-bind="text:RightSphere || '--', css:{'color-10': !RightSphere}"></span>
+                        </div>
+                        <div class="col-lg-4 col-md-4 col-sm-5 col-xs-4 form-control-static">
+                            <span data-bind="text:LeftSphere || '--', css:{'color-10': !LeftSphere}"></span>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                        <div class="col-lg-3 col-md-3 col-sm-2 col-xs-4 control-label text-right">
+                            <label class="fieldLabel">Cylinder</label>
+                        </div>
+                        <div class="col-lg-4 col-md-4 col-sm-5 col-xs-4 form-control-static">
+                            <span data-bind="text:RightCylinder || '--', css:{'color-10': !RightCylinder}"></span>
+                        </div>
+                        <div class="col-lg-4 col-md-4 col-sm-5 col-xs-4 form-control-static">
+                            <span data-bind="text:LeftCylinder || '--', css:{'color-10': !LeftCylinder}"></span>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                        <div class="col-lg-3 col-md-3 col-sm-2 col-xs-4 control-label text-right">
+                            <label class="fieldLabel">Axis</label>
+                        </div>
+                        <div class="col-lg-4 col-md-4 col-sm-5 col-xs-4 form-control-static">
+                            <span data-bind="text:RightAxis || '--', css:{'color-10': !RightAxis}"></span>
+                        </div>
+                        <div class="col-lg-4 col-md-4 col-sm-5 col-xs-4 form-control-static">
+                            <span data-bind="text:LeftAxis || '--', css:{'color-10': !LeftAxis}"></span>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                        <div class="col-lg-3 col-md-3 col-sm-2 col-xs-4 control-label text-right">
+                            <label class="fieldLabel">PC Radius</label>
+                        </div>
+                        <div class="col-lg-4 col-md-4 col-sm-5 col-xs-4 form-control-static">
+                            <span data-bind="text:RightPcRadius || '--', css:{'color-10': !RightPcRadius}"></span>
+                        </div>
+                        <div class="col-lg-4 col-md-4 col-sm-5 col-xs-4 form-control-static">
+                            <span data-bind="text:LeftPcRadius || '--', css:{'color-10': !LeftPcRadius}"></span>
+                        </div>
+                    </div>
+                </div>
+                <div class="row border-bottom">
+                    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                        <div class="col-lg-3 col-md-3 col-sm-2 col-xs-4 control-label text-right">
+                            <label class="fieldLabel">PC Width</label>
+                        </div>
+                        <div class="col-lg-4 col-md-4 col-sm-5 col-xs-4 form-control-static">
+                            <span data-bind="text:RightPcWidth || '--', css:{'color-10': !RightPcWidth}"></span>
+                        </div>
+                        <div class="col-lg-4 col-md-4 col-sm-5 col-xs-4 form-control-static">
+                            <span data-bind="text:LeftPcWidth || '--', css:{'color-10': !LeftPcWidth}"></span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                        <div class="col-lg-3 col-md-3 col-sm-2 col-xs-4 control-label text-right">
+                            <label class="fieldLabel">Base Curve 2</label>
+                        </div>
+                        <div class="col-lg-4 col-md-4 col-sm-5 col-xs-4 form-control-static">
+                            <span data-bind="text:RightBaseCurve2 || '--', css:{'color-10': !RightBaseCurve2}"></span>
+                        </div>
+                        <div class="col-lg-4 col-md-4 col-sm-5 col-xs-4 form-control-static">
+                            <span data-bind="text:LeftBaseCurve2 || '--', css:{'color-10': !LeftBaseCurve2}"></span>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                        <div class="col-lg-3 col-md-3 col-sm-2 col-xs-4 control-label text-right">
+                            <label class="fieldLabel">Sphere 2</label>
+                        </div>
+                        <div class="col-lg-4 col-md-4 col-sm-5 col-xs-4 form-control-static">
+                            <span data-bind="text:RightSphere2 || '--', css:{'color-10': !RightSphere2}"></span>
+                        </div>
+                        <div class="col-lg-4 col-md-4 col-sm-5 col-xs-4 form-control-static">
+                            <span data-bind="text:LeftSphere2 || '--', css:{'color-10': !LeftSphere2}"></span>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                        <div class="col-lg-3 col-md-3 col-sm-2 col-xs-4 control-label text-right">
+                            <label class="fieldLabel">Cylinder 2</label>
+                        </div>
+                        <div class="col-lg-4 col-md-4 col-sm-5 col-xs-4 form-control-static">
+                            <span data-bind="text:RightCylinder2 || '--', css:{'color-10': !RightCylinder2}"></span>
+                        </div>
+                        <div class="col-lg-4 col-md-4 col-sm-5 col-xs-4 form-control-static">
+                            <span data-bind="text:LeftCylinder2 || '--', css:{'color-10': !LeftCylinder2}"></span>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                        <div class="col-lg-3 col-md-3 col-sm-2 col-xs-4 control-label text-right">
+                            <label class="fieldLabel">Axis 2</label>
+                        </div>
+                        <div class="col-lg-4 col-md-4 col-sm-5 col-xs-4 form-control-static">
+                            <span data-bind="text:RightAxis2 || '--', css:{'color-10': !RightAxis2}"></span>
+                        </div>
+                        <div class="col-lg-4 col-md-4 col-sm-5 col-xs-4 form-control-static">
+                            <span data-bind="text:LeftAxis2 || '--', css:{'color-10': !LeftAxis2}"></span>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                        <div class="col-lg-3 col-md-3 col-sm-2 col-xs-4 control-label text-right">
+                            <label class="fieldLabel">Radius 2</label>
+                        </div>
+                        <div class="col-lg-4 col-md-4 col-sm-5 col-xs-4 form-control-static">
+                            <span data-bind="text:RightRadius2 || '--', css:{'color-10': !RightRadius2}"></span>
+                        </div>
+                        <div class="col-lg-4 col-md-4 col-sm-5 col-xs-4 form-control-static">
+                            <span data-bind="text:LeftRadius2 || '--', css:{'color-10': !LeftRadius2}"></span>
+                        </div>
+                    </div>
+                </div>
+                <div class="row border-bottom">
+                    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                        <div class="col-lg-3 col-md-3 col-sm-2 col-xs-4 control-label text-right">
+                            <label class="fieldLabel">Width 2</label>
+                        </div>
+                        <div class="col-lg-4 col-md-4 col-sm-5 col-xs-4 form-control-static">
+                            <span data-bind="text:RightWidth2 || '--', css:{'color-10': !RightWidth2}"></span>
+                        </div>
+                        <div class="col-lg-4 col-md-4 col-sm-5 col-xs-4 form-control-static">
+                            <span data-bind="text:LeftWidth2 || '--', css:{'color-10': !LeftWidth2}"></span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                        <div class="col-lg-3 col-md-3 col-sm-2 col-xs-4 control-label text-right">
+                            <label class="fieldLabel">Add</label>
+                        </div>
+                        <div class="col-lg-4 col-md-4 col-sm-5 col-xs-4 form-control-static">
+                            <span data-bind="text:RightAdd || '--', css:{'color-10': !RightAdd}"></span>
+                        </div>
+                        <div class="col-lg-4 col-md-4 col-sm-5 col-xs-4 form-control-static">
+                            <span data-bind="text:LeftAdd || '--', css:{'color-10': !LeftAdd}"></span>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                        <div class="col-lg-3 col-md-3 col-sm-2 col-xs-4 control-label text-right">
+                            <label class="fieldLabel">Prism</label>
+                        </div>
+                        <div class="col-lg-4 col-md-4 col-sm-5 col-xs-4 form-control-static">
+                            <span data-bind="text:RightPrism || '--', css:{'color-10': !RightPrism}"></span>
+                        </div>
+                        <div class="col-lg-4 col-md-4 col-sm-5 col-xs-4 form-control-static">
+                            <span data-bind="text:LeftPrism || '--', css:{'color-10': !LeftPrism}"></span>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                        <div class="col-lg-3 col-md-3 col-sm-2 col-xs-4 control-label text-right">
+                            <label class="fieldLabel">CT</label>
+                        </div>
+                        <div class="col-lg-4 col-md-4 col-sm-5 col-xs-4 form-control-static">
+                            <span data-bind="text:RightCt || '--', css:{'color-10': !RightCt}"></span>
+                        </div>
+                        <div class="col-lg-4 col-md-4 col-sm-5 col-xs-4 form-control-static">
+                            <span data-bind="text:LeftCt || '--', css:{'color-10': !LeftCt}"></span>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                        <div class="col-lg-3 col-md-3 col-sm-2 col-xs-4 control-label text-right">
+                            <label class="fieldLabel">ET</label>
+                        </div>
+                        <div class="col-lg-4 col-md-4 col-sm-5 col-xs-4 form-control-static">
+                            <span data-bind="text:RightEt || '--', css:{'color-10': !RightEt}"></span>
+                        </div>
+                        <div class="col-lg-4 col-md-4 col-sm-5 col-xs-4 form-control-static">
+                            <span data-bind="text:LeftEt || '--', css:{'color-10': !LeftEt}"></span>
+                        </div>
+                    </div>
+                </div>
+                <div class="row border-bottom">
+                    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                        <div class="col-lg-3 col-md-3 col-sm-2 col-xs-4 control-label text-right">
+                            <label class="fieldLabel">Optical Zone</label>
+                        </div>
+                        <div class="col-lg-4 col-md-4 col-sm-5 col-xs-4 form-control-static">
+                            <span data-bind="text:RightOpticalZone || '--', css:{'color-10': !RightOpticalZone}"></span>
+                        </div>
+                        <div class="col-lg-4 col-md-4 col-sm-5 col-xs-4 form-control-static">
+                            <span data-bind="text:LeftOpticalZone || '--', css:{'color-10': !LeftOpticalZone}"></span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                        <div class="col-lg-3 col-md-3 col-sm-2 col-xs-4 control-label text-right">
+                            <label class="fieldLabel">Radius 3</label>
+                        </div>
+                        <div class="col-lg-4 col-md-4 col-sm-5 col-xs-4 form-control-static">
+                            <span data-bind="text:RightRadius3 || '--', css:{'color-10': !RightRadius3}"></span>
+                        </div>
+                        <div class="col-lg-4 col-md-4 col-sm-5 col-xs-4 form-control-static">
+                            <span data-bind="text:LeftRadius3 || '--', css:{'color-10': !LeftRadius3}"></span>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                        <div class="col-lg-3 col-md-3 col-sm-2 col-xs-4 control-label text-right">
+                            <label class="fieldLabel">Width 3</label>
+                        </div>
+                        <div class="col-lg-4 col-md-4 col-sm-5 col-xs-4 form-control-static">
+                            <span data-bind="text:RightWidth3 || '--', css:{'color-10': !RightWidth3}"></span>
+                        </div>
+                        <div class="col-lg-4 col-md-4 col-sm-5 col-xs-4 form-control-static">
+                            <span data-bind="text:LeftWidth3 || '--', css:{'color-10': !LeftWidth3}"></span>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                        <div class="col-lg-3 col-md-3 col-sm-2 col-xs-4 control-label text-right">
+                            <label class="fieldLabel">Seg Height</label>
+                        </div>
+                        <div class="col-lg-4 col-md-4 col-sm-5 col-xs-4 form-control-static">
+                            <span data-bind="text:RightSegHeight || '--', css:{'color-10': !RightSegHeight}"></span>
+                        </div>
+                        <div class="col-lg-4 col-md-4 col-sm-5 col-xs-4 form-control-static">
+                            <span data-bind="text:LeftSegHeight || '--', css:{'color-10': !LeftSegHeight}"></span>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                        <div class="col-lg-3 col-md-3 col-sm-2 col-xs-4 control-label text-right">
+                            <label class="fieldLabel">Blend</label>
+                        </div>
+                        <div class="col-lg-4 col-md-4 col-sm-5 col-xs-4 form-control-static">
+                            <span data-bind="text:RightBlend || '--', css:{'color-10': !RightBlend}"></span>
+                        </div>
+                        <div class="col-lg-4 col-md-4 col-sm-5 col-xs-4 form-control-static">
+                            <span data-bind="text:LeftBlend || '--', css:{'color-10': !LeftBlend}"></span>
+                        </div>
+                    </div>
+                </div>
+                <div class="row border-bottom">
+                    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                        <div class="col-lg-3 col-md-3 col-sm-2 col-xs-4 control-label text-right">
+                            <label class="fieldLabel">Tint</label>
+                        </div>
+                        <div class="col-lg-4 col-md-4 col-sm-5 col-xs-4 form-control-static">
+                            <span data-bind="text:RightColor || '--', css:{'color-10': !RightColor}"></span>
+                        </div>
+                        <div class="col-lg-4 col-md-4 col-sm-5 col-xs-4 form-control-static">
+                            <span data-bind="text:LeftColor || '--', css:{'color-10': !LeftColor}"></span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                        <div class="col-lg-3 col-md-3 col-sm-2 col-xs-4 control-label text-right">
+                            <label class="fieldLabel">Quantity</label>
+                        </div>
+                        <div class="col-lg-4 col-md-4 col-sm-5 col-xs-4 form-control-static">
+                            <span data-bind="text:RightQuantity > 0 ?RightQuantity : '--', css:{'color-10': RightQuantity <= 0}"></span>
+                        </div>
+                        <div class="col-lg-4 col-md-4 col-sm-5 col-xs-4 form-control-static">
+                            <span data-bind="text:LeftQuantity > 0 ? LeftQuantity : '--', css:{'color-10': LeftQuantity <= 0}"></span>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+    </div>
+
+    <!-- Pricing -->
+    <div id="pricingPanelContainer" class="col-lg-6 col-md-6 col-sm-12">
+        <div id="pricingPanel" class="panel hidden" data-bind="css:{'hidden': !insuranceVM()}">
+            <div class="panel-heading">
+                Pricing
+                <button id="btnSummaryChangeInsurance" class="btn btn-default btn-xs pull-right"><i class="icon-undo-2"></i>Change</button>
+            </div>
+
+            <div id="InsuranceSummaryPanel" class="panel-body">
+
+                <!-- Re-Make -->
+                <div id="remakeIns" class="hidden" data-bind="css:{'hidden' : !remake()}">
+                    <div class="row text-center color-03 ">
+                        Insurance for remake orders can only be added or modified<br />from the Pricing screen.<br /><br />
+                    </div>
+                </div>
+
+                <!-- Eligibilities -->
+                <div id="eligibilities" data-bind="with: insuranceVM">
+
+                    <!-- Non Insurance -->
+                    <div id="nonIns" class="hidden" data-bind="css:{'hidden': PrimaryEligibility() && !PrimaryEligibility().IsNonInsurance()}">
+                        <div class="row">
+                            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                                <div class="panel clDetailPanel text-center color-03">
+                                    <div class="form-group form-group-no-vertical-margin">
+                                        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                                            <h3>No Insurance</h3>
+                                            Patient Estimated Charges reflect full retail price.
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Primary Insurance -->
+                    <div class="row hidden" data-bind="css: {'hidden': !PrimaryEligibility() || PrimaryEligibility().IsNonInsurance()}">
+                        <div class="col-lg-12 col-md-12 col-sm-12">
+                            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                                <h4>Primary Insurance</h4>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row hidden" data-bind="css: {'hidden': !PrimaryEligibility() || PrimaryEligibility().IsNonInsurance()}">
+                        <div class="col-lg-12 col-md-12 col-sm-12">
+                            <div class="panel clDetailPanel">
+                                <div class="form-group form-group-no-vertical-margin">
+                                    <div class="col-lg-3 col-md-3 col-sm-3 col-xs-4 control-label text-right">
+                                        <label class="fieldLabel">Insurance</label>
+                                    </div>
+                                    <div class="col-lg-9 col-md-9 col-sm-9 col-xs-8 form-control-static">
+                                        <span data-bind="text:PrimaryEligibility() ? PrimaryEligibility().CarrierFull : ''"></span>
+                                    </div>
+                                </div>
+                                <div class="form-group form-group-no-vertical-margin">
+                                    <div class="col-lg-3 col-md-3 col-sm-3 col-xs-4 control-label text-right">
+                                        <label class="fieldLabel">Auth #</label>
+                                    </div>
+                                    <div class="col-lg-9 col-md-9 col-sm-9 col-xs-8 form-control-static">
+                                        <span data-bind="text:PrimaryEligibility() ? PrimaryEligibility().AuthNumber : ''"></span>
+                                    </div>
+                                </div>
+                                <div class="form-group form-group-no-vertical-margin">
+                                    <div class="col-lg-3 col-md-3 col-sm-3 col-xs-4 control-label text-right">
+                                        <label class="fieldLabel">Eligibility Date</label>
+                                    </div>
+                                    <div class="col-lg-9 col-md-9 col-sm-9 col-xs-8 form-control-static">
+                                        <span data-bind="text:PrimaryEligibility() ? PrimaryEligibility().AuthDate : ''"></span>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <div class="col-lg-3 col-md-3 col-sm-3 col-xs-4 control-label text-right">
+                                        <label class="fieldLabel">Expire Date</label>
+                                    </div>
+                                    <div class="col-lg-9 col-md-9 col-sm-9 col-xs-8 form-control-static">
+                                        <span data-bind="text:PrimaryEligibility() ? PrimaryEligibility().AuthExpireDate : ''"></span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Secondary Insurance -->
+                    <div class="row hidden" data-bind="css: {'hidden': !SecondaryEligibility() || SecondaryEligibility().IsNonInsurance()}">
+                        <div class="col-lg-12 col-md-12 col-sm-12">
+                            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                                <h4>Secondary Insurance</h4>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row hidden" data-bind="css: {'hidden': !SecondaryEligibility() || SecondaryEligibility().IsNonInsurance()}">
+                        <div class="col-lg-12 col-md-12 col-sm-12">
+                            <div class="panel clDetailPanel">
+                                <div class="form-group form-group-no-vertical-margin">
+                                    <div class="col-lg-3 col-md-3 col-sm-3 col-xs-4 control-label text-right">
+                                        <label class="fieldLabel">Insurance</label>
+                                    </div>
+                                    <div class="col-lg-9 col-md-9 col-sm-9 col-xs-8 form-control-static">
+                                        <span data-bind="text:SecondaryEligibility() ? SecondaryEligibility().CarrierFull : ''"></span>
+                                    </div>
+                                </div>
+                                <div class="form-group form-group-no-vertical-margin">
+                                    <div class="col-lg-3 col-md-3 col-sm-3 col-xs-4 control-label text-right">
+                                        <label class="fieldLabel">Auth #</label>
+                                    </div>
+                                    <div class="col-lg-9 col-md-9 col-sm-9 col-xs-8 form-control-static">
+                                        <span data-bind="text:SecondaryEligibility() ? SecondaryEligibility().AuthNumber : ''"></span>
+                                    </div>
+                                </div>
+                                <div class="form-group form-group-no-vertical-margin">
+                                    <div class="col-lg-3 col-md-3 col-sm-3 col-xs-4 control-label text-right">
+                                        <label class="fieldLabel">Eligibility Date</label>
+                                    </div>
+                                    <div class="col-lg-9 col-md-9 col-sm-9 col-xs-8 form-control-static">
+                                        <span data-bind="text:SecondaryEligibility() ? SecondaryEligibility().AuthDate : ''"></span>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <div class="col-lg-3 col-md-3 col-sm-3 col-xs-4 control-label text-right">
+                                        <label class="fieldLabel">Expire Date</label>
+                                    </div>
+                                    <div class="col-lg-9 col-md-9 col-sm-9 col-xs-8 form-control-static">
+                                        <span data-bind="text:SecondaryEligibility() ? SecondaryEligibility().AuthExpireDate : ''"></span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+
+                <!-- Pricing -->
+                <div id="insurancePricing" class="col-lg-12 col-md-12 col-sm-12" style="padding:0;" data-bind="with: insuranceVM">
+                    <div id="BesErrorText" class="col-lg-12 col-md-12 text-center color-07" data-bind="text: BesError"></div>
+                    <div id="clSummaryPricing" data-bind="css: {'hidden': BesError() !== ''}">
+                        <h4>Estimated Charges</h4>
+                        <table id="summaryInsCalcTable" style="margin:0;" class="dataTable">
+                            <thead>
+                                <tr role="row">
+                                    <th class="ui-state-default col-lg-12 col-md-12 col-sm-12 col-xs-12 center" tabindex="0"></th>
+                                    <th class="ui-state-default col-lg-2 col-md-2 col-md-2 col-xs-2 center" tabindex="0" aria-label="Retail Cost" title="Retail Cost">Retail</th>
+                                    <th class="ui-state-default col-lg-2 col-md-2 col-sm-2 col-xs-2 center" data-bind="visible: PrimaryEligibility() && !PrimaryEligibility().IsNonInsurance()" tabindex="0" aria-label="Primary Insurance Covered Amount" title="Primary Insuarance Covered Amount">Primary Insurance</th>
+                                    <th class="ui-state-default col-lg-2 col-md-2 col-sm-2 col-xs-2 center" data-bind="visible: SecondaryEligibility() && !SecondaryEligibility().IsNonInsurance()" tabindex="0" aria-label="Secondary Insurance Covered Amount" title="Secondary Insuarance Covered Amount">Secondary Insurance</th>
+                                    <th class="ui-state-default col-lg-2 col-md-2 col-md-2 col-xs-2 center" tabindex="0" aria-label="Patient out of Pocket" title="Patient out of Pocket">Patient</th>
+                                </tr>
+                            </thead>
+                            <tbody data-bind="foreach: Items">
+                                <tr>
+                                    <td data-bind="text: Title"></td>
+                                    <td data-bind="text: RetailPriceFormatted" class="text-right"></td>
+                                    <td data-bind="html: $parent.PrimaryEligibility() && ($parent.PrimaryEligibility().IsVsp() || !$parent.IsEstimated()) ? PrimaryInsurancePriceFormatted : '<i class=\'icon-tooltip\'></i>', css:{'unknown': $parent.PrimaryEligibility() && (!$parent.PrimaryEligibility().IsVsp() && $parent.IsEstimated())}, visible: $parent.PrimaryEligibility() && !$parent.PrimaryEligibility().IsNonInsurance()" class="text-right"></td>
+                                    <td data-bind="text: SecondaryInsurancePriceFormatted, visible: $parent.SecondaryEligibility() && !$parent.SecondaryEligibility().IsNonInsurance()" class="text-right"></td>
+                                    <td data-bind="text: PatientPriceFormatted" class="text-right"></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                        <small class="pull-right"><em>Taxes not reflected</em></small>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="clearfix"></div>
+
+    <div class="col-lg-12 col-md-12 col-sm-12">
+        <button id="btnCancelOrder" class="btn btn-default" formnovalidate>Cancel Order</button>
+        <button id="btnSaveForLater" class="btn btn-default"><i class="icon icon-disk"></i>Save Draft</button>
+        <button id="btnReturnToMaterialOrders" class="btn btn-default hidden">Return To Material Orders</button>
+        <button id="btnSave" class="btn btn-primary pull-right hidden">Save</button>
+        <button id="btnContinueToPricing" class="btn btn-primary pull-right">Continue To Pricing</button>
+        <button id="btnPrintSummary" class="btn btn-default pull-right" formnovalidate><i class="icon-print"></i>Print Summary</button>
+    </div>
+
+    <div id="clOrderCancelModal" class="modal fade">
+        <div class="modal-dialog">
+            <div class="vertical-align-middle">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                        <h4 class="modal-title">Cancel Contact Lens Order</h4>
+                    </div>
+                    <div class="modal-body">
+                        Are you sure you want to cancel this order?
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-default pull-left" data-dismiss="modal">No</button>
+                        <button type="button" class="btn btn-primary" id="btnCancelClOrder">Yes</button>
+                    </div>
+                </div><!-- /.modal-content -->
+            </div>
+        </div><!-- /.modal-dialog -->
+    </div>
+
+</form>
+<div id="tempStorageSave" class="modal fade">
+    <div class="modal-dialog">
+        <div class="vertical-align-middle">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                    <h4 class="modal-title" id="saveForLater">Save Draft</h4>
+                </div>
+                <div class="modal-body">
+                    <form id="saveTempOrder" name="saveTempOrder" method="POST" action="#" class="form-horizontal">
+                        <input id="antiForgeryToken" type="hidden" value="" />
+                        <div class="col-lg-12 col-md-12 summaryMessages"></div>
+                        <div class="form-group">
+                            <div class="col-lg-9 col-md-9 control-label float-left">
+                                Enter a unique name for this order (to easily identify later).
+                            </div>
+
+                        </div>
+                        <div class="col-lg-8 col-lg-offset-4 fieldMessages"></div>
+
+                        <div class="form-group">
+                            <div class="col-lg-4 control-label pull-left">
+                                <span class="required">*</span><label for="resourceId"><strong>Order Name</strong></label>
+                            </div>
+                            <div class="col-lg-8">
+                                <input type="text" name="resourceId" id="resourceId" class="form-control requiredField" />
+                            </div>
+
+                        </div>
+                        <div class="col-lg-8 col-lg-offset-4 fieldMessages"></div>
+                    </form>
+                    <div id="duplicateMsg" class="col-lg-8 col-lg-offset-4 hidden">
+                        <h5 style="color:Red" class="error">This name is in use. Please enter a unique name.</h5>
+                    </div>
+                </div>
+                <div class="clearfix"></div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default pull-left" id="btnCloseTemp" data-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-primary" id="btnSaveTemp">Save</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

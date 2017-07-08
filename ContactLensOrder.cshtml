@@ -1,0 +1,48 @@
+﻿@model Eyefinity.PracticeManagement.Model.Patient.PatientOrderExam
+@{
+    ViewBag.Title = "Contact Lens Order";
+    Layout = "~/Views/Shared/_LayoutBootstrap.cshtml";
+}
+
+@functions{
+    public string GetAntiForgeryToken()
+    {
+        string cookieToken, formToken;
+        AntiForgery.GetTokens(null, out cookieToken, out formToken);
+        return cookieToken + ":" + formToken;
+    }
+}
+<script type="text/javascript">
+    var patientOrderExam = JSON.parse('@Html.Raw(Json.Encode(Model))'),
+        documentTitle = '@ViewBag.Title';
+    patient = { PatientId: patientOrderExam.PatientId, FirstName: '', LastName: '' };
+</script>
+
+<div id="patientClOrder">
+    <div id="patientTitle" class="col-lg-12 col-md-12 col-sm-12 col-no-padding">
+        <div id="patientDemographicsBtn" class="btn-group hidden-lg">
+            <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown">
+                <i class="icon-user-2"></i> <span class="caret"></span>
+            </button>
+            <div id="patientDropdownNav" class="dropdown-menu" role="menu"></div>
+        </div>
+        <h2 class="hidden-xs">@ViewBag.Title</h2>
+        <h3 class="hidden-lg hidden-md hidden-sm">@ViewBag.Title</h3>
+    </div>
+
+    <nav id="patientSideNav" class="col-lg-2 visible-lg"></nav>
+
+    <div id="chooseInsurance" class="hidden">
+        @Html.Partial("~/Views/Patient/ContactLensOrderChooseInsPartial.cshtml")
+    </div>
+
+    <div id="chooseRx" class="hidden">
+        @Html.Partial("~/Views/Patient/ContactLensOrderChooseRxPartial.cshtml")
+    </div>
+
+    <div id="summary" class="hidden">
+        @Html.Partial("~/Views/Patient/ContactLensOrderSummaryPartial.cshtml")
+    </div>
+
+</div>
+@Scripts.Render("~/bundles/patientContactLensOrder")

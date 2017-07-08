@@ -1,0 +1,49 @@
+﻿<form id="chooseEgRxForm" class="form-horizontal col-lg-12 col-md-12 col-md-no-padding-left col-sm-no-padding-right">
+    <div>
+        <div id="msg_IncompleteEgRxs" class="alert alert-warning messageCenterStyle hidden" data-selectable="true" data-url-type="external" data-url="">
+            <span class="title"><i class="icon-warning"></i><strong>The system has detected one or more incomplete Rx's.</strong></span>
+            <span class="message">
+                If an Rx is not shown below, <u><strong>Click Here</strong></u> to go to the Rx screen and fix the issue.
+            </span>
+        </div>
+        <table id="rxTable"></table>
+    </div>
+</form>
+
+<div id="convertRxModal" class="modal fade">
+    <div class="modal-dialog modal-max-width-450">
+        <div class="vertical-align-middle">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                    <h3 class="modal-title">Convert Rx</h3>
+                </div>
+                <div class="modal-body">
+                    <div class="col-sm-9 form-horizontal">
+                        <div class="form-group">
+                            <div class="row">
+                                <div class="col-sm-12">
+                                    <label>Select the type to convert this Multifocal Rx into:</label>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-sm-12">
+                                    <br/>
+                                    <fielddset>
+                                        <input type="radio" id="rdReading" name="convertRx" value="Reading" checked /> Reading Rx<br/>
+                                        <input type="radio" id="rdDistance" name="convertRx" value="Distance" /> Distance Rx
+                                    </fielddset>
+                                </div>
+                           </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="clearfix"></div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default pull-left" id="btnCancelConvertRx" data-dismiss="modal">Cancel</button>
+                    <button type="button" class="btn btn-primary" id="btnConvertRx">Use Converted Rx</button>
+                </div>
+            </div><!-- /.modal-content -->
+        </div>
+    </div><!-- /.modal-dialog -->
+</div>

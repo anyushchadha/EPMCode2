@@ -1,0 +1,629 @@
+﻿@using Eyefinity.PracticeManagement.Common
+@{
+    Layout = string.Empty;
+}
+@* ReSharper disable Html.IdNotResolved *@
+
+@functions{
+    public string GetAntiForgeryToken()
+    {
+        string cookieToken, formToken;
+        AntiForgery.GetTokens(null, out cookieToken, out formToken);
+        return cookieToken + ":" + formToken;
+    }
+}
+<script id="patientDemographicsTemplate" type="text/html">
+<form class="form-horizontal col-lg-10 col-md-12" onsubmit="return false;" data-bind="css: {'col-lg-10': !isMini(), 'col-lg-12': isMini}">
+<input id="antiForgeryToken" type="hidden" value="@GetAntiForgeryToken()"/>
+<div class="row">
+<div class="col-lg-12 col-md-12 summaryMessages clearfix" data-bind="visible: !isMini()"></div>
+<div class="row" data-bind="visible: !!copyValuesFrom()">
+    <div class="col-lg-12">
+        <h4>Copy From Patient?</h4>
+    </div>
+    <div class="col-lg-11 col-lg-offset-1">
+        <div class="form-group">
+            <div class="checkbox col-lg-2 col-md-2">
+                <label>
+                    <input id="chkCopyAddress" type="checkbox" name="group11" value="true" data-bind="checked: copyAddress"/>Address
+                </label>
+            </div>
+            <div class="checkbox col-lg-2 col-md-2">
+                <label>
+                    <input id="chkCopyPhone" type="checkbox" name="group11" value="true" data-bind="checked: copyPhone"/>Phone
+                </label>
+            </div>
+            <div class="checkbox col-lg-2 col-md-2">
+                <label>
+                    <input id="chkCopyEmail" type="checkbox" name="group11" value="true" data-bind="checked: copyEmail"/>Email
+                </label>
+            </div>
+            <div class="checkbox col-lg-2 col-md-2" data-bind="visible: showCopyInsurance">
+                <label>
+                    <input id="chkCopyInsurance" type="checkbox" name="group11" value="true" data-bind="checked: copyInsurance"/>Insurance
+                </label>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="" id="patientBalancePanel" data-bind="visible: showPatientBalance, css: { 'col-lg-11 col-md-12': patientBalanceCount() > 3, 'col-lg-7 col-md-7': patientBalanceCount() == 2.5, 'col-lg-4': patientBalanceCount() == 1.5, 'col-lg-6 col-md-8': patientBalanceCount() == 2, 'col-lg-3': patientBalanceCount() == 1 }">
+    <h6>Patient's Outstanding Balances</h6>
+    <div class="panel panel-default panel-shadow">
+        <div class="panel-body">
+            <div class="" data-bind=" visible: showOutstandingBalance, css: { 'col-lg-3 col-md-3': patientBalanceCount() > 3, 'col-lg-5 col-md-5 col-sm-5': patientBalanceCount() == 2.5, 'col-lg-12': patientBalanceCount() == 1.5, 'col-lg-6 col-md-6': patientBalanceCount() == 2,'col-lg-12': patientBalanceCount() == 1 }">
+                <div>
+                    <div class="demographics-icon-warn"><i id="patientOutstandingBalanceIcon" class="icon icon-coin"></i>
+                    </div>
+                    Patient Balance<strong><span id="patientOutstandingBalance" class="padding-2" data-bind="text: outstandingBalanceFormatted"></span></strong>
+                </div>
+            </div>
+            <div class="" data-bind="visible: showInsuranceBalance, css: { 'col-lg-5 col-md-5': patientBalanceCount() > 3, 'col-lg-7 col-md-7 col-sm-7': patientBalanceCount() == 2.5, 'col-lg-12': patientBalanceCount() == 1.5, 'col-lg-6 col-md-6': patientBalanceCount() == 2, 'col-lg-12': patientBalanceCount() == 1 }">
+                <div>
+                    <div class="demographics-icon-warn"><i id="patientInsuranceBalanceIcon" class="icon icon-insurance"></i>
+                    </div>
+                    Insurance: Uncovered Balance<strong><span id="patientInsuranceBalance" class="padding-2" data-bind="text: patientInsuranceBalanceFormatted"></span></strong>
+                </div>
+            </div>
+            <div class="" data-bind="visible: showPatientCredit, css: { 'col-lg-4 col-md-4': patientBalanceCount() > 3, 'col-lg-4 col-md-5 col-sm-5': patientBalanceCount() == 2.5, 'col-lg-12': patientBalanceCount() == 1.5, 'col-lg-6 col-md-6': patientBalanceCount() == 2, 'col-lg-12': patientBalanceCount() == 1 }">
+                <div>
+                    <div class="demographics-icon-ok"><i id="patientCreditIcon" class="icon icon-coin"></i>
+                    </div>
+                    Patient Credit<strong><span id="patientCredit" class="padding-2" data-bind="text: patientCreditFormatted"></span></strong>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="clearfix"></div>
+
+<div class="form-group" data-bind="visible: !isMerged()">
+    <div class="col-lg-11 col-lg-offset-1 col-md-11 col-md-offset-1">
+        <h4>NOTE : This Patient has been merged to another patient. This patient cannot be activated again.</h4>
+    </div>
+</div>
+<div class="" data-bind="css: { 'col-lg-6 col-md-6': !isMini(), 'col-lg-7 col-md-7': isMini() }">
+<div>
+<div class="form-group" data-bind="visible: showHeadings">
+    <div class="col-lg-11 col-lg-offset-1 col-md-11 col-md-offset-1">
+        <h4>Contact Information</h4>
+    </div>
+</div>
+<div class="form-group" data-bind="visible: !isMini()">
+    <div class="col-lg-3 col-md-3 control-label">
+        <label for="ID">Patient ID</label>
+    </div>
+    <div class="col-lg-3 col-md-3">
+        <label class="control-label">
+            <a href="#" id="patientUid" class="tt" tabindex="0" data-title="Patient ID" data-content="" data-trigger="focus" data-toggle="popover" data-bind="text: patientUidTruncated"></a>
+        </label>
+    </div>
+    <div class="col-lg-3 col-md-3 text-right" data-bind="visible: urgentNote" style="padding-top: 7px;">
+        <i class="validationerror icon-warning"></i>
+        <a data-bind="attr: { href: urgentNoteLink }">Urgent</a>
+    </div>
+    <div class="col-lg-3 col-md-3 text-right" data-bind="visible: followUpNote" style="padding-top: 7px;">
+        <i class="validationerror icon-flag"></i>
+        <a data-bind="attr: { href: followUpNoteLink }">Follow-Up</a>
+    </div>
+</div>
+
+<div class="form-group">
+    <div class="col-lg-3 col-md-3 control-label">
+        <label for="title"><span class="required">*</span>Name</label>
+    </div>
+    <div class="col-lg-2 col-md-2">
+        <select data-name="title" data-bind="options: titleTypes, value: title, optionsText: 'Description', optionsValue: 'Key'"></select>
+    </div>
+    <div class="col-lg-3 col-md-3">
+        <input type="text" data-name="firstName" class="requiredField form-control" placeholder="First Name" data-bind="value: firstName"/>
+    </div>
+    <div class="col-lg-1 col-md-1">
+        <input type="text" data-name="middleInitial" class="form-control" placeholder="MI" data-bind="value: middleInitial"/>
+    </div>
+    <div class="col-lg-3 col-md-3">
+        <input type="text" data-name="lastName" class="requiredField form-control" placeholder="Last Name" data-bind="value: lastName"/>
+    </div>
+</div>
+<div class="col-lg-9 col-lg-offset-3 col-md-9 col-md-offset-3 fieldMessages"></div>
+
+<div class="form-group">
+    <div class="col-lg-3 col-md-3 control-label">
+        <label for="nickName">Nickname</label>
+    </div>
+    <div class="col-lg-9 col-md-9">
+        <input type="text" data-name="nickName" class="form-control" data-bind="value: nickName"/>
+    </div>
+</div>
+<div class="col-lg-9 col-lg-offset-3 col-md-9 col-md-offset-3 fieldMessages"></div>
+
+<div class="form-group">
+    <div class="col-lg-3 col-md-3 control-label">
+        <label for="address1"><span class="required">*</span>Address 1</label>
+    </div>
+    <div class="col-lg-6 col-md-6">
+        <input type="text" data-name="address1" class="requiredField form-control" maxlength="35" data-bind="value: address1"/>
+    </div>
+    <div class="col-lg-3 col-md-3">
+        <div class="checkbox">
+            <label>
+                <input type="checkbox" data-name="isBadAddress" value="" data-bind="checked: isBadAddress"/>Bad Address
+            </label>
+        </div>
+    </div>
+
+</div>
+<div class="col-lg-9 col-lg-offset-3 col-md-9 col-md-offset-3 fieldMessages"></div>
+
+<div class="form-group">
+    <div class="col-lg-3 col-md-3 control-label">
+        <label for="address2">Address 2</label>
+    </div>
+    <div class="col-lg-9 col-md-9">
+        <input type="text" data-name="address2" class="form-control" maxlength="35" data-bind="value: address2"/>
+    </div>
+</div>
+<div class="col-lg-9 col-lg-offset-3 col-md-9 col-md-offset-3 fieldMessages"></div>
+
+<div class="form-group">
+    <div class="col-lg-3 col-md-3 control-label">
+        <label for="zipCode"><span class="required">*</span>ZIP/City/State</label>
+    </div>
+    <div class="col-lg-3 col-md-3">
+        <input id="zipCode" type="text" data-name="zipCode" class="requiredField form-control" data-text="" placeholder="ZIP" data-bind="value: zipCode"/>
+    </div>
+    <div class="col-lg-4 col-md-4">
+        <input type="text" data-name="city" class="requiredField form-control" placeholder="City" maxlength="30" data-bind="value: city"/>
+    </div>
+    <div class="col-lg-2 col-md-2">
+        <input type="text" data-name="state" class="requiredField form-control" placeholder="State" data-bind="value: state"/>
+    </div>
+</div>
+<div class="col-lg-9 col-lg-offset-3 col-md-9 col-md-offset-3 fieldMessages"></div>
+
+<div class="form-group">
+    <div class="col-lg-3 col-md-3 control-label">
+        <label for="primaryPhone"><span class="required">*</span>Primary Phone</label>
+    </div>
+    <div class="col-lg-4 col-md-4">
+        <input type="text" data-name="primaryPhone" class="requiredField form-control" placeholder="(     )     -     " data-bind="value: primaryPhone"/>
+    </div>
+    <div class="col-lg-3 col-md-3">
+        <select data-name="primaryPhoneType" data-bind="options: phoneTypes, value: primaryPhoneType, optionsText: 'Description', optionsValue: 'Key'"></select>
+    </div>
+    <div class="col-lg-2 col-md-2">
+        <select data-name="primaryPhoneCallTime" data-bind="options: callTimeTypes, value: primaryPhoneCallTime, optionsText: 'Description', optionsValue: 'Key'"></select>
+    </div>
+</div>
+<div class="col-lg-9 col-lg-offset-3 col-md-9 col-md-offset-3 fieldMessages"></div>
+
+<div class="form-group" data-bind="visible: !isMini()">
+    <div class="col-lg-3 col-md-3 control-label fieldLabelWrap">
+        <label for="secondaryPhone">
+            Secondary<br/>
+            Phone
+        </label>
+    </div>
+    <div class="col-lg-4 col-md-4">
+        <input type="text" data-name="secondaryPhone" class="form-control" placeholder="(     )     -     " data-bind="value: secondaryPhone"/>
+    </div>
+    <div class="col-lg-3 col-md-3">
+        <select data-name="secondaryPhoneType" data-bind="options: phoneTypes, value: secondaryPhoneType, optionsText: 'Description', optionsValue: 'Key'"></select>
+    </div>
+    <div class="col-lg-2 col-md-2">
+        <select data-name="secondaryPhoneCallTime" data-bind="options: callTimeTypes, value: secondaryPhoneCallTime, optionsText: 'Description', optionsValue: 'Key'"></select>
+    </div>
+</div>
+<div class="col-lg-9 col-lg-offset-3 col-md-9 col-md-offset-3 fieldMessages"></div>
+
+<div class="form-group">
+    <div class="col-lg-3 col-md-3 control-label">
+        <label for="email">Email</label>
+    </div>
+    <div class="col-lg-6 col-md-6">
+        <input type="text" data-name="email" class="form-control" data-bind="value: email"/>
+    </div>
+    <div class="col-lg-3 col-md-3">
+        <div class="checkbox">
+            <label>
+                <input type="checkbox" data-name="isBadEmail" value="isBadEmail" data-bind="checked: isBadEmail"/>Bad Email
+            </label>
+        </div>
+    </div>
+
+</div>
+<div class="col-lg-9 col-lg-offset-3 col-md-9 col-md-offset-3 fieldMessages"></div>
+
+<div class="form-group" data-bind="visible: !isMini()">
+    <div class="col-lg-3 col-md-3 control-label fieldLabelWrap">
+        <label for="communicationPreference">
+            Communication<br>
+            Preferences (MU)
+        </label>
+    </div>
+    <div class="col-lg-9 col-md-9">
+        <select data-name="communicationPreference" data-bind="options: communicationPreferenceTypes, value: communicationPreference, optionsText: 'Description', optionsValue: 'Key'"></select>
+    </div>
+</div>
+<div class="col-lg-9 col-lg-offset-3 col-md-9 col-md-offset-3 fieldMessages"></div>
+
+<div class="form-group" data-bind="visible: !isMini()">
+    <div class="col-lg-9 col-lg-offset-3 col-md-9 col-md-offset-3">
+        <div class="checkbox">
+            <label>
+                <input type="checkbox" data-name="emailRecalls" value="true" data-bind="checked: isEmailForRecalls"/>Use email for recalls
+            </label>
+        </div>
+    </div>
+    <div class="col-lg-9 col-lg-offset-3 col-md-9 col-md-offset-3 fieldMessages"></div>
+
+    <div class="col-lg-9 col-lg-offset-3 col-md-9 col-md-offset-3">
+        <div class="checkbox">
+            <label>
+                <input type="checkbox" data-name="emailPromotions" value="true" data-bind="checked: isEmailForPromotions"/>Use email for promotions
+            </label>
+        </div>
+    </div>
+    <div class="col-lg-9 col-lg-offset-3 col-md-9 col-md-offset-3 fieldMessages"></div>
+
+    <div class="col-lg-9 col-lg-offset-3 col-md-9 col-md-offset-3">
+        <div class="checkbox">
+            <label>
+                <input type="checkbox" data-name="textapptnotifications" value="true" data-bind="checked: isTextForApptNotifications"/>Use text message for appointment notifications
+            </label>
+        </div>
+    </div>
+    <div class="col-lg-9 col-lg-offset-3 col-md-9 col-md-offset-3 fieldMessages"></div>
+
+    <div class="col-lg-9 col-lg-offset-3 col-md-9 col-md-offset-3">
+        <div class="checkbox">
+            <label>
+                <input type="checkbox" data-name="textordernotifications" value="true" data-bind="checked: isTextForOrderNotifications"/>Use text message for order notifications
+            </label>
+        </div>
+    </div>
+    <div class="col-lg-9 col-lg-offset-3 col-md-9 col-md-offset-3 fieldMessages"></div>
+
+    <div class="col-lg-9 col-lg-offset-3 col-md-9 col-md-offset-3">
+        <div class="checkbox">
+            <label>
+                <input type="checkbox" data-name="emailNoMail" value="true" data-bind="checked: isDoNotSendMailOffers"/>Do not send mail offers
+            </label>
+        </div>
+    </div>
+    <div class="col-lg-9 col-lg-offset-3 col-md-9 col-md-offset-3 fieldMessages"></div>
+</div>
+</div>
+<div data-bind="visible: !isMini()">
+    <div class="form-group">
+        <div class="col-lg-11 col-lg-offset-1 col-md-11 col-md-offset-1">
+            <h4>Responsible Party</h4>
+        </div>
+    </div>
+    <div class="form-group">
+        <div class="col-lg-9 col-lg-offset-3 col-md-9 col-md-offset-3">
+            <div class="panel panel-default">
+                <div class="panel-body">
+                    <div class="col-lg-6">
+                        <input type="hidden" value=""/>
+                        <a href="#" id="rspName" data-bind="text: responsiblePartyName, visible: responsibleIsNotSelf, attr: { name: responsibleDemographicsLink }, click: changeResponsiblePartyId"></a>
+                        <label data-bind="text: responsiblePartyName, visible: responsibleIsSelf"></label>
+                        <br/>
+                        <br/>
+                        <a href="#" data-bind="click: revertResponsiblePartyToSelf, visible: responsibleIsNotSelf">Revert to Self</a>
+                    </div>
+                    <div class="col-lg-6">
+                        <button id="btnChange" class="btn btn-default pull-right" data-bind="click:changeResponsibleParty">Change</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-lg-9 col-lg-offset-3 col-md-9 col-md-offset-3 fieldMessages"></div>
+</div>
+</div>
+
+<div class="" data-bind="css: { 'col-lg-6 col-md-6': !isMini(), 'col-lg-5 col-md-5': isMini() }">
+<div>
+    <div class="form-group" data-bind="visible: showHeadings">
+        <div class="col-lg-11 col-lg-offset-1 col-md-11 col-md-offset-1">
+            <h4>Personal Information</h4>
+        </div>
+    </div>
+    <div class="form-group" data-bind="visible: !isNew()">
+        <div>
+            <div class="col-lg-2 col-md-2 control-label"></div>
+            <div class="col-lg-2 col-md-2">
+                <div class="checkbox">
+                    <label>
+                        <input type="checkbox" data-name="active" value="Active" data-bind="checked: active, enable: isMerged" class="activedeceased"/>Active
+                    </label>
+                </div>
+            </div>
+            <div class="col-lg-2 col-md-3">
+                <div class="checkbox">
+                    <label>
+                        <input type="checkbox" data-name="deceased" value="Deceased" data-bind="checked: deceased, enable: isMerged" class="activedeceased"/>Deceased
+                    </label>
+                </div>
+            </div>
+            <div class="col-lg-5 col-md-5 pull-right">
+                <label class="control-label">Last Exam</label>
+                <label data-name="lastExamDate" class="control-label" data-bind="text: lastExamDate"></label>
+            </div>
+        </div>
+    </div>
+    <div class="col-lg-9 col-lg-offset-3 col-md-9 col-md-offset-3 fieldMessages"></div>
+
+    <div class="form-group">
+        <div class="col-lg-3 col-md-3 control-label">
+            <label for="medicalRecordNumber">MRN</label>
+        </div>
+        <div class="col-lg-5 col-md-5">
+            <input type="text" data-name="medicalRecordNumber" class="form-control" data-bind="value: medicalRecordNumber" maxlength="15">
+        </div>
+    </div>
+    <div class="col-lg-9 col-lg-offset-3 col-md-9 col-md-offset-3 fieldMessages"></div>
+
+    <div class="form-group">
+        <div class="col-lg-3 col-md-3 control-label">
+            <label for="provider">Provider</label>
+        </div>
+        <div class="col-lg-5 col-md-5">
+            <select data-name="provider" data-bind="options: providers, value: provider, optionsText: 'Description', optionsValue: 'Key'" data-live-search="true" data-size="10" data-dropup-auto="false"></select>
+        </div>
+    </div>
+
+    <div class="form-group">
+        <div class="col-lg-3 col-md-3 control-label">
+            <label for="homeOffice">Home Office</label>
+        </div>
+        <div class="col-lg-9 col-md-9">
+            <select data-name="homeOffice" data-bind="options: offices, value: homeOffice, optionsText: 'Description', optionsValue: 'KeyStr'"></select>
+        </div>
+    </div>
+
+    <div class="form-group">
+        <div class="col-lg-3 col-md-3 control-label fieldLabelWrap">
+            <label for="dateOfBirth">
+                <span class="required">*</span>Date of Birth<br/>
+                (MU)
+            </label>
+        </div>
+        <div class="col-lg-5 col-md-5 input-group">
+            <input type="text" data-name="dateOfBirth" class="form-control requiredField" placeholder="mm/dd/yyyy" data-bind="value: dateOfBirth"/>
+            <label for="dateOfBirth" class="input-group-addon requiredField"><i class="btn icon-calendar-3"></i></label>
+        </div>
+        <div id="Age" class="col-lg-4 col-md-4" data-bind="visible: showAge">
+            <div>
+                <label id="lblAge" class="control-label">Age</label>
+                <label id="lblAgeNumber" class="control-label" data-bind="text: age"></label>
+            </div>
+        </div>
+    </div>
+    <div class="col-lg-9 col-lg-offset-3 col-md-9 col-md-offset-3 fieldMessages"></div>
+
+    <div class="form-group">
+        <div class="col-lg-3 col-md-3 control-label">
+            <label for="sex">Gender (MU)</label>
+        </div>
+        <div class="col-lg-7 col-md-7">
+            <label class="radio-inline">
+                <input type="radio" data-name="sex" value="M" data-bind="checked: sex"/>Male
+            </label>
+            <label class="radio-inline">
+                <input type="radio" data-name="sex" value="F" data-bind="checked: sex"/>Female
+            </label>
+        </div>
+    </div>
+    <div class="col-lg-9 col-lg-offset-3 col-md-9 col-md-offset-3 fieldMessages"></div>
+
+    <div class="form-group">
+        <div class="col-lg-3 col-md-3 control-label">
+            <label for="ssnlength">SSN (MU)</label>
+        </div>
+        <div class="col-lg-5 col-md-5">
+            <label class="radio-inline">
+                <input type="radio" data-name="ssnlength" value="9" data-bind="checked: ssnLength"/>Full&nbsp;&nbsp;
+            </label>
+            <label class="radio-inline">
+                <input type="radio" data-name="ssnlength" value="4" data-bind="checked: ssnLength"/>Last 4
+            </label>
+        </div>
+        <div class="col-lg-4 col-md-4">
+            <input type="text" data-name="socialSecurityNumber" class="form-control ssn" placeholder="XXX-XX-XXXX" data-bind="value: socialSecurityNumber"/>
+        </div>
+    </div>
+    <div class="fieldMessages pull-right"></div>
+
+    <div class="form-group" data-bind="visible: showIsPatient()">
+        <div class="col-lg-3 col-md-3 control-label">
+            <label for="isPatient">
+                Save as Patient?
+                <i class="btn tt icon-tooltip-2 colorLedgend " data-title="Save as Patient" data-trigger="hover"
+                   data-content="Select this check box to add the responsible party as a new patient."></i>
+            </label>
+        </div>
+        <div class="col-lg-1 col-md-1">
+            <div class="checkbox">
+                <label>
+                    <input data-name="isPatient" type="checkbox" value="true" data-bind="checked: isPatient"/>
+                </label>
+            </div>
+        </div>
+    </div>
+    <div class="col-lg-9 col-lg-offset-3 col-md-9 col-md-offset-3 fieldMessages"></div>
+
+    <div class="form-group" data-bind="visible: !isMini()">
+        <div class="col-lg-3 col-md-3 control-label">
+            <label for="occupation">Occupation</label>
+        </div>
+        <div class="col-lg-9 col-md-9">
+            <select data-name="occupation" data-bind="options: occupationTypes, value: occupation, optionsText: 'Description', optionsValue: 'Key'" data-live-search="true" data-size="5" data-dropup-auto="false"></select>
+        </div>
+    </div>
+    <div class="col-lg-9 col-lg-offset-3 col-md-9 col-md-offset-3 fieldMessages"></div>
+
+    <div class="form-group" data-bind="visible: !isMini()">
+        <div class="col-lg-3 col-md-3 control-label fieldLabelWrap">
+            <label for="employmentStatus">
+                Employment<br/>
+                Status
+            </label>
+        </div>
+        <div class="col-lg-9 col-md-9">
+            <select data-name="employmentStatus" data-bind="options: employmentStatusTypes, value: employmentStatus, optionsText: 'Description', optionsValue: 'Key'"></select>
+        </div>
+    </div>
+    <div class="col-lg-9 col-lg-offset-3 col-md-9 col-md-offset-3 fieldMessages"></div>
+
+    <div class="form-group" data-bind="visible: !isMini()">
+        <div class="col-lg-3 col-md-3 control-label">
+            <label for="maritalStatus">Marital Status</label>
+        </div>
+        <div class="col-lg-9 col-md-9">
+            <select data-name="maritalStatus" data-bind="options: maritalStatusTypes, value: maritalStatus, optionsText: 'Description', optionsValue: 'Key'"></select>
+        </div>
+    </div>
+    <div class="col-lg-9 col-lg-offset-3 col-md-9 col-md-offset-3 fieldMessages"></div>
+
+    <div class="form-group" data-bind="visible: !isMini()">
+        <div class="col-lg-3 col-md-3 control-label">
+            <label for="activities">Activities</label>
+        </div>
+        <div class="col-lg-9 col-md-9">
+            <select data-name="activities" data-bind="options: activityTypes, selectedOptions: activities, optionsText: 'Description', optionsValue: 'Key'" data-live-search="true" data-size="5" data-dropup-auto="false" multiple></select>
+        </div>
+    </div>
+    <div class="col-lg-9 col-lg-offset-3 col-md-9 col-md-offset-3 fieldMessages"></div>
+    <div class="form-group">
+        <div class="col-lg-offset-4"></div>
+    </div>
+</div>
+
+<div data-bind="visible: !isMini()">
+    <div class="form-group">
+        <div class="col-lg-11 col-lg-offset-1 col-md-11 col-md-offset-1">
+            <h4>Meaningful Use</h4>
+        </div>
+    </div>
+    <div class="form-group">
+        <div class="col-lg-3 col-md-3 control-label">
+            <label for="race">Race (MU)</label>
+        </div>
+        <div class="col-lg-9 col-md-9">
+            <select data-name="race" data-bind="options: raceTypes, selectedOptions: races,  optionsText: 'Description', optionsValue: 'Key'" multiple="multiple"></select>
+        </div>
+    </div>
+    <div class="col-lg-9 col-lg-offset-3 col-md-9 col-md-offset-3 fieldMessages"></div>
+
+    <div class="form-group">
+        <div class="col-lg-3 col-md-3 control-label">
+            <label for="ethnicity">Ethnicity (MU)</label>
+        </div>
+        <div class="col-lg-9 col-md-9">
+            <select data-name="ethnicity" data-bind="options: ethnicityTypes, value: ethnicity, optionsText: 'Description', optionsValue: 'Key'"></select>
+        </div>
+    </div>
+    <div class="col-lg-9 col-lg-offset-3 col-md-9 col-md-offset-3 fieldMessages"></div>
+
+    <div class="form-group">
+        <div class="col-lg-3 col-md-3 control-label fieldLabelWrap">
+            <label for="preferredLanguage">
+                Preferred<br/>
+                Language (MU)
+            </label>
+        </div>
+        <div class="col-lg-9 col-md-9">
+            <select data-name="preferredLanguage" data-bind="options: preferredLanguageTypes, value: preferredLanguage, optionsText: 'Description', optionsValue: 'Key'" data-live-search="true" data-size="5" data-dropup-auto="false"></select>
+        </div>
+    </div>
+    <div class="col-lg-9 col-lg-offset-3 col-md-9 col-md-offset-3 fieldMessages"></div>
+
+    <div class="form-group">
+        <div class="col-lg-9 col-lg-offset-3 col-md-9 col-md-offset-3">
+            <div class="checkbox">
+                <label>
+                    <input data-name="isHipaaSignatureOnFile" type="checkbox" value="true" data-bind="checked: isHipaaSignatureOnFile"/>HIPAA Signature on file (MU)
+                </label>
+            </div>
+        </div>
+    </div>
+    <div class="col-lg-9 col-lg-offset-3 col-md-9 col-md-offset-3 fieldMessages"></div>
+
+    <div class="form-group">
+        <div class="col-lg-3 col-md-3 control-label">
+            <label for="referral">Referred By (MU)</label>
+        </div>
+        <div class="col-lg-9 col-md-9">
+            <select data-name="referral" data-bind="options: referredByTypes, value: referral, optionsText: 'Description', optionsValue: 'Key'" data-live-search="true" data-size="10"></select>
+        </div>
+    </div>
+    <div class="col-lg-9 col-lg-offset-3 col-md-9 col-md-offset-3 fieldMessages"></div>
+</div>
+
+            </div>
+        </div>
+        <div class="row" data-bind="visible: !isMini()">
+            <div class="col-lg-12 col-md-12">
+                <button class="btn btn-default" id="btnReset" data-bind="click: revertChanges, visible: !isNew(), enable: canSave">Reset</button>
+                <button class="btn btn-primary pull-right" id="btnSave" data-value="" data-bind="visible: isMerged(), click:save, enable: canSave">Save</button>
+            </div>
+        </div>
+    </form>
+
+    <div class="modal fade" data-name="duplicatePatientDialog" data-value="">
+        <div class="modal-dialog modal-dialog-wide">
+            <div class="vertical-align-middle">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                        <h4 class="modal-title">Warning: Duplicate Name in System</h4>
+                    </div>
+                    <div class="modal-body">
+                        <table>
+                            <tr>
+                                <td>
+                                    <i class="icon-big icon-warning color-11"></i>
+                                </td>
+                                <td>At least one patient or responsible party record with the same name already exists in the system. Ensure that you are not adding a duplicate entry.<br />
+                                    Either select a row below to modify that existing record, or click Cancel to continue to enter a new record. 
+                                </td>
+                            </tr>
+                        </table>
+                        <div>
+                            <div data-bind="patientSearch:duplicatePatientSearchViewModel"></div>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button class="btn btn-default pull-left" data-dismiss="modal">Cancel</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="modal fade" data-name="responsiblePartyDialog">
+        <div class="modal-dialog modal-dialog-wide" data-bind="css:{ 'modal-max-width-950': !!candidateResponsibleParty() }">
+            <div class="vertical-align-middle">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                        <h4 class="modal-title">Change Responsible Party</h4>
+                    </div>
+                    <div class="modal-body">
+                        <div data-bind="patientSearch: responsiblePartySearchViewModel, visible:!candidateResponsibleParty()"></div>
+                        <div class="row form-horizontal col-lg-12">
+                            <div data-bind="patientDemographics: candidateResponsibleParty"></div>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button class="btn btn-default pull-left" data-dismiss="modal">Cancel</button>
+                        <button class="btn btn-primary pull-right" data-bind="click: saveResponsibleParty, enable: canSaveRp">Save</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</script>
+@* ReSharper restore Html.IdNotResolved *@
+@Html.PartialOnce("~/Views/Patient/SearchPartial.cshtml")

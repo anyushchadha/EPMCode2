@@ -1,0 +1,98 @@
+﻿<div id="clEligibilities" class="form-horizontal col-lg-10 col-md-12 col-no-padding">
+    <div class="col-lg-12 col-md-12">
+        <div class="form-group no-padding">
+            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                <div id="msg_noAuthsWarning" class="alert alert-warning messageCenterStyle hidden" data-selectable="true" data-url-type="external" data-url="">
+                    <span class="title"><i class="icon-warning"></i><strong>No Available Contact Lens Authorizations</strong></span>
+                    <span class="message">Create a Contact Lens Eligibility / Authorization to use for this order, or choose Non-Insurance below.</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="row" data-bind="foreach: {data: displayClEligibilities, as: 'clEligRow'}">
+        <div class="row-height" data-bind="foreach: $data">
+
+            <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 col-height">
+                <div class="col-lg-11  col-lg-offset-1 col-md-12 col-sm-12 col-xs-12 panel insurance-order-panel inside-full-height">
+                    <div class="col-lg-12 col-md-12 col-sm-12 form-group">
+                        <h4 data-bind="text: CarrierFull" class="adjust-margin"></h4>
+                    </div>
+                    <div class="form-group" data-bind="if: !NonInsurance">
+                        <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
+                            <div class="row">
+                                <div class="col-lg-7 col-md-7 col-sm-7 col-xs-7 control-label">
+                                    <label data-bind="attr: { for: 'authNumber_' + InsuranceEligibilityId }"><strong>Authorization #</strong></label>
+                                </div>
+                                <div class="col-lg-5 col-md-5 col-sm-5 col-xs-5 form-control-static" data-bind="text: Eligibility.AuthNumber, attr: { id: 'authNumber_' + InsuranceEligibilityId }"></div>
+                            </div>
+                            <div class="row">
+                                <div class="col-lg-7 col-md-7 col-sm-7 col-xs-7 control-label">
+                                    <label data-bind="attr: { for: 'eligibilityDate_' + InsuranceEligibilityId }"><strong>Eligibility Date</strong></label>
+                                </div>
+                                <div class="col-lg-5 col-md-5 col-sm-5 col-xs-5 form-control-static" data-bind="text: Eligibility.AuthDate, attr: { id: 'eligibilityDate_' + InsuranceEligibilityId }"></div>
+                            </div>
+                            <div class="row">
+                                <div class="col-lg-7 col-md-7 col-sm-7 col-xs-7 control-label">
+                                    <label data-bind="attr: { for: 'eligibilityExpires_' + InsuranceEligibilityId }"><strong>Expires Date</strong></label>
+                                </div>
+                                <div class="col-lg-5 col-md-5 col-sm-5 col-xs-5 form-control-static" data-bind="text: Eligibility.AuthExpireDate, attr: { id: 'eligibilityExpires_' + InsuranceEligibilityId }"></div>
+                            </div>
+                        </div>
+                        <div class="hidden-lg hidden-md col-sm-12 col-xs-12 form-group"></div>
+                        <div class="col-lg-5 col-md-5 col-sm-12 col-xs-12 panel insurance-order-panel-eligibilities">
+                            <div class="">
+                                <div class="col-lg-8 col-md-8 col-sm-8 col-xs-8 control-label">Exam</div>
+                                <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4 form-control-static">
+                                    <i data-bind="css: {'icon-eligibility-active': Eligibility.IsExamElig, 'icon-eligibility-nonexistent': !Eligibility.IsExamElig}"></i>
+                                </div>
+                            </div>
+                            <div class="">
+                                <div class="col-lg-8 col-md-8 col-sm-8 col-xs-8 control-label">Frame</div>
+                                <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4 form-control-static">
+                                    <i data-bind="css: {'icon-eligibility-active': Eligibility.IsFrameElig, 'icon-eligibility-nonexistent': !Eligibility.IsFrameElig}"></i>
+                                </div>
+                            </div>
+                            <div class="">
+                                <div class="col-lg-8 col-md-8 col-sm-8 col-xs-8 control-label">Lens</div>
+                                <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4 form-control-static">
+                                    <i data-bind="css: {'icon-eligibility-active': Eligibility.IsLensElig, 'icon-eligibility-nonexistent': !Eligibility.IsLensElig}"></i>
+                                </div>
+                            </div>
+                            <div class="">
+                                <div class="col-lg-8 col-md-8 col-sm-8 col-xs-8 control-label">Contact</div>
+                                <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4 form-control-static">
+                                    <i data-bind="css: {'icon-eligibility-active': Eligibility.IsClElig, 'icon-eligibility-nonexistent': !Eligibility.IsClElig}"></i>
+                                </div>
+                            </div>
+                            <div class="">
+                                <div class="col-lg-8 col-md-8 col-sm-8 col-xs-8 control-label">Contact Exam</div>
+                                <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4 form-control-static">
+                                    <i data-bind="css: {'icon-eligibility-active': Eligibility.IsClFitElig, 'icon-eligibility-nonexistent': !Eligibility.IsClFitElig}"></i>
+                                </div>
+                            </div>
+                            <div class="clearfix"></div>
+                        </div>
+                    </div>
+                    <div class="col-lg-12 col-md-12 col-sm-12 text-center form-group" data-bind="if: NonInsurance">
+                        <br />
+                        <h2>
+                            <i class="icon-eligibility-no icon-big"></i>
+                        </h2>
+                        <br /><br /><br />
+                    </div>
+                    <div class="col-lg-12 col-md-12 col-sm-12 text-center form-group" data-bind="css: { 'btn-nonInsurance': NonInsurance }">
+                        <button class="btn btn-primary" data-bind="attr:{'id': 'btnStartOrder_' + InsuranceEligibilityId, 'data-insurance-eligibility-id': InsuranceEligibilityId}"><i class="icon-plus"></i><span data-bind="text: CarrierShort"></span> Order</button>
+                    </div>
+
+                </div>
+
+            </div>
+
+            <!-- ko if: clEligRow.length === 1 -->
+            <div class="col-lg-6 col-md-6 col-sm-6 hidden-xs"></div>
+            <!-- /ko -->
+
+        </div>
+    </div>
+</div>

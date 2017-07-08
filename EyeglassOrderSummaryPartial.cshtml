@@ -1,0 +1,905 @@
+﻿@functions{
+    public string GetAntiForgeryToken()
+    {
+        string cookieToken, formToken;
+        AntiForgery.GetTokens(null, out cookieToken, out formToken);
+        return cookieToken + ":" + formToken;
+    }
+}
+<form id="egOrderSummaryForm" class="form-horizontal col-lg-12 col-md-12 col-sm-12">
+    <!-- Shipping Information -->
+    <div class="col-lg-6 col-md-6 col-sm-12" id="shippingPanelContainer">
+        <div id="shippingInfoPanel" class="panel col-lg-12 col-md-12 col-sm-12">
+            <div class="panel-heading">Shipping Information</div>
+            <div class="panel-body">
+                <div class="form-group">
+                    <div class="col-lg-3 col-md-3 col-sm-3 control-label">
+                        <span class="required">*</span>
+                        <label class="fieldLabel">Ship To</label>
+                    </div>
+                    <div class="col-lg-9 col-md-9 col-sm-9">
+                        <select name="shipTo" id="shipTo" data-bind="options: shipToList, value: shipTo, optionsText: 'Description', optionsValue: 'Key', css: { requiredField: shipTo() <= 0 }"></select>
+                    </div>
+                </div>
+                <div class="col-lg-offset-3 fieldMessages"></div>
+                <div class="clearfix"></div>
+
+                <div class="form-group">
+                    <div class="col-lg-3 col-md-3 col-sm-3 control-label">
+                        <span class="required">*</span>
+                        <label class="fieldLabel">Address</label>
+                    </div>
+                    <div class="col-lg-9 col-md-9 col-sm-9">
+                        <select name="address" id="address" data-bind="options: addressList, value: address, optionsText: 'Description', optionsValue: 'Key', css: { requiredField: address() <= 0 }"></select>
+                    </div>
+                </div>
+                <div class="col-lg-offset-3 fieldMessages"></div>
+                <div class="clearfix"></div>
+            </div>
+        </div>
+    </div>
+    <!-- Order Information -->
+    <div class="col-lg-6 col-md-6 col-sm-12" id="orderInformationPanelContainer">
+        <div id="orderInfoPanel" class="panel col-lg-12 col-md-12 col-sm-12">
+            <div class="panel-heading">Order Information</div>
+            <div class="panel-body">
+                <div class="form-group" data-bind="visible: orderNumber() > 0">
+                    <div class="col-lg-3 col-md-3 col-sm-3 control-label">
+                        <label class="fieldLabel">Order Number</label>
+                    </div>
+                    <div class="col-lg-9 col-md-9 col-sm-9 form-control-static">
+                        <span id="egOrderNumber" data-bind="text:orderNumber || '--'"></span>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <div class="col-lg-3 col-md-3 col-sm-3 control-label">
+                        <label class="fieldLabel">Order Type</label>
+                    </div>
+                    <div class="col-lg-9 col-md-9 col-sm-9 form-control-static">
+                        <span id="egOrderType" data-bind="text:eyeglassOrderTypeDescription || '--'"></span>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <div class="col-lg-3 col-md-3 col-sm-3 control-label">
+                        <span class="required">*</span><label class="fieldLabel">Resource</label>
+                    </div>
+                    <div class="col-lg-9 col-md-9 col-sm-9">
+                        <select name="staff" id="staff" data-bind="options: staffList, value: staff, optionsText: 'Description', optionsValue: 'Key', css: { requiredField: staff() <= 0 }" data-live-search="true" data-size="10" data-dropup-auto="false"></select>
+                    </div>
+                </div>
+                <div class="col-lg-offset-3 fieldMessages"></div>
+                <div class="clearfix"></div>
+
+                <div class="form-group">
+                    <div class="col-lg-3 col-md-3 col-sm-3 control-label">
+                        <label class="fieldLabel">Doctor</label>
+                    </div>
+                    <div class="col-lg-9 col-md-9 col-sm-9 form-control-static">
+                        <span id="doctor" data-bind="text:doctor || '--'">Test Doctor</span>
+                    </div>
+                </div>
+
+                <div class="form-group hidden" data-bind="css:{'hidden': !remake()}">
+                    <div class="col-lg-3 col-md-3 col-sm-3 control-label">
+                        <label class="fieldLabel">Remake Reason</label>
+                    </div>
+                    <div class="col-lg-9 col-md-9 col-sm-9">
+                        <select name="remakeReasons" id="remakeReasons" data-bind="options: remakeReasons, value: remakeTypeId, optionsText: 'Description', optionsValue: 'Key'" data-live-search="true" data-size="10" data-dropup-auto="false"></select>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <div class="col-lg-3 col-md-3 col-sm-3 control-label fieldLabelWrap">
+                        <label class="fieldLabel"><span class="required">*</span>Dispensing <br/>Status</label>
+                    </div>
+                    <div class="col-lg-9 col-md-9 col-sm-9">
+                        <select name="dispensingStatus" id="dispensingStatus" data-bind="options: dispenseTypeList, value: dispenseType, optionsText: 'Description', optionsValue: 'Key', css: { requiredField: dispenseType() <= 0 }"></select>
+                    </div>
+                </div>
+                <div class="col-lg-offset-3 fieldMessages"></div>
+                <div class="clearfix"></div>
+
+                <div id="dispensingNotesGroupFields" class="form-group hidden">
+                    <div class="col-lg-3 col-md-3 col-sm-3 control-label">
+                        <label class="fieldLabel">Dispensing Note</label>
+                    </div>
+                    <div class="col-lg-9 col-md-9 col-sm-9">
+                        <textarea name="dispenseNote" id="dispenseNote" class="form-control" rows="3" maxlength="200" data-bind="value:dispenseNote"></textarea>
+                    </div>
+                </div>
+                <div id="dispensingNotesGroupAdd" class="form-group">
+                    <div class="col-lg-3 col-md-3 col-sm-3 control-label">
+                        <label class="fieldLabel"></label>
+                    </div>
+                    <div class="col-lg-9 col-md-9 col-sm-9">
+                        <a href="" id="linkAddDispensingNotes">Add Dispensing Notes</a>
+                    </div>
+                </div>
+                <div class="col-lg-offset-3 fieldMessages"></div>
+                <div class="clearfix"></div>
+            </div>
+        </div>
+    </div>
+    <div class="col-lg-6 col-md-6 col-sm-12" id="labInfoPanelContainer">
+        <div id="labInfoPanel" class="panel col-lg-12 col-md-12 col-sm-12" 
+             data-bind="css: {'hidden': (eyeglassOrderType() === 3 && selectedAuthorization() && selectedAuthorization().IsVsp && selectedFrame() != null && selectedFrame().FrameSourceID !== 3)}">
+            <div class="panel-heading">
+                Lab
+                <button id="btnSummaryChangeLab" class="btn btn-default btn-xs pull-right"><i class="icon-undo-2"></i>Change</button>
+            </div>
+            <div class="panel-body">
+                <div id="noLab" class="col-lg-12 col-md-12 text-center hidden" data-bind="css:{'hidden' : selectedLab() != null}">
+                    <h3>No Lab</h3>
+                    <br/>
+                </div>
+                <div id="LabInformation" class="col-lg-12 col-md-12" data-bind="visible: selectedLab() != null">
+                    <div id="msgWarning" class="alert alert-warning messageCenterStyle hidden" data-bind="css:{'hidden' : eyeglassOrderType() !== 4}" data-selectable="false">
+                        <i class="icon-warning"></i><span id="warningMsgTitle" class="message">Extras Only Orders will not be submitted electronically. Contact the lab to place this patient order.</span>
+                    </div>
+                    <div class="form-group form-group-no-vertical-margin">
+                        <div class="col-lg-3 col-md-3 col-sm-3 col-xs-4 control-label">
+                            <label class="fieldLabel strong">Lab</label>
+                        </div>
+                        <div class="col-lg-9 col-md-9 col-sm-9 col-xs-8 form-control-static">
+                            <span data-bind="text:labName || '--'"></span>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="col-lg-3 col-md-3 col-sm-3 col-xs-4 control-label">
+                            <label class="fieldLabel strong">Address</label>
+                        </div>
+                        <div id="labAddress" class="col-lg-9 col-md-9 col-sm-9 col-xs-8 form-control-static normal-wrap">
+                            <span data-bind="text:labAddress || '--'"></span>
+                        </div>
+                    </div>
+                    <div id="instructionsGroupFields" class="form-group hidden">
+                        <div class="col-lg-3 col-md-3 col-sm-3 control-label">
+                            <label class="fieldLabel">Instructions</label>
+                        </div>
+                        <div class="col-lg-9 col-md-9 col-sm-9">
+                            <textarea name="instructions" id="instructions" class="form-control" rows="3" maxlength="70" data-bind="value:labInstructions"></textarea>
+                        </div>
+                    </div>
+                    <div id="instructionsGroupAdd" class="form-group">
+                        <div class="col-lg-3 col-md-3 col-sm-3 control-label">
+                            <label class="fieldLabel"></label>
+                        </div>
+                        <div class="col-lg-9 col-md-9 col-sm-9">
+                            <a href="" id="linkAddInstructions">Add Instructions</a>
+                        </div>
+                    </div>
+                    <div class="col-lg-offset-3 fieldMessages"></div>
+                    <div class="clearfix"></div>
+                    <div class="form-group">
+                        <br/>
+                        <div class="col-lg-3 col-md-3 col-sm-3 control-label">
+                            <label class="fieldLabel">Lab To Make</label>
+                        </div>
+                        <div class="col-lg-9 col-md-9 col-sm-9">
+                            <label class="checkbox-inline">
+                                <input type="checkbox" id="frame" value="option1" data-bind="checked:toMakeFrame"> Frame
+                            </label>
+                            <label class="checkbox-inline">
+                                <input type="checkbox" id="rightLens" value="option1" data-bind="checked:toMakeRightLens"> Right Lens
+                            </label>
+                            <label class="checkbox-inline">
+                                <input type="checkbox" id="leftLens" value="option1" data-bind="checked:toMakeLeftLens"> Left Lens
+                            </label>
+                            <label class="checkbox-inline">
+                                <input type="checkbox" id="extras" value="option1" data-bind="checked:toMakeExtras"> Extras
+                            </label>
+                            <br/><br/><br/>
+                        </div>
+                    </div>
+                    <div class="col-lg-offset-3 fieldMessages"></div>
+                    <div class="clearfix"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <div class="col-lg-6 col-md-6 col-sm-12" id="summaryFramePanelContainer">
+        <div id="summaryFramePanel" class="panel col-lg-12 col-md-12 col-sm-12">
+            <div class="panel-heading">
+                Frame
+                <button id="btnSummaryChangeFrame" class="btn btn-default btn-xs pull-right"><i class="icon-undo-2"></i>Change</button>
+            </div>
+            <div class="panel-body">
+                <div id="noFrame" class="col-lg-12 col-md-12 text-center hidden" data-bind="css: {'hidden': selectedFrame() !== null}">
+                    <h3>No Frame</h3>
+                </div>
+                <div id="frameInformation" data-bind="with: selectedFrame">
+                    <div class="row">
+                        <div class="col-lg-12 col-md-12 col-sm-12">
+                            <div class="panel clDetailPanel">
+                                <div class="form-group form-group-no-vertical-margin" data-bind="css: {'hidden': FrameDesc === 'POF' || FrameDesc === 'POF_LENS'}">
+                                    <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4 control-label">
+                                        <label class="fieldLabel">Manufacturer</label>
+                                    </div>
+                                    <div class="col-lg-8 col-md-8 col-sm-8 col-xs-8 form-control-static">
+                                        <span data-bind="text: ManufacturerDesc || '--'"></span>
+                                    </div>
+                                </div>
+                                <div class="form-group form-group-no-vertical-margin" data-bind="css: {'hidden': FrameDesc === 'POF' || FrameDesc === 'POF_LENS'}">
+                                    <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4 control-label">
+                                        <label class="fieldLabel">Collection</label>
+                                    </div>
+                                    <div class="col-lg-8 col-md-8 col-sm-8 col-xs-8 form-control-static">
+                                        <span data-bind="text: CollectionDesc || '--'"></span>
+                                    </div>
+                                </div>
+                                <div class="form-group form-group-no-vertical-margin" data-bind="css: {'hidden': FrameDesc === 'POF' || FrameDesc === 'POF_LENS'}">
+                                    <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4 control-label">
+                                        <label class="fieldLabel">UPC / SKU</label>
+                                    </div>
+                                    <div class="col-lg-8 col-md-8 col-sm-8 col-xs-8 form-control-static">
+                                        <span data-bind="text: UPCDisplay || '--'"></span>
+                                    </div>
+                                </div>
+                                <div class="form-group form-group-no-vertical-margin" data-bind="css: {'hidden': FrameDesc === 'POF' || FrameDesc === 'POF_LENS'}">
+                                    <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4 control-label">
+                                        <label class="fieldLabel">Item Number</label>
+                                    </div>
+                                    <div class="col-lg-8 col-md-8 col-sm-8 col-xs-8 form-control-static">
+                                        <span data-bind="text: Number || '--'"></span>
+                                    </div>
+                                </div>
+                                <div class="form-group form-group-no-vertical-margin" data-bind="css: {'hidden': FrameDesc !== 'POF' && FrameDesc !== 'POF_LENS'}">
+                                    <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4 control-label">
+                                        <label class="fieldLabel">Name</label>
+                                    </div>
+                                    <div class="col-lg-8 col-md-8 col-sm-8 col-xs-8 form-control-static">
+                                        <span data-bind="text: Name"></span>
+                                    </div>
+                                </div>
+                                <div class="form-group form-group-no-vertical-margin">
+                                    <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4 control-label">
+                                        <label class="fieldLabel">Color</label>
+                                    </div>
+                                    <div class="col-lg-8 col-md-8 col-sm-8 col-xs-8 form-control-static">
+                                        <span data-bind="text: Color || '--'"></span>
+                                    </div>
+                                </div>
+                                <div class="form-group" data-bind="css: {'hidden': FrameDesc === 'POF' || FrameDesc === 'POF_LENS'}">
+                                    <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4 control-label">
+                                        <label class="fieldLabel">Retail Price</label>
+                                    </div>
+                                    <div class="col-lg-8 col-md-8 col-sm-8 col-xs-8 form-control-static">
+                                        <span data-bind="text: '$' + parseFloat(Retail).toFixed(2)"></span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="clearfix"></div>
+                    <div class="panel clDetailPanel adjust-margin4">
+                        <div class="row">
+                            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                                <div class="col-lg-2 col-md-2 col-sm-2 col-xs-2 control-label float-left">
+                                    <label class="fieldLabel">Eye</label>
+                                </div>
+                                <div class="col-lg-2 col-md-2 col-sm-2 col-xs-2 form-control-static float-left">
+                                    <span data-bind="text: Eye || '--'"></span>
+                                </div>
+
+                                <div class="col-lg-2 col-md-2 col-sm-2 col-xs-2 control-label float-left">
+                                    <label class="fieldLabel">Bridge</label>
+                                </div>
+                                <div class="col-lg-2 col-md-2 col-sm-2 col-xs-2 form-control-static float-left">
+                                    <span data-bind="text: Bridge || '--'"></span>
+                                </div>
+
+                                <div class="col-lg-2 col-md-2 col-sm-2 col-xs-2 control-label float-left">
+                                    <label class="fieldLabel">Temple</label>
+                                </div>
+                                <div class="col-lg-2 col-md-2 col-sm-2 col-xs-2 form-control-static float-left">
+                                    <span data-bind="text: Temple || '--'"></span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                                <div class="col-lg-2 col-md-2 col-sm-2 col-xs-2 control-label float-left">
+                                    <label class="fieldLabel">A</label>
+                                </div>
+                                <div class="col-lg-2 col-md-2 col-sm-2 col-xs-2 form-control-static float-left">
+                                    <span data-bind="text: AMeasure || '--'"></span>
+                                </div>
+
+                                <div class="col-lg-2 col-md-2 col-sm-2 col-xs-2 control-label float-left">
+                                    <label class="fieldLabel">B</label>
+                                </div>
+                                <div class="col-lg-2 col-md-2 col-sm-2 col-xs-2 form-control-static float-left">
+                                    <span data-bind="text: BMeasure || '--'"></span>
+                                </div>
+
+                                <div class="col-lg-2 col-md-2 col-sm-2 col-xs-2 control-label float-left">
+                                    <label class="fieldLabel">ED</label>
+                                </div>
+                                <div class="col-lg-2 col-md-2 col-sm-2 col-xs-2 form-control-static float-left">
+                                    <span data-bind="text: EdMeasure || '--'"></span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="clearfix"></div>
+                    <div class="row">
+                        <div class="col-lg-12 col-md-12 col-sm-12">
+                            <div class="panel clDetailPanel">
+                                <div class="form-group form-group-no-vertical-margin" data-bind="css: {'hidden': FrameDesc === 'POF' || FrameDesc === 'POF_LENS'}">
+                                    <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4 control-label">
+                                        <label class="fieldLabel">Shape</label>
+                                    </div>
+                                    <div class="col-lg-8 col-md-8 col-sm-8 col-xs-8 form-control-static">
+                                        <span data-bind="text: ShapeDesc || '--'"></span>
+                                    </div>
+                                </div>
+                                <div class="form-group form-group-no-vertical-margin" data-bind="css: {'hidden': FrameDesc === 'POF' || FrameDesc === 'POF_LENS'}">
+                                    <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4 control-label">
+                                        <label class="fieldLabel">Material</label>
+                                    </div>
+                                    <div class="col-lg-8 col-md-8 col-sm-8 col-xs-8 form-control-static">
+                                        <span data-bind="text: MaterialDesc || '--'"></span>
+                                    </div>
+                                </div>
+                                <div class="form-group form-group-no-vertical-margin">
+                                    <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4 control-label">
+                                        <label class="fieldLabel">Edge Type</label>
+                                    </div>
+                                    <div class="col-lg-8 col-md-8 col-sm-8 col-xs-8 form-control-static">
+                                        <span data-bind="text: FrameEdgeTypeDesc || '--'"></span>
+                                    </div>
+                                </div>
+                                <div class="form-group form-group-no-vertical-margin">
+                                    <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4 control-label">
+                                        <label class="fieldLabel">Frame Source</label>
+                                    </div>
+                                    <div class="col-lg-8 col-md-8 col-sm-8 col-xs-8 form-control-static">
+                                        <span data-bind="text: FrameSourceDesc || '--'"></span>
+                                    </div>
+                                </div>
+                                <div class="form-group form-group-no-vertical-margin">
+                                    <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4 control-label">
+                                        <label class="fieldLabel">Safety Frame</label>
+                                    </div>
+                                    <div class="col-lg-8 col-md-8 col-sm-8 col-xs-8 form-control-static">
+                                        <span data-bind="text: IsSafety ? 'Yes' : 'No'"></span>
+                                    </div>
+                                </div>
+                                <div class="form-group form-group-no-vertical-margin" data-bind="css: {'hidden': FrameDesc === 'NO_LENS' || FrameDesc === 'POF'}">
+                                    <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4 control-label">
+                                        <label class="fieldLabel">Frame Wrap</label>
+                                    </div>
+                                    <div class="col-lg-8 col-md-8 col-sm-8 col-xs-8 form-control-static">
+                                        <span data-bind="text: FrameWrap || '--'"></span>
+                                    </div>
+                                </div>
+                                <div class="form-group form-group-no-vertical-margin" data-bind="css: {'hidden': FrameDesc === 'NO_LENS' || FrameDesc === 'POF'}">
+                                    <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4 control-label">
+                                        <label class="fieldLabel">Pantoscopic Tilt</label>
+                                    </div>
+                                    <div class="col-lg-8 col-md-8 col-sm-8 col-xs-8 form-control-static">
+                                        <span data-bind="text: PantoscopicTilt || '--'"></span>
+                                    </div>
+                                </div>
+                                <div class="form-group" data-bind="css: {'hidden': FrameDesc === 'NO_LENS' || FrameDesc === 'POF'}">
+                                    <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4 control-label">
+                                        <label class="fieldLabel">Vertex</label>
+                                    </div>
+                                    <div class="col-lg-8 col-md-8 col-sm-8 col-xs-8 form-control-static">
+                                        <span data-bind="text: Vertex || '--'"></span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div id="fillerPatientOwnFrame" class="fillerCustomerOwnFrame" data-bind="css: {'hidden': eyeglassOrderType() != 2}">&nbsp</div>
+    </div>
+    <div class="col-lg-6 col-md-6 col-sm-12" id="summaryEgRxPanelContainer" data-bind="css: {'hidden': eyeglassOrderType() >= 3}">
+        <div id="summaryRxPanel" class="panel col-lg-12 col-md-12 col-sm-12">
+            <div class="panel-heading">
+                Rx
+                <button id="btnSummaryChangeRx" class="btn btn-default btn-xs pull-right"><i class="icon-undo-2"></i>Change</button>
+            </div>
+            <div class="panel-body">
+                <div id="noRx" class="col-lg-12 col-md-12 text-center hidden" data-bind="css:{'hidden' : selectedRx() != null}">
+                    <h3>No Rx</h3>
+                </div>
+                <div id="rxInformation" class="col-lg-12 col-md-12">
+                    <table id="summaryRxInfoTable" class="dataTable" data-bind="with: selectedRx()">
+                        <thead>
+                            <tr role="row">
+                                <th class="ui-state-default col-lg-1 col-md-1 col-sm-1 col-xs-1" tabindex="0"></th>
+                                <th class="ui-state-default col-lg-2 col-md-2 col-sm-2 col-xs-2" tabindex="0" aria-label="SPH" title="SPH"><strong>SPH</strong></th>
+                                <th class="ui-state-default col-lg-3 col-md-3 col-sm-3 col-xs-3" tabindex="0" aria-label="CYL" title="CYL"><strong>CYL</strong></th>
+                                <th class="ui-state-default col-lg-3 col-md-3 col-sm-3 col-xs-3" tabindex="0" aria-label="AXIS" title="AXIS"><strong>AXIS</strong></th>
+                                <th class="ui-state-default col-lg-3 col-md-3 col-md-3 col-xs-3" tabindex="0" aria-label="ADD" title="ADD"><strong>ADD</strong></th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><strong>R</strong></td>
+                                <td data-bind="text: RightSphereTxt || '--'" class="text-left"></td>
+                                <td data-bind="text: RightCylinderTxt || '--'" class="text-left"></td>
+                                <td data-bind="text: RightAxisTxt || '--'" class="text-left"></td>
+                                <td data-bind="text: RightAddTxt || '--'" class="text-left"></td>
+                            </tr>
+                            <tr>
+                                <td><strong>L</strong></td>
+                                <td data-bind="text: LeftSphereTxt || '--'" class="text-left"></td>
+                                <td data-bind="text: LeftCylinderTxt || '--'" class="text-left"></td>
+                                <td data-bind="text: LeftAxisTxt || '--'" class="text-left"></td>
+                                <td data-bind="text: LeftAddTxt || '--'" class="text-left"></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <table id="summaryRxPrismTable" class="dataTable" data-bind="with: selectedRx()">
+                        <thead>
+                            <tr role="row">
+                                <th class="ui-state-default col-lg-1 col-md-1 col-sm-1 col-xs-1" tabindex="0"></th>
+                                <th class="ui-state-default col-lg-4 col-md-4 col-sm-4 col-xs-4" tabindex="0" aria-label="H.PRISM" title="H.PRISM"><strong>H.PRISM</strong></th>
+                                <th class="ui-state-default col-lg-4 col-md-4 col-sm-4 col-xs-4" tabindex="0" aria-label="V.PRISM" title="V.PRISM"><strong>V.PRISM</strong></th>
+                                <th class="ui-state-default col-lg-3 col-md-3 col-sm-3 col-xs-3" tabindex="0" aria-label="Underlying Condition" title="Underlying Condition"><strong>Underlying Condition</strong></th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><strong>R</strong></td>
+                                <td class="text-left">
+                                    <span data-bind="text: RightHorizontalPrismTxt || '--'"></span>
+                                    <span data-bind="text: RightHorizontalPrismDirection"></span>
+                                </td>
+                                <td class="text-left">
+                                    <span data-bind="text: RightVerticalPrismTxt || '--'"></span>
+                                    <span data-bind="text: RightVerticalPrismDirection"></span>
+                                </td>
+                                <td class="text-left">
+                                    <span data-bind="text: RightUlCondition || '--'"></span>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td><strong>L</strong></td>
+                                <td class="text-left">
+                                    <span data-bind="text: LeftHorizontalPrismTxt || '--'"></span>
+                                    <span data-bind="text: LeftHorizontalPrismDirection"></span>
+                                </td>
+                                <td class="text-left">
+                                    <span data-bind="text: LeftVerticalPrismTxt || '--'"></span>
+                                    <span data-bind="text: LeftVerticalPrismDirection"></span>
+                                </td>
+                                <td class="text-left">
+                                    <span data-bind="text: LeftUlCondition || '--'"></span>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-lg-6 col-md-6 col-sm-12" id="summaryLensPanelContainer">
+        <div id="summaryLensPanel" class="panel col-lg-12 col-md-12 col-sm-12" data-bind="css: {'hidden': eyeglassOrderType() === 3}">
+            <div class="panel-heading">
+                Lens
+                <button id="btnSummaryChangeLens" class="btn btn-default btn-xs pull-right"><i class="icon-undo-2"></i>Change</button>
+            </div>
+            <div class="panel-body">
+                <div id="noLens" class="col-lg-12 col-md-12 text-center hidden" data-bind="css:{'hidden' : selectedLens() != null}">
+                    <h3>No Lens</h3>
+                </div>
+
+                <div id="LensInformation" class="col-lg-12 col-md-12" data-bind="with: selectedLens">
+                <div id="customizedLenses" class="hidden" data-bind="css:{'hidden' : IsCustomLenses != true}">
+                    <div class="panel clDetailPanel">
+                        <div class="row margin-bottom margin-top">
+                            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                                <div class="col-lg-offset-3 col-lg-4 col-md-offset-3 col-md-4 col-sm-offset-2 col-sm-5 col-xs-offset-4 col-xs-4">
+                                    <strong>Right</strong>
+                                </div>
+                                <div class="col-lg-4 col-md-4 col-sm-5 col-xs-4">
+                                    <strong>Left</strong>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                                <div class="col-lg-3 col-md-3 col-sm-2 col-xs-4 control-label text-right">
+                                    <label class="fieldLabel">Type</label>
+                                </div>
+                                <div class="col-lg-4 col-md-4 col-sm-5 col-xs-4 form-control-static">
+                                    <span data-bind="text:RightLens.TypeDescription || '--', css:{'color-10': !RightLens.TypeDescription}"></span>
+                                </div>
+                                <div class="col-lg-4 col-md-4 col-sm-5 col-xs-4 form-control-static">
+                                    <span data-bind="text:LeftLens.TypeDescription || '--', css:{'color-10': !LeftLens.TypeDescription}"></span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                                <div class="col-lg-3 col-md-3 col-sm-2 col-xs-4 control-label text-right">
+                                    <label class="fieldLabel">Material</label>
+                                </div>
+                                <div class="col-lg-4 col-md-4 col-sm-5 col-xs-4 form-control-static">
+                                    <span data-bind="text:RightLens.MaterialDescription || '--', css:{'color-10': !RightLens.MaterialDescription}"></span>
+                                </div>
+                                <div class="col-lg-4 col-md-4 col-sm-5 col-xs-4 form-control-static">
+                                    <span data-bind="text:LeftLens.MaterialDescription || '--', css:{'color-10': !LeftLens.MaterialDescription}"></span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                                <div class="col-lg-3 col-md-3 col-sm-2 col-xs-4 control-label text-right">
+                                    <label class="fieldLabel">Style</label>
+                                </div>
+                                <div class="col-lg-4 col-md-4 col-sm-5 col-xs-4 form-control-static">
+                                    <span data-bind="text:RightLens.StyleDescription || '--', css:{'color-10': !RightLens.StyleDescription}"></span>
+                                </div>
+                                <div class="col-lg-4 col-md-4 col-sm-5 col-xs-4 form-control-static">
+                                    <span data-bind="text:LeftLens.StyleDescription || '--', css:{'color-10': !LeftLens.StyleDescription}"></span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                                <div class="col-lg-3 col-md-3 col-sm-2 col-xs-4 control-label text-right">
+                                    <label class="fieldLabel">Color</label>
+                                </div>
+                                <div class="col-lg-4 col-md-4 col-sm-5 col-xs-4 form-control-static">
+                                    <span data-bind="text:RightLens.ColorDescription || '--', css:{'color-10': !RightLens.ColorDescription}"></span>
+                                </div>
+                                <div class="col-lg-4 col-md-4 col-sm-5 col-xs-4 form-control-static">
+                                    <span data-bind="text:LeftLens.ColorDescription || '--', css:{'color-10': !LeftLens.ColorDescription}"></span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                                <div class="col-lg-3 col-md-3 col-sm-2 col-xs-4 control-label text-right">
+                                    <label class="fieldLabel">Coating</label>
+                                </div>
+                                <div class="col-lg-4 col-md-4 col-sm-5 col-xs-4 form-control-static">
+                                    <span data-bind="text:RightLens.MfgCoatingDescription || '--', css:{'color-10': !RightLens.MfgCoatingDescription}"></span>
+                                </div>
+                                <div class="col-lg-4 col-md-4 col-sm-5 col-xs-4 form-control-static">
+                                    <span data-bind="text:LeftLens.MfgCoatingDescription || '--', css:{'color-10': !LeftLens.MfgCoatingDescription}"></span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row margin-bottom">
+                            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                                <div class="col-lg-3 col-md-3 col-sm-2 col-xs-4 control-label text-right">
+                                    <label class="fieldLabel">Options</label>
+                                </div>
+                                <div class="col-lg-4 col-md-4 col-sm-5 col-xs-4 form-control-static normal-wrap">
+                                    <span data-bind="text:RightLens.LensOptions || '--', css:{'color-10': !RightLens.LensOptions}"></span>
+                                </div>
+                                <div class="col-lg-4 col-md-4 col-sm-5 col-xs-4 form-control-static normal-wrap">
+                                    <span data-bind="text:LeftLens.LensOptions || '--', css:{'color-10': !LeftLens.LensOptions}"></span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div data-bind="css: {'hidden': IsLensTreatments === true}">
+                    <div id="sameValueLenses" class="hidden" data-bind="css:{'hidden' : IsCustomLenses != false}">
+                        <div class="panel clDetailPanel">
+                            <div class="row">
+                                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                                    <div class="col-lg-2 col-md-2 col-sm-2 col-xs-2 control-label text-right">
+                                        <label class="fieldLabel">Type</label>
+                                    </div>
+                                    <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4 form-control-static">
+                                        <span data-bind="text:RightLens.TypeDescription || '--', css:{'color-10': !RightLens.TypeDescription}"></span>
+                                    </div>
+                                    <div class="col-lg-2 col-md-2 col-sm-2 col-xs-2 control-label text-right">
+                                        <label class="fieldLabel">Color</label>
+                                    </div>
+                                    <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4 form-control-static">
+                                        <span data-bind="text:RightLens.ColorDescription || '--', css:{'color-10': !RightLens.ColorDescription}"></span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                                    <div class="col-lg-2 col-md-2 col-sm-2 col-xs-2 control-label text-right">
+                                        <label class="fieldLabel">Material</label>
+                                    </div>
+                                    <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4 form-control-static">
+                                        <span data-bind="text:RightLens.MaterialDescription || '--', css:{'color-10': !RightLens.MaterialDescription}"></span>
+                                    </div>
+                                    <div class="col-lg-2 col-md-2 col-sm-2 col-xs-2 control-label text-right">
+                                        <label class="fieldLabel">Coating</label>
+                                    </div>
+                                    <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4 form-control-static">
+                                        <span data-bind="text:RightLens.MfgCoatingDescription || '--', css:{'color-10': !RightLens.MfgCoatingDescription}"></span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row margin-bottom">
+                                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                                    <div class="col-lg-2 col-md-2 col-sm-2 col-xs-2 control-label text-right">
+                                        <label class="fieldLabel">Style</label>
+                                    </div>
+                                    <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4 form-control-static">
+                                        <span data-bind="text:RightLens.StyleDescription || '--', css:{'color-10': !RightLens.StyleDescription}"></span>
+                                    </div>
+                                    <div class="col-lg-2 col-md-2 col-sm-2 col-xs-2 control-label text-right">
+                                        <label class="fieldLabel">Options</label>
+                                    </div>
+                                    <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4 form-control-static normal-wrap">
+                                        <span data-bind="text:RightLens.LensOptions || '--', css:{'color-10': !RightLens.LensOptions}"></span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <table id="summaryLensMeasurementTable" class="dataTable">
+                        <thead>
+                            <tr role="row">
+                                <th class="ui-state-default col-lg-1 col-md-1 col-sm-1 col-xs-1" tabindex="0"></th>
+                                <th class="ui-state-default col-lg-2 col-md-2 col-sm-2 col-xs-2" tabindex="0" aria-label="PD" title="PD"><strong>PD</strong></th>
+                                <th class="ui-state-default col-lg-2 col-md-2 col-sm-2 col-xs-2" tabindex="0" aria-label="SegHeight" title="SegHeight"><strong>Seg Height</strong></th>
+                                <th class="ui-state-default col-lg-2 col-md-2 col-sm-2 col-xs-2" tabindex="0" aria-label="OcHeight" title="OcHeight"><strong>O.C.Height</strong></th>
+                                <th class="ui-state-default col-lg-2 col-md-2 col-md-2 col-xs-2" tabindex="0" aria-label="BaseCurve" title="BaseCurve"><strong>Base Curve</strong></th>
+                                <th class="ui-state-default col-lg-2 col-md-2 col-md-2 col-xs-2" tabindex="0" aria-label="Thickness" title="Thickness"><strong>Thickness</strong></th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><strong>R</strong></td>
+                                <td data-bind="text: RightLens.FarPd || '--'" class="text-left"></td>
+                                <td data-bind="text: RightLens.SegHeight || '--'" class="text-left"></td>
+                                <td data-bind="text: RightLens.OcHeight || '--'" class="text-left"></td>
+                                <td data-bind="text: RightLens.BaseCurve || '--'" class="text-left"></td>
+                                <td data-bind="text: RightLens.MaterialThickness || '--'" class="text-left"></td>
+                            </tr>
+                            <tr>
+                                <td><strong>L</strong></td>
+                                <td data-bind="text: LeftLens.FarPd || '--'" class="text-left"></td>
+                                <td data-bind="text: LeftLens.SegHeight || '--'" class="text-left"></td>
+                                <td data-bind="text: LeftLens.OcHeight || '--'" class="text-left"></td>
+                                <td data-bind="text: LeftLens.BaseCurve || '--'" class="text-left"></td>
+                                <td data-bind="text: LeftLens.MaterialThickness || '--'" class="text-left"></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                    <div class="clearfix"></div>
+                    <br />
+                    <div class="row">
+                        <div class="col-lg-12 col-md-12 col-sm-12">
+                            <div class="panel clDetailPanel">
+                                <div class="form-group form-group-no-vertical-margin">
+                                    <div class="col-lg-4 col-md-4 col-sm-6 col-xs-4 control-label">
+                                        <label class="fieldLabel">Tint Type</label>
+                                    </div>
+                                    <div class="col-lg-8 col-md-8 col-sm-6 col-xs-8 form-control-static">
+                                        <span data-bind="text:TintTypeDescription || '--', css:{'color-10': !TintTypeDescription}"></span>
+                                    </div>
+                                </div>
+                                <div class="form-group form-group-no-vertical-margin">
+                                    <div class="col-lg-4 col-md-4 col-sm-6 col-xs-4 control-label">
+                                        <label class="fieldLabel">Tint Color</label>
+                                    </div>
+                                    <div class="col-lg-8 col-md-8 col-sm-6 col-xs-8 form-control-static">
+                                        <span data-bind="text:TintColorDescription || '--', css:{'color-10': !TintColorDescription}"></span>
+                                    </div>
+                                </div>
+                                <div class="form-group form-group-no-vertical-margin">
+                                    <div class="col-lg-4 col-md-4 col-sm-6 col-xs-4 control-label">
+                                        <label class="fieldLabel">Tint Comment</label>
+                                    </div>
+                                    <div class="col-lg-8 col-md-8 col-sm-6 col-xs-8 form-control-static">
+                                        <span data-bind="text:LabInstructions || '--', css:{'color-10': !LabInstructions}"></span>
+                                    </div>
+                                </div>
+                                <div class="form-group form-group-no-vertical-margin">
+                                    <div class="col-lg-4 col-md-4 col-sm-6 col-xs-4 control-label">
+                                        <label class="fieldLabel">Edge</label>
+                                    </div>
+                                    <div class="col-lg-8 col-md-8 col-sm-6 col-xs-8 form-control-static">
+                                        <span data-bind="text:LensEdgeTypeDescription || '--', css:{'color-10': !LensEdgeTypeDescription}"></span>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <div class="col-lg-4 col-md-4 col-sm-6 col-xs-4 control-label">
+                                        <label class="fieldLabel">Additional Coating</label>
+                                    </div>
+                                    <div id="egSummaryLensAddCoating" class="col-lg-8 col-md-8 col-sm-6 col-xs-8 form-control-static">
+                                        <span data-bind="text:AddCoatingsDescription || '--', css:{'color-10': !AddCoatingsDescription}"></span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div id="extrasInfoPanel" class="panel col-lg-12 col-md-12 col-sm-12" data-bind="css: {'hidden': eyeglassOrderType() === 3 && selectedAuthorization() && selectedAuthorization().IsVsp}">
+            <div class="panel-heading">
+                Extras
+                <button id="btnSummaryChangeExtras" class="btn btn-default btn-xs pull-right"><i class="icon-undo-2"></i>Change</button>
+            </div>
+            <div class="panel-body">
+                <div id="noExtras" class="col-lg-12 col-md-12 text-center hidden" data-bind="css:{'hidden' : selectedExtras() != null}">
+                    <h3>No Extras</h3>
+                </div>
+                <div class="form-group form-group-no-vertical-margin">
+                    <div id="egSummaryExtras" class="col-lg-12 col-md-12 col-sm-12 col-xs-12 form-control-static">
+                        <p data-bind="text:selectedExtrasDisplay"></p>
+                    </div>
+                </div>
+                <div class="clearfix"></div>
+            </div>
+        </div>
+    </div>
+    <div class="col-lg-6 col-md-6 col-sm-12" id="summaryPricingPanelContainer">
+        <div id="pricingPanel" class="panel col-lg-12 col-md-12 col-sm-12 hidden" data-bind="css:{'hidden': !insuranceVM()}">
+            <div class="panel-heading">
+                Pricing
+                <button id="btnSummaryChangeInsurance" data-bind="visible: eyeglassOrderType() !== 4" class="btn btn-default btn-xs pull-right"><i class="icon-undo-2"></i>Change</button>
+            </div>
+            <div id="InsuranceSummaryPanel" class="panel-body">
+                <!-- Re-Make -->
+                <div id="remakeIns" class="hidden" data-bind="css:{'hidden' : !remake()}">
+                    <div class="row text-center color-03 ">
+                        Insurance for remake orders can only be added or modified<br />from the Pricing screen.<br /><br />
+                    </div>
+                </div>
+
+                <!-- Eligibilities -->
+                <div id="eligibilities" data-bind="with: insuranceVM">
+
+                    <!-- Non Insurance -->
+                    <div id="nonIns" class="hidden" data-bind="css:{'hidden': PrimaryEligibility() && !PrimaryEligibility().IsNonInsurance()}">
+                        <div class="row">
+                            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                                <div class="panel clDetailPanel text-center color-03">
+                                    <div class="form-group form-group-no-vertical-margin">
+                                        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                                            <h3>No Insurance</h3>
+                                            Patient Estimated Charges reflect full retail price.
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Primary Insurance -->
+                    <div class="row hidden" data-bind="css: {'hidden': !PrimaryEligibility() || PrimaryEligibility().IsNonInsurance()}">
+                        <div class="col-lg-12 col-md-12 col-sm-12">
+                            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                                <h4>Primary Insurance</h4>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row hidden" data-bind="css: {'hidden': !PrimaryEligibility() || PrimaryEligibility().IsNonInsurance()}">
+                        <div class="col-lg-12 col-md-12 col-sm-12">
+                            <div class="panel clDetailPanel">
+                                <div class="form-group form-group-no-vertical-margin">
+                                    <div class="col-lg-3 col-md-3 col-sm-3 col-xs-4 control-label text-right">
+                                        <label class="fieldLabel">Insurance</label>
+                                    </div>
+                                    <div class="col-lg-9 col-md-9 col-sm-9 col-xs-8 form-control-static">
+                                        <span data-bind="text:PrimaryEligibility() ? PrimaryEligibility().CarrierFull : ''"></span>
+                                    </div>
+                                </div>
+                                <div class="form-group form-group-no-vertical-margin">
+                                    <div class="col-lg-3 col-md-3 col-sm-3 col-xs-4 control-label text-right">
+                                        <label class="fieldLabel">Auth #</label>
+                                    </div>
+                                    <div class="col-lg-9 col-md-9 col-sm-9 col-xs-8 form-control-static">
+                                        <span data-bind="text:PrimaryEligibility() ? PrimaryEligibility().AuthNumber : ''"></span>
+                                    </div>
+                                </div>
+                                <div class="form-group form-group-no-vertical-margin">
+                                    <div class="col-lg-3 col-md-3 col-sm-3 col-xs-4 control-label text-right">
+                                        <label class="fieldLabel">Eligibility Date</label>
+                                    </div>
+                                    <div class="col-lg-9 col-md-9 col-sm-9 col-xs-8 form-control-static">
+                                        <span data-bind="text:PrimaryEligibility() ? PrimaryEligibility().AuthDate : ''"></span>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <div class="col-lg-3 col-md-3 col-sm-3 col-xs-4 control-label text-right">
+                                        <label class="fieldLabel">Expire Date</label>
+                                    </div>
+                                    <div class="col-lg-9 col-md-9 col-sm-9 col-xs-8 form-control-static">
+                                        <span data-bind="text:PrimaryEligibility() ? PrimaryEligibility().AuthExpireDate : ''"></span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Secondary Insurance -->
+                    <div class="row hidden" data-bind="css: {'hidden': !SecondaryEligibility() || SecondaryEligibility().IsNonInsurance()}">
+                        <div class="col-lg-12 col-md-12 col-sm-12">
+                            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                                <h4>Secondary Insurance</h4>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row hidden" data-bind="css: {'hidden': !SecondaryEligibility() || SecondaryEligibility().IsNonInsurance()}">
+                        <div class="col-lg-12 col-md-12 col-sm-12">
+                            <div class="panel clDetailPanel">
+                                <div class="form-group form-group-no-vertical-margin">
+                                    <div class="col-lg-3 col-md-3 col-sm-3 col-xs-4 control-label text-right">
+                                        <label class="fieldLabel">Insurance</label>
+                                    </div>
+                                    <div class="col-lg-9 col-md-9 col-sm-9 col-xs-8 form-control-static">
+                                        <span data-bind="text:SecondaryEligibility() ? SecondaryEligibility().CarrierFull : ''"></span>
+                                    </div>
+                                </div>
+                                <div class="form-group form-group-no-vertical-margin">
+                                    <div class="col-lg-3 col-md-3 col-sm-3 col-xs-4 control-label text-right">
+                                        <label class="fieldLabel">Auth #</label>
+                                    </div>
+                                    <div class="col-lg-9 col-md-9 col-sm-9 col-xs-8 form-control-static">
+                                        <span data-bind="text:SecondaryEligibility() ? SecondaryEligibility().AuthNumber : ''"></span>
+                                    </div>
+                                </div>
+                                <div class="form-group form-group-no-vertical-margin">
+                                    <div class="col-lg-3 col-md-3 col-sm-3 col-xs-4 control-label text-right">
+                                        <label class="fieldLabel">Eligibility Date</label>
+                                    </div>
+                                    <div class="col-lg-9 col-md-9 col-sm-9 col-xs-8 form-control-static">
+                                        <span data-bind="text:SecondaryEligibility() ? SecondaryEligibility().AuthDate : ''"></span>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <div class="col-lg-3 col-md-3 col-sm-3 col-xs-4 control-label text-right">
+                                        <label class="fieldLabel">Expire Date</label>
+                                    </div>
+                                    <div class="col-lg-9 col-md-9 col-sm-9 col-xs-8 form-control-static">
+                                        <span data-bind="text:SecondaryEligibility() ? SecondaryEligibility().AuthExpireDate : ''"></span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Pricing -->
+                <div id="insurancePricing" class="col-lg-12 col-md-12 col-sm-12" style="padding:0;" data-bind="with: insuranceVM">
+                    <div id="BesErrorText" class="col-lg-12 col-md-12 text-center color-07" data-bind="text: BesError"></div>
+                    <div id="egSummaryPricing" data-bind="css: {'hidden': !DetailItems() || DetailItems().length == 0}">
+                        <h4 style="margin: 8px;">Estimated Charges</h4>
+                        <table id="summaryInsCalcTable" class="dataTable">
+                            <thead>
+                                <tr role="row">
+                                    <th class="ui-state-default col-lg-3 col-md-3 col-sm-3 col-xs-3" tabindex="0"></th>
+                                    <th class="ui-state-default col-lg-2 col-md-2 col-md-2 col-xs-2 right" tabindex="0" aria-label="Retail Cost" title="Retail Cost"><strong>Retail</strong></th>
+                                    <th class="ui-state-default col-lg-1 col-md-1 col-md-1 col-xs-1 right" tabindex="0" aria-label="Quantity" title="Quantity"><strong>Qty</strong></th>
+                                    <th class="ui-state-default col-lg-2 col-md-2 col-sm-2 col-xs-2 right" data-bind="visible: PrimaryEligibility() && !PrimaryEligibility().IsNonInsurance()" tabindex="0" aria-label="Primary Insurance Covered Amount" title="Primary Insuarance Covered Amount"><strong>Primary Insurance</strong></th>
+                                    <th class="ui-state-default col-lg-2 col-md-2 col-sm-2 col-xs-2 right" data-bind="visible: SecondaryEligibility() && !SecondaryEligibility().IsNonInsurance()" tabindex="0" aria-label="Secondary Insurance Covered Amount" title="Secondary Insuarance Covered Amount"><strong>Secondary Insurance</strong></th>
+                                    <th class="ui-state-default col-lg-2 col-md-2 col-md-2 col-xs-2 right" tabindex="0" aria-label="Patient out of Pocket" title="Patient out of Pocket"><strong>Patient</strong></th>
+                                </tr>
+                            </thead>
+                            <tbody data-bind="foreach: DetailItems">
+                                <tr data-bind="style: { fontWeight: IsHeader() ? 'bold' : '' }">
+                                    <td data-bind="text: Title"></td>
+                                    <td data-bind="text: RetailPriceFormatted" class="text-right"></td>
+                                    <td data-bind="text: Quantity" class="text-right"></td>
+                                    <td data-bind="html: $parent.PrimaryEligibility() && ($parent.PrimaryEligibility().IsVsp() || !$parent.IsEstimated()) ? PrimaryInsurancePriceFormatted : '<i class=\'icon-tooltip\'></i>', css:{'unknown': $parent.PrimaryEligibility() && (!$parent.PrimaryEligibility().IsVsp() && $parent.IsEstimated())}, visible: $parent.PrimaryEligibility() && !$parent.PrimaryEligibility().IsNonInsurance()" class="text-right"></td>
+                                    <td data-bind="text: SecondaryInsurancePriceFormatted, visible: $parent.SecondaryEligibility() && !$parent.SecondaryEligibility().IsNonInsurance()" class="text-right"></td>
+                                    <td data-bind="text: PatientPriceFormatted" class="text-right"></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                        <small class="pull-right"><em>Taxes not reflected</em></small>    
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</form>

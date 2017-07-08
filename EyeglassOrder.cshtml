@@ -1,0 +1,209 @@
+﻿@model Eyefinity.PracticeManagement.Model.Patient.PatientOrderExam
+@{
+    ViewBag.Title = "Eyeglass Order";
+    Layout = "~/Views/Shared/_LayoutBootstrap.cshtml";
+}
+
+@functions{
+    public string GetAntiForgeryToken()
+    {
+        string cookieToken, formToken;
+        AntiForgery.GetTokens(null, out cookieToken, out formToken);
+        return cookieToken + ":" + formToken;
+    }
+}
+<script type="text/javascript">
+    var patientOrderExam = JSON.parse('@Html.Raw(Json.Encode(Model))'),
+        documentTitle = '@ViewBag.Title',
+        patient = { PatientId: patientOrderExam.PatientId, FirstName: '', LastName: '' };
+</script>
+
+<div id="patientEgOrder">
+    <div id="patientTitle" class="col-lg-12 col-md-12 col-sm-12 col-no-padding">
+        <div id="patientDemographicsBtn" class="btn-group hidden-lg">
+            <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown">
+                <i class="icon-user-2"></i> <span class="caret"></span>
+            </button>
+            <div id="patientDropdownNav" class="dropdown-menu" role="menu"></div>
+        </div>
+        <button id="btnPrintOrderSummary" class="btn btn-default pull-right hidden" style="margin-right:20px;" formnovalidate><i class="icon-print"></i>Print</button>
+        <h2 id="egOrderTitle" class="hidden-sm hidden-xs">@ViewBag.Title</h2>
+        <h3 class="hidden-lg hidden-md">@ViewBag.Title</h3>
+    </div>
+
+    <nav id="patientSideNav" class="col-lg-2 visible-lg"></nav>
+
+    <div id="chooseInsurance" class="hidden col-no-padding">
+        @Html.Partial("~/Views/Patient/EyeglassOrderChooseInsPartial.cshtml")
+    </div>
+
+    <div class="col-lg-10 col-no-padding">
+        <div id="chooseRx" class="hidden col-lg-9 col-md-9 col-sm-12 col-xs-12 col-md-no-padding-left col-sm-no-padding col-xs-no-padding">
+            @Html.Partial("~/Views/Patient/EyeglassOrderChooseRxPartial.cshtml")
+        </div>
+        <div id="orderType" class="hidden col-lg-9 col-md-9 col-sm-12 col-xs-12 col-md-no-padding-left col-sm-no-padding col-xs-no-padding">
+            @Html.Partial("~/Views/Patient/EyeglassOrderTypePartial.cshtml")
+        </div>
+
+        <div id="buildOrder" class="hidden col-lg-9 col-md-9 col-sm-12 col-xs-12 col-md-no-padding-left col-sm-no-padding col-xs-no-padding">
+            @Html.Partial("~/Views/Patient/EyeglassOrderBuildOrderPartial.cshtml")
+        </div>
+
+        <div id="chooseFrame" class="hidden col-lg-9 col-md-9 col-sm-12 col-xs-12 col-md-no-padding-left col-sm-no-padding col-xs-no-padding">
+            @Html.Partial("~/Views/Patient/EyeglassOrderChooseFramePartial.cshtml")
+        </div>
+
+        <div id="chooseLenses" class="hidden col-lg-9 col-md-9 col-sm-12 col-xs-12 col-md-no-padding-left col-sm-no-padding col-xs-no-padding">
+            @Html.Partial("~/Views/Patient/EyeglassOrderChooseLensesPartial.cshtml")
+        </div>
+
+        <div id="chooseExtras" class="hidden col-lg-9 col-md-9 col-sm-12 col-xs-12 col-md-no-padding-left col-sm-no-padding col-xs-no-padding">
+            @Html.Partial("~/Views/Patient/EyeglassOrderChooseExtrasPartial.cshtml")
+        </div>
+
+        <div id="chooseLab" class="hidden col-lg-9 col-md-9 col-sm-12 col-xs-12 col-md-no-padding-left col-sm-no-padding col-xs-no-padding">
+            @Html.Partial("~/Views/Patient/EyeglassOrderChooseLabPartial.cshtml")
+        </div>
+
+        <div id="egInsPanel" class="hidden col-lg-3 col-md-3 col-sm-12 hidden-sm hidden-xs panel">
+            <div id="egSelectedRxPanel" class="">
+                @Html.Partial("~/Views/Patient/EyeglassOrderSelectedRxPartial.cshtml")
+            </div>
+            <div id="egSelectedInsurancePanel" class="">
+                @Html.Partial("~/Views/Patient/InsurancePanelPartial.cshtml")
+            </div>
+        </div>
+       
+        <div class="clearfix"></div>
+        <div id="summary" class="col-lg-12 col-md-12 col-sm-12 col-xs-12 hidden">
+            @Html.Partial("~/Views/Patient/EyeglassOrderSummaryPartial.cshtml")
+        </div>
+        <div class="clearfix"></div>
+        <div id="egFooter" class="col-lg-12 col-md-12 col-sm-12 col-xs-12 eg-footer col-md-no-padding-left col-sm-no-padding col-xs-no-padding">
+            <div class="col-lg-9 col-md-9 col-sm-12 col-xs-12 col-md-no-padding-left col-sm-no-padding col-xs-no-padding">
+                <button id="btnGoToMaterialOrders" class="btn btn-default pull-left eg-footer-button hidden">Return To Material Orders</button>
+                <button id="btnFrameToBuildOrder" class="btn btn-default pull-left eg-footer-button hidden formnovalidate">Go to Build Order</button>
+                <button id="btnLensesToBuildOrder" class="btn btn-default pull-left eg-footer-button hidden formnovalidate">Go to Build Order</button>
+                <button id="btnExtrasToBuildOrder" class="btn btn-default pull-left eg-footer-button hidden formnovalidate">Go to Build Order</button>
+                <button id="btnLabsToBuildOrder" class="btn btn-default pull-left eg-footer-button hidden formnovalidate">Go to Build Order</button>
+                <button id="btnSaveForLater" type="submit" class="btn btn-default eg-footer-button pull-left hidden"><i class="icon icon-disk"></i>Save Draft</button>
+                <button id="btnCancelOrder" class="btn btn-default eg-footer-button pull-left hidden" formnovalidate>Cancel</button>
+                @* data-bind="visible: (orderNumber() == 0 || orderNumber() == undefined || orderNumber() == null || orderNumber() == '0') && (rx() != null)"*@
+                <button id="btnAddFrameToOrder" class="btn btn-primary pull-right hidden">Add to Order</button>
+                <button id="btnAddLensesToOrder" class="btn btn-primary pull-right hidden">Add to Order</button>
+                <button id="btnAddExtrasToOrder" class="btn btn-primary pull-right hidden">Add to Order</button>
+                <button id="btnContinue" class="btn btn-primary pull-right hidden">Continue to Summary</button>
+            </div>
+            <div class="col-lg-3 col-md-3 col-sm-12 col-xs-12">
+                <button id="btnContinueToPricing" class="btn btn-primary pull-right hidden">Continue to Pricing</button>
+                <button id="btnSave" class="btn btn-primary pull-right hidden">Save</button>
+            </div>
+        </div>
+    </div>
+
+
+    <div id="tempStorageEgSaveModal" class="modal fade">
+        <div class="modal-dialog">
+            <div class="vertical-align-middle">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                        <h4 class="modal-title" id="saveForLater">Save Draft</h4>
+                    </div>
+                    <div class="modal-body">
+                        <form id="saveTempEgOrder" name="saveTempEgOrder" method="POST" action="#" class="form-horizontal">
+                            <input id="antiForgeryToken" type="hidden" value="" />
+                            <div class="col-lg-12 col-md-12 summaryMessages"></div>
+                            <div class="form-group">
+                                <div class="col-lg-10 col-md-10 control-label float-left">
+                                    Enter a unique name for this eyeglass order (to easily identify later).
+                                </div>
+
+                            </div>
+                            <div class="col-lg-8 col-lg-offset-4 fieldMessages"></div>
+
+                            <div class="form-group">
+                                <div class="col-lg-4 control-label pull-left">
+                                    <span class="required">*</span><label for="resourceId"><strong>Order Name</strong></label>
+                                </div>
+                                <div class="col-lg-8">
+                                    <input type="text" name="resourceId" id="resourceId" class="form-control requiredField" />
+                                </div>
+
+                            </div>
+                            <div class="col-lg-8 col-lg-offset-4 fieldMessages"></div>
+                        </form>
+                        <div id="duplicateMsg" class="col-lg-8 col-lg-offset-4 hidden">
+                            <h5 style="color:Red" class="error">This name is in use. Please enter a unique name.</h5>
+                        </div>
+                    </div>
+                    <div class="clearfix"></div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-default pull-left" id="btnCloseTemp" data-dismiss="modal">Close</button>
+                        <button type="button" class="btn btn-primary" id="btnSaveTempEgOrder">Save</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div id="egOrderCancelModal" class="modal fade">
+        <div class="modal-dialog">
+            <div class="vertical-align-middle">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                        <h4 class="modal-title">Cancel Eyeglass Order Changes</h4>
+                    </div>
+                    <div class="modal-body">
+                        Are you sure you want to cancel the changes you have currently made?
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-default pull-left" data-dismiss="modal">No</button>
+                        <button type="button" class="btn btn-primary" id="btnCancelEgOrder">Yes</button>
+                    </div>
+                </div><!-- /.modal-content -->
+            </div>
+        </div><!-- /.modal-dialog -->
+    </div>
+
+    <div id="changeSelectionModal" class="modal fade">
+        <div class="modal-dialog">
+            <div class="vertical-align-middle">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                        <h3 class="modal-title">Selection Change</h3>
+                    </div>
+                    <div class="modal-body">
+                        <label id="msgDialog"></label><br/>
+                        <label>Do you want to continue?</label>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-default pull-left" data-dismiss="modal">Cancel</button>
+                        <button type="button" class="btn btn-primary" id="btnChangeSelection">OK</button>
+                    </div>
+                </div><!-- /.modal-content -->
+            </div>
+        </div><!-- /.modal-dialog -->
+    </div>
+    <div id="egOrderRemakesMessageModal" class="modal fade">
+        <div class="modal-dialog">
+            <div class="vertical-align-middle">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                        <h4 class="modal-title">Remake Warning</h4>
+                    </div>
+                    <div id="egOrderRemakesMessage" class="modal-body">
+                        Where the message goes?
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-primary" id="btnEgOrderRemakesMessageOk">Ok</button>
+                    </div>
+                </div><!-- /.modal-content -->
+            </div>
+        </div><!-- /.modal-dialog -->
+    </div>
+</div>
+
+@Scripts.Render("~/bundles/patientEyeglassOrder")

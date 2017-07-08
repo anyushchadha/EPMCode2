@@ -1,0 +1,18 @@
+﻿@model Eyefinity.PracticeManagement.Model.Patient.PatientSearchResult
+@{
+    ViewBag.Title = "Fee Slips & Payments";
+    Layout = "~/Views/Shared/_LayoutBootstrap.cshtml";
+}
+
+<h2>@ViewBag.Title</h2>
+<script type="text/javascript">
+    var patient = JSON.parse('@Html.Raw(Json.Encode(Model))'),
+        documentTitle = '@ViewBag.Title';
+</script>
+<nav id="patientSideNav" class="col-width1 sidenav"></nav>
+<div class="col-width4-no-margin">
+    <div id="alertDialog" class="dialogStub"></div> 
+    <!-- replace this comment with body code for this page -->&nbsp;
+
+</div>
+@Scripts.Render("~/bundles/patientFeeSlips")

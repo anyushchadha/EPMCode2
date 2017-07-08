@@ -1,0 +1,48 @@
+﻿@functions{
+    public string GetAntiForgeryToken()
+    {
+        string cookieToken, formToken;
+        AntiForgery.GetTokens(null, out cookieToken, out formToken);
+        return cookieToken + ":" + formToken;
+    }
+}
+
+<div class="form-horizontal col-lg-12 col-md-12 col-md-no-padding-left col-sm-no-padding col-xs-no-padding">
+    <div id="egBuildOrder">
+        <div id="egBuildOrderMsgPanel" class="col-lg-12 col-md-12 col-sm-12 col-xs-12 col-no-padding">
+            <div id="msgError" class="alert alert-danger messageCenterStyle hidden" data-selectable="false">
+                <i class="icon-notification"></i><span id="errorMsgTitle" class="message">Some required information for the selected order type is missing or invalid. Please correct the errors to continue.</span>
+            </div>
+            <div id="msgWarning" class="alert alert-warning messageCenterStyle hidden" data-selectable="true" data-url-type="external" data-url="">
+                <i class="icon-warning"></i><span id="warningMsgTitle" class="message"></span>
+            </div>
+        </div>
+        <div class="row" data-bind="foreach: {data: displayEgBuildOrder, as: 'egRow'}">
+            <div class="row-height" data-bind="foreach: $data">
+                <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                    <div class="eg-order-button-panel inside-full-height" data-bind="attr: { id: 'buildOrder_' + Id }, css: {'disabled-extras-panel': Disabled }">
+                        <i class="icon-checkmark-circle icon-big hidden" data-bind="attr: { id: 'statusIcon_' + Id }"></i>
+                        <div class="text-center">
+                            <div data-bind="attr: { id: 'space_' + Id }"></div>
+                            <i class="icon-egMain" data-bind="css: { 'icon-frame': Id === 0, 'icon-lenses-3': Id === 1, 'icon-extras-2': Id === 2, 'icon-microscope': Id === 3 }"></i>
+                            <div style="" data-bind="text: Name, attr: { id: 'info_' + Id }"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="egMiscButtonPanel" class="panel visible-sm visible-xs col-sm-12 col-xs-12 text-center">
+        <div id="quicklink_change_rx" class="quicklink col-sm-6 col-xs-12">
+            <div class="quicklink_icon"><p><i class="icon-rx"></i></p></div>
+            <div class="quicklink_text"><p>Change Rx</p></div>
+        </div>
+        <div id="quicklink_change_insurance" class="quicklink col-sm-6 col-xs-12">
+            <div class="quicklink_icon"><p><i class="icon-insurance"></i></p></div>
+            <div class="quicklink_text"><p>Change Insurance</p></div>
+        </div>
+        <div class="clearfix"></div>
+    </div>
+
+</div>

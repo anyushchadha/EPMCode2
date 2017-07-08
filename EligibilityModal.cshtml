@@ -1,0 +1,369 @@
+﻿@using Eyefinity.PracticeManagement.Common
+@{
+    Layout = string.Empty;
+}
+@* ReSharper disable Html.IdNotResolved *@
+
+<!-- ko if: $data -->
+<form data-id="form">
+    <div class="col-lg-12 summaryMessages row" data-bind="css: { show: serverError }">
+        <i class="icon-notification pull-left error"></i>
+        <div class="msgs error">
+            <span data-bind="text: serverError"></span>
+        </div>
+    </div>
+    <div class="row">
+        <h4 data-bind="text:window.patient.fullName"></h4>
+        <div class="col-sm-5">
+            <div class="panel eligibilityTypes">
+                <div class="panel-heading">
+                    <span class="required">*</span> Eligibility / Authorization Types
+                    <label><span class="btn tt icon-tooltip-2 colorLedgend" data-title="Eligibility/Authorization Type" data-content="Select at least one eligibility/authorization type." data-trigger="hover" data-original-title="" title=""></span></label>
+                </div>
+                <div class="panel-body">
+                    <!-- Technically not hidden so that it can participate in validation -->
+                    <div class="ui-helper-hidden-accessible"><input type="text" data-id="eligibilityTypes"></div>
+                    <div class="fieldMessages"></div>
+                    <div class="clearfix"></div>
+                    <div class="form-horizontal col-sm-offset-1">
+                        <div class="form-group">
+                            <div class="checkbox">
+                                <label>
+                                    <input type="checkbox" data-bind="checked: isExamElig, enable: itemEnabled" data-id="isExamElig">
+                                    Exam
+                                </label>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="checkbox">
+                                <label>
+                                    <input type="checkbox" data-bind="checked: isFrameElig, enable: itemEnabled" data-id="isFrameElig">
+                                    Frames
+                                </label>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="checkbox">
+                                <label>
+                                    <input type="checkbox" data-bind="checked: isLensElig, enable: itemEnabled" data-id="isLensElig">
+                                    Lenses
+                                </label>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="checkbox">
+                                <label>
+                                    <input type="checkbox" data-bind="checked: isClElig, enable: itemEnabled" data-id="isClElig">
+                                    Contact Lenses
+                                </label>
+                            </div>
+                        </div>
+                        <div class="form-group" data-bind="visible: isVsp">
+                            <div class="checkbox">
+                                <label>
+                                    <input type="checkbox" data-bind="checked: isClFitElig, enable: itemEnabled" data-id="isClFitElig">
+                                    Contact Lens Exam Services
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-sm-6 col-sm-offset-1">
+            <div class="form-horizontal">
+                <div class="form-group">
+                    <label data-for="authNumber" class="col-sm-4 col-sm-offset-1 control-label">Authorization Number</label>
+                    <div class="col-sm-7">
+                        <input type="text" class="form-control" data-id="authNumber" data-bind="value: authNumber, enable: itemEnabled">
+                    </div>
+                </div>
+                <div class="col-sm-offset-5 fieldMessages"></div>
+                <div class="form-group">
+                    <label data-for="authStartDate" class="col-sm-4 col-sm-offset-1 control-label"><span class="required">*</span>Authorization Date</label>
+                    <div class="col-sm-7 input-group">
+                        <input id="authStartDate" name="authStartDate" type="text" class="form-control" placeholder="mm/dd/yyyy" data-id="authStartDate" data-bind="value: authDate.formatted, enable: itemEnabled">
+                        <label class="input-group-addon"><i class="btn icon-calendar-3"></i></label>
+                    </div>
+                </div>
+                <div class="col-sm-offset-5 fieldMessages"></div>
+                <div class="form-group">
+                    <label data-for="authExpireDate" class="col-sm-4 col-sm-offset-1 control-label">Expiration Date</label>
+                    <div class="col-sm-7 input-group">
+                        <input id="authExpireDate" name="authExpireDate" type="text" class="form-control" placeholder="mm/dd/yyyy" data-id="authExpireDate" data-bind="value: authExpireDate.formatted, enable: itemEnabled">
+                        <label class="input-group-addon"><i class="btn icon-calendar-3"></i></label>
+                    </div>
+                </div>
+                <div class="col-sm-offset-5 fieldMessages"></div>
+            </div>
+            <div class="clearfix"></div>
+            <div class="form-group">
+                <label data-for="note">Notes</label>
+                <textarea class="form-control" rows="3" data-id="note" data-bind="value: note"></textarea>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-sm-4" data-id="col1">
+            <div class="form-horizontal">
+                <div class="form-group" data-bind="visible: configuration.insuredPolicyGroup.isVisible">
+                    <label data-for="insuredPolicyGroup" class="col-sm-6 control-label">Insured Policy Group</label>
+                    <div class="col-sm-6">
+                        <input type="text" class="form-control" data-id="insuredPolicyGroup" data-bind="value: insuredPolicyGroup">
+                    </div>
+                </div>
+                <div class="col-sm-offset-6 fieldMessages"></div>
+                <div class="form-group" data-bind="visible: configuration.contractNumber.isVisible">
+                    <label data-for="contractNumber" class="col-sm-6 control-label">Contract Number</label>
+                    <div class="col-sm-6">
+                        <input type="text" class="form-control" data-id="contractNumber" data-bind="value: contractNumber">
+                    </div>
+                </div>
+                <div class="col-sm-offset-6 fieldMessages"></div>
+                <div class="form-group" data-bind="visible: configuration.idNumber.isVisible">
+                    <label data-for="idNumber" class="col-sm-6 control-label">ID Number</label>
+                    <div class="col-sm-6">
+                        <input type="text" class="form-control" data-id="idNumber" data-bind="value: idNumber">
+                    </div>
+                </div>
+                <div class="col-sm-offset-6 fieldMessages"></div>
+                <div class="form-group" data-bind="visible: configuration.planNumber.isVisible">
+                    <label data-for="planNumber" class="col-sm-6 control-label">
+                        Plan Number
+
+                        <span class="btn tt icon-tooltip-2 colorLedgend" data-title="Plan Number" data-content="After you obtain eligibility and authorization information for the patient on Eyefinity, contact VSP Customer Service at 1.800.877.7195 and request the Plan #. After you record the plan #, you can obtain patient out-of-pocket expense and doctor reimbursement calculations." data-trigger="hover" data-original-title="" title=""></span>
+                    </label>
+                    <div class="col-sm-6">
+                        <input type="text" class="form-control" data-id="planNumber" data-bind="value: planNumber, enable: itemEnabled">
+                    </div>
+                </div>
+                <div class="col-sm-offset-6 fieldMessages"></div>
+                <div class="form-group" data-bind="visible: configuration.gridNumber.isVisible">
+                    <label data-for="gridNumber" class="col-sm-6 control-label">
+                        Grid Number
+                        <span class="btn tt icon-tooltip-2 colorLedgend" data-title="Grid Number" data-content="After you obtain eligibility and authorization information for the patient on Eyefinity, contact VSP Customer Service at 1.800.877.7195 and request the Grid #. After you record the grid #, you can obtain patient out-of-pocket expense and doctor reimbursement calculations." data-trigger="hover" data-original-title="" title=""></span>
+                    </label>
+                    <div class="col-sm-6">
+                        <input type="text" class="form-control" data-id="gridNumber" data-bind="value: gridNumber, enable: itemEnabled">
+                    </div>
+                </div>
+                <div class="col-sm-offset-6 fieldMessages"></div>
+                <div class="form-group" data-bind="visible: configuration.secondaryPlan.isVisible">
+                    <label data-for="secondaryPlan" class="col-sm-6 control-label">Secondary Plan</label>
+                    <div class="col-sm-6">
+                        <input type="text" class="form-control" data-id="secondaryPlan" data-bind="value: secondaryPlan">
+                    </div>
+                </div>
+                <div class="col-sm-offset-6 fieldMessages"></div>
+                <div class="form-group" data-bind="visible: configuration.isCoordinationOfBenefits.isVisible">
+                    <label data-for="isCoordinationOfBenefitsYes" class="col-sm-6 control-label">Is Coordination of Benefits?</label>
+                    <div class="col-sm-6">
+                        <div class="radio-inline">
+                            <label>
+                                <input type="radio" value="Yes" data-id="isCoordinationOfBenefitsYes" data-name="isCoordinationOfBenefits" data-bind="checked: isCoordinationOfBenefits" />
+                                Yes
+                            </label>
+                        </div>
+                        <div class="radio-inline">
+                            <label>
+                                <input type="radio" value="No" data-id="isCoordinationOfBenefitsNo" data-name="isCoordinationOfBenefits" data-bind="checked: isCoordinationOfBenefits" />
+                                No
+                            </label>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-offset-6 fieldMessages"></div>
+                <div class="form-group" data-bind="visible: configuration.eyeglassPairType.isVisible">
+                    <label data-for="eyeglassPairType" class="col-sm-6 control-label">Eyeglass Pair Type</label>
+                    <div class="col-sm-6">
+                        <select data-id="eyeglassPairType" data-bind="value: eyeglassPairType, options:configuration.eyeglassPairType.options, optionsText: 'description', optionsValue: 'key',  uniqueName: true, afterOptionsRender: refreshEligibilitySelectPickers(arguments)"></select>
+                    </div>
+                </div>
+                <div class="col-sm-offset-6 fieldMessages"></div>
+                <div class="form-group" data-bind="visible: configuration.frameRetailAllowance.isVisible">
+                    <label data-for="frameRetailAllowance" class="col-sm-6 control-label">Frame Retail Allowance</label>
+                    <div class="col-sm-6">
+                        <input type="text" class="form-control" data-id="frameRetailAllowance" data-bind="value: frameRetailAllowance">
+                    </div>
+                </div>
+                <div class="col-sm-offset-6 fieldMessages"></div>
+                <div class="form-group" data-bind="visible: configuration.materialDeductible.isVisible">
+                    <label data-for="materialDeductible" class="col-sm-6 control-label">Material Deductible</label>
+                    <div class="col-sm-6">
+                        <input type="text" class="form-control" data-id="materialDeductible" data-bind="value: materialDeductible">
+                    </div>
+                </div>
+                <div class="col-sm-offset-6 fieldMessages"></div>
+                <div class="form-group" data-bind="visible: configuration.medicareDeductible.isVisible">
+                    <label data-for="medicareDeductible" class="col-sm-6 control-label">Patient Deductible</label>
+                    <div class="col-sm-6">
+                        <input type="text" class="form-control" data-id="medicareDeductible" data-bind="value: medicareDeductible">
+                    </div>
+                </div>
+                <div class="col-sm-offset-6 fieldMessages"></div>
+            </div>
+        </div>
+        <div class="col-sm-4" data-id="col2">
+            <div class="form-horizontal">
+                <div class="form-group" data-bind="visible: configuration.isThisConditionRelatedToAutoAccident.isVisible">
+                    <label data-for="isThisConditionRelatedToAutoAccidentYes" class="col-sm-6 control-label">Is this Condition related to Auto Accident?</label>
+                    <div class="col-sm-6">
+                        <div class="radio-inline">
+                            <label>
+                                <input type="radio" value="Yes" data-bind="checked: isThisConditionRelatedToAutoAccident" data-id="isThisConditionRelatedToAutoAccidentYes" data-name="isThisConditionRelatedToAutoAccident" />
+                                Yes
+                            </label>
+                        </div>
+                        <div class="radio-inline">
+                            <label>
+                                <input type="radio" value="No" data-bind="checked: isThisConditionRelatedToAutoAccident" data-id="isThisConditionRelatedToAutoAccidentNo" data-name="isThisConditionRelatedToAutoAccident" />
+                                No
+                            </label>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-offset-6 fieldMessages"></div>
+                <div class="form-group" data-bind="visible: configuration.isThisConditionRelatedToEmployment.isVisible">
+                    <label data-for="isThisConditionRelatedToEmploymentYes" class="col-sm-6 control-label">Is this Condition related to Employment</label>
+                    <div class="col-sm-6">
+                        <div class="radio-inline">
+                            <label>
+                                <input type="radio" value="Yes" data-bind="checked: isThisConditionRelatedToEmployment" data-id="isThisConditionRelatedToEmploymentYes" data-name="isThisConditionRelatedToEmployment" />
+                                Yes
+                            </label>
+                        </div>
+                        <div class="radio-inline">
+                            <label>
+                                <input type="radio" value="No" data-bind="checked: isThisConditionRelatedToEmployment" data-id="isThisConditionRelatedToEmploymentNo" data-name="isThisConditionRelatedToEmployment" />
+                                No
+                            </label>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-offset-6 fieldMessages"></div>
+            </div>
+            <div class="form-horizontal">
+                <div class="form-group" data-bind="visible: configuration.isPostCataractBenefit.isVisible">
+                    <label data-for="isPostCataractBenefitYes" class="col-sm-6 control-label">Is Post Cataract Benefit?</label>
+                    <div class="col-sm-6">
+                        <div class="radio-inline">
+                            <label>
+                                <input type="radio" value="Yes" data-bind="checked: isPostCataractBenefit" data-id="isPostCataractBenefitYes" data-name="isPostCataractBenefit" />
+                                Yes
+                            </label>
+                        </div>
+                        <div class="radio-inline">
+                            <label>
+                                <input type="radio" value="No" data-bind="checked: isPostCataractBenefit" data-id="isPostCataractBenefitNo" data-name="isPostCataractBenefit" />
+                                No
+                            </label>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-offset-6 fieldMessages"></div>
+                <div class="form-group" data-bind="visible: configuration.iolSurgeryPerformed.isVisible">
+                    <label data-for="iolSurgeryPerformedYes" class="col-sm-6 control-label">Intraocular lens (IOL) Surgery Performed?</label>
+                    <div class="col-sm-6">
+                        <div class="radio-inline">
+                            <label>
+                                <input type="radio" value="Yes" data-bind="checked: iolSurgeryPerformed" data-id="iolSurgeryPerformedYes" data-name="iolSurgeryPerformed" />
+                                Yes
+                            </label>
+                        </div>
+                        <div class="radio-inline">
+                            <label>
+                                <input type="radio" value="No" data-bind="checked: iolSurgeryPerformed" data-id="iolSurgeryPerformedNo" data-name="iolSurgeryPerformed" />
+                                No
+                            </label>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-offset-6 fieldMessages"></div>
+                <div class="form-horizontal">
+                    <div class="form-group" data-bind="visible: configuration.referringDoctorFirstName.isVisible">
+                        <label data-for="referringDoctorFirstName" class="col-sm-6 control-label">Referring Dr. First Name</label>
+                        <div class="col-sm-6">
+                            <input type="text" class="form-control" data-id="referringDoctorFirstName" data-bind="value: referringDoctorFirstName">
+                        </div>
+                    </div>
+                    <div class="col-sm-offset-6 fieldMessages"></div>
+                    <div class="form-group" data-bind="visible: configuration.referringDoctorLastName.isVisible">
+                        <label data-for="referringDoctorLastName" class="col-sm-6 control-label">Referring Dr. Last Name</label>
+                        <div class="col-sm-6">
+                            <input type="text" class="form-control" data-id="referringDoctorLastName" data-bind="value: referringDoctorLastName">
+                        </div>
+                    </div>
+                    <div class="col-sm-offset-6 fieldMessages"></div>
+                </div>
+                <div class="form-horizontal">
+                    <div class="form-group" data-bind="visible: configuration.npiNumber.isVisible">
+                        <label data-for="npiNumber" class="col-sm-6 control-label">Referring Dr. NPI Number</label>
+                        <div class="col-sm-6">
+                            <input type="text" class="form-control" data-id="npiNumber" data-bind="value: npiNumber">
+                        </div>
+                    </div>
+                    <div class="col-sm-offset-6 fieldMessages"></div>
+                    <div class="form-group" data-bind="visible: configuration.surgeryDate.isVisible">
+                        <label data-for="surgeryDate" class="col-sm-6 control-label">Surgery Date</label>
+                        <div class="col-sm-6 input-group">
+                            <input type="text" class="form-control" placeholder="mm/dd/yyyy" data-id="surgeryDate" data-bind="value: surgeryDate.formatted">
+                            <label class="input-group-addon"><i class="btn icon-calendar-3"></i></label>
+                        </div>
+                    </div>
+                    <div class="col-sm-offset-6 fieldMessages"></div>
+                </div>
+                <div class="form-horizontal">
+                    <div class="form-group" data-bind="visible: configuration.surgeryEye.isVisible">
+                        <label data-for="surgeryEye" class="col-sm-6 control-label">Surgery Eye</label>
+                        <div class="col-sm-6">
+                            <select data-id="surgeryEye" data-bind="value: surgeryEye, options:configuration.surgeryEye.options, optionsText: 'description', optionsValue: 'key',  uniqueName: true, afterOptionsRender: refreshEligibilitySelectPickers(arguments)"></select>
+                        </div>
+                    </div>
+                    <div class="col-sm-offset-6 fieldMessages"></div>
+                </div>
+            </div>
+        </div>
+        <div class="col-sm-4" data-id="col3">
+            <div class="form-horizontal">
+                <div class="form-group" data-bind="visible: configuration.commentCode1.isVisible">
+                    <label data-for="commentCode1" class="col-sm-6 control-label">
+                        Comment Code 1
+                        <span class="btn tt icon-tooltip-2 colorLedgend" data-title="Comment Codes" data-content="After you obtain eligibility and authorization information for the patient on Eyefinity, contact VSP Customer Service at 1.800.877.7195 and request the Comment Codes. After you record these codes, you can obtain patient out-of-pocket expense and doctor reimbursement calculations. " data-trigger="hover" data-original-title="" title=""></span>
+                    </label>
+                    <div class="col-sm-6">
+                        <input type="text" class="form-control" data-id="commentCode1" data-bind="value: commentCode1, enable: itemEnabled">
+                    </div>
+                </div>
+                <div class="col-sm-offset-6 fieldMessages"></div>
+                <div class="form-group" data-bind="visible: configuration.commentCode2.isVisible">
+                    <label data-for="commentCode2" class="col-sm-6 control-label">Comment Code 2</label>
+                    <div class="col-sm-6">
+                        <input type="text" class="form-control" data-id="commentCode2" data-bind="value: commentCode2, enable: itemEnabled">
+                    </div>
+                </div>
+                <div class="col-sm-offset-6 fieldMessages"></div>
+                <div class="form-group" data-bind="visible: configuration.commentCode3.isVisible">
+                    <label data-for="commentCode3" class="col-sm-6 control-label">Comment Code 3</label>
+                    <div class="col-sm-6">
+                        <input type="text" class="form-control" data-id="commentCode3" data-bind="value: commentCode3, enable: itemEnabled">
+                    </div>
+                </div>
+                <div class="col-sm-offset-6 fieldMessages"></div>
+                <div class="form-group" data-bind="visible: configuration.commentCode4.isVisible">
+                    <label data-for="commentCode4" class="col-sm-6 control-label">Comment Code 4</label>
+                    <div class="col-sm-6">
+                        <input type="text" class="form-control" data-id="commentCode4" data-bind="value: commentCode4, enable: itemEnabled">
+                    </div>
+                </div>
+                <div class="col-sm-offset-6 fieldMessages"></div>
+                <div class="form-group" data-bind="visible: configuration.commentCode5.isVisible">
+                    <label data-for="commentCode5" class="col-sm-6 control-label">Comment Code 5</label>
+                    <div class="col-sm-6">
+                        <input type="text" class="form-control" data-id="commentCode5" data-bind="value: commentCode5, enable: itemEnabled">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</form>
+<!-- /ko -->

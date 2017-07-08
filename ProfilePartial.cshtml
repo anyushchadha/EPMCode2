@@ -1,0 +1,199 @@
+﻿@* ReSharper disable UnknownCssClass *@
+@* ReSharper disable Html.IdNotResolved *@
+
+<div class="row">
+    <div id="patientPhoto">
+        <div class="row">
+            <div class="col-lg-2 col-md-2 col-sm-2 col-xs-12">
+                <div id="imgUploaderContainer">
+                    <img id="logo" src="~/Content/themes/app/images/patient.png" />
+                </div>
+                <div id="patientNameDOB">
+                    <p class="bold" id="patientName" data-bind="text: fullName"></p>
+                    <p id="dob" data-bind="text: dateOfBirth"></p>
+                </div>
+            </div>
+            <div id="patientInfo">
+                <div class="sm-patient col-lg-4 col-md-4 col-sm-5 col-xs-12">
+                    <div class="form-group" data-bind="visible: false">
+                        <div class="col-lg-5 col-md-5 col-sm-6 col-xs-5 form-control-static">
+                            <label for="ID">Patient ID:</label>
+                        </div>
+                        <div class="col-lg-7 col-md-7 col-sm-6 col-xs-7">
+                            <label class="form-control-static">
+                                <a href="#" id="patientUid" class="tt" tabindex="0" data-title="Patient ID" data-content="" data-trigger="focus" data-toggle="popover" data-bind="text: patientUidTruncated"></a>
+                            </label>
+                        </div>
+                    </div>
+                    <div class="form-group"  data-bind="visible: false">
+                        <div class="col-lg-5 col-md-5 col-sm-6 col-xs-5 form-control-static">
+                            <label for="nickName">Nickname:</label>
+                        </div>
+                        <div class="col-lg-7 col-md-7 col-sm-6 col-xs-7">
+                            <label class="form-control-static">
+                                <label id="nickName" data-title="nickName" data-bind="text: nickName"></label>
+                            </label>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="col-lg-5 col-md-5 col-sm-6 col-xs-5 form-control-static">
+                            <label for="address">Address:</label>
+                        </div>
+                        <div class="col-lg-7 col-md-7 col-sm-6 col-xs-7">
+                            <label class="form-control-static">
+                                <label id="address" data-bind="text: address"></label>
+                            </label>
+                            <div class="clear"></div>
+                            <label class="form-control-static">
+                                <label id="cityStateZip" data-bind="text: cityStateZip"></label>
+                            </label>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="col-lg-5 col-md-5 col-sm-6 col-xs-5 form-control-static">
+                            <label for="primaryPhone">Primary Phone:</label>
+                        </div>
+                        <div class="col-lg-7 col-md-7 col-sm-6 col-xs-7">
+                            <label class="form-control-static">
+                                <label id="primaryPhone" data-bind="text: primaryPhone"></label>
+                            </label>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="col-lg-5 col-md-5 col-sm-6 col-xs-5 form-control-static">
+                            <label for="secondPhone">Secondary Phone:</label>
+                        </div>
+                        <div class="col-lg-7 col-md-7 col-sm-6 col-xs-7">
+                            <label class="form-control-static">
+                                <label id="secondPhone" data-bind="text: secondaryPhone"></label>
+                            </label>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="col-lg-5 col-md-5 col-sm-6 col-xs-5 form-control-static">
+                            <label for="email">Email:</label>
+                        </div>
+                        <div class="col-lg-7 col-md-7 col-sm-6 col-xs-7">
+                            <label class="form-control-static">
+                                <label id="email" data-bind="text: email"></label>
+                            </label>
+                        </div>
+                    </div>
+                </div>
+                <div class="sm-patient col-lg-6 col-md-6 col-sm-5 col-xs-12">
+                    <div class="form-group">
+                        <div class="col-lg-3 col-md-4 col-sm-6 col-xs-5 form-control-static">
+                            <label for="hippa">HIPAA:</label>
+                        </div>
+                        <div class="col-lg-9 col-md-8 col-sm-6 col-xs-7">
+                            <label class="form-control-static">
+                                <!-- ko if: isHipaaSignatureOnFile -->
+                                <span class="quicklink_complete"><i class="icon-checkmark-circle"></i></span>
+                                <!-- /ko -->
+
+                                <!-- ko if: !isHipaaSignatureOnFile() -->
+                                <span class="quicklink_incomplete"><i class="icon-cancel-circle"></i></span>
+                                <!-- /ko -->
+                            </label>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="col-lg-3 col-md-4 col-sm-6 col-xs-5 form-control-static">
+                            <label for="provider">Provider:</label>
+                        </div>
+                        <div class="col-lg-9 col-md-8 col-sm-6 col-xs-7">
+                            <label class="form-control-static">
+                                <label id="provider" data-bind="text: providerName"></label>
+                            </label>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="col-lg-3 col-md-4 col-sm-6 col-xs-5 form-control-static">
+                            <label for="primaryIns">Insurance One:</label>
+                        </div>
+                        <div class="col-lg-9 col-md-8 col-sm-6 col-xs-7">
+                            <label class="form-control-static">
+                                <label id="primaryIns" data-bind="text: insuranceOne"></label>
+                            </label>
+                        </div>
+                    </div>
+                    <div class="form-group" data-bind="visible: showSecondInsurance">
+                        <div class="col-lg-3 col-md-4 col-sm-6 col-xs-5 form-control-static">
+                            <label for="secondIns">Insurance Two:</label>
+                        </div>
+                        <div class="col-lg-9 col-md-8 col-sm-6 col-xs-7">
+                            <label class="form-control-static">
+                                <label id="secondIns" data-bind="text: insuranceTwo"></label>
+                            </label>
+                        </div>
+                    </div>
+                    <div class="form-group" data-bind="visible: showThirdInsurance">
+                        <div class="col-lg-3 col-md-4 col-sm-6 col-xs-5 form-control-static">
+                            <label for="thirdIns">Insurance Three:</label>
+                        </div>
+                        <div class="col-lg-9 col-md-8 col-sm-6 col-xs-7">
+                            <label class="form-control-static">
+                                <label id="thirdIns" data-bind="text: insuranceThree"></label>
+                            </label>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="col-lg-3 col-md-4 col-sm-6 col-xs-5 form-control-static">
+                            <label for="responsibleParty">Responsible Party:</label>
+                        </div>
+                        <div class="col-lg-9 col-md-8 col-sm-6 col-xs-7">
+                            <label class="form-control-static">
+                                <label id="responsibleParty" data-bind="text: responsibleParty"></label>
+                            </label>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="col-lg-3 col-md-4 col-sm-6 col-xs-5 form-control-static">
+                            <label for="lastExamDate">Last Exam Date:</label>
+                        </div>
+                        <div class="col-lg-9 col-md-8 col-sm-6 col-xs-7">
+                            <label class="form-control-static">
+                                <label id="lastExamDate" data-bind="text: lastExamDate"></label>
+                            </label>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="clear-fix"></div>
+<div class="col-lg-12 col-md-12 col-sm-12" id="patientBalanceOverview" data-bind="visible: showPatientBalance">
+    <div class="balancewell">
+        <div class="row">
+            <div class="col-lg-4 col-md-4 col-sm-12" data-bind="visible: showOutstandingBalance">
+                <div>
+                    <div class="demographics-icon-warn">
+                        <i id="patientOutstandingBalanceIcon" class="icon icon-coin"></i>
+                    </div>
+                    Patient Balance:<strong><span id="patientOutstandingBalance" data-bind="text: outstandingBalanceFormatted"></span></strong>
+                </div>
+            </div>
+
+            <div class="col-lg-4 col-md-4 col-sm-12" data-bind="visible: showPatientCredit">
+                <div>
+                    <div class="demographics-icon-ok">
+                        <i id="patientCreditIcon" class="icon icon-coin"></i>
+                    </div>
+                    Patient Credit Balance:<strong><span id="patientCredit" data-bind="text: patientCreditFormatted"></span></strong>
+                </div>
+            </div>
+
+            <div class="col-lg-4 col-md-4 col-sm-12" data-bind="visible: showInsuranceBalance">
+                <div>
+                    <div class="demographics-icon-warn">
+                        <i id="patientInsuranceBalanceIcon" class="icon icon-insurance"></i>
+                    </div>
+                    Insurance: Uncovered Balance:<strong><span id="patientInsuranceBalance" data-bind="text: patientInsuranceBalanceFormatted"></span></strong>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+

@@ -1,0 +1,148 @@
+﻿@functions{
+    public string GetAntiForgeryToken()
+    {
+        string cookieToken, formToken;
+        AntiForgery.GetTokens(null, out cookieToken, out formToken);
+        return cookieToken + ":" + formToken;
+    }
+}
+
+<div id="divOutsideProviderSearch">
+    <form id="outsideProviderSearchForm" name="outsideProviderSearchForm" method="POST" action="#">
+        <input id="antiForgeryToken" type="hidden" value="@GetAntiForgeryToken()" />
+        <div class="gridHeaderLeft col-lg-5 col-md-5 col-sm-5 col-xs-5 form-inline" data-bind="with: providersViewModel.searchCriteria">
+            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                <div class="form-group col-lg-4 col-md-4 col-sm-4">
+                    <label for="lastName" class="control-label">Last Name</label>
+                    <input type="text" id="lastName" class="form-control" name="lastName" data-bind="value: lastName, valueUpdate:'afterkeydown'" maxlength="20" />
+                </div>
+                <div class="form-group col-lg-4 col-md-4 col-sm-4">
+                    <label for="firstName" class="control-label">First Name</label>
+                    <input type="text" id="firstName" class="form-control" name="firstName" data-bind="value: firstName, valueUpdate:'afterkeydown'" maxlength="20" />
+                </div>
+                <div class="form-group col-lg-4 col-md-4 col-sm-4">
+                    <label class="control-label spacer"></label>
+                    <button id="btnSearchOutsideProvider" class="btn btn-primary pull-right"><i class="icon-search"></i>Search</button>
+                </div>
+                <div class="col-lg-8 fieldMessages"></div>
+            </div>
+        </div>
+        <div class="gridHeaderRight form-inline col-lg-3, col-md-3 col-sm-3 hidden-xs">
+            <div class="form-group visible-sm">
+                <label class="control-label spacer"></label>
+                <input type="text" class="spacer form-control" />
+            </div>
+            <div class="form-group">
+                <label class="control-label spacer"></label>
+                <button id="btnOutsideProviderNew" class=" btn btn-primary pull-right"><i class="icon-plus"></i>Outside Provider</button>
+            </div>
+        </div>
+        <div class="col-no-padding">
+            <table id="outsideProviderTable" class="hasFilters"></table>
+        </div>
+    </form>
+</div>
+
+<div id="divOutsideProvider">
+    <form name="outsideProviderForm" id="outsideProviderForm" class="form-horizontal col-lg-10 col-md-12" method="POST" action="#">
+        <input id="antiForgeryToken" type="hidden" value="@GetAntiForgeryToken()" />
+        <div class="col-lg-6 col-md-6">
+            <div class="form-group">
+                <div class="col-lg-3 col-md-3 control-label">
+                    <label for="first"><span class="required">*</span>Name</label>
+                </div>
+                <div class="col-lg-4 col-md-4">
+                    <input type="text" id="first" name="first" class="requiredField form-control" placeholder="First Name" />
+                </div>
+                <div class="col-lg-5 col-md-5">
+                    <input type="text" id="last" name="last" class="requiredField form-control" placeholder="Last Name" />
+                </div>
+            </div>
+            <div class="col-lg-9 col-lg-offset-3 col-md-9 col-md-offset-3 fieldMessages"></div>
+            <div class="form-group">
+                <div class="col-lg-3 col-md-3 control-label">
+                    <label for="credential"><span class="required">*</span>Credential</label>
+                </div>
+                <div class="col-lg-9 col-md-9">
+                    <select name="credential" id="credential" class="requiredField"></select>
+                </div>
+            </div>
+            <div class="col-lg-9 col-lg-offset-3 col-md-9 col-md-offset-3 fieldMessages"></div>
+            <div class="form-group">
+                <div class="col-lg-3 col-md-3 control-label">
+                    <label for="address1"><span class="required">*</span>Address 1</label>
+                </div>
+                <div class="col-lg-9 col-md-9">
+                    <input type="text" id="address1" name="address1" class="requiredField form-control" maxlength="35" />
+                </div>
+            </div>
+            <div class="col-lg-9 col-lg-offset-3 col-md-9 col-md-offset-3 fieldMessages"></div>
+            <div class="form-group">
+                <div class="col-lg-3 col-md-3 control-label">
+                    <label for="address2">Address 2</label>
+                </div>
+                <div class="col-lg-9 col-md-9">
+                    <input type="text" id="address2" name="address2" class="form-control" maxlength="35" />
+                </div>
+            </div>
+            <div class="col-lg-9 col-lg-offset-3 col-md-9 col-md-offset-3 fieldMessages"></div>
+            <div id="divzipcode" class="form-group">
+                <div class="col-lg-3 col-md-3 control-label">
+                    <label for="zipcode"><span class="required">*</span>ZIP/City/State</label>
+                </div>
+                <div class="col-lg-3 col-md-3">
+                    <input type="text" id="zipcode" name="zipcode" class="requiredField form-control" maxlength="10" placeholder="ZIP" data-text="" />
+                </div>
+                <div class="col-lg-4 col-md-4">
+                    <input type="text" id="city" name="city" class="requiredField form-control" maxlength="30" placeholder="City" />
+                </div>
+                <div class="col-lg-2 col-md-2">
+                    <input type="text" id="state" name="state" class="requiredField form-control" maxlength="2" placeholder="State" />
+                </div>
+            </div>
+            <div class="col-lg-9 col-lg-offset-3 col-md-9 col-md-offset-3 fieldMessages"></div>
+        </div>
+
+        <div class="col-lg-6 col-md-6">
+            <div class="form-group">
+                <div class="col-lg-4 col-md-4 control-label">
+                    <label for="license"><span class="required">*</span>License #</label>
+                </div>
+                <div class="col-lg-6 col-md-6">
+                    <input type="text" id="license" name="license" class="requiredField form-control">
+                </div>
+            </div>
+            <div class="col-lg-9 col-lg-offset-4 col-md-9 col-md-offset-4 fieldMessages"></div>
+            <div class="form-group">
+                <div class="col-lg-4 col-md-4 control-label">
+                    <label for="providerNpi"><span class="required">*</span>Provider NPI #</label>
+                </div>
+                <div class="col-lg-6 col-md-6">
+                    <input type="text" id="providerNpi" name="providerNpi" class="requiredField form-control" maxlength="10">
+                </div>
+            </div>
+            <div class="col-lg-9 col-lg-offset-4 col-md-9 col-md-offset-4 fieldMessages"></div>
+            <div class="form-group">
+                <div class="col-lg-4 col-md-4 control-label">
+                    <label for="phone">Phone</label>
+                </div>
+                <div class="col-lg-4 col-md-4">
+                    <input type="text" id="phone" name="phone" class="form-control" placeholder="(     )     -     " />
+                </div>
+                <div class="col-lg-2 col-md-2">
+                    <input type="text" id="phoneExtension" name="phoneExtension" class="form-control" placeholder="Ext" maxlength="10" />
+                </div>
+            </div>
+            <div class="col-lg-9 col-lg-offset-4 col-md-9 col-md-offset-4 fieldMessages"></div>
+            <div class="form-group">
+                <div class="col-lg-4 col-md-4 control-label">
+                    <label for="fax">Fax</label>
+                </div>
+                <div class="col-lg-6 col-md-6">
+                    <input type="text" id="fax" name="fax" class="form-control" placeholder="(     )     -     " />
+                </div>
+            </div>
+            <div class="col-lg-9 col-lg-offset-4 col-md-9 col-md-offset-4 fieldMessages"></div>
+        </div>
+    </form>
+</div>

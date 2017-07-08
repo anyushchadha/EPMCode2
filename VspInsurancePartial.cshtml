@@ -1,0 +1,113 @@
+﻿@* ReSharper disable UnknownCssClass *@
+@* ReSharper disable Html.IdNotResolved *@
+
+@functions{
+    public string GetAntiForgeryToken()
+    {
+        string cookieToken, formToken;
+        AntiForgery.GetTokens(null, out cookieToken, out formToken);
+        return cookieToken + ":" + formToken;
+    }
+}
+
+<div id="vspInsuranceModal" class="modal fade">
+    <div class="modal-dialog">
+        <div class="vertical-align-middle">
+
+            <!-- VSP Logo & spinner -->
+            <div id="modalCheckingVsp" class="modal-content hidden">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                    <h4 class="modal-title">Checking for VSP Insurance</h4>
+                </div>
+                <div class="modal-body text-center">
+                    <img alt="" id="vspLogo" class="" src="~/Content/themes/app/images/vsp.png" />
+                    <img alt="" id="loading-external" class="" src="~/Content/themes/app/images/loading-external.gif" /><br />
+                    Please wait while we check with VSP.
+                </div>
+            </div>
+
+            <!-- Check if Guarantor/Subscriber -->
+            <div id="modalCheckIfSubscriber" class="modal-content hidden">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                    <h4 class="modal-title">Subscriber Information</h4>
+                </div>
+                <div class="modal-body text-center">
+                    <br /><br />Is this patient the Subscriber / Member of record for VSP?<br /><br />
+                </div>
+                <div class="clearfix"></div>
+                <div class="modal-footer">
+                    <button id="btnModalCheckIfSubscriberNo" class="btn btn-default pull-left">No</button>
+                    <button id="btnModalCheckIfSubscriberYes" class="btn btn-primary pull-right">Yes</button>
+                </div>
+            </div>
+
+            <!-- Enter Missing Demographics info -->
+            <div id="modalMissingDemographicsInfo" class="modal-content hidden">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                    <h4 class="modal-title">Subscriber Information</h4>
+                </div>
+                <div class="modal-body">
+                    In order to find this patient in VSP's records, one of the following is required:
+                    <br /><br />
+                    <div class="form-group">
+                        <div class="col-lg-3 control-label">
+                            <label for="ssn"><span class="required">*</span>SSN (Last 4)</label>
+                        </div>
+                        <div class="col-lg-4">
+                            <input type="text" id="ssn" name="ssn" class="form-control requiredField" maxlength="4" />
+                        </div>
+                    </div>
+                    <div class="col-lg-12 col-md-12 col-sm-10 fieldMessages"></div>
+                    <div class="clearfix"></div>
+                    <div class="form-group">
+                        <div class="col-lg-3 control-label">&nbsp;</div>
+                        <div class="col-lg-4 control-label">
+                            <h4 style="float:left;">OR</h4>
+                        </div>
+                    </div>
+                    <div class="clearfix"></div>
+                    <div class="form-group">
+                        <div class="col-lg-3 control-label">
+                            <label for="vspMemberId"><span class="required">*</span>VSP Member ID</label>
+                        </div>
+                        <div class="col-lg-4">
+                            <input type="text" id="vspMemberId" name="vspMemberId" class="form-control requiredField" maxlength="30" />
+                        </div>
+                    </div>
+                    <div class="col-lg-12 col-md-12 col-sm-10 fieldMessages"></div>
+                </div>
+                <div class="clearfix"></div>
+                <div class="modal-footer">
+                    <button id="btnModalMissingSubscriberInfoCancel" class="btn btn-default pull-left" data-dismiss="modal">Cancel</button>
+                    <button id="btnModalMissingSubscriberInfoFindVsp" class="btn btn-primary pull-right">Find VSP Insurance</button>
+                </div>
+            </div>
+
+            <!-- Enter Missing Demographics info -->
+            <div id="modalSubscriberInfo" class="modal-content hidden" data-bind="with: subscriberViewModel.subscriberInsurance">
+                <div class="modal-header">
+                    <button id="btnmodalSubscriberInfoClose" type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                    <h4 class="modal-title">Subscriber Information</h4>
+                </div>
+                <div class="modal-body">
+                    <form id="SubscriberInsuranceSetupForm" name="SubscriberInsuranceSetupForm" class="form-horizontal" method="POST" action="#">
+                        <input id=" antiforgerytoken" type="hidden" value="@GetAntiForgeryToken()" />
+                        <div class="col-lg-12 col-md-12 col-sm-12 summaryMessages"></div>
+                        <div class="clearfix"></div>
+
+                        @Html.Partial("~/Views/Patient/SubscriberPartial.cshtml")
+                    </form>
+                </div>
+                <div class="clearfix"></div>
+                <div class="modal-footer">
+                    <button id="btnSubscriberCancel" class="btn btn-default pull-left" data-dismiss="modal">Cancel</button>
+                    <button id="btnFindVSPInsurance" class="btn btn-primary pull-right">Find VSP Insurance</button>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>

@@ -1,0 +1,157 @@
+﻿@{
+    Layout = string.Empty;
+}
+@* ReSharper disable Html.IdNotResolved *@
+
+<!-- ko if: $data -->
+<form data-id="formPmi">
+    <div class="col-lg-12 summaryMessages row" data-bind="css: { show: serverError }">
+        <i class="icon-notification pull-left error"></i>
+        <div class="msgs error">
+            <span data-bind="text: serverError"></span>
+        </div>
+    </div>
+    <div class="form-horizontal">
+        <div class="form-group">
+            <div class="col-sm-1 control-label">
+                <label data-bind="style: { color: 'gray' }">Patient</label>
+            </div>
+            <div class="col-sm-2">
+                <label class="control-label"><b><span id="patientFullName" data-bind="text:window.patient.fullName"></span></b></label>
+            </div>
+            <div class="col-sm-2 control-label">
+                <label data-bind="style: { color: 'gray' }">Patient Date of Birth</label>
+            </div>
+            <div class="col-sm-1">
+                <label class="control-label" data-bind="text: vspBirthDate" data-id="birthDate"></label>
+            </div>
+            <div class="col-sm-3 control-label">
+                <label data-bind="style: { color: 'gray' }">Patient Relationship Type</label>
+            </div>
+            <div class="col-sm-2">
+                <label class="control-label" data-bind="text: vspRelationshipType" data-id="relationshipType"></label>
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="col-sm-1 control-label">
+                <label data-bind="style: { color: 'gray' }">Subscriber</label>
+            </div>
+            <div class="col-sm-2">
+                <label class="control-label" data-bind="text: vspMemberName" data-id="memberName"></label>
+            </div>
+            <div class="col-sm-2 control-label">
+                <label data-bind="style: { color: 'gray' }">Member ID/Subscriber SSN</label>
+            </div>
+            <div class="col-sm-1">
+                <label class="control-label" data-bind="text: vspMembershipId" data-id="membershipId"></label>
+            </div>
+            <div class="col-sm-3 control-label">
+                <label data-bind="style: { color: 'gray' }">Group Name</label>
+            </div>
+            <div class="col-sm-2">
+                <label class="control-label" data-bind="text: vspInsuredGroupName, style: { textAlign: 'left' }" data-id="insuredGroupName"></label>
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="col-sm-1 control-label"></div>
+            <div class="col-sm-2"></div>
+            <div class="col-sm-2 control-label"></div>
+            <div class="col-sm-1"></div>
+            <div class="col-sm-3 control-label">
+                <label data-bind="style: { color: 'gray' }">
+                    Back Date Request
+                    <span class="btn tt icon-tooltip-2 colorLedgend " data-title="Back Date Request"
+                          data-content="To request an authorization for a service provided before the current date, enter the date of service." data-trigger="hover"></span>
+                </label>
+            </div>
+            <div class="col-sm-2 input-group">
+                <input type="text" class="form-control" placeholder="mm/dd/yyyy" data-id="vspBackDate" data-bind="value: vspBackDate">
+                <label class="input-group-addon"><i class="btn icon-calendar-3"></i></label>
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="col-sm-1 control-label"></div>
+            <div class="col-sm-2"></div>
+            <div class="col-sm-2 control-label"></div>
+            <div class="col-sm-1 control-label"></div>
+            <div class="col-sm-3 control-label"></div>
+            <div class="col-sm-2 control-label" data-id="vspBackDateError" data-bind="visible: vspBackDateError()" style="text-align: left;">
+                <i class=" icon-notification pull-left error"></i>
+                <span data-bind="style: { color: '#C11B00' }, text: 'Enter a valid date.'"></span>
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="col-sm-1 control-label"></div>
+            <div class="col-sm-2"></div>
+            <div class="col-sm-2 control-label"></div>
+            <div class="col-sm-1"></div>
+            <div class="col-sm-3 control-label">
+                <label data-bind="style: { color: 'gray' }">
+                    Retrieve Existing Authorization
+                    <span class="btn tt icon-tooltip-2 colorLedgend " data-title="Retrieve Existing Authorization"
+                          data-content="Type a valid VSP Authorization number obtained from Eyefinity.com or VSP Member Services. The system will use this information to calculate the patient's out-of-pocket expenses and the doctor reimbursement."
+                          data-trigger="hover"></span>
+                </label>
+            </div>
+            <div class="col-sm-2 input-group">
+                <input type="text" class="form-control" data-id="vspAuthorization" data-value="" maxlength="8" data-bind="value: vspAuthorization">
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="col-lg-12 col-md-12 col-sm-12">
+                <label class="control-label" data-bind="visible: vspError()" style="text-align: left;">
+                    <i class="icon-notification pull-left error"></i>
+                    <span data-bind="style: { color: '#C11B00' }, text: vspErrorMsg"></span>
+                </label>
+            </div>
+            @*<div class="col-lg-3 col-md-3 control-label">
+                    <i class="btn icon-big icon-plan-summary-report" title="" data-bind="click: vspPlanSummaryReport"></i>
+                    <a href="#" data-bind="click: vspPlanSummaryReport">VSP Plan Summary Report</a>
+                </div>*@
+        </div>
+        <div class="form-group">
+            <div class="col-lg-12 col-md-12">
+                <div class="authorizePanel">
+                    <table class="dataTable authorizeTable" data-id="authorizeTable"
+                           data-bind="dataTable: { dataSource: $root.authorizeList, options: { bAutoWidth: false, sEmptyTable: 'No Eligibilities / Authorizations found.' } }">
+                        <thead>
+                            <tr>
+                                <th data-col="benefitType" data-sortable="false" style="width: 45%">
+                                    @*<b>@ViewBag.PatientFullName&#39;s</b>*@ Eligibilities for VSP Benefit Type:
+                                </th>
+                                <th data-col="chkAll" class="center" data-sortable="false" style="width: 9%">All</th>
+                                <th data-col="chkExam" class="center" data-sortable="false" style="width: 9%">Exam</th>
+                                <th data-col="chkFrame" class="center" data-sortable="false" style="width: 9%">Frame</th>
+                                <th data-col="chkLens" class="center" data-sortable="false" style="width: 9%">Lens</th>
+                                <th data-col="chkContactLens" class="center" data-sortable="false" style="width: 9%">Contact Lens</th>
+                                <th data-col="chkContactLensExam" class="center" data-sortable="false" style="width: 10%">Contact Lens Exam</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td data-bind="text: benefitType" data-id="benefitType"></td>
+                                <td class="center"><input type="checkbox" name="chkAll" data-bind="checked: chkAll, visible: chkAllVisible()" data-id="chkAll" /></td>
+                                <td class="center"><input type="checkbox" name="chkExam" data-bind="checked: chkExam, visible: chkExamVisible()" data-id="chkExam" /></td>
+                                <td class="center"><input type="checkbox" name="chkFrame" data-bind="checked: chkFrame, visible: chkFrameVisible()" data-id="chkFrame" /></td>
+                                <td class="center"><input type="checkbox" name="chkLens" data-bind="checked: chkLens, visible: chkLensVisible()" data-id="chkLens" /></td>
+                                <td class="center"><input type="checkbox" name="chkContactLens" data-bind="checked: chkContactLens, visible: chkContactLensVisible()" data-id="chkContactLens" /></td>
+                                <td class="center"><input type="checkbox" name="chkContactLensExam" data-bind="checked: chkContactLensExam, visible: chkContactLensExamVisible()" data-id="chkContactLensExam" /></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <div id="additional" data-bind="visible: vspAddlEligibility().length > 0" class="additionalPanel">
+                        <label class="margin10">
+                            Patient's Additional VSP Eligibilities
+                            <span class="btn tt icon-tooltip-2 colorLedgend " data-title="Patient's Additional VSP Eligibilities" data-trigger="hover"
+                                  data-content="This list displays additional VSP benefits for which this patient is eligible. To obtain authorization for one of these benefits, you first need to create a VSP carrier and plan for it in the Add Insurance window."></span>
+                        </label>
+                        <ul data-bind="foreach: vspAddlEligibility">
+                            <li><b><span data-bind="text: $data"></span></b></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</form>
+<!-- /ko -->

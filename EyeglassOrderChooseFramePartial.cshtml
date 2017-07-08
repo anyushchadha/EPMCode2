@@ -1,0 +1,371 @@
+﻿@functions{
+    public string GetAntiForgeryToken()
+    {
+        string cookieToken, formToken;
+        AntiForgery.GetTokens(null, out cookieToken, out formToken);
+        return cookieToken + ":" + formToken;
+    }
+}
+
+<div id="addFrame" class="col-lg-12 col-md-12 col-md-no-padding-left col-sm-no-padding col-xs-no-padding ">
+
+    <button id="btnCustomFrame-xs" class="btn btn-primary button-grid-header-xs pull-right visible-xs"><i class="icon-plus"></i>Custom Frame</button>
+    <div class="gridHeaderLeft form-inline col-lg-9 col-md-9 col-sm-9 col-xs-12">
+        <div class="form-group col-lg-9 col-md-9 col-sm-9">
+            <span class="required">*</span><label for="frameSearch">Search for Frames</label>
+            <input type="text" name="frameSearch" id="frameSearch" class="form-control requiredField" />
+            <small><em>(Manufacturer, Collection, Model, Eye Size, UPC, e.g. Flexon 607)</em></small>
+        </div>
+        <div class="form-group col-lg-3 col-md-3 col-sm-3">
+            <!--Blank label to keep button aligned to the bottom-->
+            <label class="control-label spacer"></label>
+            <button id="btnFrameSearch" class="btn btn-primary pull-right" data-bind="click: reSearch"><i class="icon-search"></i>Search</button>
+        </div>
+    </div>
+    <div class="gridHeaderRight form-inline col-lg-3 col-md-3 col-sm-3 hidden-xs">
+        <div class="form-group">
+            <label class="control-label spacer"></label>
+            <button id="btnCustomFrame" class="btn btn-primary"><i class="icon-plus"></i>Custom Frame</button>
+        </div>
+    </div>
+    <div class="col-no-padding">
+        <table id="frameTable" class="hasFilters"></table>
+    </div>
+</div>
+
+<div id="selectedFrame" class="form-horizontal col-lg-12 col-md-12 col-md-no-padding-left col-sm-no-padding col-xs-no-padding hidden ">
+    <div id="egFrameMsgPanel" class="col-lg-12 col-md-12 col-sm-12 col-xs-12 col-no-padding">
+        <div id="msgError" class="alert alert-danger messageCenterStyle hidden" data-selectable="false">
+            <i class="icon-notification"></i><span id="errorMsgTitle" class="message"></span>
+        </div>
+    </div>
+
+    <form id="selectedFrameForm" name="selectedFrameForm" class="form-horizontal" method="POST" action="#">
+        <input id="antiForgeryToken" type="hidden" value="@GetAntiForgeryToken()" />
+
+        <div id="divInfoFrame" class="panel adjust-height">
+
+            <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                <div class="row">
+                    <div class="col-sm-12 col-xs-12">
+                        <h3 id="titleFrameModel" class="adjust-margin2" data-bind="text: frameModel"></h3>
+                        <a href="#" id="linkChangeFrame" class="adjust-margin2" click="linkChangeFrame">Change Frame</a>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-sm-4 col-xs-5 control-label">
+                        <label><strong>Manufacturer</strong></label>
+                    </div>
+                    <div id="manufacturerDesc" name="manufacturerDesc" class="col-sm-8 col-xs-7 form-control-static" data-bind="text: manufacturerDesc"></div>
+                </div>
+                <div class="row">
+                    <div class="col-sm-4 col-xs-5 control-label">
+                        <label><strong>Collection</strong></label>
+                    </div>
+                    <div id="collectionDesc" name="collectionDesc" class="col-sm-8 col-xs-7 form-control-static" data-bind="text: collectionDesc"></div>
+                </div>
+                <div class="row">
+                    <div class="col-sm-4 col-xs-5 control-label">
+                        <label><strong>UPC / SKU</strong></label>
+                    </div>
+                    <div id="upcDisplay" name="upcDisplay" class="col-sm-8 col-xs-7 form-control-static" data-bind="text: upcDisplay"></div>
+                </div>
+                <div class="row">
+                    <div class="col-sm-4 col-xs-5 control-label">
+                        <label><strong>Item Number</strong></label>
+                    </div>
+                    <div id="itemNumber" name="itemNumber" class="col-sm-8 col-xs-7 form-control-static" data-bind="text: itemNumber"></div>
+                </div>
+                <div class="row">
+                    <div class="col-sm-4 col-xs-5 control-label">
+                        <label><strong>Color</strong></label>
+                    </div>
+                    <div id="color" name="color" class="col-sm-8 col-xs-7 form-control-static" data-bind="text: color"></div>
+                </div>
+                <div class="row">
+                    <div class="col-sm-4 col-xs-5 control-label">
+                        <label><strong>Retail Price</strong></label>
+                    </div>
+                    <div id="retailPriceDisplay" name="retailPriceDisplay" class="col-sm-8 col-xs-7 form-control-static" data-bind="text: retailPriceDisplay"></div>
+                </div>
+                <div class="row">
+                    <div class="col-sm-4 col-xs-5 control-label">
+                        <label><strong>Medicaid</strong></label>
+                    </div>
+                    <div id="isMedicaid" name="isMedicaid" class="col-sm-8 col-xs-7 form-control-static" data-bind="text: isMedicaid"></div>
+                </div>
+            </div>
+            <div class="col-lg-6 col-md-6 col-sm-6 hidden-xs">
+                <div id="egImage" class="hidden">
+                    <img class="eyeglass-image vertical-text-center img-responsive" src="" />
+                    @*<div class="vertical-text-center"><small><em>Image shown may not match color &amp; size selected.</em></small></div>*@
+                </div>
+                <div id="egNoImage" class="text-center">
+                    <label class="vertical-text-center">No Image Available</label>
+                </div>
+            </div>
+        </div>
+
+        <div id="divCustomerFrame" class="panel inside-full-height hidden">
+            <div class="form-group">
+                <div class="col-sm-12">
+                    <h3 class="adjust-margin2">Customer Supplied Frame</h3>
+                </div>
+            </div>
+            <div class="col-lg-12 col-md-12 col-sm-12 form-horizontal">
+                <div class="form-group">
+                    <div class="col-sm-2 control-label">
+                        <span class="required">*</span><label for="customerFrameName">Name</label>
+                    </div>
+                    <div class="col-sm-4">
+                        <input id="customerFrameName" name="customerFrameName" type="text" class="form-control requiredField" maxlength="100" data-bind="value: customerFrameName" />
+                    </div>
+                </div>
+                <div class="col-sm-12 col-sm-offset-2 fieldMessages"></div>
+            </div>
+            <div class="clearfix"></div>
+            <div class="col-lg-12 col-md-12 col-sm-12 form-horizontal">
+                <div class="form-group">
+                    <div class="col-sm-2 control-label">
+                        <span class="required">*</span><label for="customerFrameColor">Color</label>
+                    </div>
+                    <div class="col-sm-4">
+                        <input id="customerFrameColor" name="customerFrameColor" type="text" class="form-control requiredField" maxlength="100" data-bind="value: customerFrameColor" />
+                    </div>
+                </div>
+                <div class="col-sm-12 col-sm-offset-2 fieldMessages"></div>
+            </div>
+            <div class="clearfix"></div>
+        </div>
+
+        <div class="panel">
+            <br />
+            <div class="col-lg-12 col-md-12 col-sm-12 form-horizontal">
+                <div class="form-group">
+                    <div class="col-sm-2 control-label">
+                        <span class="required">*</span><label for="eye">Eye</label>
+                    </div>
+                    <div class="col-sm-1">
+                        <input id="eye" name="eye" type="text" class="form-control requiredField" maxlength="2" data-bind="value: eye" />
+                    </div>
+                    <div class="col-sm-2 control-label">
+                        <span class="required">*</span><label for="bridge">Bridge</label>
+                    </div>
+                    <div class="col-sm-1">
+                        <input id="bridge" name="bridge" type="text" class="form-control requiredField" maxlength="2" data-bind="value: bridge" />
+                    </div>
+                    <div class="col-sm-2 control-label">
+                        <span class="required">*</span><label for="temple">Temple</label>
+                    </div>
+                    <div class="col-sm-1">
+                        <input id="temple" name="temple" type="text" class="form-control requiredField" maxlength="3" data-bind="value: temple" />
+                    </div>
+                </div>
+                <div class="col-sm-12 col-sm-offset-2 fieldMessages"></div>
+            </div>
+
+            <div class="clearfix"></div>
+
+            <div class="col-lg-12 col-md-12 col-sm-12 form-horizontal">
+                <div class="form-group">
+                    <div class="col-sm-2 control-label">
+                        <span class="required">*</span><label for="aMeasure">A</label>
+                    </div>
+                    <div class="col-sm-1">
+                        <input id="aMeasure" name="aMeasure" type="text" class="form-control requiredField" maxlength="2" data-bind="value: aMeasure" />
+                    </div>
+                    <div class="col-sm-2 control-label">
+                        <span class="required">*</span><label for="bMeasure">B</label>
+                    </div>
+                    <div class="col-sm-1">
+                        <input id="bMeasure" name="bMeasure" type="text" class="form-control requiredField" maxlength="2" data-bind="value: bMeasure" />
+                    </div>
+                    <div class="col-sm-2 control-label">
+                        <span class="required">*</span><label for="edMeasure">ED</label>
+                    </div>
+                    <div class="col-sm-1">
+                        <input id="edMeasure" name="edMeasure" type="text" class="form-control requiredField" maxlength="2" data-bind="value: edMeasure" />
+                    </div>
+                </div>
+                <div class="col-sm-12 col-sm-offset-2 fieldMessages"></div>
+            </div>
+
+            <div class="clearfix"></div>
+            <div class="col-lg-12 col-md-12 col-sm-12 form-horizontal"></div>
+        </div>
+
+        <div class="clearfix"></div>
+
+        <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 col-lg-no-padding-left col-md-no-padding-left col-sm-no-padding-left col-xs-no-padding">
+            <div id="divFrameSource" class="col-lg-12 col-md-12 col-sm-12 col-xs-12 panel">
+                <br />
+                <div id="divShape" class="form-group">
+                    <div class="col-sm-5 control-label">
+                        <label for="shape">Shape</label>
+                    </div>
+                    <div class="col-sm-7">
+                        <select id="shape" name="shape" data-bind="options: shapeList, value: selectedShape, optionsText: 'Description', optionsValue: 'Key'"></select>
+                    </div>
+                </div>
+                <div id="divMaterial" class="form-group">
+                    <div class="col-sm-5 control-label">
+                        <label for="material">Material</label>
+                    </div>
+                    <div class="col-sm-7">
+                        <select id="material" name="material" data-bind="options: materialList, value: selectedMaterial, optionsText: 'Description', optionsValue: 'Key'"></select>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="col-sm-5 control-label">
+                        <label for="edgeType">Edge Type</label>
+                    </div>
+                    <div class="col-sm-7">
+                        <select id="edgeType" name="edgeType" data-bind="options: edgeTypeList, value: selectedEdgeType, optionsText: 'Description', optionsValue: 'KeyStr'"></select>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="col-sm-5 control-label">
+                        <span class="required">*</span><label for="frameSource">Frame Source</label>
+                    </div>
+                    <div class="col-sm-7">
+                        <select id="frameSource" name="frameSource" class="form-control requiredField" data-bind="options: frameSourceList, value: selectedFrameSource, optionsText: 'Description', optionsValue: 'Key'"></select>
+                    </div>
+                </div>
+                <div class="col-sm-7 col-sm-offset-5 fieldMessages"></div>
+                <div id="divOnhandQty" class="form-group hidden">
+                    <div class="col-sm-5 control-label">
+                        <label>On Hand</label>
+                    </div>
+                    <div class="col-sm-7">
+                        <label style="padding-top:7px;" data-bind="text: onHandQty"></label>
+                    </div>
+                </div>
+                <div id="negativeQty" class="col-sm-12 hidden">
+                    <h5 class="error"><i class='icon-notification'></i>On Hand quantity is less than 0. Select a different frame or Frame Source.</h5>
+                </div>
+                <div class="form-group">
+                    <div class="col-sm-5 control-label">
+                        <label for="isSafety"></label>
+                    </div>
+                    <div class="col-sm-7">
+                        <input id="isSafety" name="isSafety" type="checkbox" data-bind="checked: isSafety" disabled /> Safety Frame
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div id="divMeasurements" class="col-lg-6 col-md-6 col-sm-6 col-xs-12 col-lg-no-padding-right col-md-no-padding-right col-sm-no-padding-right col-xs-no-padding">
+            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 panel">
+                <div class="form-group">
+                    <div class="col-sm-12">
+                        <h4 class="adjust-margin">Custom Frame Measurements (optional)</h4>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="col-sm-5 control-label">
+                        <label for="frameWrap">Frame Wrap</label>
+                    </div>
+                    <div class="col-sm-3">
+                        <input id="frameWrap" name="frameWrap" type="text" class="form-control" data-bind="value: frameWrap" />
+                    </div>
+                    <div class="col-sm-1 control-label small-text">
+                        <label">(degrees)</label">
+                    </div>
+                </div>
+                <div class="col-sm-12 col-sm-offset-1 fieldMessages"></div>
+                <div class="form-group">
+                    <div class="col-sm-5 control-label">
+                        <label for="pantoscopicTilt">Pantoscopic Tilt</label>
+                    </div>
+                    <div class="col-sm-3">
+                        <input id="pantoscopicTilt" name="pantoscopicTilt" type="text" class="form-control" data-bind="value: pantoscopicTilt" />
+                    </div>
+                    <div class="col-sm-1 control-label small-text">
+                        <label">(degrees)</label">
+                    </div>
+                </div>
+                <div class="col-sm-12 col-sm-offset-1 fieldMessages"></div>
+                <div class="form-group">
+                    <div class="col-sm-5 control-label">
+                        <label for="vertex">Vertex</label>
+                    </div>
+                    <div class="col-sm-3">
+                        <input id="vertex" name="vertex" type="text" class="form-control" data-bind="value: vertex" />
+                    </div>
+                    <div class="col-sm-1 control-label small-text">
+                        <label">(mm)</label">
+                    </div>
+                </div>
+                <div class="col-sm-12 col-sm-offset-1 fieldMessages"></div>
+                <div id="divDummy" class="form-group">
+                    <div class="col-sm-4 control-label">
+                        <label></label>
+                    </div>
+                    <div class="col-sm-8">
+                        <label></label>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="clearfix"></div>
+        <br />
+
+        <div id="framePriceModal" class="modal fade">
+            <div class="modal-dialog modal-dialog-wide modal-max-width-400">
+                <div class="vertical-align-middle">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                            <h3 class="modal-title">Frame Price</h3>
+                        </div>
+                        <div class="modal-body">
+
+                            <div class="col-sm-9 form-horizontal">
+                                <div class="form-group">
+                                    <div class="row">
+                                        <div class="col-sm-12">
+                                            <h4 class="adjust-margin" data-bind="text: frameModel"></h4>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-sm-7 control-label">
+                                            <label>
+                                                Wholesale Price
+                                                <span class="btn tt icon-tooltip-2 colorLedgend" data-title="Wholesale Price" data-trigger="hover"
+                                                      data-content="Wholse sale price is the price listed for the frame in Jobson Frames Data."></span>
+                                            </label>
+                                        </div>
+                                        <div id="wholesalePrice" name="wholesalePrice" class="col-sm-5 form-control-static" data-bind="text: wholesalePrice, style: { fontWeight: 'bold'}"></div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-sm-7 control-label">
+                                            <span class="required">*</span>
+                                            <label>
+                                                Retail Price
+                                                <span class="btn tt icon-tooltip-2 colorLedgend" data-title="Retail Price" data-trigger="hover"
+                                                      data-content="The price your patients will pay."></span>
+                                            </label>
+                                        </div>
+                                        <div class="col-sm-5">
+                                            <input id="retailPrice" name="retailPrice" type="number" class="form-control requiredField" data-bind="value: retailPrice" />
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-sm-12 col-sm-offset-2 fieldMessages"></div>
+
+                            </div>
+
+                        </div>
+                        <div class="clearfix"></div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-default pull-left" id="btnCancelFramePrice">Cancel</button>
+                            <button type="button" class="btn btn-primary" id="btnSaveFramePrice">Save</button>
+                        </div>
+                    </div><!-- /.modal-content -->
+                </div>
+            </div><!-- /.modal-dialog -->
+        </div>
+
+    </form>
+
+</div>

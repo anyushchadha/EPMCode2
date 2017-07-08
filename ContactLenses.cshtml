@@ -1,0 +1,357 @@
+﻿@using Eyefinity.PracticeManagement.Common
+@model Eyefinity.PracticeManagement.Model.Patient.PatientSearchResult
+@{
+    ViewBag.Title = "Contact Lenses";
+    Layout = "~/Views/Shared/_LayoutBootstrap.cshtml";
+}
+
+@if (!String.IsNullOrEmpty(Model.FirstName) && !String.IsNullOrEmpty(Model.LastName))
+{
+    ViewBag.Title = Model.FirstName + " " + Model.LastName + " : " + ViewBag.Title;
+}
+@functions{
+    public string GetAntiForgeryToken()
+    {
+        string cookieToken, formToken;
+        AntiForgery.GetTokens(null, out cookieToken, out formToken);
+        return cookieToken + ":" + formToken;
+    }
+}
+<script type="text/javascript">
+    /*global $*/
+    var examId = '@ViewBag.examId',
+        patient = JSON.parse('@Html.Raw(Json.Encode(Model))'),
+        documentTitle = '@ViewBag.Title';
+    function SetTitle(ft, lt) {
+        if (ft !== null && lt !== null) {
+            var title = ft + " " + lt + " : " + "ContactLensRx";
+            $('h2').text(title);
+        }
+    }
+</script>
+
+<div id="patientTitle" class="col-lg-12 col-md-12 col-no-padding">
+    <div id="patientDemographicsBtn" class="btn-group hidden-lg">
+        <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown">
+            <i class="icon-user-2"></i> <span class="caret"></span>
+        </button>
+        <div id="patientDropdownNav" class="dropdown-menu" role="menu"></div>
+    </div>
+    <h2 class="hidden-xs">Rx: Contact Lenses</h2>
+    <h3 class="hidden-lg hidden-md hidden-sm">Rx: Contact Lenses</h3>
+</div>
+
+<nav id="patientSideNav" class="col-lg-2 visible-lg"></nav>
+<form id="ContactLensRxForm" class="col-lg-10 col-md-12" method="post" action="/" novalidate="novalidate">
+
+    <div id="ContactLensRx">
+        <div class="col-lg-12 col-md-12 col-md-12 col-lg-offset-1 summaryMessages clearfix"></div>
+        @Html.PartialOnce("~/Views/Patient/ContactLensesPartial.cshtml")
+
+        <input id="antiForgeryToken" type="hidden" value="@GetAntiForgeryToken()" />
+        <div id="RightLens" class="panel-shadow form-group col-lg-10  col-md-12 col-lg-offset-1">
+
+            <h4>Right Lens</h4><br />
+
+            <div class="row">
+                <div class="col-lg-10 col-md-10">
+                    <div class="form-group col-lg-4 col-md-4">
+                        <label for="rucondition">Underlying Condition</label>
+                        <select name="rucondition" id="rucondition" data-bind="options: RuConditions, value: RuCondition,
+                        optionsText: 'Description', optionsValue: 'Key'"></select>
+                    </div>
+                </div>
+                <div class="col-lg-12 col-md-12 col-sm-10 fieldMessages"></div>
+            </div>
+            <div class="row">
+                <div class="col-lg-10 col-md-10">
+                    <div class="form-group col-lg-3 col-md-3">
+                        <label for="rsupplier" class="control-label">Supplier</label>
+                        <select name="rsupplier" id="rsupplier" data-bind="options: RSuppliers , value: RSupplier,
+                        optionsText: 'Description', optionsValue: 'Key'"></select>
+                    </div>
+                    <div class="form-group col-lg-3 col-md-3">
+                        <span class="required" data-bind="text: RStar"></span>
+                        <label for="rmanufacturer" class="control-label">Manufacturer</label>
+                        <select name="rmanufacturer" id="rmanufacturer" class="requiredField" data-bind="options: RManufacturers, value: RManufacturer,
+                        optionsText: 'Description', optionsValue: 'KeyStr'"></select>
+                    </div>
+                    <div class="form-group col-lg-3 col-md-3">
+                        <span class="required" data-bind="text: RStar"></span>
+                        <label for="rstyle" class="control-label">Style</label>
+                        <select name="rstyle" id="rstyle" class="requiredField" data-bind="options: RStyles, value: RStyle,
+                        optionsText: 'Description', optionsValue: 'Key'"></select>
+                    </div>
+                    <div class="form-group col-lg-3 col-md-3">
+                        <span class="required" data-bind="text: RStar"></span>
+                        <label for="rlensparam" class="control-label">Lens Parameters</label>
+                        <select name="rlensparam" id="rlensparam" class="requiredField" data-bind="options: RLensparams, value: RLensparam,
+                        optionsText:'Description', optionsValue: 'Key'"></select>
+                    </div>
+                </div>
+                <div class="col-lg-2 col-md-2">
+                    <div class="form-group col-lg-11 col-md-11">
+                        <span id="rcolorstar" class="required">*</span>
+                        <label for="rcolor" class="control-label">Color</label>
+                        <select name="rcolor" id="rcolor" data-bind="options: RColors, value: RColor, optionsText: 'Description', optionsValue: 'KeyStr'"></select>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-5 col-md-5 fieldMessages"></div>
+            <div class="row">
+
+                <div class="col-lg-10 col-md-10">
+                    <div class="form-group col-lg-2 col-md-2">
+                        <label for="rbasecurve" class="control-label">Base Curve</label>
+                        <input name="rbasecurve" type="text" id="rbasecurve" readonly="readonly" class="form-control" data-bind="value: RBaseTxt" />
+                    </div>
+
+                    <div class="form-group col-lg-2 col-md-2">
+                        <label for="rdiameter" class="control-label">Diameter</label>
+                        <input name="rdiameter" type="text" id="rdiameter" readonly="readonly" class="form-control" data-bind="value: RDiameterTxt" />
+                    </div>
+                    <div class="form-group col-lg-2 col-md-2">
+                        <span class="control-label">
+                            <span class="required" data-bind="text: RStar"></span><label for="rsphere">Sphere</label>
+                        </span>
+                        <select name="rsphere" id="rsphere" class="requiredField" data-bind="options: RSpheres, value: RSphere, optionsText: 'Description',
+                    optionsValue: 'KeyStr'"></select>
+                    </div>
+                    <div class="form-group col-lg-2 col-md-2">
+                        <span id="rcylinderstar" class="required">*</span>
+                        <label for="rcylinder" class="control-label">Cylinder</label>
+                        <select name="rcylinder" id="rcylinder" data-bind="options: RCylinders, value: RCylinder,
+                    optionsText: 'Description', optionsValue: 'KeyStr'"></select>
+                    </div>
+                    <div class="form-group col-lg-2 col-md-2">
+                        <span id="raxisstar" class="required">*</span>
+                        <label for="raxis" class="control-label">Axis</label>
+                        <select name="raxis" id="raxis" data-bind="options: RAxisList, value: RAxis, optionsText: 'Description', optionsValue: 'KeyStr'"></select>
+                    </div>
+                    <div class="form-group col-lg-2 col-md-2">
+                        <span id="raddstar" class="required">*</span>
+                        <label for="radd" class="control-label">Add Power</label>
+                        <select name="radd" id="radd" data-bind="options: RAddList, value: RAdd, optionsText: 'Description', optionsValue: 'KeyStr'"></select>
+                    </div>
+                </div>
+                <div class="col-lg-2 col-md-2">
+                    <div class="form-group col-lg-11 col-md-11">
+                        <span class="control-label">
+                            <span @*data-bind="text: RStar"*@></span><label>Quantity</label>
+                        </span>
+                        <input name="rquantity" type="text" id="rquantity" class="form-control @*requiredField*@" data-bind="value: RQuantityTxt" />
+                    </div>
+                </div>
+
+            </div>
+            <div class="col-lg-5 col-md-5 fieldMessages"></div>
+            <div class="form-group col-lg-offset-5 col-md-offset-5">
+                <label for="rbtnCopy" class="control-label">&nbsp;</label>
+                <button id="rbtnCopy" class="col-lg-4 btn btn-primary"><i class="icon-arrow-down"></i>Copy To Left Lens</button>
+            </div>
+
+        </div>
+
+        <div id="LeftLens" class="panel-shadow form-group col-lg-10 col-md-12 col-lg-offset-1">
+
+            <h4>Left Lens</h4><br />
+
+            <div class="row">
+                <div class="col-lg-10 col-md-10">
+                    <div class="form-group col-lg-4 col-md-4">
+                        <label for="lucondition">Underlying Condition</label>
+                        <select name="lucondition" id="lucondition" data-bind="options: LuConditions, value: LuCondition,
+                        optionsText: 'Description', optionsValue: 'Key'"></select>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-lg-10 col-md-10">
+                    <div class="form-group col-lg-3 col-md-3">
+                        <label for="lsupplier" class="control-label">Supplier</label>
+                        <select name="lsupplier" id="lsupplier" data-bind="options: LSuppliers , value: LSupplier,
+                        optionsText: 'Description', optionsValue: 'Key'"></select>
+                    </div>
+                    <div class="form-group col-lg-3 col-md-3">
+                        <span class="required" data-bind="text: LStar"></span>
+                        <label for="lmanufacturer" class="control-label">Manufacturer</label>
+                        <select name="lmanufacturer" id="lmanufacturer" class="requiredField" data-bind="options: LManufacturers, value: LManufacturer,
+                        optionsText: 'Description', optionsValue: 'KeyStr'"></select>
+                    </div>
+                    <div class="form-group col-lg-3 col-md-3">
+                        <span class="required" data-bind="text: LStar"></span>
+                        <label for="lstyle" class="control-label">Style</label>
+                        <select name="lstyle" id="lstyle" class="requiredField" data-bind="options: LStyles, value: LStyle,
+                optionsText: 'Description', optionsValue: 'Key'"></select>
+                    </div>
+                    <div class="form-group col-lg-3 col-md-3">
+                        <span class="required" data-bind="text: LStar"></span>
+                        <label for="llensparam" class="control-label">Lens Parameters</label>
+                        <select name="llensparam" id="llensparam" class="requiredField" data-bind="options: LLensparams, value: LLensparam,
+                        optionsText:'Description', optionsValue: 'Key'"></select>
+                    </div>
+                </div>
+                <div class="col-lg-2 col-md-2">
+                    <div class="form-group col-lg-11 col-md-11">
+                        <span id="lcolorstar" class="required">*</span>
+                        <label for="lcolor" class="control-label">Color</label>
+                        <select name="lcolor" id="lcolor" data-bind="options: LColors, value: LColor, optionsText: 'Description', optionsValue: 'KeyStr'"></select>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-5 col-md-5 fieldMessages"></div>
+            <div class="row">
+
+                <div class="col-lg-10 col-md-10">
+                    <div class="form-group col-lg-2 col-md-2">
+                        <label for="lbasecurve" class="control-label">Base Curve</label>
+                        <input name="lbasecurve" type="text" id="lbasecurve" readonly="readonly" class="form-control" data-bind="value: LBaseTxt" />
+                    </div>
+
+                    <div class="form-group col-lg-2 col-md-2">
+                        <label for="ldiameter" class="control-label">Diameter</label>
+                        <input name="ldiameter" type="text" id="ldiameter" readonly="readonly" class="form-control" data-bind="value: LDiameterTxt" />
+                    </div>
+                    <div class="form-group col-lg-2 col-md-2">
+                        <span class="control-label">
+                            <span class="required" data-bind="text: LStar"></span><label for="lsphere">Sphere</label>
+                        </span>
+                        <select name="lsphere" id="lsphere" class="requiredField" data-bind="options: LSpheres, value: LSphere, optionsText: 'Description',
+                    optionsValue: 'KeyStr'"></select>
+                    </div>
+                    <div class="form-group col-lg-2 col-md-2">
+                        <span id="lcylinderstar" class="required">*</span>
+                        <label for="lcylinder" class="control-label">Cylinder</label>
+                        <select name="lcylinder" id="lcylinder" data-bind="options: LCylinders, value: LCylinder,
+                        optionsText: 'Description', optionsValue: 'KeyStr'"></select>
+                    </div>
+                    <div class="form-group col-lg-2 col-md-2">
+                        <span id="laxisstar" class="required">*</span>
+                        <label for="laxis" class="control-label">Axis</label>
+                        <select name="laxis" id="laxis" data-bind="options: LAxisList, value: LAxis, optionsText: 'Description', optionsValue: 'KeyStr'"></select>
+                    </div>
+                    <div class="form-group col-lg-2 col-md-2">
+                        <span id="laddstar" class="required">*</span>
+                        <label for="ladd" class="control-label">Add Power</label>
+                        <select name="ladd" id="ladd" data-bind="options: LAddList, value: LAdd, optionsText: 'Description', optionsValue: 'KeyStr'"></select>
+                    </div>
+                </div>
+                <div class="col-lg-2 col-md-2">
+                    <div class="form-group col-lg-11 col-md-11">
+                        <span class="control-label">
+                            <span @*data-bind="text: LStar"*@></span><label>Quantity</label>
+                        </span>
+                        <input name="lquantity" type="text" id="lquantity" class="form-control @*requiredField*@" data-bind="value: LQuantityTxt" />
+                    </div>
+                </div>
+
+            </div>
+            <div class="col-lg-5 col-md-5 fieldMessages"></div>
+        </div>
+
+        <div id="SpecialInstruction" class="form-group col-lg-10 col-md-12 col-lg-offset-1 padding-2">
+            <div class="row">
+                <div class="form-group col-lg-10 col-md-10">
+                    <h3>Special Instructions </h3>
+                </div>
+                <div class="form-group col-lg-4 col-md-4">
+                    <label for="wearschedule" class="control-label">Wearing Schedule</label>
+                    <select name="wearschedule" id="wearschedule" data-bind="options:WearSchedules, value: WearSchedule,
+                    optionsText: 'Description', optionsValue: 'Key'"></select>
+                </div>
+
+                <div class="form-group col-lg-4 col-md-4">
+                    <label for="replenishment" class="control-label">Replenishment</label>
+                    <select name="replenishment" id="replenishment" data-bind="options: Replenishments, value: Replenishment,
+                    optionsText: 'Description', optionsValue: 'Key'"></select>
+                </div>
+
+                <div class="form-group col-lg-4 col-md-4">
+                    <label for="dfregimen" class="control-label">Disinfecting Regimen</label>
+                    <select name="dfregimen" id="dfregimen" data-bind="options: DFRegimens, value: DFRegimen,
+                    optionsText: 'Description', optionsValue: 'Key'"></select>
+                </div>
+            </div>
+            <div class="row">
+                <div class="form-group col-lg-12 col-md-12">
+                    <label for="rxnote" class="control-label">Rx Notes:</label>
+                    <textarea id="rxnote" name="rxnote" class="form-control" rows="4" data-bind="value: RxNote " placeholder="Enter your comment here..."></textarea>
+                </div>
+                <div class="col-lg-5 col-md-5 fieldMessages"></div>
+                <div class="clearfix"></div>
+                <div class="form-group col-lg-12 col-md-12">
+                    <button id="btnSave" class="btn btn-primary pull-right">Save</button>
+                    <button id="btnReset" class="btn btn-default pull-left">Reset</button>
+                </div>
+            </div>
+        </div>
+        <input type="hidden" id="noteIdHidden" name="noteIdHidden" value="" />
+    </div>
+
+    <div id="confirmationDialog" class="modal fade">
+        <div class="modal-dialog">
+            <div class="vertical-align-middle">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                        <h4 class="modal-title">Confirmation</h4>
+                    </div>
+                    <div class="modal-body">
+                        The sphere or cylinder values have unlike (opposite) signs.<br /><br />
+                        Click Cancel to change the values or click Save to keep the values and record the Rx. <br /><br />
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" id="btnConfirmation" class="btn btn-default pull-left" data-dismiss="modal">Cancel</button>
+                        <button type="button" id="btnIgnoreConfirmation" class="btn btn-primary pull-right">Save</button>
+                    </div>
+                </div><!-- /.modal-content -->
+            </div>
+        </div><!-- /.modal-dialog -->
+    </div>
+
+    <div id="ehrCodesModal" class="modal fade">
+        <div class="modal-dialog">
+            <div class="vertical-align-middle">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                        <h3 class="modal-title">Procedure &amp; Diagnosis Codes</h3>
+                    </div>
+                    <div class="modal-body">
+                        @Html.PartialOnce("~/Views/Patient/ProcedureDiagnosisCodes.cshtml")
+                    </div>
+                    <div class="clearfix"></div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-default pull-left" data-dismiss="modal">Close</button>
+                        <button type="button" class="btn btn-primary" id="btnPrintEhrCodes"><i class="icon-print"></i> Print</button>
+                    </div>
+                </div>
+                <div class="clear"></div>
+            </div>
+        </div>
+    </div>
+</form>
+<div id="outsideProviderDialog" class="modal fade">
+    <div class="modal-dialog modal-dialog-wide">
+        <div class="vertical-align-middle">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                    <h4 class="modal-title">Outside Provider</h4>
+                </div>
+                <div class="modal-body">
+                    <div id="outsideProviderContent" class="row">
+                        @Html.PartialOnce("~/Views/Patient/OutsideProvider.cshtml")
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default pull-left" id="btnClose" data-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-primary" id="btnSaveOutsideProvider">Save</button>
+                </div>
+            </div>
+            <div class="clear"></div>
+        </div>
+    </div>
+</div>
+
+@Scripts.Render("~/bundles/patientContactLenses")

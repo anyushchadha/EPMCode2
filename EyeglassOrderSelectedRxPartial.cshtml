@@ -1,0 +1,125 @@
+﻿<div id="rxPanel" class="panel">
+    <div class="panel-heading">
+        <strong><i class="icon-rx"></i>Rx</strong>
+        <button id="btnChangeRx" data-bind="visible: rx() != null" class="btn btn-default btn-xs pull-right"><i class="icon-undo-2"></i>Change</button>
+    </div>
+    <div class="panel-body">
+        <div id="noRx" class="col-lg-12 col-md-12 text-center color-03" data-bind="visible: rx() == null">
+            <h3>No Rx</h3>
+        </div>
+
+        <div class="errorMsg col-lg-12 col-md-12 hidden">
+            <div class="alert alert-danger messageCenterStyle text-center" data-selectable="false">
+                <span class="title"><i class="icon-notification"></i><span class="errorMsgTxt message"></span></span>
+            </div>
+        </div>
+
+        <div id="rxInfo" class="col-lg-12 col-md-12" data-bind="visible: rx() != null">
+            <table id="rxInfoTable" class="dataTable adjust-font" data-bind="with: rx">
+                <thead>
+                    <tr role="row">
+                        <th class="ui-state-default col-lg-1 col-md-1 col-sm-1 col-xs-1" tabindex="0"></th>
+                        <th class="ui-state-default col-lg-3 col-md-3 col-sm-3 col-xs-3" tabindex="0" aria-label="SPH" title="SPH"><strong>SPH</strong></th>
+                        <th class="ui-state-default col-lg-3 col-md-3 col-sm-3 col-xs-3" tabindex="0" aria-label="CYL" title="CYL"><strong>CYL</strong></th>
+                        <th class="ui-state-default col-lg-3 col-md-3 col-sm-3 col-xs-3" tabindex="0" aria-label="AXIS" title="AXIS"><strong>AXIS</strong></th>
+                        <th class="ui-state-default col-lg-2 col-md-2 col-md-2 col-xs-2" tabindex="0" aria-label="ADD" title="ADD"><strong>ADD</strong></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>R</strong></td>
+                        <td data-bind="text: RightSphereTxt" class="text-left"></td>
+                        <td data-bind="text: RightCylinderTxt" class="text-left"></td>
+                        <td data-bind="text: RightAxisTxt" class="text-left"></td>
+                        <td data-bind="text: RightAddTxt" class="text-left"></td>
+                    </tr>
+                    <tr>
+                        <td><strong>L</strong></td>
+                        <td data-bind="text: LeftSphereTxt" class="text-left"></td>
+                        <td data-bind="text: LeftCylinderTxt" class="text-left"></td>
+                        <td data-bind="text: LeftAxisTxt" class="text-left"></td>
+                        <td data-bind="text: LeftAddTxt" class="text-left"></td>
+                    </tr>
+                </tbody>
+            </table>
+            <table id="rxPrismTable" class="dataTable adjust-font" data-bind="with: rx">
+                <thead>
+                <tr role="row">
+                    <th class="ui-state-default col-lg-1 col-md-1 col-sm-1 col-xs-1" tabindex="0"></th>
+                    <th class="ui-state-default col-lg-5 col-md-5 col-sm-5 col-xs-5" tabindex="0" aria-label="H.PRISM" title="H.PRISM"><strong>H.PRISM</strong></th>
+                    <th class="ui-state-default col-lg-5 col-md-5 col-sm-5 col-xs-5" tabindex="0" aria-label="V.PRISM" title="V.PRISM"><strong>V.PRISM</strong></th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr>
+                    <td><strong>R</strong></td>
+                    <td class="text-left">
+                        <span data-bind="text: RightHorizontalPrismTxt"></span>
+                        <span data-bind="text: RightHorizontalPrismDirection"></span>
+                    </td>
+                    <td class="text-left">
+                        <span data-bind="text: RightVerticalPrismTxt"></span>
+                        <span data-bind="text: RightVerticalPrismDirection"></span>
+                    </td>
+                </tr>
+                <tr>
+                    <td><strong>L</strong></td>
+                    <td class="text-left">
+                        <span data-bind="text: LeftHorizontalPrismTxt"></span>
+                        <span data-bind="text: LeftHorizontalPrismDirection"></span>
+                    </td>
+                    <td class="text-left">
+                        <span data-bind="text: LeftVerticalPrismTxt"></span>
+                        <span data-bind="text: LeftVerticalPrismDirection"></span>
+                    </td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+    <div id="ChangeRxWarningModal" class="modal fade">
+        <div class="modal-dialog modal-dialog-wide modal-max-width-400">
+            <div class="vertical-align-middle">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                        <h3 class="modal-title">Selection Change</h3>
+                    </div>
+                    <div class="modal-body">
+
+                        <div class="col-sm-12 form-horizontal">
+                            <div class="form-group">
+                                <div class="row">
+                                    Changing your Rx type will require you to make new selections in following areas:
+                                </div>
+                                <div class="clearfix"></div>
+                                <br />
+
+                                <div id="lensesLabel" class="row">
+                                    <ul><li>Lenses</li></ul>
+                                </div>
+                                <div class="clearfix"></div>
+                                <div id="extrasLabel" class="row">
+                                    <ul><li>Extras</li></ul>
+                                </div>
+                                <div class="clearfix"></div>
+                                <br />
+                                <div class="row">
+                                    Do you wish to change Rx?
+                                </div>
+                            </div>
+                            <div class="col-sm-12 col-sm-offset-2 fieldMessages"></div>
+
+                        </div>
+
+                    </div>
+                    <div class="clearfix"></div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-default pull-left" id="btnCancelRxChange">Cancel</button>
+                        <button type="button" class="btn btn-primary" id="btnConfirmRxChange">Yes, Change Rx</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div><!-- /.modal-dialog -->
+</div>

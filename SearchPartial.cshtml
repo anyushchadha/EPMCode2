@@ -1,0 +1,287 @@
+@* ReSharper disable UnknownCssClass *@
+@* ReSharper disable Html.IdNotResolved *@
+
+@functions{
+    public string GetAntiForgeryToken()
+    {
+        string cookieToken, formToken;
+        AntiForgery.GetTokens(null, out cookieToken, out formToken);
+        return cookieToken + ":" + formToken;                
+    }
+}
+<script id="patientSearchTemplate" type="text/html">
+<div>
+    <form id="patientSearchForm">
+        <input id="antiForgeryToken" type="hidden" value="@GetAntiForgeryToken()"/>
+        <div id="patientSearchMsg" class="col-lg-12 summaryMessages"></div>
+        <div class="clearfix"></div>
+        <div data-bind="visible: showNewPatientButton">
+            <button class="btn btn-primary button-grid-header-xs pull-right visible-xs" data-bind="click: newPatientClick"><i class="icon-plus"></i><span data-bind="text: newPatientText"></span></button>
+        </div>
+            <div class="gridHeaderLeft form-inline col-lg-10 col-md-10 col-sm-10 col-xs-12" data-bind="visible: showSearchControls">
+                <div class="form-group col-lg-2 col-md-2 col-sm-4">
+                    <label for="lastName" class="control-label">Last Name</label>
+                    <input type="text" class="form-control patientSearch_lastName" data-name="lastName" maxlength="20" data-bind="value: lastName, valueUpdate: 'afterkeydown'" />
+                </div>
+                <div class="form-group col-lg-2 col-md-2 col-sm-4">
+                    <label for="firstname" class="control-label">
+                        First Name
+                    </label>
+                    <input type="text" class="form-control patientSearch_firstName" data-name="firstName" maxlength="20" data-bind="value: firstName, valueUpdate: 'afterkeydown'" />
+                </div>
+                <div class="form-group col-lg-2 col-md-2 col-sm-4">
+                    <label for="dateOfBirth" class="control-label">Date of Birth</label>
+                    <input type="text" class="form-control patientSearch_dateOfBirth" data-name="dateOfBirth" placeholder="mm/dd/yyyy" data-bind="value: dateOfBirth, valueUpdate: 'afterkeydown'" />
+                </div>
+                <div class="form-group col-lg-2 col-md-2 col-sm-4" data-bind="visible: !isMiniSearch">
+                    <label for=" phonenumber" class="control-label">
+                    Phone</label>
+                    <input type="text" class="form-control patientSearch_phoneNumber"  data-name="phoneNumber" placeholder="(     )     -     " data-bind="value: phoneNumber, valueUpdate: 'afterkeydown'" />
+                </div>
+                <div class="form-group col-lg-3 col-md-4 col-sm-4" data-bind="visible: !isMiniSearch">
+                    <div class="checkbox">
+                        <label>
+                            <input id="chkInactive" type="checkbox" name="inactive" data-bind="checked: inactive" /> Show Inactive
+                        </label>
+                    </div>
+                    <div class="checkbox">
+                        <label>
+                            <input id="chkResponsibleParty" type="checkbox" name="responsibleParty" data-bind="checked: responsibleParty" /> Show Responsible Party
+                        </label>
+                    </div>
+                </div>
+                <div class="form-group" data-bind="css: { 'col-lg-1 col-md-2 col-sm-4': !isMiniSearch, 'col-lg-2 col-md-2 col-sm-4': isMiniSearch}">
+                    <!--Blank label to keep button aligned to the bottom-->
+                    <label class="control-label spacer"></label>
+                    <button id="btnSearch" class="btn btn-primary pull-right patientSearch_btnSearch" data-bind="click: reSearch"><i class="icon-search"></i>Search</button>
+                </div>
+
+                <div class="col-lg-8 fieldMessages"></div>
+
+            </div>
+
+            <div class="gridHeaderRight form-inline col-lg-3, col-md-2 col-sm-2 hidden-xs">
+                <div class="form-group visible-sm">
+                    <label class="control-label spacer"></label>
+                    <input type="text" class="spacer form-control" />
+                </div>
+                <div class="form-group">
+                    <label class="control-label spacer"></label>
+                    <button id="btnNew" data-bind="click: newPatientClick, visible: showNewPatientButton" class="btn btn-primary"><i class="icon-plus"></i><span data-bind="    text: newPatientText"></span></button>
+                </div>
+            </div>
+            <div class="col-no-padding">
+                <table data-name= "searchDt" class="hasFilters"></table>
+            </div>
+        </form>
+    </div>
+    <div id="rspDemograhicsDialog" class="modal fade" data-name="rspDemographicsDialog">
+        <div class="modal-dialog modal-dialog-wide" >
+            <div class="vertical-align-middle">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                        <h4 class="modal-title">Change Responsible Party</h4>
+                    </div>
+                    <div class="modal-body">
+                        <div id="rspDemographicsDetails" class="row">
+                            <form name="rspDemograhicsForm" id="rspDemograhicsForm" class="form-horizontal col-lg-10 col-md-12" method="POST" action="#">
+                                <div class="col-lg-12 col-md-12 summaryMessages clearfix"></div>
+                                <div class="col-lg-6 col-md-6">
+                                    <div class="form-group">
+                                        <div class="col-lg-3 col-md-3 control-label">
+                                            <label for="rspTitle"><span class="required">*</span>Name</label>
+                                        </div>
+                                        <div class="col-lg-3 col-md-3">
+                                            <select id="rspTitle" name="rspTitle" data-value="false" data-bind="options: rspTitles, value: rspTitle, optionsText: 'Description', optionsValue: 'Key'"></select>
+                                        </div>
+                                        <div class="col-lg-3 col-md-3">
+                                            <input id="rspFirstName" type="text" name="rspFirstName" class="requiredField form-control" placeholder="First Name" maxlength="20" data-bind="value: rspFirstName" />
+                                        </div>
+                                        <div class="col-lg-3 col-md-3">
+                                            <input id="rspLastName" type="text" name="rspLastName" class="requiredField form-control" placeholder="Last Name" maxlength="25" data-bind="value: rspLastName" />
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-9 col-lg-offset-3 col-md-9 col-md-offset-3 fieldMessages"></div>
+                                    <div class="form-group">
+                                        <div class="col-lg-3 col-md-3 control-label">
+                                            <label for="rspNickName">Nickname</label>
+                                        </div>
+                                        <div class="col-lg-9 col-md-9">
+                                            <input id="rspNickName" type="text" name="rspNickName" class="form-control" maxlength="25"  data-bind="value: rspNickName" />
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-9 col-lg-offset-3 col-md-9 col-md-offset-3 fieldMessages"></div>
+                                    <div class="form-group">
+                                        <div class="col-lg-3 col-md-3 control-label">
+                                            <label for="rspAddress1"><span class="required">*</span>Address 1</label>
+                                        </div>
+                                        <div class="col-lg-9 col-md-9">
+                                            <input type="text" id="rspAddress1" name="rspAddress1" class="requiredField form-control" maxlength="35" data-bind="value: rspAddress1" />
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-9 col-lg-offset-3 col-md-9 col-md-offset-3 fieldMessages"></div>
+                                    <div class="form-group">
+                                        <div class="col-lg-3 col-md-3 control-label">
+                                            <label for="rspAddress2">Address 2</label>
+                                        </div>
+                                        <div class="col-lg-9 col-md-9">
+                                            <input type="text" id="rspAddress2" name="rspAddress2" class="form-control" maxlength="35" data-bind="value: rspAddress2" />
+                                        </div>
+                                    </div>
+                                    <div id="divRspZipCode" class="form-group">
+                                        <div class="col-lg-3 col-md-3 control-label">
+                                            <label for="rspZipCode"><span class="required">*</span>ZIP/City/State</label>
+                                        </div>
+                                        <div class="col-lg-3 col-md-3">
+                                            <input type="text" id="rspZipCode" name="rspZipCode" class="requiredField form-control" maxlength="10" placeholder="ZIP" data-bind="value: rspZipCode" />
+                                        </div>
+                                        <div class="col-lg-4 col-md-4">
+                                            <input type="text" id="rspCity" name="rspCity" class="requiredField form-control" maxlength="30" placeholder="City" data-bind="value: rspCity" />
+                                        </div>
+                                        <div class="col-lg-2 col-md-2">
+                                            <input type="text" id="rspState" name="rspState" class="requiredField form-control" maxlength="2" placeholder="State" data-bind="value: rspState" />
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-9 col-lg-offset-3 col-md-9 col-md-offset-3 fieldMessages"></div>
+                                    <div class="form-group">
+                                        <div class="col-lg-3 col-md-3 control-label">
+                                            <label for="rspPrimaryPhone"><span class="required">*</span>Primary Phone</label>
+                                        </div>
+                                        <div class="col-lg-4 col-md-4">
+                                            <input id="rspPrimaryPhone" type="text" name="rspPrimaryPhone" class="requiredField form-control" placeholder="(     )     -     " data-bind="value: rspPrimaryPhone" />
+                                        </div>
+                                        <div class="col-lg-3 col-md-3">
+                                            <select id="rspPrimaryPhoneType" name="rspPrimaryPhoneType" data-bind="options: rspPrimaryPhoneTypes, value: rspPrimaryPhoneType, optionsText: 'Description', optionsValue: 'Key'"></select>
+                                        </div>
+                                        <div class="col-lg-2 col-md-2">
+                                            <select id="rspPrimaryPhoneCallTimeType" name="rspPrimaryPhoneCallTimeType" data-bind="options: rspPrimaryPhoneCallTimeTypes, value: rspPrimaryPhoneCallTimeType, optionsText: 'Description', optionsValue: 'Key'"></select>
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-9 col-lg-offset-3 col-md-9 col-md-offset-3 fieldMessages"></div>
+                                    <div class="form-group">
+                                        <div class="col-lg-3 col-md-3 control-label">
+                                            <label for="rspEmail">Email</label>
+                                        </div>
+                                        <div class="col-lg-9 col-md-9">
+                                            <input type="text" id="rspEmail" name="rspEmail" class="form-control" data-value="false" data-bind="value: rspEmail" />
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-9 col-lg-offset-3 col-md-9 col-md-offset-3 fieldMessages"></div>
+                                </div>
+                                
+                                <div class="col-lg-6 col-md-6">
+                                    <div class="form-group">
+                                        <div class="col-lg-4 col-md-4 control-label">
+                                            <label>&nbsp;</label>
+                                        </div>
+                                        <div class="col-lg-3 col-md-3">
+                                            <div class="checkbox">
+                                                <label>
+                                                    <input type="checkbox" name="active" value="Active" data-bind="checked: rspActive" />Active
+                                                </label>
+                                            </div>
+                                        </div>
+                                        <div class="col-lg-5 col-md-5 pull-right control-label">
+                                            <label>Last Exam</label>
+                                            <label data-name="lastExamDate" data-bind="text: rspLastExamDate"></label>
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <div class="col-lg-4 col-md-4 control-label">
+                                            <label for="rspMedicalRecordNumber">MRN</label>
+                                        </div>
+                                        <div class="col-lg-5 col-md-5">
+                                            <input type="text" name="rspMedicalRecordNumber" maxlength="25" class="form-control" data-bind="value: rspMedicalRecordNumber" >
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-9 col-lg-offset-4 col-md-9 col-md-offset-4 fieldMessages"></div>
+                                     
+                                    <div class="form-group">
+                                        <div class="col-lg-4 col-md-4 control-label">
+                                            <label for="rspProvider">Provider</label>
+                                        </div>
+                                        <div class="col-lg-5 col-md-5">
+                                            <select id="rspProvider" name="rspProvider" data-bind="options: rspProviders, value: rspProvider, optionsText: 'Description', optionsValue: 'Key'"  data-live-search="true" data-size="10"></select>
+                                        </div>
+                                    </div>
+                                    
+                                    <div class="form-group">
+                                        <div class="col-lg-4 col-md-4 control-label fieldLabelWrap">
+                                            <label for="rspDateOfBirth">
+                                                <span class="required">*</span>Date of Birth<br />(MU)
+                                            </label>
+                                        </div>
+                                        <div class="col-lg-5 col-md-5 input-group">
+                                            <input type="text" id="rspDateOfBirth" name="rspDateOfBirth" class="form-control requiredField" placeholder="mm/dd/yyyy" data-bind="value: rspDateOfBirth" />
+                                            <label for="rspDateOfBirth" class="input-group-addon requiredField"><i id="icon_datePicker" class="btn icon-calendar-3"></i></label>
+                                        </div>
+                                        <div class="col-lg-3 col-md-3">
+                                            <div>
+                                                <label class="control-label">Age</label>
+                                                <label class="control-label" data-bind="text: rspAge"></label>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-9 col-lg-offset-4 col-md-9 col-md-offset-4 fieldMessages"></div>
+                                    <div class="form-group">
+                                        <div class="col-lg-4 col-md-4 control-label">
+                                            <label for="rspSex">Gender (MU)</label>
+                                        </div>
+                                        <div class="col-lg-7 col-md-7">
+                                            <label class="radio-inline">
+                                                <input type="radio" name="rspSex" value="M" data-bind="checked: rspSex" />Male
+                                            </label>
+                                            <label class="radio-inline">
+                                                <input type="radio" name="rspSex" value="F" data-bind="checked: rspSex" />Female
+                                            </label>
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-9 col-lg-offset-4 col-md-9 col-md-offset-4 fieldMessages"></div>
+                                    <div class="form-group">
+                                        <div class="col-lg-4 col-md-4 control-label">
+                                            <label for="rspSsnlength">SSN (MU)</label>
+                                        </div>
+                                        <div class="col-lg-5 col-md-5">
+                                            <label class="radio-inline">
+                                                <input id="rspRadioSsnFull" type="radio" name="rspSsnlength" value="9" data-bind="click: $parent.rspRadioSsnFull" />Full
+                                            </label>
+                                            <label class="radio-inline">
+                                                <input id="rspRadioSsnLast4" type="radio" name="rspSsnlength" value="4" data-bind="click: $parent.rspRadioSsnLast4" />Last 4
+                                            </label>
+                                        </div>
+                                        <div class="col-lg-3 col-md-3">
+                                            <input id="rspSocialSecurityNumber" type="text" name="rspSocialSecurityNumber" class="form-control" data-value="" placeholder="XXX-XX-XXXX" data-bind="value: rspSocialSecurityNumber, event: { change: $parent.rspSsnChange }" />
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-9 col-lg-offset-4 col-md-9 col-md-offset-4 fieldMessages"></div>
+                                    <div class="form-group">
+                                        <div class="col-lg-4 col-md-4 control-label">
+                                            <label for="isPatient">Save as Patient?
+                                                <i class="btn tt icon-tooltip-2 colorLedgend " data-title="Save as Patient" data-trigger="hover"
+                                                   data-content="Select this check box to add the responsible party as a new patient."></i>
+                                            </label>
+                                        </div>
+                                        <div class="col-lg-1 col-md-1">
+                                            <div class="checkbox">
+                                                <label>
+                                                    <input name="rspIsPatient" type="checkbox" value="true" data-bind="checked: rspIsPatient" />
+                                                </label>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-9 col-lg-offset-3 col-md-9 col-md-offset-3 fieldMessages"></div>
+                                </div>
+                            </form>
+                        </div>                        
+                    </div>
+                    <div class="modal-footer">
+                        <button id="btnRspModalCancel" class="btn btn-default pull-left" data-dismiss="modal">Cancel</button>
+                        <button id="btnRspModalSave" class="btn btn-primary pull-right" data-value="" data-bind="click: rspModalSave">Save</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</script>
+

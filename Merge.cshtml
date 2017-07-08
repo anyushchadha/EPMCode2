@@ -1,0 +1,151 @@
+﻿@using Eyefinity.PracticeManagement.Common
+@{
+    ViewBag.Title = "Merge";
+    Layout = "~/Views/Shared/_LayoutBootstrap.cshtml";
+}
+
+<h2>Patients: Merge Duplicate Patients</h2>
+<table data-bind="visible: !merge.ready()" style="display: none">
+    <thead>
+        <tr>
+            <td>
+                <div>
+                    <h5> <b>Note:</b> Please select the patients to be merged to proceed.</h5>
+                </div>
+            </td>
+        </tr>
+    </thead>
+</table>
+
+<div>
+    @Html.PartialOnce("~/Views/Patient/SearchPartial.cshtml")
+    <div data-bind="patientSearch: $data"></div>
+    <table class="patientMergeTable dataTable" style="display: none" data-bind="visible: true">
+        <thead>
+        <tr>
+            <th>
+                <h4>Patients Selected</h4>
+            </th>
+        </tr>
+        </thead>
+        <tbody>
+        <!-- ko foreach: merge.patients -->
+        <tr>
+            <td>
+                <!-- ko if: $data == null && $index() == 0 -->
+                <p id="longline">Select a patient profile.</p>
+                <!-- /ko -->
+                <!-- ko if: $data == null && $index() == 1 -->
+                <p id="longline">Select another patient profile.</p>
+                <!-- /ko -->
+                <!-- ko if: $data != null -->
+                <form class="form-horizontal col-lg-10 col-md-12 patientProfileContainer" data-bind="click: $root.merge.selectPatientProfile, css:{selected:selected}">
+                    @Html.PartialOnce("~/Views/Patient/ProfilePartial.cshtml")
+                </form>
+                <button  data-bind="click:  $root.merge.clearSelectedPatients" class="btn btn-default">
+                    Remove
+                </button>
+                <!-- /ko -->
+            </td>
+        </tr>
+        <!-- /ko -->
+        <tr>
+            <td>
+                <button data-bind="click: merge.clearPatients" class="btn btn-default">
+                    Clear All
+                </button>
+                <button data-bind="visible: merge.ready, click: merge.confirmDialog" class="btn btn-primary pull-right">
+                    Merge
+                </button>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+
+<div id="mergeConfirmationDialog" class="modal fade">
+    <div class="modal-dialog">
+        <div class="vertical-align-middle">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                    <h4 class="modal-title">Confirmation</h4>
+                </div>
+                <div class="modal-body">
+                    <div class="row" data-bind="visible: merge.claimsCount()">
+                        There are <span id="totalNoClaims" data-bind="text: merge.claimsCount"></span> outstanding claims for <b><span id="patientName" data-bind="text: merge.mergedPatient"></span></b>.
+                    </div>
+                    <div class="row" data-bind="visible: merge.claimsCount()">
+                        Combining patient profiles will not associate the claims to <b><span id="patientWinnerName" data-bind="text: merge.mergedIntoPatient"></span></b>.
+                    </div>
+                    <div class="row" data-bind="visible: merge.claimsCount()">
+                        Claims will need to be managed separately.<br/><br/>
+                    </div>
+                    <div class="row">
+                        Combining patient demographics cannot be undone. Are you sure you want to continue ?
+                    </div>
+                </div>
+                <div class="modal-footer" style="text-align: center;">
+                    <button type="button" data-bind="click: merge.cancel" class="btn btn-default  pull-left" data-dismiss="modal">No</button>
+                    <button type="button" data-bind="click: merge.confirm" class="btn btn-primary  pull-right" data-dismiss="modal">Yes</button>
+                </div>
+            </div><!-- /.modal-content -->
+        </div>
+    </div><!-- /.modal-dialog -->
+</div>
+
+
+<div id="mergeConfirmationSelectionDialog" class="modal fade">
+    <div class="modal-dialog">
+        <div class="vertical-align-middle">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                    <h4 class="modal-title">Warning</h4>
+                </div>
+                <div class="modal-body">
+                    <div class="row">
+                        Please click the profile to select the one you want to keep.
+                    </div>
+                </div>
+                <div class="modal-footer" style="text-align: center;">
+                    <button type="button" data-bind="click: merge.cancel" class="btn btn-primary  pull-right" data-dismiss="modal">OK</button>
+                </div>
+            </div><!-- /.modal-content -->
+        </div>
+    </div><!-- /.modal-dialog -->
+</div>
+
+
+
+<div id="mergeConfirmationCreditsAndPaymentsDialog" class="modal fade">
+    <div class="modal-dialog">
+        <div class="vertical-align-middle">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                    <h4 class="modal-title">Confirmation</h4>
+                </div>
+                <div class="modal-body">
+                    <div class="row">
+                        There are outstanding balances or credits for <b><span id="patientName" data-bind="text: merge.mergedPatient"></span></b> : <br /><br />
+    <ul>
+        <li>Credits: <span id="totalCredits" data-bind="text: merge.credits"></span>  </li>
+        <li>Patient Insurance Balance: <span id="totalBalance" data-bind="text: merge.patientInsuranceBalance"></span></li>
+    </ul>
+</div>
+                    <div class="row">
+                        Please resolve the outstanding balances and credits before proceeding with the merge.
+                    </div>
+                </div>
+
+                    <div class="modal-footer" style="text-align: center;">
+                        <button type="button" data-bind="click: merge.cancel" class="btn btn-primary  pull-right" data-dismiss="modal">OK</button>
+                    </div>
+                </div><!-- /.modal-content -->
+            </div>
+        </div><!-- /.modal-dialog -->
+    </div>
+
+@Styles.Render("~/content/themes/app/Patient/merge")
+@Scripts.Render("~/bundles/patientMerge")

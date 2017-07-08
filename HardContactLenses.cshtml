@@ -1,0 +1,537 @@
+﻿@using Eyefinity.PracticeManagement.Common
+@model Eyefinity.PracticeManagement.Model.Patient.PatientSearchResult
+@{
+    ViewBag.Title = "Contact Lenses";
+    Layout = "~/Views/Shared/_LayoutBootstrap.cshtml";
+}
+
+@if (!String.IsNullOrEmpty(Model.FirstName) && !String.IsNullOrEmpty(Model.LastName))
+{
+    ViewBag.Title = Model.FirstName + " " + Model.LastName + " : " + ViewBag.Title;
+}
+@functions{
+    public string GetAntiForgeryToken()
+    {
+        string cookieToken, formToken;
+        AntiForgery.GetTokens(null, out cookieToken, out formToken);
+        return cookieToken + ":" + formToken;
+    }
+}
+<script type="text/javascript">
+    /*global $*/
+    @*var examId = '@ViewBag.examId',*@
+        var patient = JSON.parse('@Html.Raw(Json.Encode(Model))'),
+        documentTitle = '@ViewBag.Title';
+    function SetTitle(ft, lt) {
+        if (ft !== null && lt !== null) {
+            var title = ft + " " + lt + " : " + "ContactLensRx";
+            $('h2').text(title);
+        }
+    }
+</script>
+
+<div id="patientTitle" class="col-lg-12 col-md-12 col-no-padding">
+    <div id="patientDemographicsBtn" class="btn-group hidden-lg">
+        <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown">
+            <i class="icon-user-2"></i> <span class="caret"></span>
+        </button>
+        <div id="patientDropdownNav" class="dropdown-menu" role="menu"></div>
+    </div>
+    <h2 class="hidden-xs">Rx: Contact Lenses</h2>
+    <h3 class="hidden-lg hidden-md hidden-sm">Rx: Contact Lenses</h3>
+</div>
+
+<nav id="patientSideNav" class="col-lg-2 visible-lg"></nav>
+<form id="HardContactLensesForm" class=" col-lg-10 col-md-12" onsubmit="return false;" method="post" action="/" novalidate="novalidate">
+    <div id="HardContactLensRx">
+        <input id="antiForgeryToken" type="hidden" value="@GetAntiForgeryToken()" />
+        @Html.PartialOnce("~/Views/Patient/ContactLensesPartial.cshtml")
+        <div id="RightLens" class="panel-shadow form-group col-lg-10 col-md-12 col-lg-offset-1">
+            <h4>Right Lens</h4><br />
+
+            <div class="form-inline">
+                <div class="row">
+                    <div id="rUnderlyingConditions" class="col-lg-3 col-md-3 col-sm-3">
+                        <div class="form-group col-lg-12 col-md-12 col-sm-12">
+                            <label for="rightulc">Underlying Condition</label>
+                            <select name="rightulc" id="rightulc" data-bind="options: underlyingConditions, value: rightulcondition, optionsText: 'Description',
+                        optionsValue: 'Key'"></select>
+                        </div>
+                    </div>
+                    <div class="col-lg-8 col-md-8 col-lg-no-padding col-md-no-padding">
+                        <div class="col-lg-11 col-md-11 panel-shadow">
+                            <div class="form-group col-lg-4 col-md-4 ">
+                                <span class="control-label">
+                                    <span class="required" data-bind="text: RStar"></span>
+                                    <label for="rightmanufacturer">Manufacturer</label>
+                                </span>
+                                <select name="rightmanufacturer" id="rightmanufacturer" class="requiredField" data-bind="options: manufacturers, disable: hasrightulc,
+                                value: rightmanufacturer, optionsText: 'Description', optionsValue: 'KeyStr'"></select>
+                            </div>
+                            <div class="form-group col-lg-4 col-md-4">
+                                <span class="control-label">
+                                    <span class="required" data-bind="text: RStar"></span>
+                                    <label for="rightstyle">Style</label>
+                                </span>
+                                <select name="rightstyle" id="rightstyle" class="requiredField" data-bind="options: rightstyles, disable: hasrightulc, value: rightstyle,
+                                optionsText: 'Description', optionsValue: 'Key'"></select>
+                            </div>
+                            <div class="form-group col-lg-4 col-md-4">
+                                <label class="control-label spacer"></label>
+                                <button id="btnCopy" class="btn btn-primary btn-block"><i class="icon-arrow-down"></i>Copy To Left Lens</button>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-5 col-md-5 fieldMessages"></div>
+            <div class="clearfix"></div>
+            <div class="row">
+
+                <div class="col-lg-10 col-md-10">
+                    <div class="form-group col-lg-2 col-md-2">
+                        <span class="control-label">
+                            <span class="required" data-bind="text: RStar"></span>
+                            <label for="rightbasecurve">Base Curve</label>
+                        </span>
+                        <input class="form-control requiredField" id="rightbasecurve" name="rightbasecurve" data-bind="value: rightbasecurve, disable: hasrightulc" type="text" value="" />
+                    </div>
+                    <div class="form-group col-lg-2 col-md-2">
+                        <span class="control-label">
+                            <span class="required" data-bind="text: RStar"></span>
+                            <label for="rightdiameter">Diameter</label>
+                        </span>
+                        <input class="form-control requiredField" id="rightdiameter" name="rightdiameter" data-bind="value: rightdiameter, disable: hasrightulc" type="text" value="" />
+                    </div>
+                    <div class="form-group col-lg-2 col-md-2">
+                        <span class="control-label">
+                            <span class="required" data-bind="text: RStar"></span>
+                            <label for="rightsphere">Sphere</label>
+                        </span>
+                        <input class="form-control requiredField" id="rightsphere" name="rightsphere" data-bind="value: rightsphere, disable: hasrightulc" type="text" value="" />
+                    </div>
+                    <div class="form-group col-lg-2 col-md-2">
+                        <label for="rightcylinder">Cylinder</label>
+                        <input class="form-control" id="rightcylinder" name="rightcylinder" data-bind="value: rightcylinder, disable: hasrightulc" type="text" value="" />
+                    </div>
+                    <div class="form-group col-lg-2 col-md-2">
+                        <label for="rightaxis">Axis</label>
+                        <input class="form-control" id="rightaxis" name="rightaxis" data-bind="value: rightaxis, disable: hasrightulc" type="text" value="" />
+                    </div>
+                    <div class="form-group col-lg-2 col-md-2">
+                        <label for="rightpcradius">PC Radius</label>
+                        <input class="form-control" id="rightpcradius" name="rightpcradius" data-bind="value: rightpcradius, disable: hasrightulc" type="text" value="" />
+                    </div>
+                </div>
+                <div class="col-lg-2 col-md-2">
+                    <div class="form-group col-lg-11 col-md-11">
+                        <label for="rightpcwidth">PC Width</label>
+                        <input class="form-control" id="rightpcwidth" name="rightpcwidth" data-bind="value: rightpcwidth, disable: hasrightulc" type="text" value="" />
+                    </div>
+                </div>
+
+            </div>
+            <div class="col-lg-5 col-md-5 fieldMessages"></div>
+            <div class="clearfix"></div>
+            <div class="row">
+
+                <div class="col-lg-10 col-md-10">
+                    <div class="form-group col-lg-2 col-md-2">
+                        <label for="rightbasecurve2">Base Curve 2</label>
+                        <input class="form-control" id="rightbasecurve2" name="rightbasecurve2" data-bind="value: rightbasecurve2, disable: hasrightulc" type="text" value="" />
+                    </div>
+                    <div class="form-group col-lg-2 col-md-2">
+                    </div>
+                    <div class="form-group col-lg-2 col-md-2">
+                        <span class="control-label">
+                            <label for="rightsphere2">Sphere 2</label>
+                        </span>
+                        <input class="form-control" id="rightsphere2" name="rightsphere2" data-bind="value: rightsphere2, disable: hasrightulc" type="text" value="" />
+                    </div>
+
+                    <div class="form-group col-lg-2 col-md-2">
+                        <label for="rightcylinder2">Cylinder 2</label>
+                        <input class="form-control" id="rightcylinder2" name="rightcylinder2" data-bind="value: rightcylinder2, disable: hasrightulc" type="text" value="" />
+                    </div>
+                    <div class="form-group col-lg-2 col-md-2">
+                        <label for="rightaxis2">Axis 2</label>
+                        <input class="form-control" id="rightaxis2" name="rightaxis2" type="text" data-bind="value: rightaxis2, disable: hasrightulc" value="" />
+                    </div>
+                    <div class="form-group col-lg-2 col-md-2">
+                        <label for="rightradius2">Radius 2</label>
+                        <input class="form-control" id="rightradius2" name="rightradius2" data-bind="value: rightradius2, disable: hasrightulc" type="text" value="" />
+                    </div>
+                </div>
+                <div class="col-lg-2 col-md-2">
+                    <div class="form-group col-lg-11 col-md-11">
+                        <label for="rightwidth2">Width 2</label>
+                        <input class="form-control" id="rightwidth2" name="rightwidth2" data-bind="value: rightwidth2, disable: hasrightulc" type="text" value="" />
+                    </div>
+                </div>
+
+            </div>
+            <div class="col-lg-5 col-md-5 fieldMessages"></div>
+            <div class="clearfix"></div>
+            <div class="row">
+                <div class="col-lg-10 col-md-10">
+                    <div class="form-group col-lg-2 col-md-2">
+                        <label for="rightaddpower">Add Power</label>
+                        <input class="form-control" id="rightaddpower" name="rightaddpower" data-bind="value: rightaddpower, disable: hasrightulc" type="text" value="" />
+                    </div>
+                    <div class="form-group col-lg-2 col-md-2">
+                        <label for="rightprism">Prism</label>
+                        <input class="form-control" id="rightprism" name="rightprism" data-bind="value: rightprism, disable: hasrightulc" type="text" value="" />
+                    </div>
+                    <div class="form-group col-lg-2 col-md-2">
+                        <label for="rightct">CT</label>
+                        <input class="form-control" id="rightct" name="rightct" data-bind="value: rightct, disable: hasrightulc" type="text" value="" />
+                    </div>
+                    <div class="form-group col-lg-2 col-md-2">
+                        <label for="rightet">ET</label>
+                        <input class="form-control" id="rightet" name="rightet" data-bind="value: rightet, disable: hasrightulc" type="text" value="" />
+                    </div>
+                    <div class="form-group col-lg-2 col-md-2">
+                        <label for="rightopticalzone">Optical Zone</label>
+                        <input class="form-control" id="rightopticalzone" name="rightopticalzone" data-bind="value: rightopticalzone, disable: hasrightulc " type="text" value="" />
+                    </div>
+                    <div class="form-group col-lg-2 col-md-2">
+                        <label for="rightradius3">Radius 3</label>
+                        <input class="form-control" id="rightradius3" name="rightradius3" data-bind="value: rightradius3, disable: hasrightulc" type="text" value="" />
+                    </div>
+                </div>
+                <div class="col-lg-2 col-md-2">
+                    <div class="col-lg-11 col-md-11">
+                        <label for="rightwidth3">Width 3</label>
+                        <input class="form-control" id="rightwidth3" name="rightwidth3" data-bind="value: rightwidth3, disable: hasrightulc" type="text" value="" />
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-5 col-md-5 fieldMessages"></div>
+            <div class="clearfix"></div>
+            <div class="row">
+                <div class="col-lg-10 col-md-10">
+                    <div class="form-group col-lg-2 col-md-2">
+                        <label for="rightsegheight">Seg Height</label>
+                        <input class="form-control" id="rightsegheight" name="rightsegheight" data-bind="value: rightsegheight, disable: hasrightulc" type="text" value="" />
+                    </div>
+                    <div class="form-group col-lg-2 col-md-2">
+                        <label for="rightblend">Blend</label>
+                        <select name="rightblend" id="rightblend" data-bind="options: blendList, value: rightblend, disable: hasrightulc,
+                optionsText: 'Description', optionsValue: 'Key'"></select>
+                    </div>
+                    <div class="form-group col-lg-2 col-md-2">
+                        <label for="righttint">Tint</label>
+                        <select name="righttint" id="righttint" data-bind="options: tintList, value: righttint, optionsText: 'Description', disable: hasrightulc,
+                optionsValue: 'Key'"></select>
+
+                    </div>
+                    <div class="form-group col-lg-2 col-md-2">
+                        <span class="control-label">
+                            <span class="required" data-bind="text: RStar"></span>
+                            <label for="rightquantity">Quantity</label>
+                        </span>
+                        <input class="form-control requiredField" id="rightquantity" name="rightquantity" data-bind="value: rightquantity, disable: hasrightulc" type="text" value="" />
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-5 col-md-5 fieldMessages"></div>
+            <div class="clearfix"></div>
+        </div>
+
+        <div id="LeftLens" class="panel-shadow form-group col-lg-10 col-md-12 col-lg-offset-1">
+            <h4>Left Lens</h4><br />
+
+            <div class="row">
+                <div class="col-lg-10 col-md-10">
+                    <div class="form-group col-lg-4 col-md-4">
+                        <label for="leftulc">Underlying Condition</label>
+                        <select name="leftulc" id="leftulc" data-bind="options: underlyingConditions, value: leftulcondition, optionsText: 'Description',
+                        optionsValue: 'Key'"></select>
+                    </div>
+
+                    <div class="form-group col-lg-4 col-md-4">
+                        <span class="control-label">
+                            <span class="required" data-bind="text: LStar"></span>
+                            <label for="leftmanufacturer">Manufacturer</label>
+                        </span>
+                        <select name="leftmanufacturer" id="leftmanufacturer" class="requiredField" data-bind="options: manufacturers, disable: hasleftulc, value: leftmanufacturer,
+                        optionsText: 'Description', optionsValue: 'KeyStr'"></select>
+                    </div>
+                    <div class="form-group col-lg-4 col-md-4">
+                        <span class="control-label">
+                            <span class="required" data-bind="text: LStar"></span>
+                            <label for="leftstyle">Style</label>
+                        </span>
+                        <select name="leftstyle" id="leftstyle" class="requiredField" data-bind="options: leftstyles, disable: hasleftulc, value: leftstyle,
+                        optionsText: 'Description', optionsValue: 'Key'"></select>
+                    </div>
+                </div>
+                <div class="col-lg-2 col-md-2">
+                    <div class="form-group col-lg-12 col-md-12">
+                        <label>&nbsp;</label>
+                        <label>&nbsp;</label>
+                    </div>
+                </div>
+
+            </div>
+            <div class="col-lg-5 col-md-5 fieldMessages"></div>
+            <div class="clearfix"></div>
+            <div class="row">
+
+                <div class="col-lg-10 col-md-10">
+                    <div class="form-group col-lg-2 col-md-2">
+                        <span class="control-label">
+                            <span class="required" data-bind="text: LStar"></span>
+                            <label for="leftbasecurve">Base Curve</label>
+                        </span>
+                        <input class="form-control requiredField" id="leftbasecurve" name="leftbasecurve" data-bind="value: leftbasecurve, disable: hasleftulc" type="text" />
+                    </div>
+
+                    <div class="form-group col-lg-2 col-md-2">
+                        <span class="control-label">
+                            <span class="required" data-bind="text: LStar"></span>
+                            <label for="leftdiameter">Diameter</label>
+                        </span>
+                        <input class="form-control requiredField" id="leftdiameter" name="leftdiameter" data-bind="value: leftdiameter, disable: hasleftulc" type="text" />
+                    </div>
+                    <div class="form-group col-lg-2 col-md-2">
+                        <span class="control-label">
+                            <span class="required" data-bind="text: LStar"></span>
+                            <label for="leftsphere">Sphere</label>
+                        </span>
+                        <input class="form-control requiredField" id="leftsphere" name="leftsphere" data-bind="value: leftsphere, disable: hasleftulc" type="text" />
+                    </div>
+                    <div class="form-group col-lg-2 col-md-2">
+                        <label for="leftcylinder">Cylinder</label>
+                        <input class="form-control" id="leftcylinder" name="leftcylinder" data-bind="value: leftcylinder, disable: hasleftulc" type="text" />
+                    </div>
+                    <div class="form-group col-lg-2 col-md-2">
+                        <label for="leftaxis">Axis</label>
+                        <input class="form-control" id="leftaxis" name="leftaxis" data-bind="value: leftaxis, disable: hasleftulc" type="text" value="" />
+                    </div>
+                    <div class="form-group col-lg-2 col-md-2">
+                        <label for="leftpcradius">PC Radius</label>
+                        <input class="form-control" id="leftpcradius" name="leftpcradius" data-bind="value: leftpcradius, disable: hasleftulc" type="text" value="" />
+                    </div>
+                </div>
+                <div class="col-lg-2 col-md-2">
+                    <div class="form-group col-lg-11 col-md-11">
+                        <label for="leftpcwidth">PC Width</label>
+                        <input class="form-control" id="leftpcwidth" name="leftpcwidth" data-bind="value: leftpcwidth, disable: hasleftulc" type="text" value="" />
+                    </div>
+                </div>
+
+            </div>
+            <div class="col-lg-5 col-md-5 fieldMessages"></div>
+            <div class="clearfix"></div>
+            <div class="row">
+
+                <div class="col-lg-10 col-md-10">
+                    <div class="form-group col-lg-2 col-md-2">
+                        <label for="leftbasecurve2">Base Curve 2</label>
+                        <input class="form-control" id="leftbasecurve2" name="leftbasecurve2" data-bind="value: leftbasecurve2, disable: hasleftulc" type="text" value="" />
+                    </div>
+                    <div class="form-group col-lg-2 col-md-2">
+                    </div>
+                    <div class="form-group col-lg-2 col-md-2">
+                        <span class="control-label">
+                            <label for="leftsphere2">Sphere 2</label>
+                        </span>
+                        <input class="form-control" id="leftsphere2" name="leftsphere2" data-bind="value: leftsphere2, disable: hasleftulc" type="text" value="" />
+                    </div>
+                    <div class="form-group col-lg-2 col-md-2">
+                        <label for="leftcylinder2">Cylinder 2</label>
+                        <input class="form-control" id="leftcylinder2" name="leftcylinder2" data-bind="value: leftcylinder2, disable: hasleftulc" type="text" value="" />
+                    </div>
+                    <div class="form-group col-lg-2 col-md-2">
+                        <label for="leftaxis2">Axis 2</label>
+                        <input class="form-control" id="leftaxis2" name="leftaxis2" data-bind="value: leftaxis2, disable: hasleftulc" type="text" value="" />
+                    </div>
+                    <div class="form-group col-lg-2 col-md-2">
+                        <label for="leftradius2">Radius 2</label>
+                        <input class="form-control" id="leftradius2" name="leftradius2" data-bind="value: leftradius2, disable: hasleftulc" type="text" value="" />
+                    </div>
+                </div>
+                <div class="col-lg-2 col-md-2">
+                    <div class="form-group col-lg-11 col-md-11">
+                        <label for="leftwidth2">Width 2</label>
+                        <input class="form-control" id="leftwidth2" name="leftwidth2" data-bind="value: leftwidth2, disable: hasleftulc" type="text" value="" />
+                    </div>
+                </div>
+
+            </div>
+            <div class="col-lg-5 col-md-5 fieldMessages"></div>
+            <div class="clearfix"></div>
+            <div class="row">
+
+                <div class="col-lg-10 col-md-10">
+                    <div class="form-group col-lg-2 col-md-2">
+                        <label for="leftaddpower">Add Power</label>
+                        <input class="form-control" id="leftaddpower" name="leftaddpower" data-bind="value: leftaddpower, disable: hasleftulc" type="text" value="" />
+                    </div>
+                    <div class="form-group col-lg-2 col-md-2">
+                        <label for="leftprism">Prism</label>
+                        <input class="form-control" id="leftprism" name="leftprism" data-bind="value: leftprism, disable: hasleftulc" type="text" value="" />
+                    </div>
+                    <div class="form-group col-lg-2 col-md-2">
+                        <label for="leftct">CT</label>
+                        <input class="form-control" id="leftct" name="leftct" data-bind="value: leftct, disable: hasleftulc" type="text" value="" />
+                    </div>
+                    <div class="form-group col-lg-2 col-md-2">
+                        <label for="leftet">ET</label>
+                        <input class="form-control" id="leftet" name="leftet" data-bind="value: leftet, disable: hasleftulc" type="text" value="" />
+                    </div>
+                    <div class="form-group col-lg-2 col-md-2">
+                        <label for="leftopticalzone">Optical Zone</label>
+                        <input class="form-control" id="leftopticalzone" name="leftopticalzone" data-bind="value: leftopticalzone, disable: hasleftulc" type="text" value="" />
+                    </div>
+                    <div class="form-group col-lg-2 col-md-2">
+                        <label for="leftradius3">Radius 3</label>
+                        <input class="form-control" id="leftradius3" name="leftradius3" data-bind="value: leftradius3, disable: hasleftulc" type="text" value="" />
+                    </div>
+                </div>
+                <div class="col-lg-2 col-md-2">
+                    <div class="form-group col-lg-11 col-md-11">
+                        <label for="leftwidth3">Width 3</label>
+                        <input class="form-control" id="leftwidth3" name="leftwidth3" data-bind="value: leftwidth3, disable: hasleftulc" type="text" value="" />
+                    </div>
+                </div>
+
+            </div>
+            <div class="col-lg-5 col-md-5 fieldMessages"></div>
+            <div class="clearfix"></div>
+            <div class="row">
+                <div class="col-lg-10 col-md-10">
+                    <div class="col-lg-2 col-md-2">
+                        <label for="leftsegheight">Seg Height</label>
+                        <input class="form-control" id="leftsegheight" name="leftsegheight" data-bind="value: leftsegheight, disable: hasleftulc" type="text" value="" />
+                    </div>
+                    <div class="col-lg-2 col-md-2">
+                        <label for="leftblend">Blend</label>
+                        <select name="leftblend" id="leftblend" data-bind="options: blendList, value: leftblend, disable: hasleftulc,
+                optionsText: 'Description', optionsValue: 'Key'"></select>
+                    </div>
+                    <div class="col-lg-2 col-md-2">
+                        <label for="lefttint">Tint</label>
+                        <select name="lefttint" id="lefttint" data-bind="options: tintList, value: lefttint, disable: hasleftulc,
+                optionsText: 'Description', optionsValue: 'Key'"></select>
+                    </div>
+                    <div class="col-lg-2 col-md-2">
+                        <span class="control-label">
+                            <span class="required" data-bind="text: LStar"></span><label for="leftquantity">Quantity</label>
+                        </span>
+                        <input class="form-control requiredField" id="leftquantity" name="leftquantity" data-bind="value: leftquantity, disable: hasleftulc" type="text" value="" />
+                    </div>
+                </div>
+            </div>
+            <br />
+            <div class="col-lg-5 col-md-5 fieldMessages"></div>
+            <div class="clearfix"></div>
+        </div>
+
+        <div id="SpecialInstruction" class="padding-2 form-group col-lg-10 col-md-12 col-lg-offset-1">
+            <div class="row">
+                <div class="form-group col-lg-10 col-md-10">
+                    <h3>Special Instructions </h3>
+                </div>
+                <div class="form-group col-lg-3 col-md-3">
+                    <label for="wearschedule">Wearing Schedule</label>
+                    <select name="wearschedule" id="wearschedule" data-bind="options: wearScheduleList, value: wearschedule,
+            optionsText: 'Description', optionsValue: 'Key'"></select>
+                </div>
+
+                <div class="form-group col-lg-3 col-md-3">
+                    <label for="dfregimen">Disinfecting Regimen</label>
+                    <select name="dfregimen" id="dfregimen" data-bind="options: disinfectingRegimenList, value: disinfectingRegimen, optionsText: 'Description',
+            optionsValue: 'Key'"></select>
+                </div>
+
+                <div class="form-group col-lg-3 col-md-3">
+                    <label for="dot">Dot</label>
+                    <select name="dot" id="dot" data-bind="options: dotList, value: dot, optionsText: 'Description', optionsValue: 'Key'"></select>
+                </div>
+
+                <div class="form-group col-lg-3 col-md-3">
+                    <label for="monovision">Monovision</label>
+                    <select name="monovision" id="monovision" data-bind="options: monovisionList, value: monovision, optionsText: 'Description', optionsValue: 'Key'"></select>
+                </div>
+            </div>
+            <div class="row">
+                <div class="form-group col-lg-12 col-md-12">
+                    <label for="rxnote" class="control-label">Rx Notes:</label>
+                    <textarea id="rxnote" class="form-control" data-bind="value: rxnote" rows="4" placeholder="Enter your comment here..."></textarea>
+                </div>
+                <input id="rightcolor" data-bind="value: rightcolor, visible: isColorVisible()" type="text" />
+                <input id="leftcolor" data-bind="value: leftcolor, visible: isColorVisible()" type="text" />
+                <div class="form-group col-lg-12 col-md-12">
+                    <button id="btnReset" class="btn btn-default" data-bind="visible: !isNew()">Reset</button>
+                    <button id="btnSave" class="btn btn-primary pull-right" data-bind="click: save">Save</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div id="confirmationDialog" class="modal fade">
+        <div class="modal-dialog">
+            <div class="vertical-align-middle">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                        <h4 class="modal-title">Confirmation</h4>
+                    </div>
+                    <div class="modal-body">
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" id="btnConfirmation" class="btn btn-default pull-left" data-dismiss="modal">Cancel</button>
+                        <button type="button" id="btnIgnoreConfirmation" class="btn btn-primary pull-right">Save</button>
+                    </div>
+                </div><!-- /.modal-content -->
+            </div>
+        </div><!-- /.modal-dialog -->
+    </div>
+    <div id="ehrCodesModal" class="modal fade">
+        <div class="modal-dialog">
+            <div class="vertical-align-middle">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                        <h3 class="modal-title">Procedure &amp; Diagnosis Codes</h3>
+                    </div>
+                    <div class="modal-body">
+                        @Html.PartialOnce("~/Views/Patient/ProcedureDiagnosisCodes.cshtml")
+                    </div>
+                    <div class="clearfix"></div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-default pull-left" data-dismiss="modal">Close</button>
+                        <button type="button" class="btn btn-primary" id="btnPrintEhrCodes"><i class="icon-print"></i> Print</button>
+                    </div>
+                </div>
+                <div class="clear"></div>
+            </div>
+        </div>
+    </div>
+</form>
+<div id="outsideProviderDialog" class="modal fade">
+    <div class="modal-dialog modal-dialog-wide">
+        <div class="vertical-align-middle">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                    <h4 class="modal-title">Outside Provider</h4>
+                </div>
+                <div class="modal-body">
+                    <div id="outsideProviderContent" class="row">
+                        @Html.PartialOnce("~/Views/Patient/OutsideProvider.cshtml")
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default pull-left" id="btnClose" data-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-primary" id="btnSaveOutsideProvider">Save</button>
+                </div>
+            </div>
+            <div class="clear"></div>
+        </div>
+    </div>
+</div>
+<input type="hidden" id="noteIdHidden" name="noteIdHidden" value="" />
+@Scripts.Render("~/bundles/patientHardContactLenses")

@@ -1,0 +1,15 @@
+﻿@using Eyefinity.PracticeManagement.Common
+@{
+    ViewBag.Title = "EPM: Search Patients";
+    Layout = "~/Views/Shared/_LayoutBootstrap.cshtml";
+}
+
+<h2>Patients: Search Patients</h2>
+
+<div>
+    
+    @Html.PartialOnce("~/Views/Patient/SearchPartial.cshtml")
+    <div data-bind="patientSearch: $data"></div>
+</div>
+
+@Scripts.Render("~/bundles/patientSearch")

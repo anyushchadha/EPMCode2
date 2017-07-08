@@ -1,0 +1,492 @@
+﻿@model Eyefinity.PracticeManagement.Model.Patient.PatientOrderExam
+@{
+    ViewBag.Title = "New Exam";
+    Layout = "~/Views/Shared/_LayoutBootstrap.cshtml";
+}
+
+@functions{
+    public string GetAntiForgeryToken()
+    {
+        string cookieToken, formToken;
+        AntiForgery.GetTokens(null, out cookieToken, out formToken);
+        return cookieToken + ":" + formToken;
+    }
+}
+<script type="text/javascript">
+    var patientOrderExam = JSON.parse('@Html.Raw(Json.Encode(Model))'),
+        documentTitle = '@ViewBag.Title',
+        patient = { PatientId: patientOrderExam.PatientId, FirstName: '', LastName: '' };
+</script>
+
+<div id="patientExam">
+    <div id="patientTitle" class="col-lg-12 col-md-12 col-sm-12 col-no-padding">
+        <div id="patientDemographicsBtn" class="btn-group hidden-lg">
+            <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown">
+                <i class="icon-user-2"></i> <span class="caret"></span>
+            </button>
+            <div id="patientDropdownNav" class="dropdown-menu" role="menu"></div>
+        </div>
+        <h2 class="hidden-xs">@ViewBag.Title</h2>
+        <h3 class="hidden-lg hidden-md hidden-sm">@ViewBag.Title</h3>
+    </div>
+
+    <nav id="patientSideNav" class="col-lg-2 visible-lg"></nav>
+
+    <form id="patientExamForm" class="form-horizontal col-lg-10 col-md-12">
+        <input id="antiForgeryToken" type="hidden" value="@GetAntiForgeryToken()" />
+
+        <div class="row">
+            <div class="col-lg-12 col-md-12 summaryMessages"></div>
+            <div class="clearfix"></div>
+
+            <div class="col-lg-6 col-md-6">
+                <div class="form-group" data-bind="visible: ehrIntegration">
+                    <div class="col-lg-10 col-lg-offset-2 col-md-10 col-md-offset-2">
+                        <button class="btn btn-primary" id="btnUseEhr"><i class="icon-plus"></i>Exam From Eyefinity EHR</button>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="col-lg-2 col-md-2 control-label">
+                        <label for="provider"><span class="required">*</span>Provider</label>
+                    </div>
+                    <div class="col-lg-10 col-md-10">
+                        <select id="provider" name="provider" data-bind="options: providerList, value: provider, optionsText: 'Description', optionsValue: 'Key', css: { requiredField: provider() <= 0 }" data-live-search="true" data-size="10" data-dropup-auto="false"></select>
+                    </div>
+                </div>
+                <div class="col-lg-10 col-lg-offset-2 col-md-10 col-md-offset-2 fieldMessages"></div>
+                <div class="form-group"></div>
+            </div>
+        </div>
+
+        <!-- Diagnosis Codes -->
+        <div class="row">
+            <div class="col-lg-6 col-md-6">
+                <div class="form-group">
+                    <div class="col-lg-11 col-lg-offset-1 col-md-11 col-md-offset-1">
+                        <h4>Diagnosis Codes</h4>
+                    </div>
+                </div>
+            </div>
+            <div class="clearfix"></div>
+
+            <div class="col-lg-6 col-md-6">
+                <div id="diagCodeBlock1">
+                    <div class="form-group">
+                        <div class="col-lg-2 col-md-2 control-label">
+                            <label for="diagCodeA"><span class="required">*</span>A</label>
+                        </div>
+                        <div class="col-lg-10 col-md-10">
+                            <select id="diagCodeA" name="diagCodeA" data-bind="value: diagCodeA, css: { requiredField: diagCodeA() <= 0}" data-live-search="true" data-size="11" data-dropup-auto="false"></select>
+                        </div>
+                    </div>
+                    <div class="col-lg-10 col-lg-offset-2 col-md-10 col-md-offset-2 fieldMessages"></div>
+
+                    <div class="form-group">
+                        <div class="col-lg-2 col-md-2 control-label">
+                            <label for="diagCodeB">B</label>
+                        </div>
+                        <div class="col-lg-10 col-md-10">
+                            <select id="diagCodeB" name="diagCodeB" data-bind="value: diagCodeB, enable: diagCodeBEnabled()" data-live-search="true" data-size="11" data-dropup-auto="false" disabled></select>
+                        </div>
+                    </div>
+                    <div class="col-lg-10 col-lg-offset-2 col-md-10 col-md-offset-2 fieldMessages"></div>
+
+                    <div class="form-group">
+                        <div class="col-lg-2 col-md-2 control-label">
+                            <label for="diagCodeC">C</label>
+                        </div>
+                        <div class="col-lg-10 col-md-10">
+                            <select id="diagCodeC" name="diagCodeC" data-bind="value: diagCodeC, enable: diagCodeCEnabled()" data-live-search="true" data-size="11" data-dropup-auto="false" disabled></select>
+                        </div>
+                    </div>
+                    <div class="col-lg-10 col-lg-offset-2 col-md-10 col-md-offset-2 fieldMessages"></div>
+                </div>
+            </div>
+
+            <div class="col-lg-6 col-md-6 hidden">
+                <div id="diagCodeBlock2">
+                    <div class="form-group">
+                        <div class="col-lg-2 col-md-2 control-label">
+                            <label for="diagCodeG">G</label>
+                        </div>
+                        <div class="col-lg-10 col-md-10">
+                            <select id="diagCodeG" name="diagCodeG" data-bind="value: diagCodeG, enable: diagCodeGEnabled()" data-live-search="true" data-size="11" data-dropup-auto="false" disabled></select>
+                        </div>
+                    </div>
+                    <div class="col-lg-10 col-lg-offset-2 col-md-10 col-md-offset-2 fieldMessages"></div>
+
+                    <div class="form-group">
+                        <div class="col-lg-2 col-md-2 control-label">
+                            <label for="diagCodeH">H</label>
+                        </div>
+                        <div class="col-lg-10 col-md-10">
+                            <select id="diagCodeH" name="diagCodeH" data-bind="value: diagCodeH, enable: diagCodeHEnabled()" data-live-search="true" data-size="11" data-dropup-auto="false" disabled></select>
+                        </div>
+                    </div>
+                    <div class="col-lg-10 col-lg-offset-2 col-md-10 col-md-offset-2 fieldMessages"></div>
+
+                    <div class="form-group">
+                        <div class="col-lg-2 col-md-2 control-label">
+                            <label for="diagCodeI">I</label>
+                        </div>
+                        <div class="col-lg-10 col-md-10">
+                            <select id="diagCodeI" name="diagCodeI" data-bind="value: diagCodeI, enable: diagCodeIEnabled()" data-live-search="true" data-size="11" data-dropup-auto="false" disabled></select>
+                        </div>
+                    </div>
+                    <div class="col-lg-10 col-lg-offset-2 col-md-10 col-md-offset-2 fieldMessages"></div>
+                </div>
+
+                <div id="diagCodeBlock4">
+                    <div class="form-group">
+                        <div class="col-lg-2 col-md-2 control-label">
+                            <label for="diagCodeJ">J</label>
+                        </div>
+                        <div class="col-lg-10 col-md-10">
+                            <select id="diagCodeJ" name="diagCodeJ" data-bind="value: diagCodeJ, enable: diagCodeJEnabled()" data-live-search="true" data-size="11" data-dropup-auto="false" disabled></select>
+                        </div>
+                    </div>
+                    <div class="col-lg-10 col-lg-offset-2 col-md-10 col-md-offset-2 fieldMessages"></div>
+
+                    <div class="form-group">
+                        <div class="col-lg-2 col-md-2 control-label">
+                            <label for="diagCodeK">K</label>
+                        </div>
+                        <div class="col-lg-10 col-md-10">
+                            <select id="diagCodeK" name="diagCodeK" data-bind="value: diagCodeK, enable: diagCodeKEnabled()" data-live-search="true" data-size="11" data-dropup-auto="false" disabled></select>
+                        </div>
+                    </div>
+                    <div class="col-lg-10 col-lg-offset-2 col-md-10 col-md-offset-2 fieldMessages"></div>
+
+                    <div class="form-group">
+                        <div class="col-lg-2 col-md-2 control-label">
+                            <label for="diagCodeL">L</label>
+                        </div>
+                        <div class="col-lg-10 col-md-10">
+                            <select id="diagCodeL" name="diagCodeL" data-bind="value: diagCodeL, enable: diagCodeLEnabled()" data-live-search="true" data-size="11" data-dropup-auto="false" disabled></select>
+                        </div>
+                    </div>
+                    <div class="col-lg-10 col-lg-offset-2 col-md-10 col-md-offset-2 fieldMessages"></div>
+                </div>
+            </div>
+
+            <div class="col-lg-6 col-md-6">
+                <div id="diagCodeBlock3">
+                    <div class="form-group">
+                        <div class="col-lg-2 col-md-2 control-label">
+                            <label for="diagCodeD">D</label>
+                        </div>
+                        <div class="col-lg-10 col-md-10">
+                            <select id="diagCodeD" name="diagCodeD" data-bind="value: diagCodeD, enable: diagCodeDEnabled()" data-live-search="true" data-size="11" data-dropup-auto="false" disabled></select>
+                        </div>
+                    </div>
+                    <div class="col-lg-10 col-lg-offset-2 col-md-10 col-md-offset-2 fieldMessages"></div>
+
+                    <div class="form-group">
+                        <div class="col-lg-2 col-md-2 control-label">
+                            <label for="diagCodeE">E</label>
+                        </div>
+                        <div class="col-lg-10 col-md-10">
+                            <select id="diagCodeE" name="diagCodeE" data-bind="value: diagCodeE, enable: diagCodeEEnabled()" data-live-search="true" data-size="11" data-dropup-auto="false" disabled></select>
+                        </div>
+                    </div>
+                    <div class="col-lg-10 col-lg-offset-2 col-md-10 col-md-offset-2 fieldMessages"></div>
+
+                    <div class="form-group">
+                        <div class="col-lg-2 col-md-2 control-label">
+                            <label for="diagCodeF">F</label>
+                        </div>
+                        <div class="col-lg-10 col-md-10">
+                            <select id="diagCodeF" name="diagCodeF" data-bind="value: diagCodeF, enable: diagCodeFEnabled()" data-live-search="true" data-size="11" data-dropup-auto="false" disabled></select>
+                        </div>
+                    </div>
+                    <div class="col-lg-10 col-lg-offset-2 col-md-10 col-md-offset-2 fieldMessages"></div>
+                </div>
+            </div>
+
+            <div class="clearfix"></div>
+            <div class="col-lg-6 col-md-6">
+                <div class="form-group">
+                    <div class="col-lg-offset-2 col-lg-10 col-md-offset-2 col-md-10">
+                        <button class="btn btn-default" id="btnMoreDiagCodes" data-bind=""><i class="icon-plus"></i>Diagnosis Codes</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Procedure Codes -->
+        <div class="row">
+            <div class="form-group"></div>
+            <div class="col-lg-6 col-md-6">
+                <div class="form-group">
+                    <div class="col-lg-11 col-lg-offset-1 col-md-11 col-md-offset-1">
+                        <h4>Procedure Codes</h4>
+                    </div>
+                </div>
+            </div>
+            <div class="clearfix"></div>
+
+            <div class="col-lg-12 col-md-12">
+                <div class="form-group">
+                    <div class="col-lg-11 col-lg-offset-1 col-md-11 col-md-offset-1">
+                        <div id="msg_multipleCptWarning" class="alert alert-warning messageCenterStyle hidden">
+                            <span class="title"><i class="icon-warning"></i><strong>Multiple Exams or Fitting Fees were found on this EHR Exam - only one of each is allowed.</strong></span>
+                            <span class="message" data-bind="html:multipleExamCptWarning"></span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-lg-12 col-md-12">
+                <div class="form-group">
+                    <div class="col-lg-11 col-lg-offset-1 col-md-11 col-md-offset-1">
+                        <table id="procedureCodesTable" class="dataTable">
+                            <thead>
+                                <tr role="row">
+                                    <th class="ui-state-default left col-lg-2 col-md-2 col-sm-2 col-xs-2" tabindex="0" rowspan="1" colspan="1" aria-label="Type">Type</th>
+                                    <th class="ui-state-default left col-lg-4 col-md-4 col-md-4 col-xs-4" tabindex="0" rowspan="1" colspan="1" aria-label="Procedure Code">Procedure Code</th>
+                                    <th class="ui-state-default left col-lg-1 col-md-1 col-sm-1 col-xs-1" tabindex="0" rowspan="1" colspan="1" aria-label="Price">Price</th>
+                                    <th class="ui-state-default left col-lg-5 col-md-5 col-md-5 col-xs-5" tabindex="0" rowspan="1" colspan="1" aria-label="Diagnosis Codes">Diagnosis Codes</th>
+                                </tr>
+                            </thead>
+                            <tbody data-bind="foreach: proceduresGrid">
+                                <tr class="">
+                                    <td class="text-right"><span class="required" data-bind="visible: isRequired">*</span><span data-bind="text: type"></span></td>
+                                    <td class="cptCodes">
+                                        <select data-bind="attr: { id: id + '_' + sortId, name: id + '_' + sortId }, options: cptCodeList, optionsText: 'Description', optionsValue: 'Key', value: selectedCptCode , event: { change: procedureCodeChanged }, css: { requiredField: isRequired }" data-live-search="true" data-size="10" data-dropup-auto="false"></select>
+                                        <div class="fieldMessages"></div>
+                                    </td>
+                                    <td>
+                                        <input type="text" class="form-control" data-bind="attr: { id: 'price_' + sortId, name: 'price_' + sortId }, value: formattedPrice, enable: priceEnabled" />
+                                        <div class="fieldMessages"></div>
+                                    </td>
+                                    <td class="diagCodes">
+                                        <div data-bind="visible: showDiagCodesStatic, text: diagCodesStaticString" class="col-lg-11 col-md-11 col-sm-11 col-xs-11 diagCodesStatic"></div>
+                                        <div data-bind="visible: showDiagCodesDDL" class="col-lg-11 col-md-11 col-sm-11 col-xs-11">
+                                            <select data-bind="attr: { id: 'diag_' + sortId, name: 'diag_' + sortId }, options: diagCodesDDLList, optionsText: 'Description', optionsValue: 'Key', selectedOptions: selectedDiagCodes, enable: diagCodesDDLEnabled, event: { change: diagCodeChanged }" data-size="12" multiple="multiple"></select>
+                                        </div>
+                                        <div data-bind="visible: isRemoveable" class="col-lg-1 col-md-1 col-sm-1 col-xs-1 pull-right">
+                                            <i class="btn icon-remove" title="Delete Procedure Code" data-bind="click: $parent.removeItem"></i>
+                                        </div>
+                                        <div class="clearfix"></div>
+                                        <div class="fieldMessages"></div>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                        <button class="btn btn-default" id="btnMoreProcedure" data-bind=""><i class="icon-plus"></i>Procedure</button>
+                        <button class="btn btn-default" id="btnMorePqrs" data-bind=""><i class="icon-plus"></i>PQRS</button>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+        <!-- Exam Memo -->
+        <div id="ehrExamMemo" class="row hidden">
+            <div class="form-group"></div>
+            <div class="col-lg-6 col-md-6">
+                <div class="form-group">
+                    <div class="col-lg-11 col-lg-offset-1 col-md-11 col-md-offset-1">
+                        <h4>Exam Memo</h4>
+                    </div>
+                </div>
+            </div>
+            <div class="clearfix"></div>
+            <div class="col-lg-12 col-md-12">
+                <div class="form-group">
+                    <div class="col-lg-11 col-lg-offset-1 col-md-11 col-md-offset-1 panel">
+                        <span data-bind="text: examMemo"></span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+        <!-- VSP Eye Health Management & Other Medical Conditions -->
+        <div class="row">
+            <div class="col-lg-6 col-md-6">
+                <div class="form-group"></div>
+                <div class="form-group">
+                    <div class="col-lg-11 col-lg-offset-1 col-md-11 col-md-offset-1">
+                        <h4>VSP Eye Health Management</h4>
+                    </div>
+                </div>
+                <div class="col-lg-10 col-lg-offset-2 col-md-10 col-md-offset-2 panel">
+                    <br />
+                    <div class="form-group">
+                        <div class="col-lg-5 col-md-5 control-label">
+                            <label for="dilation">Dilation Performed?</label>
+                        </div>
+                        <div class="col-lg-6 col-md-6">
+                            <select id="dilation" data-bind="value: dilation">
+                                <option value="0">Select</option>
+                                <option value="yes">Yes</option>
+                                <option value="no">No (reason on file)</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="col-lg-7 col-lg-offset-4 col-md-7 col-md-offset-4 fieldMessages"></div>
+
+                    <div class="form-group">
+                        <div class="col-lg-12 col-md-12">
+                            <em>Check condition(s) the patient is known to have.</em>
+                        </div>
+                        <div class="col-lg-6 col-md-6">
+                            <div class="checkbox">
+                                <label>
+                                    <input type="checkbox" id="chkDiabetes" value="true" data-bind="checked: diabetes" />Diabetes
+                                </label>
+                            </div>
+                            <div class="checkbox">
+                                <label>
+                                    <input type="checkbox" id="chkDiabeticRetinopathy" value="true" data-bind="checked: diabeticRetinopathy" />Diabetic Retinopathy
+                                </label>
+                            </div>
+                        </div>
+                        <div class="col-lg-6 col-md-6">
+                            <div class="checkbox">
+                                <label>
+                                    <input type="checkbox" id="chkHighCholesterol" value="true" data-bind="checked: highCholesterol" />High Cholesterol
+                                </label>
+                            </div>
+                            <div class="checkbox">
+                                <label>
+                                    <input type="checkbox" id="chkHypertension" value="true" data-bind="checked: hypertension" />Hypertension
+                                </label>
+                            </div>
+                        </div>
+
+                    </div>
+                    <div class="col-lg-10 col-lg-offset-2 col-md-10 col-md-offset-2 fieldMessages"></div>
+                </div>
+            </div>
+
+            <div class="col-lg-6 col-md-6">
+                <div class="form-group"></div>
+                <div class="form-group">
+                    <div class="col-lg-11 col-lg-offset-1 col-md-11 col-md-offset-1">
+                        <h4>Other Medical Conditions</h4>
+                    </div>
+                </div>
+                <div class="col-lg-10 col-lg-offset-2  col-md-10 col-md-offset-2 panel">
+                    <br />
+                    <div class="form-group">
+                        <div class="col-lg-12 col-md-12">
+                            <em>Check other condition(s) the patient is known to have.</em>
+                        </div>
+                        <div class="col-lg-6 col-md-6">
+                            <div class="checkbox">
+                                <label>
+                                    <input type="checkbox" id="chkAbnormalPupil" value="true" data-bind="checked: abnormalPupil" />Abnormal Pupil
+                                </label>
+                            </div>
+                            <div class="checkbox">
+                                <label>
+                                    <input type="checkbox" id="chkArcus" value="true" data-bind="checked: arcus" />ARCUS
+                                </label>
+                            </div>
+                            <div class="checkbox">
+                                <label>
+                                    <input type="checkbox" id="chkArmd" value="true" data-bind="checked: armd" />ARMD
+                                </label>
+                            </div>
+                        </div>
+                        <div class="col-lg-6 col-md-6">
+                            <div class="checkbox">
+                                <label>
+                                    <input type="checkbox" id="chkCataract" value="true" data-bind="checked: cataract" />Cataract
+                                </label>
+                            </div>
+                            <div class="checkbox">
+                                <label>
+                                    <input type="checkbox" id="chkGlaucoma" value="true" data-bind="checked: glaucoma" />Glaucoma
+                                </label>
+                            </div>
+                            <div class="checkbox">
+                                <label>
+                                    <input type="checkbox" id="chkPcp" value="true" data-bind="checked: pcp" />PCP Form
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-10 col-lg-offset-2 col-md-10 col-md-offset-2 fieldMessages"></div>
+                    <br />
+
+                </div>
+
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-lg-12 col-md-12">
+                <button class="btn btn-default" id="btnCancel">Cancel</button>
+                <button class="btn btn-default" id="btnReset">Reset</button>
+                <button class="btn btn-primary pull-right" id="btnSave">Save</button>
+                <button class="btn btn-primary pull-right hidden" id="btnReturnToExams">Return to Exams</button>
+            </div>
+        </div>
+
+        <div id="useEhrExamModal" class="modal fade" data-bind="">
+            <div class="modal-dialog modal-dialog-wide ui-front">
+                <div class="vertical-align-middle">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                            <h3 class="modal-title">Use Exam From Eyefinity EHR</h3>
+                        </div>
+                        <div class="modal-body">
+                            <table id="pendingEhrExamsTable"></table>
+                        </div>
+                        <div class="clearfix"></div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-default pull-left" id="btnCancelModal" data-dismiss="modal">Cancel</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div id="cancelExamModal" class="modal fade" data-bind="">
+            <div class="modal-dialog">
+                <div class="vertical-align-middle">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                            <h3 class="modal-title">Cancel New Exam</h3>
+                        </div>
+                        <div class="modal-body">
+                            You have un-saved data on this page, this data will be lost if you cancel?
+                        </div>
+                        <div class="clearfix"></div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-primary pull-right" id="btnConfirmCancelExam" data-dismiss="modal">Cancel</button>
+                            <button type="button" class="btn btn-default pull-left" id="btnCancelStayHere" data-dismiss="modal">Return to Page</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div id="resetExamModal" class="modal fade" data-bind="">
+            <div class="modal-dialog">
+                <div class="vertical-align-middle">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                            <h3 class="modal-title">Reset Exam</h3>
+                        </div>
+                        <div class="modal-body">
+                            You have un-saved data on this page, this data will be lost if you reset?
+                        </div>
+                        <div class="clearfix"></div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-primary pull-right" id="btnConfirmResetExam" data-dismiss="modal">Reset</button>
+                            <button type="button" class="btn btn-default pull-left" id="btnResetStayHere" data-dismiss="modal">Return to Page</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </form>
+</div>
+@Scripts.Render("~/bundles/patientNewExam")

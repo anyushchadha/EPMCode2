@@ -1,0 +1,83 @@
+﻿@model Eyefinity.PracticeManagement.Model.Patient.PatientOrderExam
+@{
+    ViewBag.Title = "Exams";
+    Layout = "~/Views/Shared/_LayoutBootstrap.cshtml";
+}
+
+@functions{
+    public string GetAntiForgeryToken()
+    {
+        string cookieToken, formToken;
+        AntiForgery.GetTokens(null, out cookieToken, out formToken);
+        return cookieToken + ":" + formToken;
+    }
+}
+<script type="text/javascript">
+    var patientOrderExam = JSON.parse('@Html.Raw(Json.Encode(Model))'),
+        documentTitle = '@ViewBag.Title',
+        patient = { PatientId: patientOrderExam.PatientId, FirstName: '', LastName: '' };
+</script>
+
+<div id="patientTitle" class="col-lg-12 col-md-12 col-no-padding">
+    <div id="patientDemographicsBtn" class="btn-group hidden-lg">
+        <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown">
+            <i class="icon-user-2"></i> <span class="caret"></span>
+        </button>
+        <div id="patientDropdownNav" class="dropdown-menu" role="menu"></div>
+    </div>
+    <h2 class="hidden-xs">@ViewBag.Title</h2>
+    <h3 class="hidden-lg hidden-md hidden-sm">@ViewBag.Title</h3>
+</div>
+
+
+<nav id="patientSideNav" class="col-lg-2 visible-lg"></nav>
+
+<div id="patientExams" class="col-lg-10 col-md-12 col-lg-grid-padding col-md-no-padding">
+    <div id="msg_OldExams" class="alert alert-info messageCenterStyle hidden">
+        <span class="title"><i class="icon-info"></i><strong>The system has detected possible duplicate EHR exams.</strong></span>
+        <span class="message">
+            The system is unable to determine if one or more pending exams is a duplicate of an exam that has already been invoiced, shown in the <em>Exam Orders History</em>
+            grid.  Please review the 2 grids and remove any duplicate exams from the <em>Pending Eyefinity EHR Exams</em> by clicking the Delete Exam icon.
+        </span>
+    </div>
+
+    <div id="titlePendingExams" class="form-group pull-left hidden">
+        <h4>Pending Eyefinity EHR Exams</h4>
+    </div>
+    <div class="form-group pull-right">
+        <button id="btnNewExam" class="btn btn-primary">+ Exam</button>
+    </div>
+
+    <div id="pendingEhrExams">
+        <div class="col-width2-no-margin summaryMessages"></div>
+        <table id="pendingEhrExamsTable"></table>
+    </div>
+
+    <div class="form-group pull-left"><h4>Exam Orders History</h4></div>
+    <div id="exams">
+        <table id="examsTable"></table>
+    </div>
+    <div class="clearfix"></div>
+</div>
+
+<div id="deleteExamModal" class="modal fade" data-bind="">
+    <div class="modal-dialog">
+        <div class="vertical-align-middle">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                    <h3 class="modal-title">Delete Pending Eyefinity EHR Exam</h3>
+                </div>
+                <div class="modal-body">
+                    Are you sure you want to delete this exam?
+                </div>
+                <div class="clearfix"></div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-primary pull-right" id="btnConfirmDeleteExam" data-dismiss="modal">Delete</button>
+                    <button type="button" class="btn btn-default pull-left" id="btnCancel" data-dismiss="modal">Cancel</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+@Scripts.Render("~/bundles/patientExams")

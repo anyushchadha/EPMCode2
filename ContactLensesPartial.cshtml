@@ -1,0 +1,136 @@
+<div id="GeneralInfo" class="form-horizontal col-lg-10 col-md-12 col-lg-offset-1 padding-2">
+    <div class="row">
+        <div class="col-lg-12 col-md-12">
+            <div class="col-lg-10 col-md-8">
+                <div class="form-group">
+                    <div class="col-lg-3 col-md-3 control-label">
+                        Source
+                    </div>
+                    <div class="col-lg-9 col-md-9 form-control-static">
+                        <div id="source" class="col-lg-3 col-md-3 col-sm-3 col-no-padding color-03"></div>
+                        <div class="col-lg-9 col-md-9 col-sm-9">
+                            <div id="linkEhrCodes" class="pull-left hidden"><a href="#">View Procedure &amp; Diagnosis Codes</a></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-10 col-md-8" data-bind="visible: showRxType()">
+                <div class="form-group">
+                    <div class="col-lg-3 col-md-3 control-label ">
+                        <label for="soft">Contact Lens Rx Type</label>
+                    </div>
+                    <div class=" col-lg-9 col-md-9">
+                        <div class="col-lg-3 col-md-3 col-no-padding">
+                            <label class="radio-inline ">
+                                <input id="soft" type="radio" name="group1" value="Option1" checked="checked" />Soft
+                            </label>
+                        </div>
+                        <div class="col-lg-4 col-md-4">
+                            <label class="radio-inline ">
+                                <input id="hard" type="radio" name="group1" value="Option2" />Hard
+                            </label>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-lg-12 col-md-12 panel panel-shadow">
+            <div class="panel-body col-no-padding">
+                <div class="col-lg-10 col-md-8">
+                    <div class="form-group">
+                        <div class=" col-lg-9 col-md-9 col-lg-offset-3 col-md-offset-3 ">
+                            <div class="col-lg-3 col-md-3 col-no-padding">
+                                <label class="radio-inline ">
+                                    <input id="radioOption3" type="radio" name="group2" value="Option 4" checked="checked" />Provider
+                                </label>
+                            </div>
+                            <div class="col-lg-4 col-md-4 ">
+                                <label class="radio-inline ">
+                                    <input id="radioOption4" type="radio" name="group2" value="Option 5" />Outside Provider
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-6 col-md-6" id="ProviderDiv">
+                    <div class="form-group">
+                        <div class="col-lg-5 col-md-4 control-label">
+                            <span class="required">*</span><label for="provider">Provider</label>
+                        </div>
+                        <div class="col-lg-7 col-md-7">
+                            <select data-name="provider" name="provider" id="provider" class="requiredField" data-bind="options: providers, value: provider, optionsText: 'Description', optionsValue: 'Key'" data-live-search="true" data-size="10"></select>
+                        </div>
+                    </div>
+                    <div class="col-lg-7 col-md-7 col-lg-offset-3 col-md-offset-3 fieldMessages"></div>
+                </div>
+                <div id="OutsideProviderDiv">
+                    <div class="col-lg-10 col-md-10">
+                        <div class="form-group">
+                            <div class="col-lg-3 col-md-3 control-label">
+                                <span class="required">*</span><label for="outsider">Outside Provider</label>
+                            </div>
+                            <div class="col-lg-9 col-md-9 text-left">
+                                <label id="outsider" data-name="outsider" data-bind="text: outsideProviderName"></label>
+                                <button id="outsideProvider" class="btn btn-primary margin-left-25" data-text="" title="Click Search/Add to search for an existing outside provider or add a new one.">
+                                    <i class="icon icon-search"></i>
+                                    <span>Search / Add Provider</span>
+                                </button>
+                            </div>
+                        </div>
+                        <div class="col-lg-8 col-md-8 col-lg-offset-3 col-md-offset-3 fieldMessages"></div>
+                    </div>
+                </div>
+                <div class="clearfix"></div>
+                <div class="col-lg-12 col-md-12">
+                    <div class="col-lg-6 col-md-6">
+                        <div class="form-group">
+                            <div class="col-lg-5 col-md-4 control-label">
+                                @*<span class="required">*</span>*@
+                                <span class="required" data-bind="text: RStar"></span>
+                                <label for="provider">Lens Rx Type</label>
+                            </div>
+                            <div class="col-lg-7 col-md-7">
+                                <select data-name="lenstype" name="lenstype" id="lenstype" class="requiredField" data-bind="options: lenstypes,  value: lenstype, optionsText: 'Description', optionsValue: 'Key'@*optionsCaption: 'Select'*@ "></select>
+                            </div>
+                        </div>
+                        <div class="col-lg-7 col-md-7 col-lg-offset-5 col-md-offset-4 fieldMessages"></div>
+                    </div>
+                </div>
+                <div class="clearfix"></div>
+                <div class="col-lg-12 col-md-12">
+                    <div class="col-lg-6 col-md-6">
+                        <div class="form-group">
+                            <div class="col-lg-5 col-md-4 control-label">
+                                @*<span class="required">*</span>*@
+                                <span class="required" data-bind="text: RStar"></span>
+                                <label for="examDatePicker">Exam Date</label>
+                            </div>
+                            <div class="col-lg-7 col-md-7 input-group">
+                                <input type="text" data-name="examDatePicker" name="examDatePicker" id="examDatePicker" class="form-control requiredField" placeholder="mm/dd/yyyy" data-bind="value: examDate" />
+                                <label for="examDatePicker" class="input-group-addon" id="exam_datePicker"><i class="btn icon-calendar-3"></i></label>
+                            </div>
+                        </div>
+                        <div class="col-lg-9 col-md-9 col-lg-offset-5 col-md-offset-4 fieldMessages"></div>
+                    </div>
+                    <div class="col-lg-6 col-md-6">
+                        <div class="form-group">
+                            <div class="col-lg-4 col-md-4 control-label">
+                                @*<span class="required">*</span>*@
+                                <span class="required" data-bind="text: RStar"></span>
+                                <label for="expireDatePicker">Expiration Date</label>
+                            </div>
+                            <div class="col-lg-7 col-md-7 input-group">
+                                <input type="text" data-name="expireDatePicker" name="expireDatePicker" id="expireDatePicker" class="form-control requiredField" placeholder="mm/dd/yyyy"
+                                       data-bind="value: expirationDate" />
+                                <label for="expireDatePicker" class="input-group-addon " id="expire_datePicker"><i class="btn icon-calendar-3"></i></label>
+                            </div>
+                        </div>
+                        <div class="col-lg-11 col-md-11 col-lg-offset-2 col-md-offset-2 fieldMessages"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

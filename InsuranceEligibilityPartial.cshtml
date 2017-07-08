@@ -1,0 +1,150 @@
+@using Eyefinity.PracticeManagement.Common
+@{
+    ViewBag.Title = "Insurance: Eligibility / Authorization";
+}
+
+<script type="text/javascript">
+    var documentTitle = '@ViewBag.Title';
+</script>
+
+@functions{
+    public string GetAntiForgeryToken()
+    {
+        string cookieToken, formToken;
+        AntiForgery.GetTokens(null, out cookieToken, out formToken);
+        return cookieToken + ":" + formToken;
+    }
+}
+
+<div id="patientInsurance" class="col-lg-10 col-md-12 col-xs-12" data-bind="foreach:insurances()">
+    <div class="col-lg-12 col-md-12 col-xs-12 col-lg-grid-padding col-md-no-padding">
+        <div>
+        </div>
+        <div class="eligibilityGridWrapper .table-responsive">
+            <table id="eligibilityTable" class="eligibilityGrid showLeftBorder dataTable hasFilters highlightRows" data-bind='attr:{id:"eligibilityGrid_" + $index()}, css:{IsVsp:isVsp, hasFooter:eligibilities.hasHistory}'>
+                <thead>
+                    <tr>
+                        <th colspan='999'>
+                            <h4 data-bind='text: eligibilityGridTitle, attr: {id:"eligibilityGridTitle_" + $index()}'></h4>
+                            <div class="addEligibilityLink">
+                                <a href="#" data-bind='click: eligibilities.addEligibility, if: Id(), attr:{id: "addEligibility_" + $index()}'>+ Eligibility / Authorization</a>
+                            </div>
+                        </th>
+                    </tr>
+                    <tr>
+                        <th class="hideColumn" data-col="eligEmployeeName">Resource</th>
+                        <th id="benefitTypeHeader" class="VspVisible">Benefit Type</th>
+                        <th data-col="authDate">Eligibility<br />Date</th>
+                        <th data-col="authExpireDate">Expires<br />On</th>
+                        <th>Exams</th>
+                        <th>Frames</th>
+                        <th>Lenses</th>
+                        <th>Contacts</th>
+                        <th data-bind="visible: isVsp">Contacts Exams</th>
+                        <th data-col="authNumber">Auth #</th>
+                        <th class="hideNote" data-col="note">Note</th>
+                        <th data-col="report">Report</th>
+                        <th></th>
+                    </tr>
+                </thead>
+                <!-- ko if:eligibilities.hasActive-->
+                <tbody data-bind="foreach: eligibilities.activeItems">
+                    <tr>
+                        <td class="hideColumn" data-bind="text:eligEmployeeName"></td>
+                        <td id="benefitType" class="VspVisible" data-bind="text: isManual() ? 'Manual' : vspBenefitType"></td>
+                        <td data-bind="text:authDate.formatted"></td>
+                        <td data-bind="text:authExpireDate.formatted, css: {isExpired: isExpired}"></td>
+                        <td>
+                            <i class="icon-big" data-bind="css: statusExam.icon, attr:{title: statusExam.tooltip}"></i>
+                        </td>
+                        <td>
+                            <i class="icon-big" data-bind="css: statusFrame.icon, attr:{title: statusFrame.tooltip}"></i>
+                        </td>
+                        <td>
+                            <i class="icon-big" data-bind="css: statusLens.icon, attr:{title: statusLens.tooltip}"></i>
+                        </td>
+                        <td>
+                            <i class="icon-big" data-bind="css: statusCl.icon, attr:{title: statusCl.tooltip}"></i>
+                        </td>
+                        <td data-bind="visible: $parent.isVsp">
+                            <i class="icon-big" data-bind="css: statusClFit.icon, attr:{title: statusClFit.tooltip}"></i>
+                        </td>
+                        <td>
+                            <a href="#" data-bind="text:authNumber() || 'No Authorization', click: $parent.isVsp() ? $parent.eligibilities.editEligibilityPmi : $parent.eligibilities.editEligibility"></a>
+                        </td>
+                        <td class="hideNote" style="word-wrap: break-word;" data-bind="text:note"></td>
+                        <td nowrap="nowrap">
+                            <!-- ko if: $parent.isVsp() && !!authNumber && !isManual() -->
+                            <i class="icon-big btn icon-patient-record-report" data-bind="click: $parent.eligibilities.showPatientRecordReport" title="VSP Patient Record Report"></i>
+                            <!-- /ko -->
+                        </td>
+                        <td nowrap="nowrap">
+                            <i class="btn icon-remove" data-bind="click:$parent.eligibilities.deleteEligibility, visible: !hasMaterialOrder()"></i>
+                            <!-- ko if: $parent.isVsp() && !!authNumber && !isManual() -->
+                            <i class="btn icon-plan-summary-report hidden" data-bind="click: $parent.eligibilities.showPlanSummaryReport"></i>
+                            <!-- /ko -->
+                        </td>
+                    </tr>
+                </tbody>
+                <!-- /ko -->
+                <!-- ko if:!eligibilities.hasActive()-->
+                <tbody><tr><td colspan="999">No active eligibilities.</td></tr></tbody>
+                <!-- /ko -->
+                <tbody class="empty" data-bind="visible:eligibilities.hasHistory"><tr><td colspan="999"></td></tr></tbody>
+                <tbody data-bind="foreach: eligibilities.historyItems">
+                    <tr>
+                        <td class="hideColumn" data-bind="text:eligEmployeeName"></td>
+                        <td id="benefitType" class="VspVisible" data-bind="text: isManual() ? 'Manual' : vspBenefitType"></td>
+                        <td data-bind="text:authDate.formatted"></td>
+                        <td data-bind="text:authExpireDate.formatted, css: {isExpired: isExpired}"></td>
+                        <td>
+                            <i class="icon-big" data-bind="css: statusExam.icon, attr:{title: statusExam.tooltip}"></i>
+                        </td>
+                        <td>
+                            <i class="icon-big" data-bind="css: statusFrame.icon, attr:{title: statusFrame.tooltip}"></i>
+                        </td>
+                        <td>
+                            <i class="icon-big" data-bind="css: statusLens.icon, attr:{title: statusLens.tooltip}"></i>
+                        </td>
+                        <td>
+                            <i class="icon-big" data-bind="css: statusCl.icon, attr:{title: statusCl.tooltip}"></i>
+                        </td>
+                        <td data-bind="visible: $parent.isVsp">
+                            <i class="icon-big" data-bind="css: statusClFit.icon, attr:{title: statusClFit.tooltip}"></i>
+                        </td>
+                        <td>
+                            <a href="#" data-bind="text:authNumber, click: $parent.isVsp() ? $parent.eligibilities.editEligibilityPmi : $parent.eligibilities.editEligibility"></a>
+                        </td>
+                        <td class="hideNote" data-bind="text:note"></td>
+                        <td nowrap="nowrap">
+                            <!-- ko if: $parent.isVsp() && !!authNumber && !isManual() -->
+                            <i class="icon-big btn icon-patient-record-report" data-bind="click: $parent.eligibilities.showPatientRecordReport" title="VSP Patient Record Report"></i>
+                            <!-- /ko -->
+                        </td>
+                        <td nowrap="nowrap">
+                            <i class="btn icon-remove" data-bind="click:$parent.eligibilities.deleteEligibility, visible: !hasMaterialOrder()"></i>
+                            <!-- ko if: $parent.isVsp() && !!authNumber && !isManual() -->
+                            <i class="btn icon-plan-summary-report hidden" data-bind="click: $parent.eligibilities.showPlanSummaryReport"></i>
+                            <!-- /ko -->
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+            <br />
+        </div>
+        <div class="gridFooterLeft" data-bind="visible:eligibilities.hasHistory">
+            <a href="#" data-bind="click: function(){$data.eligibilities.toggleHistory();}" class="eligibilityHistoryToggle">
+                <span>History</span> <span data-icon="&#xe08f;" data-bind="css:{rotateLeft: !eligibilities.showHistory()}"></span>
+            </a>
+        </div>
+        <div id="notModalPmi" data-bind="modal: eligibilities.modal" class="modal fade eligibilityModal">
+            @Html.PartialOnce("~/Views/Patient/EligibilityModal.cshtml")
+        </div>
+        <div id="modalPmi" data-bind="modal: eligibilities.modalPmi" class="modal fade eligibilityModal">
+            @Html.PartialOnce("~/Views/Patient/EligibilityModalPmi.cshtml")
+        </div>
+    </div>
+    <div class="clearfix"></div>
+
+</div>
+@Styles.Render("~/content/themes/app/Insurance/patientinsuranceeligibility")

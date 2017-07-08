@@ -1,0 +1,54 @@
+﻿<div class="form-horizontal col-lg-12 col-md-12 ">
+    <div id="egOrderLabs">
+        <div id="egLabMsgPanel" class="col-lg-12 col-md-12 col-sm-12 col-xs-12 col-no-padding">
+            <div id="msgError" class="alert alert-danger messageCenterStyle hidden" data-selectable="false">
+                <i class="icon-notification"></i><span id="errorMsgTitle" class="message"></span>
+            </div>
+            <div id="msgWarning" class="alert alert-warning messageCenterStyle hidden" data-selectable="false">
+                <i class="icon-warning"></i><span id="warningMsgTitle" class="message">Extras Only Orders will not be submitted electronically. Contact the lab to place this patient order.</span>
+            </div>
+        </div>
+
+        <div id="firstLabsGroup" class="hidden">
+            <div class="row" data-bind="foreach: {data: displayEgOrderLabsVsp, as: 'egRow1'}">
+                <div class="" data-bind="foreach: $data">
+                    <div class="col-lg-3 col-md-3 col-sm-3 col-xs-6">
+                        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 labs-panel panelLink" data-bind="attr: { id: 'orderLabs_' + Id }">
+                            <i class="icon-checkmark-circle color-13 hidden" data-bind="attr: { id: 'labId_' + Id }"></i>
+                            <div class="text-center form-group">
+                                <h5 class="text-center" data-bind="text: Name"></h5>
+                            </div>
+                            <div class="text-center">
+                                <img style="width: 38px; height: 28px" data-bind="attr: { id: 'logoId_' + Id }" src="~/Content/themes/app/images/VSP_RGB_56x47px.png"/>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div id="secondLabsGroup" class="hidden">
+            <div class="row" data-bind="foreach: {data: displayEgOrderLabsNonVsp, as: 'egRow2'}">
+                <div class="" data-bind="foreach: $data">
+                    <div class="col-lg-3 col-md-3 col-sm-3 col-xs-6">
+                        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 labs-panel panelLink" data-bind="attr: { id: 'orderLabs_' + Id }">
+                            <i class="icon-checkmark-circle color-13 hidden" data-bind="attr: { id: 'labId_' + Id }"></i>
+                            <div class="text-center form-group">
+                                <h5 class="text-center" data-bind="text: Name"></h5>
+                            </div>
+                            <div class="text-center ">
+                                <img style="width: 50px; height: 18px" data-bind="attr: { id: 'logoId_' + Id }" src="~/Content/themes/app/images/eLab_RGB_75x27px.png"/>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="clearfix"></div>
+        @*<div class="col-lg-12 col-md-12 col-sm-12">
+            <button id="btnLabGoBack" type="submit" class="btn btn-default">Go Back</button>
+        </div>*@
+    </div>
+</div>
+

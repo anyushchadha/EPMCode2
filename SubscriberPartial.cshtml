@@ -1,0 +1,129 @@
+<div class="col-lg-12">
+    <div id="SubscriberPartialInformation">
+        <div id="subscriberInsuredIdPartial">
+            <div class="form-group">
+                <label class="control-label col-lg-3" for="insuredIdPartial"><span class="required">*</span> Insured ID (1a)</label>
+                <div class="col-lg-4">
+                    <input type="text" id="insuredIdPartial" name="insuredIdPartial" class="form-control requiredField" data-bind="value: insuredIdPartial" />
+                </div>
+                <div class="col-lg-4">
+                    <div class="checkbox hidden">
+                        <label>
+                            <input type="checkbox" id="useSsnPartial" name="useSsnPartial" />Use Patient SSN
+                        </label>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-9 col-lg-offset-3 fieldMessages"></div>
+
+        <div class="form-group hidden">
+            <label class="control-label col-lg-3" for="policyGroupPartial">Policy Group (11)</label>
+            <div class="col-lg-9">
+                <input type="text" id="policyGroupPartial" name="policyGroupPartial" class="form-control" data-bind="value: policyGroupPartial" />
+            </div>
+        </div>
+        <div class="col-lg-9 col-lg-offset-3 fieldMessages"></div>
+
+        <div class="form-group">
+            <div class="col-lg-3 control-label fieldLabelWrap">
+                <label for="relationshipPartial"><span class="required">*</span>Relationship to<br />Subscriber</label>
+            </div>
+            <div class="col-lg-9">
+                <select id="relationshipPartial" name="relationshipPartial" class="requiredField" data-bind="options: relationshipListPartial, value: selectedRelationshipPartial, optionsText: 'Description', optionsValue: 'Key'"></select>
+            </div>
+        </div>
+        <div class="col-lg-9 col-lg-offset-3 fieldMessages"></div>
+
+        <div class="form-group">
+            <div class="col-lg-3 control-label fieldLabelWrap">
+                <label for="subscriberFirstNamePartial"><span class="required">*</span>Subscriber<br />Name</label>
+            </div>
+            <div class="col-lg-4">
+                <input type="text" id="subscriberFirstNamePartial" name="subscriberFirstNamePartial" placeholder="First Name" class="form-control requiredField" data-bind="value: subscriberPartial().FirstName" />
+            </div>
+            <div class="col-lg-5">
+                <input type="text" id="subscriberLastNamePartial" name="subscriberLastNamePartial" placeholder="Last Name" class="form-control requiredField" data-bind="value: subscriberPartial().LastName" />
+            </div>
+        </div>
+        <div class="col-lg-9 col-lg-offset-3 fieldMessages"></div>
+
+        <div class="form-group">
+            <div class="col-lg-3 control-label">
+                <label for="subscriberAddress1Partial"><span class="required">*</span>Address 1 (7)</label>
+            </div>
+            <div class="col-lg-9">
+                <input type="text" id="subscriberAddress1Partial" name="subscriberAddress1Partial" class="form-control requiredField" maxlength="35" data-bind="value: subscriberAddressPartial().Address1" />
+            </div>
+        </div>
+        <div class="col-lg-9 col-lg-offset-3 fieldMessages"></div>
+
+        <div class="form-group">
+            <label class="control-label col-lg-3" for="subscriberAddress2Partial">Address 2 (7)</label>
+            <div class="col-lg-9">
+                <input type="text" id="subscriberAddress2Partial" name="subscriberAddress2Partial" class="form-control" maxlength="35" data-bind="value: subscriberAddressPartial().Address2" />
+            </div>
+        </div>
+        <div class="col-lg-9 col-lg-offset-3 fieldMessages"></div>
+
+        <div id="divzipcode" class="form-group">
+            <div class="col-lg-3 control-label">
+                <label for="subscriberZipCodePartial"><span class="required">*</span>ZIP/City/State (7)</label>
+            </div>
+            <div class="col-lg-3">
+                <input type="text" id="subscriberZipCodePartial" name="subscriberZipCodePartial" maxlength="10" placeholder="ZIP" class="form-control requiredField" data-text="" data-bind="value: subscriberAddressPartial().ZipCode" />
+            </div>
+            <div class="col-lg-4">
+                <input type="text" id="subscriberCityPartial" name="subscriberCityPartial" maxlength="30" placeholder="City" class="form-control requiredField" data-bind="value: subscriberAddressPartial().City" />
+            </div>
+            <div class="col-lg-2">
+                <input type="text" id="subscriberStatePartial" name="subscriberStatePartial" maxlength="2" placeholder="State" class="form-control requiredField" data-bind="value: subscriberAddressPartial().State" />
+            </div>
+        </div>
+        <div class="col-lg-9 col-lg-offset-3 fieldMessages"></div>
+
+        <div class="form-group">
+            <div class="col-lg-3 control-label">
+                <label for="subscriberPhonePartial"><span class="required">*</span>Phone Number</label>
+            </div>
+            <div class="col-lg-9">
+                <input type="text" id="subscriberPhonePartial" name="subscriberPhonePartial" class="form-control requiredField" placeholder="(     )     -     " data-bind="value: subscriberPhonePartial().PhoneNumber" />
+            </div>
+        </div>
+        <div class="col-lg-9 col-lg-offset-3 fieldMessages"></div>
+
+        <div class="form-group">
+            <div class="col-lg-3 control-label">
+                <label for="radioGenderMalePartial"><span class="required">*</span>Sex (11a)</label>
+            </div>
+            <div class="col-lg-9">
+                <label class="radio-inline">
+                    <input id="radioGenderMalePartial" type="radio" name="genderPartial" class="requiredField" value="M" data-bind="checked: subscriberPartial().Sex" />Male
+                </label>
+                <label class="radio-inline">
+                    <input id="radioGenderFemalePartial" type="radio" name="genderPartial" class="requiredField" value="F" data-bind="checked: subscriberPartial().Sex" />Female
+                </label>
+            </div>
+        </div>
+        <div class="col-lg-9 col-lg-offset-3 fieldMessages"></div>
+
+        <div class="form-group">
+            <div class="col-lg-3 control-label">
+                <label for="subscriberDobPartial"><span class="required">*</span>Date of Birth (11a)</label>
+            </div>
+            <div class="col-lg-9 input-group">
+                <input name="subscriberDobPartial" type="text" id="subscriberDobPartial" class="form-control requiredField" placeholder="mm/dd/yyyy" data-bind="value: subscriberPartial().BirthDate" />
+                <label for="subscriberDobPartial" class="input-group-addon requiredField"><i id="icon_datePicker" class="btn icon-calendar-3"></i></label>
+            </div>
+        </div>
+        <div class="col-lg-9 col-lg-offset-3 fieldMessages"></div>
+
+        <div class="form-group">
+            <label class="control-label col-lg-3" for="subscriberEmployerPartial">Employer (11b)</label>
+            <div class="col-lg-9">
+                <input type="text" id="subscriberEmployerPartial" name="subscriberEmployerPartial" class="form-control" maxlength="100" data-bind="value: subscriberPartial().Employer" />
+            </div>
+        </div>
+        <div class="col-lg-9 col-lg-offset-3 fieldMessages"></div>
+    </div>
+</div>

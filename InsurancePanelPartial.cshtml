@@ -1,0 +1,70 @@
+﻿<div id="insurancePanel" class="panel">
+    <div class="panel-heading">
+        <strong><i class="icon-insurance"></i>Pri. Insurance</strong>&nbsp;&nbsp;&nbsp;
+        <button id="btnRxChangeInsurance" class="btn btn-default btn-xs"><i class="icon-undo-2"></i>Change</button>
+    </div>
+    <div class="panel-body">
+        <div id="NotifyError" class="errorMsg col-lg-12 col-md-12 hidden">
+            <div class="alert alert-danger messageCenterStyle text-center" data-selectable="false">
+                <span class="title"><i class="icon-notification"></i><span class="errorMsgTxt message"></span></span>
+            </div>
+        </div>
+
+        <div id="ErrorText" class="col-lg-12 col-md-12" data-bind="visible: BesError() && BesError().length > 0">
+            <div class="alert alert-warning messageCenterStyle text-center" data-selectable="false">
+                <span class="title"><i class="icon-warning"></i><span data-bind="text: BesError" class="message"></span></span>
+            </div>
+        </div>
+        
+        <div id="carrier" class="col-lg-12 col-md-12 text-center bold" data-bind="text: PrimaryEligibility() ? PrimaryEligibility().CarrierFull() : '', visible: PrimaryEligibility() && !PrimaryEligibility().IsNonInsurance()"></div>
+        <div id="authNumber" class="col-lg-12 col-md-12 text-center" data-bind="visible: PrimaryEligibility() && !PrimaryEligibility().IsNonInsurance()">Auth # <span data-bind="text: PrimaryEligibility() ? PrimaryEligibility().AuthNumber() : ''"></span></div>
+        <div id="noInsurance" class="col-lg-12 col-md-12 text-center color-03" data-bind="visible: PrimaryEligibility() && PrimaryEligibility().IsNonInsurance()">
+            <h3>No Insurance</h3>
+        </div>
+        <div id="infoText" class="col-lg-12 col-md-12 text-center color-03 hidden" data-bind="text: InfoText"></div>
+        <div id="calculations" class="col-lg-12 col-md-12 hidden">
+            <div class="text-center"><strong>Estimated Charges</strong></div>
+            <table id="insCalcTable" class="dataTable">
+                <thead>
+                    <tr role="row">
+                        <th class="ui-state-default col-lg-3 col-md-6 col-sm-3 col-xs-3 center" tabindex="0"></th>
+                        <th class="ui-state-default col-lg-3 col-md-2 col-sm-3 col-xs-3 center" data-bind="css:{'hidden':PrimaryEligibility() && PrimaryEligibility().IsNonInsurance()}" tabindex="0" aria-label="Insurance Covered Amount" title="Insuarance Covered Amount">
+                            <span class="hidden-md">Insurance</span><span class="visible-md">Ins.</span>
+                        </th>
+                        <th class="ui-state-default col-lg-3 col-md-2 col-md-3 col-xs-3 center" tabindex="0" aria-label="Patient out of Pocket" title="Patient out of Pocket">Patient</th>
+                    </tr>
+                </thead>
+                <tbody data-bind="foreach: Items">
+                    <tr>
+                        <td data-bind="text: Title"></td>
+                        <td data-bind="html: $parent.IsEstimated() === false || ($parent.PrimaryEligibility() && $parent.PrimaryEligibility().IsVsp()) ? PrimaryInsurancePriceFormatted() : '<i class=\'icon-tooltip\'></i>', css:{'unknown': $parent.IsEstimated() && $parent.PrimaryEligibility() && !$parent.PrimaryEligibility().IsVsp(), 'hidden': $parent.PrimaryEligibility() && $parent.PrimaryEligibility().IsNonInsurance()}" class="text-right"></td>
+                        <td data-bind="text: PatientPriceFormatted()" class="text-right"></td>
+                    </tr>
+                </tbody>
+            </table>
+            <a href="#" id="detailedBreakdown" class="hidden">See detailed breakdown</a>
+        </div>
+        <div id="divCalcInsurance" data-text="" class="text-center margin10 hidden">
+            <button id="btnCalcInsurance" class="btn btn-primary"><i class="icon-insurance"></i>Update VSP Estimates</button>
+        </div>
+    </div>
+    <div id="detailedBreakdownModal" class="modal fade">
+        <div class="modal-dialog ui-front">
+            <div class="vertical-align-middle">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                        <h4 class="modal-title">Charges Breakdown</h4>
+                    </div>
+                    <div class="modal-body">
+                        <table id="detailsTable"></table>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-default pull-left" id="btnPrintEstCharges" data-bind="css:{'hidden':InsPanelViewModel.DetailItems().count() === 0}" tabindex="0"><i class="icon-print"></i>Print</button>
+                        <button type="button" class="btn btn-primary" data-dismiss="modal" id="btnCloseModal">Close</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

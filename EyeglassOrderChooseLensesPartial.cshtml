@@ -1,0 +1,556 @@
+﻿<form id="chooseEgLensesForm" class="form-horizontal col-lg-12 col-md-12 col-sm-12 col-xs-12 col-md-no-padding-left col-sm-no-padding col-xs-no-padding" novalidate="novalidate">
+    <div id="egLensMsgPanel" class="col-lg-12 col-md-12 col-sm-12 col-xs-12 col-no-padding">
+        <div id="msgError" class="alert alert-danger messageCenterStyle hidden" data-selectable="false">
+            <i class="icon-notification"></i><span id="errorMsgTitle" class="message"></span>
+        </div>
+    </div>
+    <div id="lensMainForm">
+        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 panel" data-bind="css: {'hidden': eyeglassOrderViewModel.eyeglassOrderType() === 4 && eyeglassOrderViewModel.selectedAuthorization().NonInsurance}">
+            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 form-group">
+                <h4>Lens Selection<span id="lensSelectionTitle">: Right &amp; Left Lenses</span></h4>
+            </div>
+
+            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                <div id="lensRightEye" class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+
+                    <div id="lensSelectionRightTitle" class="col-lg-12 col-md-12 col-sm-12 col-xs-12 hidden">
+                        <h4><img class="eyeglass-icon" src="~/Content/themes/app/images/glasses-small-right.gif" /> Right</h4>
+                    </div>
+
+                    <div id="rightType" class="form-group hidden">
+                        <div class="col-lg-3 col-md-4 col-sm-4 col-xs-12 control-label">
+                            <label for="rightLensType"><span class="required">*</span>Type</label>
+                        </div>
+                        <div class="col-lg-9 col-md-8 col-sm-8 col-xs-12">
+                            <select id="rightLensType" name="rightLensType" data-bind="options: lensTypeFilterList, value: rightLensTypeId, optionsText: 'Description', optionsValue: 'Key'" data-size="10" data-dropup-auto="false"></select>
+                        </div>
+                    </div>
+                    <div class="col-lg-9 col-md-8 col-sm-8 col-xs-12 col-lg-offset-3 col-md-offset-4 col-sm-offset-4 fieldMessages"></div>
+
+                    <div id="rightMaterial" class="form-group hidden">
+                        <div class="col-lg-3 col-md-4 col-sm-4 col-xs-12 control-label">
+                            <label for="rightLensMaterial"><span class="required">*</span>Material</label>
+                        </div>
+                        <div class="col-lg-9 col-md-8 col-sm-8 col-xs-12">
+                            <select id="rightLensMaterial" name="rightLensMaterial" data-live-search="true" data-size="10" data-dropup-auto="false" data-bind="options: rightMaterialList, value: rightMaterialId, optionsText: 'Description', optionsValue: 'Key'"></select>
+                        </div>
+                    </div>
+                    <div class="col-lg-9 col-md-8 col-sm-8 col-xs-12 col-lg-offset-3 col-md-offset-4 col-sm-offset-4 fieldMessages"></div>
+
+                    <div id="rightIof" class="form-group hidden">
+                        <div class="col-lg-3 col-md-4 col-sm-4 col-xs-12 control-label">
+                            <label for="rightLensIof">Finishing</label>
+                        </div>
+                        <div id="rightLensIof" class="col-lg-9 col-md-8 col-sm-8 col-xs-12">
+                            <div style="margin-top:5px;">
+                                <input id="chkRightLensIof" type="checkbox" name="chkRightLensIof" value="false" data-bind="checked: rightIsIof" />
+                                <span id="spanRightLensIof">In Office</span>
+                            </div>
+                        </div>
+                        <div class="clearfix"></div>
+                    </div>
+                    
+                    <div id="rightStyle" class="form-group hidden">
+                        <div class="col-lg-3 col-md-4 col-sm-4 col-xs-12 control-label">
+                            <label for="rightLensStyle">
+                                <span class="required">*</span>
+                                Style
+                                <i id="stylesTooltipRight" class="btn tt icon-tooltip-2 colorLedgend hidden" data-title="Styles" data-trigger="hover"
+                                   data-content="Only VSP covered lens styles are available for selection."></i>
+                            </label>
+                        </div>
+                        <div class="col-lg-9 col-md-8 col-sm-8 col-xs-12">
+                            <select id="rightLensStyle" name="rightLensStyle" data-bind="options: rightStyleList, value: rightStyleId, optionsText: 'Description', optionsValue: 'Key'" data-live-search="true" data-size="10" data-dropup-auto="false"></select>
+                        </div>
+                        <div class="col-lg-offset-3 col-lg-9 col-md-offset-4 col-md-8 col-sm-offset-4 col-sm-8 col-xs-12 ">
+                            <a href="#" id="rightLinkAddStyles" class="" click="linkAddStyles">Add Additional Styles</a>
+                        </div>
+                    </div>
+                    <div class="col-lg-9 col-md-8 col-sm-8 col-xs-12 col-lg-offset-3 col-md-offset-4 col-sm-offset-4 fieldMessages"></div>
+
+                    <div id="rightColor" class="form-group hidden">
+                        <div class="col-lg-3 col-md-4 col-sm-4 col-xs-12 control-label">
+                            <label for="rightLensColor"><span class="required">*</span>Color</label>
+                        </div>
+                        <div class="col-lg-9 col-md-8 col-sm-8 col-xs-12">
+                            <select id="rightLensColor" name="rightLensColor" data-bind="options: rightColorList, value: rightColorId, optionsText: 'Description', optionsValue: 'Key'" data-live-search="true" data-size="10" data-dropup-auto="false"></select>
+                        </div>
+                    </div>
+                    <div class="col-lg-9 col-md-8 col-sm-8 col-xs-12 col-lg-offset-3 col-md-offset-4 col-sm-offset-4 fieldMessages"></div>
+
+                    <div id="rightManufacturer" class="form-group hidden">
+                        <div class="col-lg-3 col-md-4 col-sm-4 col-xs-12 control-label">
+                            <label for="rightManufacturerCoating">
+                                <span id="rightMfgCoatingRequired" class="required hidden">*</span>
+                                Coating
+                                <i class="btn tt icon-tooltip-2 colorLedgend" data-title="Manufacturer Coating" data-trigger="hover"
+                                   data-content="The manufacturer includes this coating on this lens. You can select additional coatings under Lens Treatments."></i>
+                            </label>
+                        </div>
+                        <div id="norightMfgCoating" class="col-lg-9 col-md-8 col-sm-8 col-xs-12 form-control-static">
+                            None Available
+                        </div>
+                        <div id="rightManufacturerCoatingDiv" class="col-lg-9 col-md-8 col-sm-8 col-xs-12 hidden">
+                            <select id="rightManufacturerCoating" name="rightManufacturerCoating" data-bind="options: rightMfgCoatings, value: rightCoatingId, optionsText: 'Description', optionsValue: 'Key'" data-live-search="true" data-size="10" data-dropup-auto="false"></select>
+                        </div>
+                    </div>
+                    <div class="col-lg-9 col-md-8 col-sm-8 col-xs-12 col-lg-offset-3 col-md-offset-4 col-sm-offset-4 fieldMessages"></div>
+
+                    <div class="form-group">
+                        <div class="col-lg-3 col-md-4 col-sm-4 col-xs-12 control-label">
+                            <label for="chkRightSlabOff">Options</label>
+                        </div>
+
+                        <div id="rightUncut" class="col-lg-9 col-md-8 col-sm-8 col-xs-12">
+                             <div style="margin-top:5px;">
+                                <input id="chkRightUncut" type="checkbox" name="chkRightUncut" value="false" data-bind="checked: rightIsUncut" />
+                                 <span id="spanRightUncut">Uncut</span>
+                             </div>
+                        </div>
+                        <div class="clearfix"></div>
+
+                        <div id="rightSlabOff" class="col-lg-9 col-md-8 col-sm-8 col-lg-offset-3 col-md-offset-4 col-sm-offset-4 col-xs-12 hidden">
+                            <div style="margin-top:5px;">
+                                <input id="chkRightSlabOff" type="checkbox" name="chkRightSlabOff" value="false" data-bind="checked: rightIsSlabOff" />Slab-Off
+                            </div>
+                        </div>
+                        <div class="clearfix"></div>
+
+                        <div id="rightBalanced" class="col-lg-9 col-md-8 col-sm-8 col-lg-offset-3 col-md-offset-4 col-sm-offset-4 col-xs-12 hidden">
+                            <div style="margin-top:5px;">
+                                <input id="chkRightBalanced" type="checkbox" name="chkRightBalanced" value="false" data-bind="checked: rightIsBalanced" />Balanced
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-9 col-md-8 col-sm-8 col-xs-12 col-lg-offset-3 col-md-offset-4 col-sm-offset-4 fieldMessages"></div>
+
+                </div>
+
+                <div id="lensLeftEye" class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+
+                    <div id="leftLensImage" class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                        @*<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                                <br/>
+                                <button id="btnCustomizeLenses" type="submit" class="btn btn-default" formnovalidate>
+                                    <img class="pull-left" src="~/Content/themes/app/images/glasses-small-left.gif"/>
+                                    Customize<br/>Individual Lens
+                                </button>
+                            </div>*@
+                        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                            <div id="btnCustomizeLenses" class="quicklink col-sm-9 col-xs-12 pull-right">
+                                <div class="quicklink_icon"><p><i class="icon-lenses-3"></i></p></div>
+                                <div class="quicklink_text"><p>Customize Individual Lenses</p></div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div id="leftLensSelections" class="hidden">
+
+                        <div id="lensSelectionLeftTitle" class="col-lg-12 col-md-12 col-sm-12 col-xs-12 hidden">
+                            <h4 formnovalidate><img class="eyeglass-icon pull-left" src="~/Content/themes/app/images/glasses-small-left.gif" /> Left</h4>
+                        </div>
+
+                        <div class="form-group">
+                            <div class="col-lg-3 col-md-4 col-sm-4 col-xs-12 control-label">
+                                <label for="leftLensType"><span class="required">*</span>Type</label>
+                            </div>
+                            <div class="col-lg-9 col-md-8 col-sm-8 col-xs-12">
+                                <select id="leftLensType" name="leftLensType" data-bind="options: lensTypeFilterList, value: leftLensTypeId, optionsText: 'Description', optionsValue: 'Key'" data-size="10" data-dropup-auto="false"></select>
+                            </div>
+                        </div>
+                        <div class="col-lg-9 col-md-8 col-sm-8 col-xs-12 col-lg-offset-3 col-md-offset-4 col-sm-offset-4 fieldMessages"></div>
+
+                        <div id="leftMaterial" class="form-group hidden">
+                            <div class="col-lg-3 col-md-4 col-sm-4 col-xs-12 control-label">
+                                <label for="leftLensMaterial"><span class="required">*</span>Material</label>
+                            </div>
+                            <div class="col-lg-9 col-md-8 col-sm-8 col-xs-12">
+                                <select id="leftLensMaterial" name="leftLensMaterial" data-live-search="true" data-size="10" data-dropup-auto="false" data-bind="options: leftMaterialList, value: leftMaterialId, optionsText: 'Description', optionsValue: 'Key'"></select>
+                            </div>
+                        </div>
+                        <div class="col-lg-9 col-md-8 col-sm-8 col-xs-12 col-lg-offset-3 col-md-offset-4 col-sm-offset-4 fieldMessages"></div>
+
+                        <div id="leftIof" class="form-group hidden">
+                            <div class="col-lg-3 col-md-4 col-sm-4 col-xs-12 control-label">
+                                <label for="rightLensIof">Finishing</label>
+                            </div>
+                            <div id="leftLensIof" class="col-lg-9 col-md-8 col-sm-8 col-xs-12">
+                                <div style="margin-top:5px;">
+                                    <input id="chkLeftLensIof" type="checkbox" name="chkLeftLensIof" value="false" data-bind="checked: leftIsIof" />
+                                    <span id="spanLeftLensIof">In Office (applies to both lenses)</span>
+                                </div>
+                            </div>
+                            <div class="clearfix"></div>
+                        </div>
+
+                        <div id="leftStyle" class="form-group hidden">
+                            <div class="col-lg-3 col-md-4 col-sm-4 col-xs-12 control-label">
+                                <label for="leftLensStyle">
+                                    <span class="required">*</span>
+                                    Style
+                                    <i id="stylesTooltipLeft" class="btn tt icon-tooltip-2 colorLedgend hidden" data-title="Styles" data-trigger="hover"
+                                       data-content="Only VSP covered lens styles are available for selection."></i>
+                                </label>
+                            </div>
+                            <div class="col-lg-9 col-md-8 col-sm-8 col-xs-12">
+                                <select id="leftLensStyle" name="leftLensStyle" data-bind="options: leftStyleList, value: leftStyleId, optionsText: 'Description', optionsValue: 'Key'" data-live-search="true" data-size="10" data-dropup-auto="false"></select>
+                            </div>
+                            <div class="col-lg-offset-3 col-lg-9 col-md-offset-4 col-md-8 col-sm-offset-4 col-sm-8 col-xs-12 ">
+                                <a href="#" id="leftLinkAddStyles" class="" click="linkAddStyles">Add Additional Styles</a>
+                            </div>
+                        </div>
+                        <div class="col-lg-9 col-md-8 col-sm-8 col-xs-12 col-lg-offset-3 col-md-offset-4 col-sm-offset-4 fieldMessages"></div>
+
+                        <div id="leftColor" class="form-group hidden">
+                            <div class="col-lg-3 col-md-4 col-sm-4 col-xs-12 control-label">
+                                <label for="leftLensColor"><span class="required">*</span>Color</label>
+                            </div>
+                            <div class="col-lg-9 col-md-8 col-sm-8 col-xs-12">
+                                <select id="leftLensColor" name="leftLensColor" data-bind="options: leftColorList, value: leftColorId, optionsText: 'Description', optionsValue: 'Key'" data-live-search="true" data-size="10" data-dropup-auto="false"></select>
+                            </div>
+                        </div>
+                        <div class="col-lg-9 col-md-8 col-sm-8 col-xs-12 col-lg-offset-3 col-md-offset-4 col-sm-offset-4 fieldMessages"></div>
+
+                        <div id="leftManufacturer" class="form-group hidden">
+                            <div class="col-lg-3 col-md-4 col-sm-4 col-xs-12 control-label">
+                                <label for="leftManufacturerCoating">
+                                    <span id="leftMfgCoatingRequired" class="required hidden">*</span>
+                                    Coating
+                                    <i class="btn tt icon-tooltip-2 colorLedgend" data-title="Manufacturer Coating" data-trigger="hover"
+                                       data-content="The manufacturer includes this coating on this lens. You can select additional coatings under Lens Treatments."></i>
+                                </label>
+                            </div>
+                            <div id="noleftMfgCoating" class="col-lg-9 col-md-8 col-sm-8 col-xs-12 form-control-static">
+                                None Available
+                            </div>
+                            <div id="leftManufacturerCoatingDiv" class="col-lg-9 col-md-8 col-sm-8 col-xs-12 hidden">
+                                <select id="leftManufacturerCoating" name="leftManufacturerCoating" data-bind="options: leftMfgCoatings, value: leftCoatingId, optionsText: 'Description', optionsValue: 'Key'" data-live-search="true" data-size="10" data-dropup-auto="false"></select>
+                            </div>
+                        </div>
+                        <div class="col-lg-9 col-md-8 col-sm-8 col-xs-12 col-lg-offset-3 col-md-offset-4 col-sm-offset-4 fieldMessages"></div>
+
+                        <div class="form-group">
+                            <label class="col-lg-3 col-md-4 col-sm-4 col-xs-12 control-label">Options</label>
+
+                            <div class="col-lg-9 col-md-8 col-sm-8 col-xs-12">
+                                <div style="margin-top:5px;">
+                                    <input id="chkLeftUncut" type="checkbox" name="chkLeftUncut" value="false" data-bind="checked: leftIsUncut" />Uncut (applies to both lenses)
+                                </div>
+                            </div>
+                            <div class="clearfix"></div>
+
+                            <div class="col-lg-9 col-md-8 col-sm-8 col-lg-offset-3 col-md-offset-4 col-sm-offset-4 col-xs-12">
+                                <div style="margin-top:5px;">
+                                    <input id="chkleftSlabOff" type="checkbox" name="chkleftSlabOff" value="false" data-bind="checked: leftIsSlabOff" />Slab-Off
+                                </div>
+                            </div>
+                            <div class="clearfix"></div>
+
+                            <div class="col-lg-9 col-md-8 col-sm-8 col-lg-offset-3 col-md-offset-4 col-sm-offset-4 col-xs-12">
+                                <div style="margin-top:5px;">
+                                    <input id="chkleftBalanced" type="checkbox" name="chkleftBalanced" value="false" data-bind="checked: leftIsBalanced" />Balanced
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-9 col-md-8 col-sm-8 col-xs-12 col-lg-offset-3 col-md-offset-4 col-sm-offset-4 fieldMessages"></div>
+
+                    </div>
+                </div>
+            </div>
+            <div class="clearfix"></div>
+        </div>
+
+        <div class="" data-bind="css: {'hidden': eyeglassOrderViewModel.eyeglassOrderType() === 4 && eyeglassOrderViewModel.selectedAuthorization().NonInsurance}">
+            <div class="col-lg-5 col-md-5 col-sm-5 col-xs-12 col-lg-no-padding-left col-md-no-padding-left col-sm-no-padding-leftcol-xs-no-padding">
+                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 panel lens-measurement-panel">
+                    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 form-group">
+                        <h4>Pupillary Distance</h4>
+                    </div>
+
+                    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 form-group">
+                        <div class="col-lg-3 col-md-3 col-sm-2 col-xs-12 control-label">
+                            <label for="pdDistanceMono"><span class="required">*</span>Type</label>
+                        </div>
+                        <div class="col-lg-5 col-md-5 col-sm-5 col-xs-12">
+                            <label class="radio-inline">
+                                <input type="radio" id="pdDistanceMono" name="pdGroup" value="2" data-bind="checked: distanceType" />Monocular
+                            </label>
+                        </div>
+                        <div class="col-lg-4 col-md-4 col-sm-5 col-xs-12">
+                            <label class="radio-inline">
+                                <input type="radio" id="pdDistanceBi" name="pdGroup" value="1" data-bind="checked: distanceType" />Binocular
+                            </label>
+                        </div>
+                    </div>
+
+                    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                        <div id="pdLabel1" class="col-lg-4 col-lg-offset-3 col-md-5 col-md-offset-2 col-sm-5 col-sm-offset-2 col-xs-4 col-xs-offset-2">
+                            <span class="required">*</span>Distant
+                        </div>
+                        <div class="col-lg-4 col-md-5 col-sm-4 col-xs-4">
+                            Near
+                        </div>
+                    </div>
+
+                    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 form-group">
+                        <div id="rightPdLabelDiv" class="col-lg-3 col-md-2 col-sm-2 col-xs-2 control-label">
+                            <label for="rightFarPupilDistance">Right</label>
+                        </div>
+                        <div id="pdLabel2" class="col-lg-4 col-md-5 col-sm-5 col-xs-4">
+                            <input type="number" id="rightFarPupilDistance" name="rightFarPupilDistance" class="requiredField form-control" data-bind="value: rightFarPdInput">
+                        </div>
+                        <div class="col-lg-4 col-md-5 col-sm-5 col-xs-4">
+                            <input type="number" id="rightNearPupilDistance" name="rightNearPupilDistance" class="requiredField form-control" data-bind="value: rightNearPdInput">
+                        </div>
+                    </div>
+                    <div id="rightPdFieldMessages" class="col-lg-9 col-lg-offset-3 col-md-10 col-md-offset-2 col-sm-10 col-sm-offset-2 col-xs-10 col-xs-offset-2 fieldMessages"></div>
+
+                    <div id="leftPdDiv" class="col-lg-12 col-md-12 col-sm-12 col-xs-12 form-group">
+                        <div class="col-lg-3 col-md-2 col-sm-2 col-xs-2 control-label">
+                            <label for="leftFarPd">Left</label>
+                        </div>
+                        <div class="col-lg-4 col-md-5 col-sm-5 col-xs-4">
+                            <input type="number" id="leftFarPd" name="leftFarPd" class="requiredField form-control" data-bind="value: leftFarPd">
+                        </div>
+                        <div id="leftPdMessages" class="col-lg-4 col-md-5 col-sm-5 col-xs-4">
+                            <input type="number" id="leftNearPd" name="leftNearPd" class="requiredField form-control" data-bind="value: leftNearPd">
+                        </div>
+                    </div>
+                    <div id="leftPdMessages" class="col-lg-9 col-lg-offset-3 col-md-10 col-md-offset-2 col-sm-10 col-sm-offset-2 col-xs-10 col-xs-offset-2 fieldMessages"></div>
+
+                    <div class="clearfix"></div>
+                </div>
+            </div>
+            <div class="col-lg-7 col-md-7 col-sm-7 col-xs-12 col-lg-no-padding-right col-md-no-padding-right col-sm-no-padding-right col-xs-no-padding">
+                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 panel lens-measurement-panel">
+                    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 form-group">
+                        <h4>Measurements</h4>
+                    </div>
+                    <div class="col-md-11 col-md-offset-1 col-sm-11 col-sm-offset-1 col-xs-11 col-xs-offset-1">
+                        <div class="col-md-12 col-sm-12 col-xs-12">
+                            <div class="col-md-3 col-sm-3 col-xs-3">
+                                O.C. Height
+                            </div>
+                            <div class="col-md-3 col-sm-3 col-xs-3">
+                                <span id="segHeightRequired" class="required hidden">*</span>Seg Height
+                            </div>
+                            <div class="col-md-3 col-sm-3 col-xs-3">
+                                Base Curve
+                            </div>
+                            <div class="col-md-3 col-sm-3 col-xs-3">
+                                Thickness
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-md-1 col-sm-1 col-xs-1 control-label">
+                        @*<img class="eyeglass-icon-tiny " src="~/Content/themes/app/images/glasses-small-right.gif" />*@
+                        <label for="measureRightOCH">Right</label>
+                    </div>
+                    <div class="col-md-11 col-sm-11 col-xs-11">
+                        <div class="col-md-12 col-sm-12 col-xs-12 form-group">
+                            <div class="col-md-3 col-sm-3 col-xs-3 ">
+                                <input id="measureRightOCH" name="measureRightOCH" type="number" class="form-control" data-bind="value: rightOcHeight">
+                            </div>
+                            <div class="col-md-3 col-sm-3 col-xs-3 ">
+                                <input id="measureRightSH" name="measureRightSH" type="number" class="form-control" data-bind="value: rightSegmentHeight">
+                            </div>
+                            <div class="col-md-3 col-sm-3 col-xs-3 ">
+                                <input id="measureRightBC" name="measureRightBC" type="number" class="form-control" data-bind="value: rightBase">
+                            </div>
+                            <div class="col-md-3 col-sm-3 col-xs-3 ">
+                                <input id="measureRightThickness" name="measureRightThickness" type="number" class="form-control" data-bind="value: rightMaterialThickness">
+                            </div>
+                        </div>
+                        <div class="col-md-12 col-sm-12 col-xs-12 fieldMessages"></div>
+                    </div>
+
+                    <div class="col-md-1 col-sm-1 col-xs-1 control-label">
+                        @*<img class="eyeglass-icon-tiny " src="~/Content/themes/app/images/glasses-small-left.gif" />*@
+                        <label for="measureLeftOCH">Left</label>
+                    </div>
+                    <div class="col-md-11 col-sm-11 col-xs-11">
+                        <div class="col-md-12 col-sm-12 col-xs-12 form-group">
+                            <div class="col-md-3 col-sm-3 col-xs-3 ">
+                                <input id="measureLeftOCH" name="measureLeftOCH" type="number" class="form-control" data-bind="value: leftOcHeight">
+                            </div>
+                            <div class="col-md-3 col-sm-3 col-xs-3 ">
+                                <input id="measureLeftSH" name="measureLeftSH" type="number" class="form-control" data-bind="value: leftSegmentHeight">
+                            </div>
+                            <div class="col-md-3 col-sm-3 col-xs-3 ">
+                                <input id="measureLeftBC" name="measureLeftBC" type="number" class="form-control" data-bind="value: leftBase">
+                            </div>
+                            <div class="col-md-3 col-sm-3 col-xs-3 ">
+                                <input id="measureLeftThickness" name="measureLeftThickness" type="number" class="form-control" data-bind="value: leftMaterialThickness">
+                            </div>
+                        </div>
+                        <div class="col-md-12 col-sm-12 col-xs-12 fieldMessages"></div>
+                    </div>
+
+                    <div class="clearfix"></div>
+                </div>
+            </div>
+        </div>
+        <div class="clearfix"></div>
+        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 panel">
+            <h4>Lens Treatments</h4>
+            <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 ">
+                <div class="form-group">
+                    <div class="col-lg-5 col-md-5 col-sm-5 control-label">
+                        <label for="tintType">Tint Type</label>
+                    </div>
+                    <div class="col-lg-7 col-md-7 col-sm-7">
+                        <select id="tintType" name="tintType" data-bind="options: lensTintTypes, value: lensTintTypeId, optionsText: 'Description', optionsValue: 'Key'" data-live-search="true" data-size="10" data-dropup-auto="false"></select>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <div class="col-lg-5 col-md-5 col-sm-5 control-label">
+                        <label for="tintColor"><span id="tintColorRequired" class="required hidden">*</span>Tint Color</label>
+                    </div>
+                    <div class="col-lg-7 col-md-7 col-sm-7">
+                        <select id="tintColor" name="tintColor" data-bind="options: lensTintColors, value: lensTintColorId, optionsText: 'Description', optionsValue: 'Key'" data-live-search="true" data-size="10" data-dropup-auto="false"></select>
+                    </div>
+                </div>
+                <div class="col-lg-7 col-md-7 col-sm-7 col-md-offset-5 col-md-offset-5 col-sm-offset-5 fieldMessages"></div>
+
+                <div class="form-group">
+                    <div class="col-lg-5 col-md-5 col-sm-5 control-label">
+                        <label for="tintComment">Tint Comment</label>
+                    </div>
+                    <div class="col-lg-7 col-md-7 col-sm-7">
+                        <input id="tintComment" type="text" class="form-control" data-bind="value: labInstructions, enable: lensTintTypeId() ">
+                        <label id="tintCommentInfoText">(2% Gray, etc.)</label>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <div class="col-lg-5 col-md-5 col-sm-5 control-label">
+                        <label for="lensEdging">Edge</label>
+                    </div>
+                    <div class="col-lg-7 col-md-7 col-sm-7">
+                        <select id="lensEdging" name="lensEdging" data-bind="options: lensEdgeTypes, value: lensEdgeTypeId, optionsText: 'Description', optionsValue: 'Key'" data-live-search="true" data-size="10" data-dropup-auto="false"></select>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 ">
+                <div class="additional-coatings" data-bind="foreach: displayAdditionalCoatings">
+                </div>
+
+                <div class="form-group">
+                    @*<div id="backsideCoating hidden" class="checkbox col-md-6 col-md-offset-6">
+                            <label>
+                                <input id="chkBacksideCoating" type="checkbox" name="chkBacksideCoating" value="false" data-bind="checked: backsideAr" />Backside AR
+                            </label>
+                        </div>*@
+                    <div class="col-lg-7 col-md-7 col-sm-7 col-md-offset-5 col-md-offset-5 col-sm-offset-5 ">
+                        <a href="#" id="btnAddMoreCoatings">+ Add More Coatings</a>
+                        <i class="btn tt icon-tooltip-2 colorLedgend" data-title="Additional Coating" data-trigger="hover"
+                           data-content="Select a coating to use in addition to the manufacturer's coating, if needed."></i>
+                    </div>
+                </div>
+            </div>
+            <div class="clearfix"></div>
+        </div>
+    </div>
+    @*<div class="col-lg-12 col-md-12 col-sm-12">
+            <button id="btnLensesOrderGoBack" type="submit" class="btn btn-default" formnovalidate>Go Back</button>
+            <button id="btnAddOrderLenses" type="submit" class="btn btn-primary pull-right" formnovalidate>Add Lenses to Order</button>
+        </div>*@
+    <div class="clearfix"></div>
+    <br />
+
+    <div id="egOrderLensMessageModal" class="modal fade">
+        <div class="modal-dialog">
+            <div class="vertical-align-middle">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                        <h4 class="modal-title">Lens Selection Warning</h4>
+                    </div>
+                    <div id="egOrderLensMessage" class="modal-body">
+                        Where the message goes?
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-primary" data-dismiss="modal" id="btnEgOrderLensMessageOk">Ok</button>
+                    </div>
+                </div><!-- /.modal-content -->
+            </div>
+        </div><!-- /.modal-dialog -->
+    </div>
+
+    <div id="modalLensSearch" class="modal fade">
+        <div class="modal-dialog modal-dialog-wide modal-max-width-650">
+            <div class="vertical-align-middle">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                        <h4 class="modal-title">Additional Lens Styles</h4>
+                    </div>
+                    <div class="modal-body">
+
+                        <div class="col-sm-12 form-horizontal">
+
+                            <div class="form-group">
+                                <div class="col-lg-3 col-md-4 col-sm-4 col-xs-12 control-label">
+                                    <label for="searchType">Type</label>
+                                </div>
+                                <div id="searchTypeDiv" class="col-lg-9 col-md-8 col-sm-8 col-xs-12 form-control-static">
+                                    <label id="searchType" data-bind="text: searchLensTypeDescription"></label>
+                                </div>
+                            </div>
+
+                            <div class="form-group ">
+                                <div class="col-lg-3 col-md-4 col-sm-4 col-xs-12 control-label">
+                                    <label for="searchMaterial">Material</label>
+                                </div>
+                                <div id="searchMaterialDiv" class="col-lg-9 col-md-8 col-sm-8 col-xs-12 form-control-static">
+                                    <label id="searchMaterial" data-bind="text: searchLensMaterialDescription"></label>
+                                </div>
+                            </div>
+
+                            <div id="searchIofDiv" data-bind="visible: rightIsIof()" class="form-group">
+                                <div class="col-lg-3 col-md-4 col-sm-4 col-xs-12 control-label">
+                                    <label for="searchIof">Finishing</label>
+                                </div>
+                                <div class="col-lg-9 col-md-8 col-sm-8 col-xs-12 form-control-static">
+                                    <label id="searchIof">In Office</label>
+                                </div>
+                            </div>
+
+                            <div id="searchStyle" class="form-group ">
+                                <div class="col-lg-3 col-md-4 col-sm-4 col-xs-12 control-label">
+                                    <label for="searchLensStyle">
+                                        <span class="required">*</span>
+                                        Lens Description
+                                        <i id="searchStylesTooltip" class="btn tt icon-tooltip-2 colorLedgend hidden" data-title="Styles" data-trigger="hover"
+                                           data-content="Only VSP covered lens styles are available for selection."></i>
+                                    </label>
+                                </div>
+                                <div class="col-lg-9 col-md-8 col-sm-8 col-xs-12">
+                                    <select id="searchLensStyle" name="searchLensStyle" data-bind="options: searchLensStyleList, optionsText: 'Description', optionsValue: 'Key'" data-live-search="true" data-size="10" data-dropup-auto="false"></select>
+                                </div>
+                            </div>
+                            <div class="col-lg-9 col-md-8 col-sm-8 col-xs-12 col-lg-offset-3 col-md-offset-4 col-sm-offset-4 fieldMessages"></div>
+                            <div id="lensAttributes" class="form-group hidden">
+                                <div class="col-sm-12">
+                                    <label>Enter retail price for the lens attribute(s):</label>
+                                </div>
+                                <div class="col-lg-12">
+                                    <table id="lensAttributeTable" ></table>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-default pull-left" id="btnCancelSearchLens">Cancel</button>
+                        <button type="button" class="btn btn-primary" id="btnSearchLensSave">Save</button>
+                    </div>
+                </div><!-- /.modal-content -->
+            </div>
+        </div>
+    </div>
+
+</form>
