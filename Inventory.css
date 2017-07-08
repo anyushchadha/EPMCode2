@@ -1,0 +1,37 @@
+﻿.InventoryLeft {
+    float:left;
+    text-align: left;
+ }
+
+.linePadding {
+    margin-top:6px;
+    float: right;
+    text-align: right;
+}
+
+.noMargin {
+    float: right;
+    text-align: right;
+}
+
+.smallTextBox {
+    width:30px;
+}
+
+.button {
+    margin-top:32px;
+    float: right;
+}
+
+.buttonNoMargin {
+    margin-top:8px;
+    float: right;
+}
+
+.group1 {
+    margin-bottom: 1px
+}
+
+.group2 {
+    margin-bottom: 1px
+}

@@ -1,0 +1,72 @@
+﻿table#recallScheduleTable {
+  margin-top: 35px;
+  margin-bottom: 15px;
+  overflow-y: scroll;
+}
+table#recallScheduleTable > tbody > tr > td.numberPeriod {
+  padding-left: 5px;
+  padding-right: 1px;
+}
+table#recallScheduleTable > tbody > tr > td.numberPeriod input {
+  width: 40px;
+}
+table#recallScheduleTable > tbody > tr > td.period {
+  padding-left: 5px;
+  padding-right: 1px;
+}
+table#recallScheduleTable > tbody > tr > td.period > div.fieldMessages .period > div.fieldMessages {
+  left: 5px;
+}
+table#recallScheduleTable > tbody > tr > td > div.fieldMessages {
+  left: 0;
+}
+table#recallScheduleTable > tbody > tr > td > div.fieldMessages > div.msgs.error > span {
+  max-width: 145px;
+  text-align: left; 
+}
+table#recallScheduleTable > thead > tr > th {
+  vertical-align: middle;
+}
+table#recallScheduleTable > thead > tr > th.period {
+  width: 175px;
+  text-align: left;
+}
+table#recallScheduleTable > tbody > tr > td.whenColumn {
+  padding-left: 5px;
+  padding-right: 1px;
+}
+table#recallScheduleTable > tbody > tr > td.whenColumn > div.fieldMessages .whenColumn > div.fieldMessages {
+  left: 5px;
+}
+table#recallScheduleTable > thead > tr > th.whenColumn {
+  width: 175px;
+  text-align: left;
+}
+table#recallScheduleTable > tbody > tr > td.printColumn {
+  padding-left: 5px;
+  padding-right: 1px;
+}
+table#recallScheduleTable > tbody > tr > td.printColumn input {
+  width: 230px;
+}
+table#recallScheduleTable > tbody > tr > td.printColumn > div.fieldMessages .printColumn > div.fieldMessages {
+  left: 5px;
+}
+table#recallScheduleTable > thead > tr > th.printColumn {
+  width: 268px;
+  text-align: left;
+}
+table#recallScheduleTable > thead > tr > th.deleteColumn {
+  text-align: center;
+}
+span.required {
+  position: relative;
+  top: -2px;
+}
+div.fieldMessages,
+div.summaryMessages {
+  top: 2px;
+}
+input.alignCenter {
+  text-align: center;
+}

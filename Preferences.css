@@ -1,0 +1,18 @@
+﻿
+.leftAligned {
+    float: left;
+    margin-left: 20px !important;
+}
+
+.rightAligned {
+    float: right;
+}
+
+.tooltipLocatedRight {
+    margin-left: 4px;
+    vertical-align: text-bottom;
+}
+
+.btnLocation {
+    float: right;
+}

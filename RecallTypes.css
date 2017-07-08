@@ -1,0 +1,54 @@
+﻿table#recallTypesTable {
+  margin-top: 35px;
+  margin-bottom: 15px;
+}
+table#recallTypesTable > tbody > tr > td.recallTypeColumn {
+  padding-left: 5px;
+  padding-right: 1px;
+  width: 325px;
+}
+table#recallTypesTable > tbody > tr > td.recallTypeColumn input {
+  width: 275px;
+}
+table#recallTypesTable > tbody > tr > td.monthsColumn {
+  padding-left: 5px;
+  padding-right: 1px;
+}
+table#recallTypesTable > tbody > tr > td.monthsColumn > div.fieldMessages .monthsColumn > div.fieldMessages {
+  left: 5px;
+}
+table#recallTypesTable > tbody > tr > td > div.fieldMessages {
+  left: 0;
+}
+table#recallTypesTable > tbody > tr > td > div.fieldMessages > div.msgs.error > span {
+  max-width: 145px;
+  text-align: left;
+}
+table#recallTypesTable > thead > tr > th {
+  vertical-align: middle;
+}
+table#recallTypesTable > thead > tr > th.monthsColumn {
+  width: 175px;
+  text-align: center;
+}
+table#recallTypesTable > thead > tr > th.activeColumn {
+  width: 60px;
+  text-align: center;
+}
+table#recallTypesTable > thead > tr > th.activeColumn div.DataTables_sort_wrapper {
+  margin-bottom: -7px;
+}
+table#recallTypesTable > thead > tr > th.activeColumn div.DataTables_sort_wrapper span {
+  margin-top: -12px;
+}
+span.required {
+  position: relative;
+  top: -2px;
+}
+div.fieldMessages,
+div.summaryMessages {
+  top: 2px;
+}
+input.alignCenter {
+  text-align: center;
+}
