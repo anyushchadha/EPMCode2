@@ -1,0 +1,86 @@
+[
+  {
+    "outputFileName": "Scripts/app/Patient/Exams.js",
+    "inputFiles": [
+      "Scripts/app/Patient/Exams.js"
+    ]
+  },
+  {
+    "outputFileName": "Scripts/app/Patient/NewExam.js",
+    "inputFiles": [
+      "Scripts/app/Patient/NewExam.js"
+    ]
+  },
+  {
+    "outputFileName": "Content/Site.css",
+    "inputFiles": [
+      "Content/Site.css"
+    ]
+  },
+  {
+    "outputFileName": "Content/icons.css",
+    "inputFiles": [
+      "Content/icons.css"
+    ]
+  },
+  {
+    "outputFileName": "Scripts/app/Patient/Navigation.js",
+    "inputFiles": [
+      "Scripts/app/Patient/Navigation.js"
+    ]
+  },
+  {
+    "outputFileName": "Scripts/app/Login/Login.js",
+    "inputFiles": [
+      "Scripts/app/Login/Login.js"
+    ]
+  },
+  {
+    "outputFileName": "Content/bootstrap-select.css",
+    "inputFiles": [
+      "Content/bootstrap-select.css"
+    ]
+  },
+  {
+    "outputFileName": "Scripts/bootstrap-select.js",
+    "inputFiles": [
+      "Scripts/bootstrap-select.js"
+    ]
+  },
+  {
+    "outputFileName": "Scripts/app/Login/resetpwd.js",
+    "inputFiles": [
+      "Scripts/app/Login/resetpwd.js"
+    ]
+  },
+  {
+    "outputFileName": "Scripts/app/Login/aes.js",
+    "inputFiles": [
+      "Scripts/app/Login/aes.js"
+    ]
+  },
+  {
+    "outputFileName": "Scripts/app/Common/SessionTimeout.js",
+    "inputFiles": [
+      "Scripts/app/Common/SessionTimeout.js"
+    ]
+  },
+  {
+    "outputFileName": "Scripts/app/Practice/PlaceOfService.js",
+    "inputFiles": [
+      "Scripts/app/Practice/PlaceOfService.js"
+    ]
+  },
+  {
+    "outputFileName": "Scripts/app/Practice/PlaceOfServiceDialog.js",
+    "inputFiles": [
+      "Scripts/app/Practice/PlaceOfServiceDialog.js"
+    ]
+  },
+  {
+    "outputFileName": "Scripts/bootstrap-select-ajax-1.3.5.min.js",
+    "inputFiles": [
+      "Scripts/bootstrap-select-ajax-1.3.5.js"
+    ]
+  }
+]

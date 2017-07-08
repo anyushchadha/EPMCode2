@@ -1,0 +1,2413 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>
+    </ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{5BCA42DB-A76F-4D97-9A17-946480CC5581}</ProjectGuid>
+    <ProjectTypeGuids>{349c5851-65df-11da-9384-00065b846f21};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Eyefinity.PracticeManagement</RootNamespace>
+    <AssemblyName>Eyefinity.PracticeManagement</AssemblyName>
+    <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
+    <MvcBuildViews>false</MvcBuildViews>
+    <UseIISExpress>true</UseIISExpress>
+    <IISExpressSSLPort>44301</IISExpressSSLPort>
+    <IISExpressAnonymousAuthentication />
+    <IISExpressWindowsAuthentication />
+    <IISExpressUseClassicPipelineMode />
+    <JSLintSkip>\Scripts\bootstrap-3.0.0.js|\Scripts\bootstrap-3.0.0.min.js|\Scripts\jquery-1.9.1.js|\Scripts\jquery-1.9.1.min.js|\Scripts\jquery-ui-1.10.3.min.js|\Scripts\jquery.dataTables-1.9.4.js|\Scripts\jquery.dataTables-1.9.4.min.js|\Scripts\jquery.fileupload.js|\Scripts\jquery.iframe-transport.js|\Scripts\jquery.maskedinput-1.3.1.js|\Scripts\jquery.multiselect.js|\Scripts\jquery.multiselect.min.js|\Scripts\jquery.notify-1.5.js|\Scripts\jquery.notify-1.5.min.js|\Scripts\jquery.placeholder.js|\Scripts\jquery.selectBoxIt-3.3.0.core.js|\Scripts\jquery.unobtrusive-ajax.js|\Scripts\jquery.unobtrusive-ajax.min.js|\Scripts\jquery.validate-vsdoc.js|\Scripts\jquery.validate.js|\Scripts\jquery.validate.min.js|\Scripts\jquery.validate.unobtrusive.js|\Scripts\jquery.validate.unobtrusive.min.js|\Scripts\knockout-2.2.1.debug.js|\Scripts\knockout-2.2.1.js|\Scripts\knockout.extensions.js|\Scripts\ko-multi-wrapper.js|\Scripts\modernizr-2.6.2.js|\Scripts\sugar-full.development.js|\Scripts\sugar-full.min.js|\Scripts\sugar.min.js|\Scripts\dhtmlxScheduler\ext\dhtmlxscheduler_active_links.js|\Scripts\dhtmlxScheduler\ext\dhtmlxscheduler_agenda_view.js|\Scripts\dhtmlxScheduler\ext\dhtmlxscheduler_all_timed.js|\Scripts\dhtmlxScheduler\ext\dhtmlxscheduler_collision.js|\Scripts\dhtmlxScheduler\ext\dhtmlxscheduler_container_autoresize.js|\Scripts\dhtmlxScheduler\ext\dhtmlxscheduler_cookie.js|\Scripts\dhtmlxScheduler\ext\dhtmlxscheduler_dhx_terrace.js|\Scripts\dhtmlxScheduler\ext\dhtmlxscheduler_editors.js|\Scripts\dhtmlxScheduler\ext\dhtmlxscheduler_expand.js|\Scripts\dhtmlxScheduler\ext\dhtmlxscheduler_grid_view.js|\Scripts\dhtmlxScheduler\ext\dhtmlxscheduler_html_templates.js|\Scripts\dhtmlxScheduler\ext\dhtmlxscheduler_key_nav.js|\Scripts\dhtmlxScheduler\ext\dhtmlxscheduler_limit.js|\Scripts\dhtmlxScheduler\ext\dhtmlxscheduler_live_updates.js|\Scripts\dhtmlxScheduler\ext\dhtmlxscheduler_map_view.js|\Scripts\dhtmlxScheduler\ext\dhtmlxscheduler_minical.js|\Scripts\dhtmlxScheduler\ext\dhtmlxscheduler_multiselect.js|\Scripts\dhtmlxScheduler\ext\dhtmlxscheduler_multisource.js|\Scripts\dhtmlxScheduler\ext\dhtmlxscheduler_mvc.js|\Scripts\dhtmlxScheduler\ext\dhtmlxscheduler_offline.js|\Scripts\dhtmlxScheduler\ext\dhtmlxscheduler_outerdrag.js|\Scripts\dhtmlxScheduler\ext\dhtmlxscheduler_pdf.js|\Scripts\dhtmlxScheduler\ext\dhtmlxscheduler_quick_info.js|\Scripts\dhtmlxScheduler\ext\dhtmlxscheduler_readonly.js|\Scripts\dhtmlxScheduler\ext\dhtmlxscheduler_recurring.js|\Scripts\dhtmlxScheduler\ext\dhtmlxscheduler_serialize.js|\Scripts\dhtmlxScheduler\ext\dhtmlxscheduler_timeline.js|\Scripts\dhtmlxScheduler\ext\dhtmlxscheduler_tooltip.js|\Scripts\dhtmlxScheduler\ext\dhtmlxscheduler_treetimeline.js|\Scripts\dhtmlxScheduler\ext\dhtmlxscheduler_units.js|\Scripts\dhtmlxScheduler\ext\dhtmlxscheduler_url.js|\Scripts\dhtmlxScheduler\ext\dhtmlxscheduler_week_agenda.js|\Scripts\dhtmlxScheduler\ext\dhtmlxscheduler_year_view.js|\Scripts\dhtmlxScheduler\locale\locale.js|\Scripts\dhtmlxScheduler\locale\locale_ar.js|\Scripts\dhtmlxScheduler\locale\locale_be.js|\Scripts\dhtmlxScheduler\locale\locale_ca.js|\Scripts\dhtmlxScheduler\locale\locale_cn.js|\Scripts\dhtmlxScheduler\locale\locale_cs.js|\Scripts\dhtmlxScheduler\locale\locale_da.js|\Scripts\dhtmlxScheduler\locale\locale_de.js|\Scripts\dhtmlxScheduler\locale\locale_el.js|\Scripts\dhtmlxScheduler\locale\locale_es.js|\Scripts\dhtmlxScheduler\locale\locale_fi.js|\Scripts\dhtmlxScheduler\locale\locale_fr.js|\Scripts\dhtmlxScheduler\locale\locale_he.js|\Scripts\dhtmlxScheduler\locale\locale_hu.js|\Scripts\dhtmlxScheduler\locale\locale_id.js|\Scripts\dhtmlxScheduler\locale\locale_it.js|\Scripts\dhtmlxScheduler\locale\locale_jp.js|\Scripts\dhtmlxScheduler\locale\locale_nb.js|\Scripts\dhtmlxScheduler\locale\locale_nl.js|\Scripts\dhtmlxScheduler\locale\locale_no.js|\Scripts\dhtmlxScheduler\locale\locale_pl.js|\Scripts\dhtmlxScheduler\locale\locale_pt.js|\Scripts\dhtmlxScheduler\locale\locale_recurring_be.js|\Scripts\dhtmlxScheduler\locale\locale_recurring_cn.js|\Scripts\dhtmlxScheduler\locale\locale_recurring_cs.js|\Scripts\dhtmlxScheduler\locale\locale_recurring_da.js|\Scripts\dhtmlxScheduler\locale\locale_recurring_de.js|\Scripts\dhtmlxScheduler\locale\locale_recurring_el.js|\Scripts\dhtmlxScheduler\locale\locale_recurring_es.js|\Scripts\dhtmlxScheduler\locale\locale_recurring_fi.js|\Scripts\dhtmlxScheduler\locale\locale_recurring_fr.js|\Scripts\dhtmlxScheduler\locale\locale_recurring_it.js|\Scripts\dhtmlxScheduler\locale\locale_recurring_nb.js|\Scripts\dhtmlxScheduler\locale\locale_recurring_nl.js|\Scripts\dhtmlxScheduler\locale\locale_recurring_pl.js|\Scripts\dhtmlxScheduler\locale\locale_recurring_pt.js|\Scripts\dhtmlxScheduler\locale\locale_recurring_ro.js|\Scripts\dhtmlxScheduler\locale\locale_recurring_ru.js|\Scripts\dhtmlxScheduler\locale\locale_recurring_sk.js|\Scripts\dhtmlxScheduler\locale\locale_recurring_sv.js|\Scripts\dhtmlxScheduler\locale\locale_recurring_ua.js|\Scripts\dhtmlxScheduler\locale\locale_ro.js|\Scripts\dhtmlxScheduler\locale\locale_ru.js|\Scripts\dhtmlxScheduler\locale\locale_si.js|\Scripts\dhtmlxScheduler\locale\locale_sk.js|\Scripts\dhtmlxScheduler\locale\locale_sv.js|\Scripts\dhtmlxScheduler\locale\locale_tr.js|\Scripts\dhtmlxScheduler\locale\locale_ua.js|\Scripts\dhxCommon\dhtmlxcommon.js|\Scripts\dhxCommon\dhtmlxmenu.js|\Scripts\dhtmlxScheduler\dhtmlxscheduler_custom_lightbox.js|\Scripts\dhtmlxScheduler\dhtmlxscheduler.js|\Scripts\dhxCommon\ext\dhtmlxmenu_ext.js|\Scripts\dhxCommon\ext\dhtmlxmenu_effects.js|\Scripts\jquery-1.9.1.intellisense.js|\Scripts\bootstrap-select-1.2.0.js|\Scripts\bootstrap-select-1.2.0.min.js|\Scripts\dhtmlxScheduler\mobile\dhxscheduler_mobile_rec.js|\Scripts\dhtmlxScheduler\mobile\dhxscheduler_mobile.js|\Scripts\app\dataTables.bootstrap.js|\Scripts\jquery-ui-1.10.3.js|\Scripts\jquery-2.0.3.min.js|\Scripts\knockout-2.3.0.js|\Scripts\knockout-2.3.0.debug.js|\Scripts\jquery-2.0.3.js|\Areas\Admin\Scripts\jquery.Jcrop.js|\Areas\Admin\Scripts\jquery.Jcrop.min.js|\Areas\Admin\Scripts\knockout-jqueryui.js|\Areas\Admin\Scripts\knockout-jqueryui.min.js|\Areas\Admin\Scripts\spectrum-Colorpicker-1.1.1.js|\Scripts\sugar-1.4.1.js|\Areas\Admin\Scripts\jquery.selectBoxIt-3.3.0.core.js|\Areas\HelpPage\|\Scripts\jquery.spinner.js|\Scripts\dhxCommon\ext\dhtmlxscheduler_key_nav.js|\Scripts\WebApiTestClient.js|\Scripts\bootstrap-select-1.4.3.js|\Scripts\bootstrap-select-1.4.3.min.js|\Content\Help\|\Content\Doc\|\Scripts\modernizr-2.6.2.min.js|\Scripts\jquery.idletimeout.js|\Scripts\jquery.idletimer.js|\Scripts\dhtmlxScheduler_debug\|\Scripts\dhxCommon\|\Scripts\_references.js|\Scripts\eyefinity.context.js|\Scripts\jquery-2.0.3.intellisense.min.js|\Scripts\bootstrap-select.js|\Scripts\bootstrap-select.min.js|\Scripts\bootstrap-timepicker-0.4.1.js|\Scripts\bootstrap.js|\Scripts\bootstrap.min.js|\Scripts\dateJS.js|\Scripts\jquery-2.0.3.intellisense.js|\Scripts\jquery.Jcrop.js|\Scripts\knockout-jqueryui.js|\Scripts\modernizr-2.7.2.js|\Scripts\modernizr-2.7.2.min.js|\Scripts\_references.min.js|\Scripts\dateJS.min.js|\Scripts\eyefinity.context.min.js|\Scripts\jquery.fileupload.min.js|\Scripts\jquery.iframe-transport.min.js|\Scripts\jquery.Jcrop.min.js|\Scripts\jquery.maskedinput-1.3.1.min.js|\Scripts\jquery.selectBoxIt-3.3.0.core.min.js|\Scripts\jquery.spinner.min.js|\Scripts\knockout-2.2.1.debug.min.js|\Scripts\knockout-2.2.1.min.js|\Scripts\knockout-jqueryui.min.js|\Scripts\respond.js|\Scripts\respond.matchmedia.addListener.js|\Scripts\respond.matchmedia.addListener.min.js|\Scripts\respond.min.js|\Scripts\spectrum-Colorpicker-1.1.1.js|\Scripts\spectrum-Colorpicker-1.1.1.min.js|\Scripts\sugar-es6-patch.js|\Scripts\sugar-es6-patch.min.js|\Scripts\sugar.js|\Scripts\WebApiTestClient.min.js|\Scripts\app\Appointments\Calendar.js|\Scripts\app\Appointments\Calendar.min.js|\Scripts\app\Common\jquery.idletimer.js|\Scripts\app\Common\jquery.idletimer.min.js|\Scripts\app\Common\jquery.idletimeout.js|\Scripts\app\Common\jquery.idletimeout.min.js|\Scripts\app\Common\dataTables.bootstrap.js|\Scripts\app\Common\dataTables.bootstrap.min.js|\Scripts\jquery.placeholder.min.js|\Scripts\app\Patient\ViewModel\PatientInsuranceViewModel.min.js|\Scripts\dhtmlxScheduler\|\Scripts\app\Common\iframeResizer.js|\Scripts\jquery.multiSelect-1.13.js|\Scripts\jquery.multiSelect-1.13.min.js|\Scripts\modernizr-2.8.3.js|\Scripts\app\Login\aes.min.js|\Scripts\app\Login\aes.js|\Scripts\bootstrap-select-ajax-1.3.5.js|\Scripts\app\Common\bootstrap-treeview.min.js|\Scripts\app\Appointments\dropit.js|\Scripts\app\Common\rdEmbed.js|\Scripts\knockout.popupTemplate.js</JSLintSkip>
+    <SolutionDir Condition="$(SolutionDir) == '' Or $(SolutionDir) == '*Undefined*'">..\</SolutionDir>
+    <RestorePackages>true</RestorePackages>
+    <TargetFrameworkProfile />
+    <NuGetPackageImportStamp>
+    </NuGetPackageImportStamp>
+    <StyleCopTreatErrorsAsWarnings>false</StyleCopTreatErrorsAsWarnings>
+    <UseGlobalApplicationHostFile />
+  </PropertyGroup>
+  <ItemGroup>
+    <AvailableItemName Include="ThirdPartyAssemblies">
+      <Visible>false</Visible>
+    </AvailableItemName>
+  </ItemGroup>
+  <Target Name="CopyThirdPartyAssemblies" AfterTargets="AfterBuild">
+    <Message Text="Build | Copying third party assemblies to output folder ($(OutputPath))" Importance="high" />
+    <Copy DestinationFolder="$(OutputPath)" SourceFiles="@(ThirdPartyAssemblies)" SkipUnchangedFiles="false" />
+  </Target>
+  <Target Name="CopyBinFiles" AfterTargets="CopyAllFilesToSingleFolderForPackage" BeforeTargets="MSDeployPublish">
+    <Message Text="Deploy | Copying third party assemblies to output folder ($(_PackageTempDir)\bin\)" Importance="high" />
+    <Copy DestinationFolder="$(_PackageTempDir)\bin\" SourceFiles="@(ThirdPartyAssemblies)" SkipUnchangedFiles="false" />
+  </Target>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>TRACE;DEBUG</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <RunCodeAnalysis>true</RunCodeAnalysis>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Compile Include="App_Start\BundleConfig.cs" />
+    <Compile Include="App_Start\FilterConfig.cs" />
+    <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="App_Start\WebApiConfig.cs" />
+    <Compile Include="Areas\Admin\AdminAreaRegistration.cs" />
+    <Compile Include="Areas\Admin\Controllers\HomeController.cs" />
+    <Compile Include="Areas\Admin\Controllers\InsuranceController.cs" />
+    <Compile Include="Areas\Admin\Controllers\OfficeController.cs" />
+    <Compile Include="Areas\Admin\Controllers\PatientEngagementController.cs" />
+    <Compile Include="Areas\Admin\Controllers\CompanyController.cs" />
+    <Compile Include="Areas\Admin\Controllers\PreferencesController.cs" />
+    <Compile Include="Areas\Admin\Controllers\ProductsServicesController.cs" />
+    <Compile Include="Areas\Admin\Controllers\ResourcesController.cs" />
+    <Compile Include="Areas\Admin\Controllers\SchedulerController.cs" />
+    <Compile Include="Areas\Admin\Controllers\StyleGuideController.cs" />
+    <Compile Include="Areas\Billing\BillingAreaRegistration.cs" />
+    <Compile Include="Areas\Billing\Controllers\BillingClaimController.cs" />
+    <Compile Include="Areas\Billing\Controllers\ClaimManagementController.cs" />
+    <Compile Include="Areas\Billing\Controllers\HomeController.cs" />
+    <Compile Include="Areas\Billing\Controllers\MiscellaneousController.cs" />
+    <Compile Include="Areas\Billing\Controllers\ProcessPaymentsController.cs" />
+    <Compile Include="Areas\Billing\Controllers\ReportingController.cs" />
+    <Compile Include="Areas\HelpPage\ApiDescriptionExtensions.cs" />
+    <Compile Include="Areas\HelpPage\App_Start\HelpPageConfig.cs" />
+    <Compile Include="Areas\HelpPage\Controllers\HelpController.cs" />
+    <Compile Include="Areas\HelpPage\HelpPageAreaRegistration.cs" />
+    <Compile Include="Areas\HelpPage\HelpPageConfigurationExtensions.cs" />
+    <Compile Include="Areas\HelpPage\ModelDescriptions\CollectionModelDescription.cs" />
+    <Compile Include="Areas\HelpPage\ModelDescriptions\ComplexTypeModelDescription.cs" />
+    <Compile Include="Areas\HelpPage\ModelDescriptions\DictionaryModelDescription.cs" />
+    <Compile Include="Areas\HelpPage\ModelDescriptions\EnumTypeModelDescription.cs" />
+    <Compile Include="Areas\HelpPage\ModelDescriptions\EnumValueDescription.cs" />
+    <Compile Include="Areas\HelpPage\ModelDescriptions\IModelDocumentationProvider.cs" />
+    <Compile Include="Areas\HelpPage\ModelDescriptions\KeyValuePairModelDescription.cs" />
+    <Compile Include="Areas\HelpPage\ModelDescriptions\ModelDescription.cs" />
+    <Compile Include="Areas\HelpPage\ModelDescriptions\ModelDescriptionGenerator.cs" />
+    <Compile Include="Areas\HelpPage\ModelDescriptions\ModelNameAttribute.cs" />
+    <Compile Include="Areas\HelpPage\ModelDescriptions\ModelNameHelper.cs" />
+    <Compile Include="Areas\HelpPage\ModelDescriptions\ParameterAnnotation.cs" />
+    <Compile Include="Areas\HelpPage\ModelDescriptions\ParameterDescription.cs" />
+    <Compile Include="Areas\HelpPage\ModelDescriptions\SimpleTypeModelDescription.cs" />
+    <Compile Include="Areas\HelpPage\Models\HelpPageApiModel.cs" />
+    <Compile Include="Areas\HelpPage\SampleGeneration\HelpPageSampleGenerator.cs" />
+    <Compile Include="Areas\HelpPage\SampleGeneration\HelpPageSampleKey.cs" />
+    <Compile Include="Areas\HelpPage\SampleGeneration\ImageSample.cs" />
+    <Compile Include="Areas\HelpPage\SampleGeneration\InvalidSample.cs" />
+    <Compile Include="Areas\HelpPage\SampleGeneration\ObjectGenerator.cs" />
+    <Compile Include="Areas\HelpPage\SampleGeneration\SampleDirection.cs" />
+    <Compile Include="Areas\HelpPage\SampleGeneration\TextSample.cs" />
+    <Compile Include="Areas\HelpPage\XmlDocumentationProvider.cs" />
+    <Compile Include="Common\AccessControl.cs" />
+    <Compile Include="Common\AesEncryptDecrypt.cs" />
+    <Compile Include="Common\Api\AllowAnonymousAttribute.cs" />
+    <Compile Include="Common\Api\LogonAuthorize.cs" />
+    <Compile Include="Common\Api\NoCacheAttribute.cs">
+      <ExcludeFromStyleCop>True</ExcludeFromStyleCop>
+    </Compile>
+    <Compile Include="Common\Api\ReportExtensions.cs" />
+    <Compile Include="Common\Api\ValidateHttpAntiForgeryTokenAttribute.cs" />
+    <Compile Include="Common\AuditLogs.cs" />
+    <Compile Include="Common\AuthorizationTicketHelper.cs" />
+    <Compile Include="Common\CSharpRazorViewEngine .cs" />
+    <Compile Include="Common\MessageTracking.cs" />
+    <Compile Include="Common\HandleExceptions.cs" />
+    <Compile Include="Common\Country.cs" />
+    <Compile Include="Common\DataTablesCriteria.cs" />
+    <Compile Include="Common\DataTablesCriteriaColumn.cs" />
+    <Compile Include="Common\DataTablesResult.cs" />
+    <Compile Include="Common\InMemoryCache.cs" />
+    <Compile Include="Common\HtmlHelperExtension.cs" />
+    <Compile Include="Common\HttpForbiddenResult.cs" />
+    <Compile Include="Common\ScriptBundleManager.cs" />
+    <Compile Include="Common\SelectListItemExtension.cs" />
+    <Compile Include="Common\UIHelper.cs" />
+    <Compile Include="Controllers\Api\OtherItemsController.cs" />
+    <Compile Include="Controllers\Api\AdditionalIntegrationsController.cs" />
+    <Compile Include="Controllers\Api\AddressController.cs" />
+    <Compile Include="Controllers\Api\AdminHolidayController.cs" />
+    <Compile Include="Controllers\Api\AdminOfficeHoursController.cs" />
+    <Compile Include="Controllers\Api\AccessoriesController.cs" />
+    <Compile Include="Controllers\Api\PatientDocumentController.cs" />
+    <Compile Include="Controllers\Api\PatientLocationsController.cs" />
+    <Compile Include="Controllers\Api\QuickListController.cs" />
+    <Compile Include="Controllers\Api\AppointmentController.cs" />
+    <Compile Include="Controllers\Api\AppointmentReportsController.cs" />
+    <Compile Include="Controllers\Api\AppointmentServicesController.cs" />
+    <Compile Include="Controllers\Api\ChangePaymentTypeController.cs" />
+    <Compile Include="Controllers\Api\ClaimsInformationController.cs" />
+    <Compile Include="Controllers\Api\CompanyInsuranceController.cs" />
+    <Compile Include="Controllers\Api\EyeglassOrderController.cs" />
+    <Compile Include="Controllers\Api\EyeglassLensController.cs" />
+    <Compile Include="Controllers\Api\FrameController.cs" />
+    <Compile Include="Controllers\Api\InsuranceController.cs" />
+    <Compile Include="Controllers\Api\InventoryReportsController.cs" />
+    <Compile Include="Controllers\Api\HomeController.cs" />
+    <Compile Include="Controllers\Api\LabSetupController.cs" />
+    <Compile Include="Controllers\Api\OfficeInformationController.cs" />
+    <Compile Include="Controllers\Api\ContactLensOrderController.cs" />
+    <Compile Include="Controllers\Api\PatientExamsController.cs" />
+    <Compile Include="Controllers\Api\PatientLedgerController.cs" />
+    <Compile Include="Controllers\Api\PatientOrderController.cs" />
+    <Compile Include="Controllers\Api\SalesReportsController.cs" />
+    <Compile Include="Controllers\Api\SchedulerExceptionsController.cs" />
+    <Compile Include="Controllers\Api\DailyClosingController.cs" />
+    <Compile Include="Controllers\Api\DocumentController.cs" />
+    <Compile Include="Controllers\Api\ETimeController.cs" />
+    <Compile Include="Controllers\Api\ExamServiceController.cs" />
+    <Compile Include="Controllers\Api\HolidayController.cs" />
+    <Compile Include="Controllers\Api\ItemTypeController.cs" />
+    <Compile Include="Controllers\Api\LoginController.cs" />
+    <Compile Include="Controllers\Api\OfficeHoursController.cs" />
+    <Compile Include="Controllers\Api\PasswordController.cs" />
+    <Compile Include="Controllers\Api\PatientAddressController.cs" />
+    <Compile Include="Controllers\Api\PatientContactLensRxController.cs" />
+    <Compile Include="Controllers\Api\PatientController.cs" />
+    <Compile Include="Controllers\Api\PatientDemographicsController.cs" />
+    <Compile Include="Controllers\Api\PatientEyeGlassesRxController.cs" />
+    <Compile Include="Controllers\Api\PatientInsuranceController.cs" />
+    <Compile Include="Controllers\Api\PatientNotesController.cs" />
+    <Compile Include="Controllers\Api\PatientRelationshipsController.cs" />
+    <Compile Include="Controllers\Api\PatientReportsController.cs" />
+    <Compile Include="Controllers\Api\CompanyInformationController.cs" />
+    <Compile Include="Controllers\Api\PreferencesApiController.cs" />
+    <Compile Include="Controllers\Api\ProductsController.cs" />
+    <Compile Include="Controllers\Api\ResourcesController.cs" />
+    <Compile Include="Controllers\Api\SchedulerPreferencesController.cs" />
+    <Compile Include="Controllers\Api\ValidationController.cs" />
+    <Compile Include="Controllers\AppointmentReportsController.cs" />
+    <Compile Include="Controllers\AppointmentsController.cs" />
+    <Compile Include="Controllers\ClaimManagementController.cs" />
+    <Compile Include="Controllers\CommonController.cs" />
+    <Compile Include="Controllers\LoginController.cs" />
+    <Compile Include="Controllers\FeeSlipsController.cs" />
+    <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\ManagementController.cs" />
+    <Compile Include="Controllers\PatientController.cs" />
+    <Compile Include="Controllers\PatientReportsController.cs" />
+    <Compile Include="Controllers\ProductController.cs" />
+    <Compile Include="Controllers\ReportingController.cs" />
+    <Compile Include="Controllers\InventoryReportsController.cs" />
+    <Compile Include="Controllers\SalesReportsController.cs" />
+    <Compile Include="Controllers\UserController.cs" />
+    <Compile Include="Global.asax.cs">
+      <DependentUpon>Global.asax</DependentUpon>
+    </Compile>
+    <Compile Include="Legacy\Reports\AccountsReceivableAgingReport.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>AccountsReceivableAgingReport.rpt</DependentUpon>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Legacy\Reports\AppointmentConfirmationsReport.cs">
+      <DependentUpon>AppointmentConfirmationsReport.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Legacy\Reports\AppointmentScheduleReport.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>AppointmentScheduleReport.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Legacy\Reports\CashReceiptSummaryReport.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>CashReceiptSummaryReport.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Legacy\Reports\ChargeItem.cs" />
+    <Compile Include="Legacy\Reports\CompanySavedOrders.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>CompanySavedOrders.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Legacy\Reports\CompanySavedOrdersReport.cs" />
+    <Compile Include="Legacy\Reports\ContactLensOrderSummaryReport.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ContactLensOrderSummaryReport.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Legacy\Reports\COSAnalysisOfficeReport.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>COSAnalysisOfficeReport.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Legacy\Reports\DailyClosingReport.cs">
+      <DependentUpon>DailyClosingReport.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Legacy\Reports\DailyPaymentReport.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>DailyPaymentReport.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Legacy\Reports\DailyTransactionReport1.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>DailyTransactionReport.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Legacy\Reports\DepositSummaryReport.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>DepositSummaryReport.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Legacy\Reports\DiscountAnalysisDetailDisplay.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>DiscountAnalysisDetailDisplay.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Legacy\Reports\EgOrderChargeItem.cs" />
+    <Compile Include="Legacy\Reports\EgOrderEstimatedChargesReport.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>EgOrderEstimatedChargesReport.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Legacy\Reports\EgOrderSummaryReport.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>EgOrderSummaryReport.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Legacy\Reports\ExamReport.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ExamReport.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Legacy\Reports\FlashReport.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>FlashReport.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Legacy\Reports\InProgressClOrderReport.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>InProgressClOrderReport.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Legacy\Reports\InventoryFrameSaleByStyle.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>InventoryFrameSaleByStyle.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Legacy\Reports\InventoryFrameSalesByDateRangeReport.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>InventoryFrameSalesByDateRangeReport.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Legacy\Reports\InventoryFrameSalesByItem.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>InventoryFrameSalesByItem.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Legacy\Reports\InventoryValuationReport.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>InventoryValuationReport.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Legacy\Reports\MonthlyProductionSummarySubReport.cs">
+      <DependentUpon>MonthlyProductionSummarySubReport.rpt</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Legacy\Reports\MonthlyProductionSummaryReport.cs">
+      <DependentUpon>MonthlyProductionSummaryReport.rpt</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Legacy\Reports\MonthlyProductionByProviderReport.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>MonthlyProductionByProviderReport.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Legacy\Reports\MonthlyProductionByProviderSubReport.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>MonthlyProductionByProviderSubReport.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Legacy\Reports\OfficeNotesReport.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>OfficeNotesReport.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Legacy\Reports\PatientAuditNotesReport.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>PatientAuditNotesReport.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Legacy\Reports\PatientBillingHistoryTransactionReport.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>PatientBillingHistoryTransactionReport.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Legacy\Reports\PatientContactLensReport.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>PatientContactLensReport.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Legacy\Reports\PatientEyeglassesReport.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>PatientEyeglassesReport.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Legacy\Reports\PatientHardContactLensReport.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>PatientHardContactLensReport.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Legacy\Reports\PatientOpenEehrExamReport.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>PatientOpenEehrExamReport.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Legacy\Reports\PatientStatementReport.cs">
+      <DependentUpon>PatientStatementReport.rpt</DependentUpon>
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Legacy\Reports\PatientWelcomeForms.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>PatientWelcomeForms.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Legacy\Reports\PatientWelcomeFormsInsurance.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>PatientWelcomeFormsInsurance.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Legacy\Reports\ProductionByProviderReport.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ProductionByProviderReport.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Legacy\Reports\RefundAdjustmentReport.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>RefundAdjustmentReport.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Legacy\Reports\ScheduledRecallReport.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ScheduledRecallReport.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Legacy\Reports\PatientExamReport.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Areas\HelpPage\HelpPage.css" />
+    <Content Include="Content\Admin.css" />
+    <Content Include="Content\themes\app\images\blue.png" />
+    <Content Include="Content\themes\app\images\elab-logo.gif" />
+    <Content Include="Content\themes\app\images\eLab_RGB_75x27px.png" />
+    <Content Include="Content\themes\app\images\eLab_W_75x27px.png" />
+    <Content Include="Content\themes\app\images\epm-logo.png" />
+    <Content Include="Content\themes\app\images\error.png" />
+    <Content Include="Content\themes\app\images\glasses-right2.gif" />
+    <Content Include="Content\themes\app\images\glasses-small-left.gif" />
+    <Content Include="Content\themes\app\images\glasses-small-right.gif" />
+    <Content Include="Content\themes\app\images\KeepThis.png" />
+    <Content Include="Content\themes\app\images\largetile.png" />
+    <Content Include="Content\themes\app\images\loading-external.gif" />
+    <Content Include="Content\themes\app\images\mediumtile.png" />
+    <Content Include="Content\themes\app\images\patient.png" />
+    <Content Include="Content\themes\app\images\smalltile.png" />
+    <Content Include="Content\themes\app\images\vsp-logo.gif" />
+    <Content Include="Content\themes\app\images\vsp.png" />
+    <Content Include="Content\themes\app\images\VSP_RGB_56x47px.png" />
+    <Content Include="Content\themes\app\images\VSP_W_56x47px.png" />
+    <Content Include="Content\themes\app\images\widetile.png" />
+    <Content Include="Content\themes\app\Insurance\PatientInsuranceEligibility.css" />
+    <Content Include="Content\themes\app\Insurance\CarrierAndPlanSetup.css" />
+    <Content Include="Content\themes\app\Patient\Rx.css" />
+    <Content Include="Content\themes\app\Patient\Merge.css" />
+    <Content Include="Content\themes\app\Patient\Quicklist.css" />
+    <Content Include="Content\themes\app\Patient\Overview.css" />
+    <Content Include="Content\themes\app\Practice\PatientLocations.css" />
+    <Content Include="Content\themes\app\Practice\PlaceOfService.css" />
+    <Content Include="Content\themes\app\Practice\LabSetup.css" />
+    <Content Include="Content\themes\app\Practice\ClaimsInformation.css" />
+    <Content Include="Content\themes\app\Preferences\Inventory.css" />
+    <Content Include="Content\themes\app\Preferences\RecallSchedules.css" />
+    <Content Include="Content\themes\app\ProductsServices\OtherItemsSetup.css" />
+    <Content Include="Content\themes\app\ProductsServices\AddCustomFrame.css" />
+    <Content Include="Content\themes\app\ProductsServices\BulkPricingFrame.css" />
+    <Content Include="Content\themes\app\ProductsServices\EyeglassLensPricingDialog.css" />
+    <Content Include="Content\themes\app\ProductsServices\EyeglassLensSetup.css" />
+    <Content Include="Content\themes\app\ProductsServices\FrameSetup.css" />
+    <Content Include="Content\themes\app\ProductsServices\AccessorySetup.css" />
+    <Content Include="Content\themes\app\Scheduler\Scheduler.css" />
+    <Content Include="Content\themes\base\custom\jquery.dataTables-custom.css" />
+    <Content Include="Content\themes\base\images\animated-overlay.gif" />
+    <Content Include="Content\themes\base\images\ui-bg_flat_0_aaaaaa_40x100.png" />
+    <Content Include="Content\themes\base\images\ui-bg_flat_75_ffffff_40x100.png" />
+    <Content Include="Content\themes\base\images\ui-bg_glass_55_fbf9ee_1x400.png" />
+    <Content Include="Content\themes\base\images\ui-bg_glass_65_ffffff_1x400.png" />
+    <Content Include="Content\themes\base\images\ui-bg_glass_75_dadada_1x400.png" />
+    <Content Include="Content\themes\base\images\ui-bg_glass_75_e6e6e6_1x400.png" />
+    <Content Include="Content\themes\base\images\ui-bg_glass_95_fef1ec_1x400.png" />
+    <Content Include="Content\themes\base\images\ui-bg_highlight-soft_75_cccccc_1x100.png" />
+    <Content Include="Content\themes\base\images\ui-icons_222222_256x240.png" />
+    <Content Include="Content\themes\base\images\ui-icons_2e83ff_256x240.png" />
+    <Content Include="Content\themes\base\images\ui-icons_454545_256x240.png" />
+    <Content Include="Content\themes\base\images\ui-icons_888888_256x240.png" />
+    <Content Include="Content\themes\base\images\ui-icons_cd0a0a_256x240.png" />
+    <Content Include="Content\themes\base\jquery-multiSelect.css" />
+    <Content Include="Content\themes\base\jquery-ui.css" />
+    <Content Include="Content\themes\base\jquery.multiselect-1.13.css" />
+    <Content Include="Content\themes\base\jquery.ui.accordion.css" />
+    <Content Include="Content\themes\base\jquery.ui.all.css" />
+    <Content Include="Content\themes\base\jquery.ui.autocomplete.css" />
+    <Content Include="Content\themes\base\jquery.ui.base.css" />
+    <Content Include="Content\themes\base\jquery.ui.button.css" />
+    <Content Include="Content\themes\base\jquery.ui.core.css" />
+    <Content Include="Content\themes\base\jquery.ui.datepicker.css" />
+    <Content Include="Content\themes\base\jquery.ui.menu.css" />
+    <Content Include="Content\themes\base\jquery.ui.progressbar.css" />
+    <Content Include="Content\themes\base\jquery.ui.resizable.css" />
+    <Content Include="Content\themes\base\jquery.ui.selectable.css" />
+    <Content Include="Content\themes\base\jquery.ui.slider.css" />
+    <Content Include="Content\themes\base\jquery.ui.spinner.css" />
+    <Content Include="Content\themes\base\jquery.ui.tabs.css" />
+    <Content Include="Content\themes\base\jquery.ui.tooltip.css" />
+    <Content Include="Content\themes\base\minified\images\animated-overlay.gif" />
+    <Content Include="Content\themes\base\minified\images\ui-bg_flat_0_aaaaaa_40x100.png" />
+    <Content Include="Content\themes\base\minified\images\ui-bg_flat_75_ffffff_40x100.png" />
+    <Content Include="Content\themes\base\minified\images\ui-bg_glass_55_fbf9ee_1x400.png" />
+    <Content Include="Content\themes\base\minified\images\ui-bg_glass_65_ffffff_1x400.png" />
+    <Content Include="Content\themes\base\minified\images\ui-bg_glass_75_dadada_1x400.png" />
+    <Content Include="Content\themes\base\minified\images\ui-bg_glass_75_e6e6e6_1x400.png" />
+    <Content Include="Content\themes\base\minified\images\ui-bg_glass_95_fef1ec_1x400.png" />
+    <Content Include="Content\themes\base\minified\images\ui-bg_highlight-soft_75_cccccc_1x100.png" />
+    <Content Include="Content\themes\base\minified\images\ui-icons_222222_256x240.png" />
+    <Content Include="Content\themes\base\minified\images\ui-icons_2e83ff_256x240.png" />
+    <Content Include="Content\themes\base\minified\images\ui-icons_454545_256x240.png" />
+    <Content Include="Content\themes\base\minified\images\ui-icons_888888_256x240.png" />
+    <Content Include="Content\themes\base\minified\images\ui-icons_cd0a0a_256x240.png" />
+    <Content Include="Content\themes\base\minified\jquery-ui.multiselect.min.css" />
+    <Content Include="Content\themes\base\minified\jquery-ui.min.css" />
+    <Content Include="Content\themes\base\minified\jquery.ui.accordion.min.css" />
+    <Content Include="Content\themes\base\minified\jquery.ui.autocomplete.min.css" />
+    <Content Include="Content\themes\base\minified\jquery.ui.button.min.css" />
+    <Content Include="Content\themes\base\minified\jquery.ui.core.min.css" />
+    <Content Include="Content\themes\base\minified\jquery.ui.datepicker.min.css" />
+    <Content Include="Content\themes\base\minified\jquery.ui.dialog.min.css" />
+    <Content Include="Content\themes\base\minified\jquery.ui.menu.min.css" />
+    <Content Include="Content\themes\base\minified\jquery.ui.progressbar.min.css" />
+    <Content Include="Content\themes\base\minified\jquery.ui.resizable.min.css" />
+    <Content Include="Content\themes\base\minified\jquery.ui.selectable.min.css" />
+    <Content Include="Content\themes\base\minified\jquery.ui.slider.min.css" />
+    <Content Include="Content\themes\base\minified\jquery.ui.spinner.min.css" />
+    <Content Include="Content\themes\base\minified\jquery.ui.tabs.min.css" />
+    <Content Include="Content\themes\base\minified\jquery.ui.theme.min.css" />
+    <Content Include="Content\themes\base\minified\jquery.ui.tooltip.min.css" />
+    <Content Include="Fonts\glyphicons-halflings-regular.svg" />
+    <Content Include="Fonts\icomoon.dev.svg" />
+    <Content Include="Fonts\icomoon.svg" />
+    <EmbeddedResource Include="Legacy\Reports\AccountsReceivableAgingReport.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>AccountsReceivableAgingReport.cs</LastGenOutput>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <Content Include="Legacy\DNDRPT.xml" />
+    <Content Include="Parameters.xml">
+      <SubType>Designer</SubType>
+    </Content>
+    <Content Include="Properties\PublishProfiles\DeployCIProduction.pubxml.user" />
+    <Content Include="Properties\PublishProfiles\DeployCIServer.pubxml.user" />
+    <Content Include="Properties\PublishProfiles\DeployCIServerFeature.pubxml.user" />
+    <Content Include="Scripts\app\AdminCommon\AdminOfficeContext.js" />
+    <Content Include="Scripts\app\AdminCommon\common.multiselect.js" />
+    <Content Include="Scripts\app\Appointments\AppointmentsOfficeContext.js" />
+    <Content Include="Scripts\app\Appointments\dropit.js" />
+    <Content Include="Scripts\app\Common\bootstrap-treeview.min.js" />
+    <Content Include="Scripts\app\Common\ChangePassword.js" />
+    <Content Include="Scripts\app\Common\iframeResizer.js" />
+    <Content Include="Scripts\app\Home\AdminHome.js" />
+    <Content Include="Scripts\app\Common\SecurityQuestion.js" />
+    <Content Include="Scripts\app\Home\Index.js" />
+    <Content Include="Scripts\app\Insurance\CarrierAndPlanSetup.js" />
+    <Content Include="Scripts\app\Login\aes.js" />
+    <Content Include="Scripts\app\Login\resetpwd.js" />
+    <Content Include="Scripts\app\Office\PatientLocations.js" />
+    <Content Include="Scripts\app\Patient\QuickList.js" />
+    <Content Include="Scripts\app\Patient\AddInsurancePartial.js" />
+    <Content Include="Scripts\app\Patient\BesInsuranceEstimate.js" />
+    <Content Include="Scripts\app\Patient\EyeglassOrderBuildOrderPartial.js" />
+    <Content Include="Scripts\app\Patient\EyeglassOrder.js" />
+    <Content Include="Scripts\app\Patient\ContactLensOrder.js" />
+    <Content Include="Scripts\app\Patient\EyeglassOrderChooseExtras.js" />
+    <Content Include="Scripts\app\Patient\EyeglassOrderChooseLab.js" />
+    <Content Include="Scripts\app\Patient\EyeglassOrderChooseLensesPartial.js" />
+    <Content Include="Scripts\app\Patient\EyeglassOrderChooseFramePartial.js" />
+    <Content Include="Scripts\app\Patient\EyeglassOrderChooseRx.js" />
+    <Content Include="Scripts\app\Patient\EyeglassOrderTypePartial.js" />
+    <Content Include="Scripts\app\Patient\Insurance.js" />
+    <Content Include="Scripts\app\Patient\InsurancePanelPartial.js" />
+    <Content Include="Scripts\app\Patient\Overview.js" />
+    <Content Include="Scripts\app\Office\AdditionalIntegrations.js" />
+    <Content Include="Scripts\app\Office\OfficeInformation-ViewModel.js" />
+    <Content Include="Scripts\app\Office\OfficeInformation.js" />
+    <Content Include="Scripts\app\Patient\NewExam.js" />
+    <Content Include="Scripts\app\Patient\Exams.js" />
+    <Content Include="Scripts\app\Patient\Ledger.js" />
+    <Content Include="Scripts\app\Patient\SubscriberInsurance.js" />
+    <Content Include="Scripts\app\PatientEngagement\RecallSchedule.js" />
+    <Content Include="Scripts\app\PatientEngagement\LetterTemplates.js" />
+    <Content Include="Scripts\app\Patient\OutsideProvider.js" />
+    <Content Include="Scripts\app\Patient\ProcedureDiagnosisCodes.js" />
+    <Content Include="Scripts\app\Patient\ViewModel\EligibilityModalPmi.js" />
+    <Content Include="Scripts\app\Patient\ViewModel\PatientHardContactLensViewModel.js" />
+    <Content Include="Scripts\app\Patient\ViewModel\EligibilityStatus.js" />
+    <Content Include="Scripts\app\Patient\ViewModel\PatientInsuranceViewModel.js" />
+    <Content Include="Scripts\app\Office\PlaceOfServiceDialog.js" />
+    <Content Include="Scripts\app\Office\PlaceOfService.js" />
+    <Content Include="Scripts\app\Office\LabSetup.js" />
+    <Content Include="Scripts\app\Preferences\Inventory.js" />
+    <Content Include="Scripts\app\ProductsServices\MiscFeesSetup.js" />
+    <Content Include="Scripts\app\ProductsServices\RepairsSetup.js" />
+    <Content Include="Scripts\app\ProductsServices\ShippingSetup.js" />
+    <Content Include="Scripts\app\ProductsServices\AddCustomFrame.js" />
+    <Content Include="Scripts\app\ProductsServices\BulkPricingFrame.js" />
+    <Content Include="Scripts\app\ProductsServices\EyeglassLensSetup.js" />
+    <Content Include="Scripts\app\ProductsServices\FrameSetup.js" />
+    <Content Include="Scripts\app\ProductsServices\EyeglassLensPricingDialog.js" />
+    <Content Include="Scripts\app\ProductsServices\AccessoriesSetup.js" />
+    <Content Include="Scripts\app\ProductsServices\ServiceSetup.js" />
+    <Content Include="Scripts\app\Reporting\AccountsReceivableAging.js" />
+    <Content Include="Scripts\app\Reporting\AppointmentScheduleSummary.js" />
+    <Content Include="Scripts\app\Reporting\CashReceiptSummary.js" />
+    <Content Include="Scripts\app\Reporting\DailyFlashSales.js" />
+    <Content Include="Scripts\app\Reporting\DailyTransactionPayment.js" />
+    <Content Include="Scripts\app\Reporting\DiscountAnalysis.js" />
+    <Content Include="Scripts\app\Reporting\PatientCreditBalance.js" />
+    <Content Include="Scripts\app\Reporting\TitledSalesAdjustment.js" />
+    <Content Include="Scripts\app\Reporting\MiscPayment.js" />
+    <Content Include="Scripts\app\Reporting\InventoryFrameSalesByItem.js" />
+    <Content Include="Scripts\app\Reporting\InventoryValuation.js" />
+    <Content Include="Scripts\app\Reporting\CostOfSalesAnalysisByOffice.js" />
+    <Content Include="Scripts\app\Reporting\MonthlyProductionSummary.js" />
+    <Content Include="Scripts\app\Reporting\PatientBillingHistory.js" />
+    <Content Include="Scripts\app\Reporting\PatientOpenEehrExams.js" />
+    <Content Include="Scripts\app\Reporting\PatientStatements.js" />
+    <Content Include="Scripts\app\Reporting\PatientRemake.js" />
+    <Content Include="Scripts\app\Reporting\UndeliveredOrders.js" />
+    <Content Include="Scripts\app\Reporting\PatientWorkInProgress.js" />
+    <Content Include="Scripts\app\Reporting\MonthlyProductionByProvider.js" />
+    <Content Include="Scripts\app\Reporting\PdfView.js" />
+    <Content Include="Scripts\app\Reporting\ProductionByProvider.js" />
+    <Content Include="Scripts\app\Reporting\RefundAdjustmentSales.js" />
+    <Content Include="Scripts\app\Resources\InsuranceDetail.js" />
+    <Content Include="Scripts\app\Resources\OutsideProviderSetup.js" />
+    <Content Include="Scripts\app\Resources\OutsideProviderSetupDialog.js" />
+    <Content Include="Scripts\app\Resources\StaffSetupDialog.js" />
+    <Content Include="Scripts\app\Scheduler\ResourceSchedule.js" />
+    <Content Include="Content\themes\base\custom\jquery.multiselect.css" />
+    <Content Include="Content\themes\base\images\Jcrop.gif" />
+    <Content Include="Content\themes\base\jquery.Jcrop.css" />
+    <Content Include="Content\themes\base\spectrum.css" />
+    <Content Include="Content\themes\Fonts\icomoon.dev.svg" />
+    <Content Include="Scripts\app\BillingClaim\CMSForm.js" />
+    <Content Include="Scripts\app\BillingClaim\GatewayEDITransmission.js" />
+    <Content Include="Scripts\app\BillingClaim\PatientLetter.js" />
+    <Content Include="Scripts\app\BillingClaim\StatementForms.js" />
+    <Content Include="Scripts\app\Miscellaneous\BatchAdjustments.js" />
+    <Content Include="Scripts\app\Miscellaneous\CloseActivityMonth.js" />
+    <Content Include="Scripts\app\ProcessPayments\CarrierPayments.js" />
+    <Content Include="Scripts\app\ProcessPayments\PatientPayments.js" />
+    <Content Include="Scripts\app\ProcessPayments\PaymentRemittance.js" />
+    <Content Include="Scripts\app\BillingReporting\BillingReports.js" />
+    <Content Include="Content\bootstrap-select.css" />
+    <Content Include="Content\bootstrap-select.min.css" />
+    <Content Include="Content\bootstrap-theme.css" />
+    <Content Include="Content\bootstrap-theme.min.css" />
+    <Content Include="Content\bootstrap.css" />
+    <Content Include="Content\themes\app\Login\Forbidden.css" />
+    <Content Include="Content\themes\app\Login\Login.css" />
+    <Content Include="Content\themes\app\images\processing.gif" />
+    <Content Include="Content\themes\app\images\spinner-md.gif" />
+    <Content Include="Content\themes\app\styles\common.ko-combobox.css" />
+    <Content Include="Content\themes\base\custom\bootstrap-context.css" />
+    <Content Include="Content\themes\base\custom\bootstrap-select-custom.css" />
+    <Content Include="Content\themes\base\custom\bootstrap-spinner.css" />
+    <Content Include="Content\themes\base\custom\bootstrap-template.css" />
+    <Content Include="Content\bootstrap-timepicker-0.4.1.css" />
+    <Content Include="Content\themes\base\custom\bootstrap-timepicker-custom.css" />
+    <Content Include="Content\themes\base\custom\jquery.ui.theme.custom.css" />
+    <Content Include="Content\themes\base\images\blue.png" />
+    <Content Include="Content\themes\base\images\dataTables\back_disabled.png" />
+    <Content Include="Content\themes\base\images\dataTables\back_enabled.png" />
+    <Content Include="Content\themes\base\images\dataTables\back_enabled_hover.png" />
+    <Content Include="Content\themes\base\images\dataTables\forward_disabled.png" />
+    <Content Include="Content\themes\base\images\dataTables\forward_enabled.png" />
+    <Content Include="Content\themes\base\images\dataTables\forward_enabled_hover.png" />
+    <Content Include="Content\themes\base\images\dataTables\sort_asc.png" />
+    <Content Include="Content\themes\base\images\dataTables\sort_asc_disabled.png" />
+    <Content Include="Content\themes\base\images\dataTables\sort_both.png" />
+    <Content Include="Content\themes\base\images\dataTables\sort_desc.png" />
+    <Content Include="Content\themes\base\images\dataTables\sort_desc_disabled.png" />
+    <Content Include="Content\themes\base\images\error.png" />
+    <Content Include="Content\themes\base\images\ui-bg_flat_0_000000_40x100.png" />
+    <Content Include="Content\themes\base\images\ui-bg_flat_0_ffffff_40x100.png" />
+    <Content Include="Content\themes\base\images\ui-bg_highlight-soft_40_2C73AB_1x100.png" />
+    <Content Include="Content\themes\base\images\ui-bg_highlight-soft_50_000000_1x100.png" />
+    <Content Include="Content\themes\base\images\ui-bg_highlight-soft_50_1b5482_1x100.png" />
+    <Content Include="Content\themes\base\images\ui-bg_highlight-soft_50_232323_1x100.png" />
+    <Content Include="Content\themes\base\images\ui-bg_highlight-soft_50_2C73AB_1x100.png" />
+    <Content Include="Content\themes\base\images\ui-bg_highlight-soft_50_2d74ae_1x100.png" />
+    <Content Include="Content\themes\base\images\ui-bg_highlight-soft_50_4a4a4a_1x100.png" />
+    <Content Include="Content\themes\base\images\ui-bg_highlight-soft_50_4b8dc2_1x100.png" />
+    <Content Include="Content\themes\base\images\ui-bg_highlight-soft_50_fbf9ee_1x100.png" />
+    <Content Include="Content\themes\base\images\ui-bg_highlight-soft_75_b3b3b3_1x100.png" />
+    <Content Include="Content\themes\base\images\ui-bg_highlight-soft_75_dadada_1x100.png" />
+    <Content Include="Content\themes\base\images\ui-bg_highlight-soft_75_e6e6e6_1x100.png" />
+    <Content Include="Content\themes\base\images\ui-bg_highlight-soft_85_1b5482_1x100.png" />
+    <Content Include="Content\themes\base\images\ui-bg_highlight-soft_85_2d74ae_1x100.png" />
+    <Content Include="Content\themes\base\images\ui-bg_highlight-soft_85_4b8dc2_1x100.png" />
+    <Content Include="Content\themes\base\images\ui-bg_highlight-soft_90_fef1ec_1x100.png" />
+    <Content Include="Content\themes\base\images\ui-icons_333333_256x240.png" />
+    <Content Include="Content\themes\base\images\ui-icons_c6af29_256x240.png" />
+    <Content Include="Content\themes\base\images\ui-icons_ffffff_256x240.png" />
+    <Content Include="Content\themes\base\jquery.dataTables-1.9.4.css" />
+    <Content Include="Content\themes\base\jquery.notify-1.5.css" />
+    <Content Include="Content\themes\base\jquery.selectBoxIt-3.3.0.css" />
+    <Content Include="Content\themes\base\jquery.ui.dialog.css" />
+    <Content Include="Content\themes\base\jquery.ui.theme.css" />
+    <Content Include="Content\themes\Fonts\glyphicons-halflings-regular.svg" />
+    <Content Include="Scripts\app\Common\common.js" />
+    <Content Include="Scripts\app\Patient\InactiveInsurance.js" />
+    <Content Include="Scripts\app\Patient\ViewModel\BlankPatientInsurance.js" />
+    <Content Include="Scripts\app\Patient\ViewModel\EligibilityModal.js" />
+    <Content Include="Scripts\app\Product\PrintLabels.js" />
+    <Content Include="Scripts\app\Patient\InsuranceEligibility.js" />
+    <Content Include="Scripts\app\Patient\ViewModel\AdressViewModel.js" />
+    <Content Include="Scripts\app\Patient\ViewModel\AttributeViewModel.js" />
+    <Content Include="Scripts\app\Patient\ViewModel\EligibilityConfigurationViewModel.js" />
+    <Content Include="Scripts\app\Patient\ViewModel\EligibilityModel.js" />
+    <Content Include="Scripts\bootstrap-select-ajax-1.3.5.js" />
+    <Content Include="Scripts\bootstrap-select-ajax-1.3.5.min.js">
+      <DependentUpon>bootstrap-select-ajax-1.3.5.js</DependentUpon>
+    </Content>
+    <Content Include="Scripts\bootstrap-select.js" />
+    <Content Include="Scripts\bootstrap-select.min.js">
+      <DependentUpon>bootstrap-select.js</DependentUpon>
+    </Content>
+    <Content Include="Scripts\bootstrap-timepicker-0.4.1.js" />
+    <Content Include="Scripts\bootstrap-timepicker-0.4.1.min.js">
+      <DependentUpon>bootstrap-timepicker-0.4.1.js</DependentUpon>
+    </Content>
+    <Content Include="Scripts\bootstrap.js" />
+    <Content Include="Scripts\bootstrap.min.js" />
+    <Content Include="Scripts\dateJS.min.js">
+      <DependentUpon>dateJS.js</DependentUpon>
+    </Content>
+    <Content Include="Scripts\dhtmlxScheduler\dhtmlxExtension.css" />
+    <Content Include="Scripts\dhtmlxScheduler\dhtmlxscheduler.css" />
+    <Content Include="Scripts\dhtmlxScheduler\dhtmlxscheduler.js" />
+    <Content Include="Scripts\dhtmlxScheduler\dhtmlxscheduler_classic.css" />
+    <Content Include="Scripts\dhtmlxScheduler\dhtmlxscheduler_custom_lightbox.js" />
+    <Content Include="Scripts\dhtmlxScheduler\dhtmlxscheduler_dhx_terrace.css" />
+    <Content Include="Scripts\dhtmlxScheduler\dhtmlxscheduler_glossy.css" />
+    <Content Include="Scripts\dhtmlxScheduler\dropit.css" />
+    <Content Include="Scripts\dhtmlxScheduler\ext\dhtmlxscheduler_active_links.js" />
+    <Content Include="Scripts\dhtmlxScheduler\ext\dhtmlxscheduler_agenda_view.js" />
+    <Content Include="Scripts\dhtmlxScheduler\ext\dhtmlxscheduler_all_timed.js" />
+    <Content Include="Scripts\dhtmlxScheduler\ext\dhtmlxscheduler_collision.js" />
+    <Content Include="Scripts\dhtmlxScheduler\ext\dhtmlxscheduler_container_autoresize.js" />
+    <Content Include="Scripts\dhtmlxScheduler\ext\dhtmlxscheduler_cookie.js" />
+    <Content Include="Scripts\dhtmlxScheduler\ext\dhtmlxscheduler_dhx_terrace.js" />
+    <Content Include="Scripts\dhtmlxScheduler\ext\dhtmlxscheduler_editors.js" />
+    <Content Include="Scripts\dhtmlxScheduler\ext\dhtmlxscheduler_expand.js" />
+    <Content Include="Scripts\dhtmlxScheduler\ext\dhtmlxscheduler_grid_view.js" />
+    <Content Include="Scripts\dhtmlxScheduler\ext\dhtmlxscheduler_html_templates.js" />
+    <Content Include="Scripts\dhtmlxScheduler\ext\dhtmlxscheduler_key_nav.js" />
+    <Content Include="Scripts\dhtmlxScheduler\ext\dhtmlxscheduler_limit.js" />
+    <Content Include="Scripts\dhtmlxScheduler\ext\dhtmlxscheduler_live_updates.js" />
+    <Content Include="Scripts\dhtmlxScheduler\ext\dhtmlxscheduler_map_view.js" />
+    <Content Include="Scripts\dhtmlxScheduler\ext\dhtmlxscheduler_minical.js" />
+    <Content Include="Scripts\dhtmlxScheduler\ext\dhtmlxscheduler_multiselect.js" />
+    <Content Include="Scripts\dhtmlxScheduler\ext\dhtmlxscheduler_multisource.js" />
+    <Content Include="Scripts\dhtmlxScheduler\ext\dhtmlxscheduler_mvc.js" />
+    <Content Include="Scripts\dhtmlxScheduler\ext\dhtmlxscheduler_offline.js" />
+    <Content Include="Scripts\dhtmlxScheduler\ext\dhtmlxscheduler_outerdrag.js" />
+    <Content Include="Scripts\dhtmlxScheduler\ext\dhtmlxscheduler_pdf.js" />
+    <Content Include="Scripts\dhtmlxScheduler\ext\dhtmlxscheduler_quick_info.js" />
+    <Content Include="Scripts\dhtmlxScheduler\ext\dhtmlxscheduler_readonly.js" />
+    <Content Include="Scripts\dhtmlxScheduler\ext\dhtmlxscheduler_recurring.js" />
+    <Content Include="Scripts\dhtmlxScheduler\ext\dhtmlxscheduler_serialize.js" />
+    <Content Include="Scripts\dhtmlxScheduler\ext\dhtmlxscheduler_timeline.js" />
+    <Content Include="Scripts\dhtmlxScheduler\ext\dhtmlxscheduler_tooltip.js" />
+    <Content Include="Scripts\dhtmlxScheduler\ext\dhtmlxscheduler_treetimeline.js" />
+    <Content Include="Scripts\dhtmlxScheduler\ext\dhtmlxscheduler_units.js" />
+    <Content Include="Scripts\dhtmlxScheduler\ext\dhtmlxscheduler_url.js" />
+    <Content Include="Scripts\dhtmlxScheduler\ext\dhtmlxscheduler_week_agenda.js" />
+    <Content Include="Scripts\dhtmlxScheduler\ext\dhtmlxscheduler_year_view.js" />
+    <Content Include="Scripts\dhtmlxScheduler\imgs\!_yellow.png" />
+    <Content Include="Scripts\dhtmlxScheduler\imgs\add.png" />
+    <Content Include="Scripts\dhtmlxScheduler\imgs\arrow_left.png" />
+    <Content Include="Scripts\dhtmlxScheduler\imgs\arrow_right.png" />
+    <Content Include="Scripts\dhtmlxScheduler\imgs\buttons.png" />
+    <Content Include="Scripts\dhtmlxScheduler\imgs\but_repeat.gif" />
+    <Content Include="Scripts\dhtmlxScheduler\imgs\calendar.gif" />
+    <Content Include="Scripts\dhtmlxScheduler\imgs\checkbox.png" />
+    <Content Include="Scripts\dhtmlxScheduler\imgs\clock.png" />
+    <Content Include="Scripts\dhtmlxScheduler\imgs\clock_big.gif" />
+    <Content Include="Scripts\dhtmlxScheduler\imgs\clock_small.gif" />
+    <Content Include="Scripts\dhtmlxScheduler\imgs\collapse_expand_icon.gif" />
+    <Content Include="Scripts\dhtmlxScheduler\imgs\controls.gif" />
+    <Content Include="Scripts\dhtmlxScheduler\imgs\databg.png" />
+    <Content Include="Scripts\dhtmlxScheduler\imgs\databg_now.png" />
+    <Content Include="Scripts\dhtmlxScheduler\imgs\dots.png" />
+    <Content Include="Scripts\dhtmlxScheduler\imgs\event.png" />
+    <Content Include="Scripts\dhtmlxScheduler\imgs\event_focus.png" />
+    <Content Include="Scripts\dhtmlxScheduler\imgs\export_ical.png" />
+    <Content Include="Scripts\dhtmlxScheduler\imgs\export_pdf.png" />
+    <Content Include="Scripts\dhtmlxScheduler\imgs\fat_lines.png" />
+    <Content Include="Scripts\dhtmlxScheduler\imgs\icon.png" />
+    <Content Include="Scripts\dhtmlxScheduler\imgs\images.png" />
+    <Content Include="Scripts\dhtmlxScheduler\imgs\loading.gif" />
+    <Content Include="Scripts\dhtmlxScheduler\imgs\medium_lines.png" />
+    <Content Include="Scripts\dhtmlxScheduler\imgs\noevents.png" />
+    <Content Include="Scripts\dhtmlxScheduler\imgs\radio_off.png" />
+    <Content Include="Scripts\dhtmlxScheduler\imgs\radio_on.png" />
+    <Content Include="Scripts\dhtmlxScheduler\imgs\resize_dots.png" />
+    <Content Include="Scripts\dhtmlxScheduler\imgs\small_lines.png" />
+    <Content Include="Scripts\dhtmlxScheduler\imgs\v_green.png" />
+    <Content Include="Scripts\dhtmlxScheduler\imgs_dhx_terrace\arrow_left.png" />
+    <Content Include="Scripts\dhtmlxScheduler\imgs_dhx_terrace\arrow_right.png" />
+    <Content Include="Scripts\dhtmlxScheduler\imgs_dhx_terrace\but_repeat.gif" />
+    <Content Include="Scripts\dhtmlxScheduler\imgs_dhx_terrace\calendar.gif" />
+    <Content Include="Scripts\dhtmlxScheduler\imgs_dhx_terrace\clock_big.gif" />
+    <Content Include="Scripts\dhtmlxScheduler\imgs_dhx_terrace\clock_small.gif" />
+    <Content Include="Scripts\dhtmlxScheduler\imgs_dhx_terrace\close_icon.png" />
+    <Content Include="Scripts\dhtmlxScheduler\imgs_dhx_terrace\collapse_expand_icon.gif" />
+    <Content Include="Scripts\dhtmlxScheduler\imgs_dhx_terrace\controls.png" />
+    <Content Include="Scripts\dhtmlxScheduler\imgs_dhx_terrace\databg.png" />
+    <Content Include="Scripts\dhtmlxScheduler\imgs_dhx_terrace\databg_now.png" />
+    <Content Include="Scripts\dhtmlxScheduler\imgs_dhx_terrace\databg_now_old.png" />
+    <Content Include="Content\themes\Fonts\glyphicons-halflings-regular.woff" />
+    <Content Include="Content\themes\Fonts\glyphicons-halflings-regular.ttf" />
+    <Content Include="Content\themes\Fonts\glyphicons-halflings-regular.eot" />
+    <Content Include="Scripts\bootstrap-timepicker-0.4.1.min.js.map">
+      <DependentUpon>bootstrap-timepicker-0.4.1.min.js</DependentUpon>
+    </Content>
+    <Content Include="Areas\Admin\Views\Shared\Layout\_Footer.cshtml" />
+    <Content Include="Areas\Admin\Views\Shared\Layout\_FooterCopyRight.cshtml" />
+    <Content Include="Areas\Admin\Views\Shared\Layout\_FooterQuickLinks.cshtml" />
+    <Content Include="Areas\Admin\Views\Shared\Layout\_Head.cshtml" />
+    <Content Include="Areas\Admin\Views\Shared\Layout\_Header.cshtml" />
+    <Content Include="Areas\Admin\Views\Shared\Layout\_HeaderLogo.cshtml" />
+    <Content Include="Areas\Admin\Views\Shared\Layout\_HeaderQuickLinks.cshtml" />
+    <Content Include="Areas\Admin\Views\Shared\Layout\_Loader.cshtml" />
+    <Content Include="Areas\Admin\Views\Shared\Layout\_NotifyContainer.cshtml" />
+    <Content Include="Areas\Admin\Views\Shared\Layout\_SessionTimeout.cshtml" />
+    <Content Include="Areas\Admin\Views\Shared\Layout\_TopNavigationBar.cshtml" />
+    <Content Include="Areas\Admin\Views\Shared\Layout\_WebAnalytics.cshtml" />
+    <Content Include="Content\bootstrap-theme.css.map" />
+    <Content Include="Content\bootstrap.css.map" />
+    <Content Include="Scripts\bootstrap.min.js.map">
+      <DependentUpon>bootstrap.min.js</DependentUpon>
+    </Content>
+    <Content Include="Areas\Admin\Views\Shared\Layout\Dialog\_Head.cshtml" />
+    <Content Include="Scripts\bootstrap-select.min.js.map">
+      <DependentUpon>bootstrap-select.min.js</DependentUpon>
+    </Content>
+    <Content Include="Scripts\dateJS.min.js.map">
+      <DependentUpon>dateJS.min.js</DependentUpon>
+    </Content>
+    <Content Include="Scripts\dhtmlxScheduler\imgs_dhx_terrace\export_ical.png" />
+    <Content Include="Scripts\dhtmlxScheduler\imgs_dhx_terrace\export_pdf.png" />
+    <Content Include="Scripts\dhtmlxScheduler\imgs_dhx_terrace\resize_dots.png" />
+    <Content Include="Scripts\dhtmlxScheduler\imgs_dhx_terrace\resizing.png" />
+    <Content Include="Scripts\dhtmlxScheduler\imgs_glossy\blue_tab.png" />
+    <Content Include="Scripts\dhtmlxScheduler\imgs_glossy\blue_tab_wide.png" />
+    <Content Include="Scripts\dhtmlxScheduler\imgs_glossy\buttons.gif" />
+    <Content Include="Scripts\dhtmlxScheduler\imgs_glossy\but_repeat.gif" />
+    <Content Include="Scripts\dhtmlxScheduler\imgs_glossy\calendar.gif" />
+    <Content Include="Scripts\dhtmlxScheduler\imgs_glossy\clock_big.png" />
+    <Content Include="Scripts\dhtmlxScheduler\imgs_glossy\clock_small.png" />
+    <Content Include="Scripts\dhtmlxScheduler\imgs_glossy\collapse_expand_icon.gif" />
+    <Content Include="Scripts\dhtmlxScheduler\imgs_glossy\controlls5.png" />
+    <Content Include="Scripts\dhtmlxScheduler\imgs_glossy\databg.png" />
+    <Content Include="Scripts\dhtmlxScheduler\imgs_glossy\databg_now.png" />
+    <Content Include="Scripts\dhtmlxScheduler\imgs_glossy\event-bg.png" />
+    <Content Include="Scripts\dhtmlxScheduler\imgs_glossy\export_ical.png" />
+    <Content Include="Scripts\dhtmlxScheduler\imgs_glossy\export_pdf.png" />
+    <Content Include="Scripts\dhtmlxScheduler\imgs_glossy\icon.png" />
+    <Content Include="Scripts\dhtmlxScheduler\imgs_glossy\left-separator.png" />
+    <Content Include="Scripts\dhtmlxScheduler\imgs_glossy\left-time-bg.png" />
+    <Content Include="Scripts\dhtmlxScheduler\imgs_glossy\lightbox.png" />
+    <Content Include="Scripts\dhtmlxScheduler\imgs_glossy\loading.gif" />
+    <Content Include="Scripts\dhtmlxScheduler\imgs_glossy\move.png" />
+    <Content Include="Scripts\dhtmlxScheduler\imgs_glossy\multi-days-bg.png" />
+    <Content Include="Scripts\dhtmlxScheduler\imgs_glossy\second-top-days-bg.png" />
+    <Content Include="Scripts\dhtmlxScheduler\imgs_glossy\top-days-bg.png" />
+    <Content Include="Scripts\dhtmlxScheduler\imgs_glossy\top-separator.gif" />
+    <Content Include="Scripts\dhtmlxScheduler\imgs_glossy\white_tab.png" />
+    <Content Include="Scripts\dhtmlxScheduler\imgs_glossy\white_tab_wide.png" />
+    <Content Include="Scripts\dhtmlxScheduler\locale\locale.js" />
+    <Content Include="Scripts\dhtmlxScheduler\locale\locale_ar.js" />
+    <Content Include="Scripts\dhtmlxScheduler\locale\locale_be.js" />
+    <Content Include="Scripts\dhtmlxScheduler\locale\locale_ca.js" />
+    <Content Include="Scripts\dhtmlxScheduler\locale\locale_cn.js" />
+    <Content Include="Scripts\dhtmlxScheduler\locale\locale_cs.js" />
+    <Content Include="Scripts\dhtmlxScheduler\locale\locale_da.js" />
+    <Content Include="Scripts\dhtmlxScheduler\locale\locale_de.js" />
+    <Content Include="Scripts\dhtmlxScheduler\locale\locale_el.js" />
+    <Content Include="Scripts\dhtmlxScheduler\locale\locale_es.js" />
+    <Content Include="Scripts\dhtmlxScheduler\locale\locale_fi.js" />
+    <Content Include="Scripts\dhtmlxScheduler\locale\locale_fr.js" />
+    <Content Include="Scripts\dhtmlxScheduler\locale\locale_he.js" />
+    <Content Include="Scripts\dhtmlxScheduler\locale\locale_hu.js" />
+    <Content Include="Scripts\dhtmlxScheduler\locale\locale_id.js" />
+    <Content Include="Scripts\dhtmlxScheduler\locale\locale_it.js" />
+    <Content Include="Scripts\dhtmlxScheduler\locale\locale_jp.js" />
+    <Content Include="Scripts\dhtmlxScheduler\locale\locale_nb.js" />
+    <Content Include="Scripts\dhtmlxScheduler\locale\locale_nl.js" />
+    <Content Include="Scripts\dhtmlxScheduler\locale\locale_no.js" />
+    <Content Include="Scripts\dhtmlxScheduler\locale\locale_pl.js" />
+    <Content Include="Scripts\dhtmlxScheduler\locale\locale_pt.js" />
+    <Content Include="Scripts\dhtmlxScheduler\locale\locale_recurring_be.js" />
+    <Content Include="Scripts\dhtmlxScheduler\locale\locale_recurring_cn.js" />
+    <Content Include="Scripts\dhtmlxScheduler\locale\locale_recurring_cs.js" />
+    <Content Include="Scripts\dhtmlxScheduler\locale\locale_recurring_da.js" />
+    <Content Include="Scripts\dhtmlxScheduler\locale\locale_recurring_de.js" />
+    <Content Include="Scripts\dhtmlxScheduler\locale\locale_recurring_el.js" />
+    <Content Include="Scripts\dhtmlxScheduler\locale\locale_recurring_es.js" />
+    <Content Include="Scripts\dhtmlxScheduler\locale\locale_recurring_fi.js" />
+    <Content Include="Scripts\dhtmlxScheduler\locale\locale_recurring_fr.js" />
+    <Content Include="Scripts\dhtmlxScheduler\locale\locale_recurring_it.js" />
+    <Content Include="Scripts\dhtmlxScheduler\locale\locale_recurring_nb.js" />
+    <Content Include="Scripts\dhtmlxScheduler\locale\locale_recurring_nl.js" />
+    <Content Include="Scripts\dhtmlxScheduler\locale\locale_recurring_pl.js" />
+    <Content Include="Scripts\dhtmlxScheduler\locale\locale_recurring_pt.js" />
+    <Content Include="Scripts\dhtmlxScheduler\locale\locale_recurring_ro.js" />
+    <Content Include="Scripts\dhtmlxScheduler\locale\locale_recurring_ru.js" />
+    <Content Include="Scripts\dhtmlxScheduler\locale\locale_recurring_sk.js" />
+    <Content Include="Scripts\dhtmlxScheduler\locale\locale_recurring_sv.js" />
+    <Content Include="Scripts\dhtmlxScheduler\locale\locale_recurring_ua.js" />
+    <Content Include="Scripts\dhtmlxScheduler\locale\locale_ro.js" />
+    <Content Include="Scripts\dhtmlxScheduler\locale\locale_ru.js" />
+    <Content Include="Scripts\dhtmlxScheduler\locale\locale_si.js" />
+    <Content Include="Scripts\dhtmlxScheduler\locale\locale_sk.js" />
+    <Content Include="Scripts\dhtmlxScheduler\locale\locale_sv.js" />
+    <Content Include="Scripts\dhtmlxScheduler\locale\locale_tr.js" />
+    <Content Include="Scripts\dhtmlxScheduler\locale\locale_ua.js" />
+    <Content Include="Scripts\dhtmlxScheduler_debug\dhtmlxscheduler.css" />
+    <Content Include="Scripts\dhtmlxScheduler_debug\dhtmlxscheduler.js" />
+    <Content Include="Scripts\dhtmlxScheduler_debug\dhtmlxscheduler_classic.css" />
+    <Content Include="Scripts\dhtmlxScheduler_debug\dhtmlxscheduler_custom_lightbox.js" />
+    <Content Include="Scripts\dhtmlxScheduler_debug\dhtmlxscheduler_glossy.css" />
+    <Content Include="Scripts\dhtmlxScheduler_debug\ext\dhtmlxscheduler_active_links.js" />
+    <Content Include="Scripts\dhtmlxScheduler_debug\ext\dhtmlxscheduler_agenda_view.js" />
+    <Content Include="Scripts\dhtmlxScheduler_debug\ext\dhtmlxscheduler_all_timed.js" />
+    <Content Include="Scripts\dhtmlxScheduler_debug\ext\dhtmlxscheduler_collision.js" />
+    <Content Include="Scripts\dhtmlxScheduler_debug\ext\dhtmlxscheduler_container_autoresize.js" />
+    <Content Include="Scripts\dhtmlxScheduler_debug\ext\dhtmlxscheduler_cookie.js" />
+    <Content Include="Scripts\dhtmlxScheduler_debug\ext\dhtmlxscheduler_editors.js" />
+    <Content Include="Scripts\dhtmlxScheduler_debug\ext\dhtmlxscheduler_expand.js" />
+    <Content Include="Scripts\dhtmlxScheduler_debug\ext\dhtmlxscheduler_grid_view.js" />
+    <Content Include="Scripts\dhtmlxScheduler_debug\ext\dhtmlxscheduler_html_templates.js" />
+    <Content Include="Scripts\dhtmlxScheduler_debug\ext\dhtmlxscheduler_key_nav.js" />
+    <Content Include="Scripts\dhtmlxScheduler_debug\ext\dhtmlxscheduler_limit.js" />
+    <Content Include="Scripts\dhtmlxScheduler_debug\ext\dhtmlxscheduler_live_updates.js" />
+    <Content Include="Scripts\dhtmlxScheduler_debug\ext\dhtmlxscheduler_map_view.js" />
+    <Content Include="Scripts\dhtmlxScheduler_debug\ext\dhtmlxscheduler_minical.js" />
+    <Content Include="Scripts\dhtmlxScheduler_debug\ext\dhtmlxscheduler_multiselect.js" />
+    <Content Include="Scripts\dhtmlxScheduler_debug\ext\dhtmlxscheduler_multisource.js" />
+    <Content Include="Scripts\dhtmlxScheduler_debug\ext\dhtmlxscheduler_mvc.js" />
+    <Content Include="Scripts\dhtmlxScheduler_debug\ext\dhtmlxscheduler_offline.js" />
+    <Content Include="Scripts\dhtmlxScheduler_debug\ext\dhtmlxscheduler_outerdrag.js" />
+    <Content Include="Scripts\dhtmlxScheduler_debug\ext\dhtmlxscheduler_pdf.js" />
+    <Content Include="Scripts\dhtmlxScheduler_debug\ext\dhtmlxscheduler_quick_info.js" />
+    <Content Include="Scripts\dhtmlxScheduler_debug\ext\dhtmlxscheduler_readonly.js" />
+    <Content Include="Scripts\dhtmlxScheduler_debug\ext\dhtmlxscheduler_recurring.js" />
+    <Content Include="Scripts\dhtmlxScheduler_debug\ext\dhtmlxscheduler_serialize.js" />
+    <Content Include="Scripts\dhtmlxScheduler_debug\ext\dhtmlxscheduler_timeline.js" />
+    <Content Include="Scripts\dhtmlxScheduler_debug\ext\dhtmlxscheduler_tooltip.js" />
+    <Content Include="Scripts\dhtmlxScheduler_debug\ext\dhtmlxscheduler_treetimeline.js" />
+    <Content Include="Scripts\dhtmlxScheduler_debug\ext\dhtmlxscheduler_units.js" />
+    <Content Include="Scripts\dhtmlxScheduler_debug\ext\dhtmlxscheduler_url.js" />
+    <Content Include="Scripts\dhtmlxScheduler_debug\ext\dhtmlxscheduler_week_agenda.js" />
+    <Content Include="Scripts\dhtmlxScheduler_debug\ext\dhtmlxscheduler_year_view.js" />
+    <Content Include="Scripts\dhtmlxScheduler_debug\imgs\buttons.png" />
+    <Content Include="Scripts\dhtmlxScheduler_debug\imgs\but_repeat.gif" />
+    <Content Include="Scripts\dhtmlxScheduler_debug\imgs\calendar.gif" />
+    <Content Include="Scripts\dhtmlxScheduler_debug\imgs\clock_big.gif" />
+    <Content Include="Scripts\dhtmlxScheduler_debug\imgs\clock_small.gif" />
+    <Content Include="Scripts\dhtmlxScheduler_debug\imgs\collapse_expand_icon.gif" />
+    <Content Include="Scripts\dhtmlxScheduler_debug\imgs\controls.gif" />
+    <Content Include="Scripts\dhtmlxScheduler_debug\imgs\databg.png" />
+    <Content Include="Scripts\dhtmlxScheduler_debug\imgs\databg_now.png" />
+    <Content Include="Scripts\dhtmlxScheduler_debug\imgs\export_ical.png" />
+    <Content Include="Scripts\dhtmlxScheduler_debug\imgs\export_pdf.png" />
+    <Content Include="Scripts\dhtmlxScheduler_debug\imgs\icon.png" />
+    <Content Include="Scripts\dhtmlxScheduler_debug\imgs\images.png" />
+    <Content Include="Scripts\dhtmlxScheduler_debug\imgs\loading.gif" />
+    <Content Include="Scripts\dhtmlxScheduler_debug\imgs\resize_dots.png" />
+    <Content Include="Scripts\dhtmlxScheduler_debug\imgs_dhx_terrace\arrow_left.png" />
+    <Content Include="Scripts\dhtmlxScheduler_debug\imgs_dhx_terrace\arrow_right.png" />
+    <Content Include="Scripts\dhtmlxScheduler_debug\imgs_dhx_terrace\but_repeat.gif" />
+    <Content Include="Scripts\dhtmlxScheduler_debug\imgs_dhx_terrace\calendar.gif" />
+    <Content Include="Scripts\dhtmlxScheduler_debug\imgs_dhx_terrace\clock_big.gif" />
+    <Content Include="Scripts\dhtmlxScheduler_debug\imgs_dhx_terrace\clock_small.gif" />
+    <Content Include="Scripts\dhtmlxScheduler_debug\imgs_dhx_terrace\close_icon.png" />
+    <Content Include="Scripts\dhtmlxScheduler_debug\imgs_dhx_terrace\collapse_expand_icon.gif" />
+    <Content Include="Scripts\dhtmlxScheduler_debug\imgs_dhx_terrace\controls.png" />
+    <Content Include="Scripts\dhtmlxScheduler_debug\imgs_dhx_terrace\databg.png" />
+    <Content Include="Scripts\dhtmlxScheduler_debug\imgs_dhx_terrace\databg_now.png" />
+    <Content Include="Scripts\dhtmlxScheduler_debug\imgs_dhx_terrace\export_ical.png" />
+    <Content Include="Scripts\dhtmlxScheduler_debug\imgs_dhx_terrace\export_pdf.png" />
+    <Content Include="Scripts\dhtmlxScheduler_debug\imgs_dhx_terrace\resize_dots.png" />
+    <Content Include="Scripts\dhtmlxScheduler_debug\imgs_dhx_terrace\resizing.png" />
+    <Content Include="Scripts\dhtmlxScheduler_debug\imgs_glossy\blue_tab.png" />
+    <Content Include="Scripts\dhtmlxScheduler_debug\imgs_glossy\blue_tab_wide.png" />
+    <Content Include="Scripts\dhtmlxScheduler_debug\imgs_glossy\buttons.gif" />
+    <Content Include="Scripts\dhtmlxScheduler_debug\imgs_glossy\but_repeat.gif" />
+    <Content Include="Scripts\dhtmlxScheduler_debug\imgs_glossy\calendar.gif" />
+    <Content Include="Scripts\dhtmlxScheduler_debug\imgs_glossy\clock_big.png" />
+    <Content Include="Scripts\dhtmlxScheduler_debug\imgs_glossy\clock_small.png" />
+    <Content Include="Scripts\dhtmlxScheduler_debug\imgs_glossy\collapse_expand_icon.gif" />
+    <Content Include="Scripts\dhtmlxScheduler_debug\imgs_glossy\controlls5.png" />
+    <Content Include="Scripts\dhtmlxScheduler_debug\imgs_glossy\databg.png" />
+    <Content Include="Scripts\dhtmlxScheduler_debug\imgs_glossy\databg_now.png" />
+    <Content Include="Scripts\dhtmlxScheduler_debug\imgs_glossy\event-bg.png" />
+    <Content Include="Scripts\dhtmlxScheduler_debug\imgs_glossy\export_ical.png" />
+    <Content Include="Scripts\dhtmlxScheduler_debug\imgs_glossy\export_pdf.png" />
+    <Content Include="Scripts\dhtmlxScheduler_debug\imgs_glossy\icon.png" />
+    <Content Include="Scripts\dhtmlxScheduler_debug\imgs_glossy\left-separator.png" />
+    <Content Include="Scripts\dhtmlxScheduler_debug\imgs_glossy\left-time-bg.png" />
+    <Content Include="Scripts\dhtmlxScheduler_debug\imgs_glossy\lightbox.png" />
+    <Content Include="Scripts\dhtmlxScheduler_debug\imgs_glossy\loading.gif" />
+    <Content Include="Scripts\dhtmlxScheduler_debug\imgs_glossy\move.png" />
+    <Content Include="Scripts\dhtmlxScheduler_debug\imgs_glossy\multi-days-bg.png" />
+    <Content Include="Scripts\dhtmlxScheduler_debug\imgs_glossy\second-top-days-bg.png" />
+    <Content Include="Scripts\dhtmlxScheduler_debug\imgs_glossy\top-days-bg.png" />
+    <Content Include="Scripts\dhtmlxScheduler_debug\imgs_glossy\top-separator.gif" />
+    <Content Include="Scripts\dhtmlxScheduler_debug\imgs_glossy\white_tab.png" />
+    <Content Include="Scripts\dhtmlxScheduler_debug\imgs_glossy\white_tab_wide.png" />
+    <Content Include="Scripts\dhtmlxScheduler_debug\locale\locale.js" />
+    <Content Include="Scripts\dhtmlxScheduler_debug\locale\locale_ar.js" />
+    <Content Include="Scripts\dhtmlxScheduler_debug\locale\locale_be.js" />
+    <Content Include="Scripts\dhtmlxScheduler_debug\locale\locale_ca.js" />
+    <Content Include="Scripts\dhtmlxScheduler_debug\locale\locale_cn.js" />
+    <Content Include="Scripts\dhtmlxScheduler_debug\locale\locale_cs.js" />
+    <Content Include="Scripts\dhtmlxScheduler_debug\locale\locale_da.js" />
+    <Content Include="Scripts\dhtmlxScheduler_debug\locale\locale_de.js" />
+    <Content Include="Scripts\dhtmlxScheduler_debug\locale\locale_el.js" />
+    <Content Include="Scripts\dhtmlxScheduler_debug\locale\locale_es.js" />
+    <Content Include="Scripts\dhtmlxScheduler_debug\locale\locale_fi.js" />
+    <Content Include="Scripts\dhtmlxScheduler_debug\locale\locale_fr.js" />
+    <Content Include="Scripts\dhtmlxScheduler_debug\locale\locale_he.js" />
+    <Content Include="Scripts\dhtmlxScheduler_debug\locale\locale_hu.js" />
+    <Content Include="Scripts\dhtmlxScheduler_debug\locale\locale_id.js" />
+    <Content Include="Scripts\dhtmlxScheduler_debug\locale\locale_it.js" />
+    <Content Include="Scripts\dhtmlxScheduler_debug\locale\locale_jp.js" />
+    <Content Include="Scripts\dhtmlxScheduler_debug\locale\locale_nb.js" />
+    <Content Include="Scripts\dhtmlxScheduler_debug\locale\locale_nl.js" />
+    <Content Include="Scripts\dhtmlxScheduler_debug\locale\locale_no.js" />
+    <Content Include="Scripts\dhtmlxScheduler_debug\locale\locale_pl.js" />
+    <Content Include="Scripts\dhtmlxScheduler_debug\locale\locale_pt.js" />
+    <Content Include="Scripts\dhtmlxScheduler_debug\locale\locale_recurring_be.js" />
+    <Content Include="Scripts\dhtmlxScheduler_debug\locale\locale_recurring_cn.js" />
+    <Content Include="Scripts\dhtmlxScheduler_debug\locale\locale_recurring_cs.js" />
+    <Content Include="Scripts\dhtmlxScheduler_debug\locale\locale_recurring_da.js" />
+    <Content Include="Scripts\dhtmlxScheduler_debug\locale\locale_recurring_de.js" />
+    <Content Include="Scripts\dhtmlxScheduler_debug\locale\locale_recurring_el.js" />
+    <Content Include="Scripts\dhtmlxScheduler_debug\locale\locale_recurring_es.js" />
+    <Content Include="Scripts\dhtmlxScheduler_debug\locale\locale_recurring_fi.js" />
+    <Content Include="Scripts\dhtmlxScheduler_debug\locale\locale_recurring_fr.js" />
+    <Content Include="Scripts\dhtmlxScheduler_debug\locale\locale_recurring_it.js" />
+    <Content Include="Scripts\dhtmlxScheduler_debug\locale\locale_recurring_nb.js" />
+    <Content Include="Scripts\dhtmlxScheduler_debug\locale\locale_recurring_nl.js" />
+    <Content Include="Scripts\dhtmlxScheduler_debug\locale\locale_recurring_pl.js" />
+    <Content Include="Scripts\dhtmlxScheduler_debug\locale\locale_recurring_pt.js" />
+    <Content Include="Scripts\dhtmlxScheduler_debug\locale\locale_recurring_ro.js" />
+    <Content Include="Scripts\dhtmlxScheduler_debug\locale\locale_recurring_ru.js" />
+    <Content Include="Scripts\dhtmlxScheduler_debug\locale\locale_recurring_sk.js" />
+    <Content Include="Scripts\dhtmlxScheduler_debug\locale\locale_recurring_sv.js" />
+    <Content Include="Scripts\dhtmlxScheduler_debug\locale\locale_recurring_ua.js" />
+    <Content Include="Scripts\dhtmlxScheduler_debug\locale\locale_ro.js" />
+    <Content Include="Scripts\dhtmlxScheduler_debug\locale\locale_ru.js" />
+    <Content Include="Scripts\dhtmlxScheduler_debug\locale\locale_si.js" />
+    <Content Include="Scripts\dhtmlxScheduler_debug\locale\locale_sk.js" />
+    <Content Include="Scripts\dhtmlxScheduler_debug\locale\locale_sv.js" />
+    <Content Include="Scripts\dhtmlxScheduler_debug\locale\locale_tr.js" />
+    <Content Include="Scripts\dhtmlxScheduler_debug\locale\locale_ua.js" />
+    <Content Include="Scripts\eyefinity.context.min.js.map">
+      <DependentUpon>eyefinity.context.min.js</DependentUpon>
+    </Content>
+    <Content Include="Scripts\eyefinity.context.min.js">
+      <DependentUpon>eyefinity.context.js</DependentUpon>
+    </Content>
+    <Content Include="Scripts\app\Common\jquery.ajax.spinner.js" />
+    <Content Include="Scripts\app\Resources\ResetPassword.js" />
+    <Content Include="Scripts\app\Security\ForbiddenDialog.js" />
+    <Content Include="Scripts\app\Patient\Demographics.js" />
+    <Content Include="Scripts\app\Patient\ViewModel\PatientDemographicsViewModel.js" />
+    <Content Include="Scripts\app\Reporting\DailyTransactionSales.js" />
+    <Content Include="Scripts\app\Reporting\ItemSales.js" />
+    <Content Include="Scripts\app\Reporting\MarketingRecall.js" />
+    <Content Include="Scripts\app\Reporting\OfficeFlashSales.js" />
+    <Content Include="Scripts\app\Reporting\PatientAudit.js" />
+    <Content Include="Scripts\app\Appointments\SchedulerExceptions.js" />
+    <Content Include="Scripts\app\Reporting\PatientFollowupNotes.js" />
+    <Content Include="Scripts\app\Common\jquery.idletimeout.js" />
+    <Content Include="Scripts\app\Common\jquery.idletimer.js" />
+    <Content Include="Scripts\app\Common\common.placeholder.js" />
+    <Content Include="Fonts\glyphicons-halflings-regular.eot" />
+    <Content Include="Fonts\glyphicons-halflings-regular.ttf" />
+    <Content Include="Fonts\glyphicons-halflings-regular.woff" />
+    <Content Include="Fonts\icomoon.eot" />
+    <Content Include="Fonts\icomoon.ttf" />
+    <Content Include="Fonts\icomoon.woff" />
+    <Content Include="Areas\Admin\Views\Company\AdditionalIntegrations.cshtml" />
+    <Content Include="Areas\Admin\Views\ProductsServices\EyeglassLensSetup.cshtml" />
+    <Content Include="Areas\Admin\Views\ProductsServices\BulkPricing.cshtml" />
+    <Content Include="Areas\Admin\Views\ProductsServices\EyeglassLensPricingDialog.cshtml" />
+    <Content Include="Areas\Admin\Views\ProductsServices\FrameSetup.cshtml" />
+    <Content Include="Areas\Admin\Views\Preferences\Inventory.cshtml" />
+    <Content Include="Areas\Admin\Views\ProductsServices\BulkPricingFrame.cshtml" />
+    <Content Include="Areas\Admin\Views\PatientEngagement\LetterTemplates.cshtml" />
+    <Content Include="Areas\Admin\Views\PatientEngagement\RecallScheduleDialog.cshtml" />
+    <Content Include="Areas\Admin\Views\Resources\OutsideProviderSetup.cshtml" />
+    <Content Include="Areas\Admin\Views\Resources\OutsideProviderSetupDialog.cshtml" />
+    <EmbeddedResource Include="Legacy\Reports\CashReceiptSummaryReport.rpt" />
+    <Content Include="Areas\Admin\Views\Insurance\CarrierAndPlanSetup.cshtml" />
+    <Content Include="Areas\Admin\Views\ProductsServices\AddCustomFrame.cshtml" />
+    <Content Include="Areas\HelpPage\Views\Web.config" />
+    <Content Include="Areas\HelpPage\Views\Shared\_Layout.cshtml" />
+    <Content Include="Areas\HelpPage\Views\Help\ResourceModel.cshtml" />
+    <Content Include="Areas\HelpPage\Views\Help\Index.cshtml" />
+    <Content Include="Areas\HelpPage\Views\Help\DisplayTemplates\TextSample.cshtml" />
+    <Content Include="Areas\HelpPage\Views\Help\DisplayTemplates\SimpleTypeModelDescription.cshtml" />
+    <Content Include="Areas\HelpPage\Views\Help\DisplayTemplates\Samples.cshtml" />
+    <Content Include="Areas\HelpPage\Views\Help\DisplayTemplates\Parameters.cshtml" />
+    <Content Include="Areas\HelpPage\Views\Help\DisplayTemplates\ModelDescriptionLink.cshtml" />
+    <Content Include="Areas\HelpPage\Views\Help\DisplayTemplates\KeyValuePairModelDescription.cshtml" />
+    <Content Include="Areas\HelpPage\Views\Help\DisplayTemplates\InvalidSample.cshtml" />
+    <Content Include="Areas\HelpPage\Views\Help\DisplayTemplates\ImageSample.cshtml" />
+    <Content Include="Areas\HelpPage\Views\Help\DisplayTemplates\HelpPageApiModel.cshtml" />
+    <Content Include="Areas\HelpPage\Views\Help\DisplayTemplates\EnumTypeModelDescription.cshtml" />
+    <Content Include="Areas\HelpPage\Views\Help\DisplayTemplates\DictionaryModelDescription.cshtml" />
+    <Content Include="Areas\HelpPage\Views\Help\DisplayTemplates\ComplexTypeModelDescription.cshtml" />
+    <Content Include="Areas\HelpPage\Views\Help\DisplayTemplates\CollectionModelDescription.cshtml" />
+    <Content Include="Areas\HelpPage\Views\Help\DisplayTemplates\ApiGroup.cshtml" />
+    <Content Include="Areas\HelpPage\Views\Help\Api.cshtml" />
+    <Content Include="Areas\HelpPage\Views\_ViewStart.cshtml" />
+    <Content Include="Areas\Admin\Views\Office\LabSetup.cshtml" />
+    <Content Include="Areas\Billing\Views\Home\FailedClaims.cshtml" />
+    <Content Include="Areas\Admin\Views\Office\OfficeInformation.cshtml" />
+    <Content Include="Areas\Admin\Views\Office\AdditionalIntegrations.cshtml" />
+    <Content Include="Areas\Admin\Views\Resources\InsuranceDetail.cshtml" />
+    <Content Include="Areas\Admin\Views\Office\PatientLocations.cshtml" />
+    <Content Include="Areas\Admin\Views\ProductsServices\AccessoriesSetup.cshtml" />
+    <Content Include="Areas\Admin\Views\ProductsServices\ShippingSetup.cshtml" />
+    <Content Include="Areas\Admin\Views\ProductsServices\RepairsSetup.cshtml" />
+    <Content Include="Areas\Admin\Views\ProductsServices\MiscFeesSetup.cshtml" />
+    <None Include="bundleconfig.json" />
+    <Content Include="Areas\Admin\Views\Office\PlaceOfService.cshtml" />
+    <Content Include="Areas\Admin\Views\Office\PlaceOfServiceDialog.cshtml" />
+    <None Include="Properties\PublishProfiles\ContinuousIntegration.pubxml" />
+    <None Include="Properties\PublishProfiles\DeployCIProduction.pubxml" />
+    <None Include="Properties\PublishProfiles\DeployCIServer.pubxml" />
+    <None Include="Properties\PublishProfiles\DeployCIServerFeature.pubxml" />
+    <None Include="Properties\PublishProfiles\ReleaseEPM.pubxml" />
+    <None Include="Scripts\jquery-2.0.3.intellisense.js" />
+    <Content Include="Scripts\jquery-2.0.3.intellisense.min.js" />
+    <Content Include="Scripts\jquery-2.0.3.js" />
+    <Content Include="Scripts\jquery-2.0.3.min.js" />
+    <Content Include="Scripts\jquery-ui-1.10.3.js" />
+    <Content Include="Scripts\jquery-ui-1.10.3.min.js" />
+    <Content Include="Scripts\jquery.dataTables-1.9.4.min.js">
+      <DependentUpon>jquery.dataTables-1.9.4.js</DependentUpon>
+    </Content>
+    <Content Include="Scripts\jquery.fileupload.min.js">
+      <DependentUpon>jquery.fileupload.js</DependentUpon>
+    </Content>
+    <Content Include="Scripts\jquery.iframe-transport.min.js">
+      <DependentUpon>jquery.iframe-transport.js</DependentUpon>
+    </Content>
+    <Content Include="Scripts\jquery.maskedinput-1.3.1.min.js">
+      <DependentUpon>jquery.maskedinput-1.3.1.js</DependentUpon>
+    </Content>
+    <Content Include="Scripts\jquery.multiSelect-1.13.js" />
+    <Content Include="Scripts\jquery.multiSelect-1.13.min.js" />
+    <Content Include="Scripts\jquery.placeholder.js" />
+    <Content Include="Scripts\jquery.placeholder.min.js" />
+    <Content Include="Scripts\jquery.selectBoxIt-3.3.0.core.min.js">
+      <DependentUpon>jquery.selectBoxIt-3.3.0.core.js</DependentUpon>
+    </Content>
+    <Content Include="Scripts\jquery.spinner.js" />
+    <Content Include="Scripts\jquery.spinner.min.js">
+      <DependentUpon>jquery.spinner.js</DependentUpon>
+    </Content>
+    <Content Include="Scripts\jquery.validate-vsdoc.min.js">
+      <DependentUpon>jquery.validate-vsdoc.js</DependentUpon>
+    </Content>
+    <Content Include="Scripts\knockout-2.2.1.debug.js" />
+    <Content Include="Scripts\knockout-2.2.1.debug.min.js">
+      <DependentUpon>knockout-2.2.1.debug.js</DependentUpon>
+    </Content>
+    <Content Include="Scripts\knockout-2.2.1.js" />
+    <Content Include="Scripts\knockout-2.2.1.min.js">
+      <DependentUpon>knockout-2.2.1.js</DependentUpon>
+    </Content>
+    <Content Include="Scripts\knockout.popupTemplate.js" />
+    <Content Include="Scripts\modernizr-2.8.3.js" />
+    <Content Include="Scripts\respond.js" />
+    <Content Include="Scripts\respond.matchmedia.addListener.js" />
+    <Content Include="Scripts\respond.matchmedia.addListener.min.js" />
+    <Content Include="Scripts\respond.min.js" />
+    <Content Include="Scripts\app\Common\SessionTimeout.js" />
+    <Content Include="Scripts\spectrum-Colorpicker-1.1.1.min.js">
+      <DependentUpon>spectrum-Colorpicker-1.1.1.js</DependentUpon>
+    </Content>
+    <Content Include="Scripts\sugar-es6-patch.js" />
+    <Content Include="Scripts\sugar-es6-patch.min.js" />
+    <Content Include="Scripts\sugar.js" />
+    <Content Include="Scripts\sugar.min.js" />
+    <Content Include="Scripts\WebApiTestClient.js" />
+    <Content Include="Scripts\jquery.fileupload.min.js.map">
+      <DependentUpon>jquery.fileupload.min.js</DependentUpon>
+    </Content>
+    <Content Include="Scripts\jquery.iframe-transport.min.js.map">
+      <DependentUpon>jquery.iframe-transport.min.js</DependentUpon>
+    </Content>
+    <Content Include="Scripts\jquery.maskedinput-1.3.1.min.js.map">
+      <DependentUpon>jquery.maskedinput-1.3.1.min.js</DependentUpon>
+    </Content>
+    <Content Include="Scripts\jquery.selectBoxIt-3.3.0.core.min.js.map">
+      <DependentUpon>jquery.selectBoxIt-3.3.0.core.min.js</DependentUpon>
+    </Content>
+    <Content Include="Scripts\jquery.spinner.min.js.map">
+      <DependentUpon>jquery.spinner.min.js</DependentUpon>
+    </Content>
+    <Content Include="Scripts\jquery.validate-vsdoc.min.js.map">
+      <DependentUpon>jquery.validate-vsdoc.min.js</DependentUpon>
+    </Content>
+    <Content Include="Scripts\knockout-2.2.1.debug.min.js.map">
+      <DependentUpon>knockout-2.2.1.debug.min.js</DependentUpon>
+    </Content>
+    <Content Include="Scripts\knockout-2.2.1.min.js.map">
+      <DependentUpon>knockout-2.2.1.min.js</DependentUpon>
+    </Content>
+    <Content Include="Scripts\spectrum-Colorpicker-1.1.1.min.js.map">
+      <DependentUpon>spectrum-Colorpicker-1.1.1.min.js</DependentUpon>
+    </Content>
+    <Content Include="Scripts\WebApiTestClient.min.js.map">
+      <DependentUpon>WebApiTestClient.min.js</DependentUpon>
+    </Content>
+    <Content Include="Scripts\jquery-2.0.3.min.map" />
+    <Content Include="Scripts\jquery-2.0.3.intellisense.min.js.map" />
+    <Content Include="Scripts\jquery.placeholder.min.js.map" />
+    <Content Include="Scripts\jquery.dataTables-1.9.4.min.js.map">
+      <DependentUpon>jquery.dataTables-1.9.4.min.js</DependentUpon>
+    </Content>
+    <Content Include="Scripts\jquery.multiSelect-1.13.min.js.map" />
+    <Content Include="Scripts\jquery-ui-1.10.3.min.js.map">
+      <DependentUpon>jquery-ui-1.10.3.min.js</DependentUpon>
+    </Content>
+    <None Include="Scripts\_references.js" />
+    <Content Include="Scripts\WebApiTestClient.min.js">
+      <DependentUpon>WebApiTestClient.js</DependentUpon>
+    </Content>
+    <Content Include="Views\Patient\ContactLensesPartial.cshtml">
+      <SubType>Code</SubType>
+    </Content>
+    <Content Include="Views\Patient\Demographics.cshtml" />
+    <Content Include="Views\Patient\DemographicsPartial.cshtml" />
+    <Content Include="Views\Patient\EyeglassOrderBuildOrderPartial.cshtml" />
+    <Content Include="Views\Patient\EyeglassOrderChooseLabPartial.cshtml" />
+    <Content Include="Views\Reporting\PatientFollowupNotes.cshtml" />
+    <Content Include="Views\Reporting\PatientAudit.cshtml" />
+    <Content Include="Scripts\dhxCommon\ext\dhtmlxscheduler_key_nav.js" />
+    <Content Include="Views\Product\PrintLabels.cshtml" />
+    <Content Include="Views\Login\ForbiddenDialog.cshtml" />
+    <Content Include="Views\Login\ForbiddenAdmin.cshtml" />
+    <Content Include="Views\Appointments\SchedulerExceptions.cshtml" />
+    <Content Include="Views\Reporting\DailyTransactionSales.cshtml" />
+    <Content Include="Views\Reporting\ItemSales.cshtml" />
+    <Content Include="Views\Reporting\OfficeFlashSales.cshtml" />
+    <Content Include="Views\Reporting\MarketingRecall.cshtml" />
+    <Content Include="Views\Reporting\InventoryValuation.cshtml" />
+    <Content Include="Views\Login\ForbiddenBilling.cshtml" />
+    <Content Include="Views\Shared\BootstrapModalPartial.cshtml" />
+    <Content Include="Views\Login\Notfound.cshtml" />
+    <Content Include="Views\Patient\InsuranceEligibility.cshtml" />
+    <Content Include="Settings.StyleCop">
+      <SubType>Designer</SubType>
+    </Content>
+    <Content Include="Views\Shared\Layout\_SessionTimeout.cshtml" />
+    <Content Include="Views\Login\Error.cshtml" />
+    <Content Include="Views\Shared\Layout\_WebAnalytics.cshtml" />
+    <Content Include="Views\Shared\Layout\_Header.cshtml" />
+    <Content Include="Views\Shared\Layout\_HeaderLogo.cshtml" />
+    <Content Include="Views\Shared\Layout\_HeaderQuickLinks.cshtml" />
+    <Content Include="Views\Shared\Layout\_Footer.cshtml" />
+    <Content Include="Views\Shared\Layout\_FooterQuickLinks.cshtml" />
+    <Content Include="Views\Shared\Layout\_FooterCopyRight.cshtml" />
+    <Content Include="Views\Shared\Layout\_TopNavigationBar.cshtml" />
+    <Content Include="Views\Shared\Layout\_Loader.cshtml" />
+    <Content Include="Views\Shared\Layout\FullScreen\_Footer.cshtml" />
+    <Content Include="Views\Shared\Layout\FullScreen\_Header.cshtml" />
+    <Content Include="Views\Shared\Layout\FullScreen\_HeaderLogo.cshtml" />
+    <Content Include="Views\Shared\Layout\FullScreen\_HeaderQuickLinks.cshtml" />
+    <Content Include="Views\Shared\Layout\FullScreen\_TopNavigationBar.cshtml" />
+    <Content Include="Views\Shared\Layout\_NotifyContainer.cshtml" />
+    <Content Include="Views\Shared\Layout\_Modal.cshtml" />
+    <Content Include="Views\Shared\Layout\_Head.cshtml" />
+    <Content Include="Views\Shared\Layout\Orders\_Header.cshtml" />
+    <Content Include="Views\Shared\Layout\FullScreen\_FooterCopyRight.cshtml" />
+    <Content Include="Views\Shared\Layout\FullScreen\_FooterQuickLinks.cshtml" />
+    <Content Include="Views\Shared\Layout\_Menu.cshtml" />
+    <Content Include="Scripts\app\ProductsServices\ContactLensSetup.js" />
+    <Content Include="Scripts\eyefinity.context.js" />
+    <Content Include="Scripts\jquery.validate.min.js.map" />
+    <Content Include="favicon.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Views\Shared\_LayoutCalendarBootstrap.cshtml">
+      <SubType>Code</SubType>
+    </Content>
+    <Content Include="Views\Shared\_LayoutOrdersBootstrap.cshtml" />
+    <Content Include="Content\Adminfooter.css" />
+    <Content Include="Content\Adminheader.css" />
+    <Content Include="Content\themes\app\Practice\AdditionalIntegrations.css" />
+    <Content Include="Content\themes\app\Practice\Holidays.css" />
+    <Content Include="Content\themes\app\Practice\NewPracticeInformation.css" />
+    <Content Include="Content\themes\app\Practice\PracticeInformation.css" />
+    <Content Include="Content\themes\app\Preferences\Preferences.css" />
+    <Content Include="Content\themes\app\Preferences\RecallTypes.css" />
+    <Content Include="Content\themes\app\ProductsServices\ItemType.css" />
+    <Content Include="Content\themes\app\ProductsServices\ProductsSetup.css" />
+    <Content Include="Content\themes\app\ProductsServices\ServiceSetup.css" />
+    <Content Include="Content\AdminReset.css" />
+    <Content Include="Content\themes\app\Resources\SecuritySetup.css" />
+    <Content Include="Content\themes\app\Scheduler\AppointmentServiceSetup.css" />
+    <Content Include="Content\themes\app\Scheduler\Holidays.css" />
+    <Content Include="Content\themes\app\Scheduler\OfficeHours.css" />
+    <Content Include="Content\themes\app\Scheduler\Preferences.css" />
+    <Content Include="Content\themes\app\Scheduler\ResourceSchedule.css" />
+    <Content Include="Content\AdminSite.css" />
+    <Content Include="Scripts\app\AdminCommon\common.accordion.js" />
+    <Content Include="Scripts\app\AdminCommon\common.date.js" />
+    <Content Include="Scripts\app\AdminCommon\common.mask.js" />
+    <Content Include="Scripts\app\AdminCommon\common.messagebox.js" />
+    <Content Include="Scripts\app\AdminCommon\common.messaging.js" />
+    <Content Include="Scripts\app\AdminCommon\common.selectBoxIt.js" />
+    <Content Include="Scripts\app\AdminCommon\common.validation.js" />
+    <Content Include="Scripts\app\AdminCommon\footer.js" />
+    <Content Include="Scripts\app\AdminCommon\header.js" />
+    <Content Include="Scripts\app\Company\AdditionalIntegrations.js" />
+    <Content Include="Scripts\app\AdminCommon\ko-jcrop.js" />
+    <Content Include="Scripts\app\AdminCommon\ko-spectrum-colorpicker-1.1.1.js" />
+    <Content Include="Scripts\app\AdminCommon\ko-upload.js" />
+    <Content Include="Scripts\app\AdminCommon\ko-zipcode.js" />
+    <Content Include="Scripts\app\Office\ClaimsInformation.js" />
+    <Content Include="Scripts\app\Company\CompanyInformation-ViewModel.js" />
+    <Content Include="Scripts\app\Company\CompanyInformation.js" />
+    <Content Include="Scripts\app\Preferences\RecallTypes.js" />
+    <Content Include="Scripts\app\Preferences\RequiredPatientProfile.js" />
+    <Content Include="Scripts\app\ProductsServices\ItemType.js" />
+    <Content Include="Scripts\app\ProductsServices\ProductAndServiceTypes.js" />
+    <Content Include="Scripts\app\Resources\ProviderSetup.js" />
+    <Content Include="Scripts\app\Resources\ProviderSetupDialog.js" />
+    <Content Include="Scripts\app\Resources\StaffSetup.js" />
+    <Content Include="Scripts\app\Scheduler\AppointmentServiceSetup.js" />
+    <Content Include="Scripts\app\Scheduler\Holidays.js" />
+    <Content Include="Scripts\app\Scheduler\OfficeHours.js" />
+    <Content Include="Scripts\app\Scheduler\Preferences.js" />
+    <Content Include="Scripts\app\Security\NotInRoleMessage.js" />
+    <Content Include="Scripts\app\Security\SecuritySetup.js" />
+    <Content Include="Scripts\app\Shared\PracticeInformationModal.js" />
+    <Content Include="Scripts\app\AdminCommon\StyleGuide.js" />
+    <Content Include="Scripts\app\StyleGuide\Grids.js" />
+    <Content Include="Scripts\jquery.Jcrop.js" />
+    <Content Include="Scripts\jquery.Jcrop.min.js">
+      <DependentUpon>jquery.Jcrop.js</DependentUpon>
+    </Content>
+    <Content Include="Scripts\jquery.selectBoxIt-3.3.0.core.js" />
+    <Content Include="Scripts\knockout-jqueryui.js" />
+    <Content Include="Scripts\knockout-jqueryui.min.js">
+      <DependentUpon>knockout-jqueryui.js</DependentUpon>
+    </Content>
+    <Content Include="Scripts\spectrum-Colorpicker-1.1.1.js" />
+    <Content Include="Content\themes\base\custom\bootstrap-template.billing.css" />
+    <Content Include="Content\themes\app\images\960_grid_example.png" />
+    <Content Include="Content\themes\app\images\bg.png" />
+    <Content Include="Content\themes\app\images\eyefinity.png" />
+    <Content Include="Content\themes\app\images\icons.png" />
+    <Content Include="Content\themes\app\images\logo.png" />
+    <Content Include="Content\themes\app\images\loading.gif" />
+    <Content Include="Content\themes\app\images\oldlogo.png" />
+    <Content Include="Content\themes\app\images\transparent.png" />
+    <Content Include="Content\themes\app\styles\common.ko-datatables.css" />
+    <Content Include="Content\themes\Fonts\icomoon.svg" />
+    <Content Include="Content\icons.css" />
+    <Content Include="favicon.ico">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Global.asax" />
+    <Content Include="Navigation\patientNav.html" />
+    <Content Include="Scripts\app\Appointments\AppointmentConfirmations.js" />
+    <Content Include="Scripts\app\Appointments\AppointmentDialog.js" />
+    <Content Include="Scripts\app\Appointments\Calendar.js" />
+    <Content Include="Scripts\app\Appointments\OfficeHours.js" />
+    <Content Include="Scripts\app\Appointments\ResourceSchedule.js" />
+    <Content Include="Scripts\app\ClaimManagement\ClaimManagement.js" />
+    <Content Include="Scripts\app\Common\common.bootstrap-select.js" />
+    <Content Include="Scripts\app\Common\dataTables.bootstrap.js" />
+    <Content Include="Scripts\app\Login\Login.js" />
+    <Content Include="Scripts\app\Common\messaging.bootstrap.js" />
+    <Content Include="Scripts\app\Common\DailyClosing.js" />
+    <Content Include="Scripts\app\FeeSlips\FeeSlips.js" />
+    <Content Include="Scripts\app\Management\ChangePaymentType.js" />
+    <Content Include="Scripts\app\Common\common.accordion.js" />
+    <Content Include="Scripts\app\Common\common.dialog.js" />
+    <Content Include="Scripts\app\Common\common.apiclient.js" />
+    <Content Include="Scripts\app\Common\common.ko-combobox.js" />
+    <Content Include="Scripts\app\Common\common.ko-dataTable-1.9.4.js" />
+    <Content Include="Scripts\app\Common\common.progressTimer.js" />
+    <Content Include="Scripts\app\Common\common.utility.js" />
+    <Content Include="Scripts\app\Common\common.validation.js" />
+    <Content Include="Scripts\app\Management\ETime.js" />
+    <Content Include="Scripts\app\Common\footer.js" />
+    <Content Include="Scripts\app\Common\header.js" />
+    <Content Include="Scripts\app\Appointments\Holidays.js" />
+    <Content Include="Scripts\app\Management\ResetPassword.js" />
+    <Content Include="Scripts\app\Common\messaging.js" />
+    <Content Include="Scripts\app\Patient\AdditionalAddresses.js" />
+    <Content Include="Scripts\app\Patient\ContactLenses.js" />
+    <Content Include="Scripts\app\Patient\Correspondence.js" />
+    <Content Include="Scripts\app\Patient\Appointments.js" />
+    <Content Include="Scripts\app\Patient\Documents.js" />
+    <Content Include="Scripts\app\Patient\FeeSlips.js" />
+    <Content Include="Scripts\app\Patient\FinancialInfo.js" />
+    <Content Include="Scripts\app\Patient\Glasses.js" />
+    <Content Include="Scripts\app\Patient\HardContactLenses.js" />
+    <Content Include="Scripts\app\Patient\MaterialOrders.js" />
+    <Content Include="Scripts\app\Patient\MeaningfulUse.js" />
+    <Content Include="Scripts\app\Patient\Merge.js" />
+    <Content Include="Scripts\app\Patient\Navigation.js" />
+    <Content Include="Scripts\app\Patient\Notes.js" />
+    <Content Include="Scripts\app\Patient\Relationships.js" />
+    <Content Include="Scripts\app\Patient\Rx.js" />
+    <Content Include="Scripts\app\Patient\Search.js" />
+    <Content Include="Scripts\app\Patient\Recalls.js" />
+    <Content Include="Scripts\app\Patient\SearchPartial.js" />
+    <Content Include="Scripts\app\Product\Inventory.js" />
+    <Content Include="Scripts\app\Product\Lookup.js" />
+    <Content Include="Scripts\app\Product\WorkInProgress.js" />
+    <Content Include="Scripts\app\Reporting\AppointmentReschedule.js" />
+    <Content Include="Scripts\app\Reporting\AppointmentServiceType.js" />
+    <Content Include="Scripts\app\Reporting\AppointmentStatus.js" />
+    <Content Include="Scripts\app\Reporting\AppointmentInsurance.js" />
+    <Content Include="Scripts\app\Reporting\AppointmentSchedule.js" />
+    <Content Include="Scripts\app\Reporting\Reporting.js" />
+    <Content Include="Scripts\app\Common\common.date.js" />
+    <Content Include="Scripts\app\Common\StyleGuide.js" />
+    <Content Include="Scripts\app\Common\common.zipcode.js" />
+    <Content Include="Scripts\dateJS.js" />
+    <Content Include="Navigation\mobile.xml" />
+    <Content Include="Scripts\dhxCommon\dhtmlxcommon.js" />
+    <Content Include="Scripts\dhxCommon\ext\dhtmlxmenu_effects.js" />
+    <Content Include="Scripts\dhxCommon\ext\dhtmlxmenu_ext.js" />
+    <Content Include="Scripts\dhxCommon\imgs\dhxmenu_dhx_black\dhtmlxmenu_bg.gif" />
+    <Content Include="Scripts\dhxCommon\imgs\dhxmenu_dhx_black\dhtmlxmenu_chrd.gif" />
+    <Content Include="Scripts\dhxCommon\imgs\dhxmenu_dhx_black\dhtmlxmenu_loader.gif" />
+    <Content Include="Scripts\dhxCommon\imgs\dhxmenu_dhx_black\dhtmlxmenu_subar.gif" />
+    <Content Include="Scripts\dhxCommon\imgs\dhxmenu_dhx_black\dhtmlxmenu_subsepbg.gif" />
+    <Content Include="Scripts\dhxCommon\imgs\dhxmenu_dhx_black\dhtmlxmenu_upar.gif" />
+    <Content Include="Scripts\dhxCommon\imgs\dhxmenu_dhx_blue\dhtmlxmenu_bg.gif" />
+    <Content Include="Scripts\dhxCommon\imgs\dhxmenu_dhx_blue\dhtmlxmenu_chrd.gif" />
+    <Content Include="Scripts\dhxCommon\imgs\dhxmenu_dhx_blue\dhtmlxmenu_loader.gif" />
+    <Content Include="Scripts\dhxCommon\imgs\dhxmenu_dhx_blue\dhtmlxmenu_subar.gif" />
+    <Content Include="Scripts\dhxCommon\imgs\dhxmenu_dhx_blue\dhtmlxmenu_subsepbg.gif" />
+    <Content Include="Scripts\dhxCommon\imgs\dhxmenu_dhx_blue\dhtmlxmenu_upar.gif" />
+    <Content Include="Scripts\dhxCommon\imgs\dhxmenu_dhx_skyblue\dhtmlxmenu_chrd.gif" />
+    <Content Include="Scripts\dhxCommon\imgs\dhxmenu_dhx_skyblue\dhtmlxmenu_loader.gif" />
+    <Content Include="Scripts\dhxCommon\imgs\dhxmenu_dhx_skyblue\dhtmlxmenu_subar.gif" />
+    <Content Include="Scripts\dhxCommon\imgs\dhxmenu_dhx_skyblue\dhtmlxmenu_upar.gif" />
+    <Content Include="Scripts\dhxCommon\imgs\dhxmenu_dhx_skyblue\dhxmenu_bg_acccell.gif" />
+    <Content Include="Scripts\dhxCommon\imgs\dhxmenu_dhx_skyblue\dhxmenu_subselbg.gif" />
+    <Content Include="Scripts\dhxCommon\imgs\dhxmenu_dhx_skyblue\dhxmenu_subsepbg.gif" />
+    <Content Include="Scripts\dhxCommon\imgs\dhxmenu_dhx_skyblue\dhxmenu_topselbg.gif" />
+    <Content Include="Scripts\dhxCommon\imgs\dhxmenu_dhx_skyblue\dhxmenu_topsepbg.gif" />
+    <Content Include="Scripts\dhxCommon\imgs\dhxmenu_dhx_terrace\dhtmlxmenu_chrd.gif" />
+    <Content Include="Scripts\dhxCommon\imgs\dhxmenu_dhx_terrace\dhtmlxmenu_loader.gif" />
+    <Content Include="Scripts\dhxCommon\imgs\dhxmenu_dhx_terrace\dhtmlxmenu_subar.gif" />
+    <Content Include="Scripts\dhxCommon\imgs\dhxmenu_dhx_terrace\dhxmenu_bg_item.gif" />
+    <Content Include="Scripts\dhxCommon\imgs\dhxmenu_dhx_terrace\dhxmenu_bg_item_sel.gif" />
+    <Content Include="Scripts\dhxCommon\imgs\dhxmenu_dhx_terrace\dhxmenu_bg_subsep.gif" />
+    <Content Include="Scripts\dhxCommon\imgs\dhxmenu_dhx_web\dhxmenu_chrd.gif" />
+    <Content Include="Scripts\dhxCommon\imgs\dhxmenu_dhx_web\dhxmenu_loader.gif" />
+    <Content Include="Scripts\dhxCommon\imgs\dhxmenu_dhx_web\dhxmenu_subar.gif" />
+    <Content Include="Scripts\dhxCommon\imgs\dhxmenu_dhx_web\dhxmenu_subselbg.gif" />
+    <Content Include="Scripts\dhxCommon\imgs\dhxmenu_dhx_web\dhxmenu_subsepbg.gif" />
+    <Content Include="Scripts\dhxCommon\imgs\dhxmenu_dhx_web\dhxmenu_topbg.gif" />
+    <Content Include="Scripts\dhxCommon\imgs\dhxmenu_dhx_web\dhxmenu_topselbg.gif" />
+    <Content Include="Scripts\dhxCommon\imgs\dhxmenu_dhx_web\dhxmenu_topsepbg.gif" />
+    <Content Include="Scripts\dhxCommon\imgs\dhxmenu_dhx_web\dhxmenu_upar.gif" />
+    <Content Include="Scripts\dhxCommon\skins\dhtmlxmenu_dhx_black.css" />
+    <Content Include="Scripts\dhxCommon\skins\dhtmlxmenu_dhx_blue.css" />
+    <Content Include="Scripts\dhxCommon\skins\dhtmlxmenu_dhx_skyblue.css" />
+    <Content Include="Scripts\dhxCommon\skins\dhtmlxmenu_dhx_terrace.css" />
+    <Content Include="Scripts\dhxCommon\skins\dhtmlxmenu_dhx_web.css" />
+    <Content Include="Areas\Admin\Views\Web.config" />
+    <Content Include="Scripts\jquery.Jcrop.min.js.map">
+      <DependentUpon>jquery.Jcrop.js</DependentUpon>
+    </Content>
+    <Content Include="Scripts\knockout-jqueryui.min.js.map">
+      <DependentUpon>knockout-jqueryui.js</DependentUpon>
+    </Content>
+    <Content Include="Areas\Admin\Views\Home\Index.cshtml" />
+    <Content Include="Areas\Admin\Views\Office\ClaimsInformation.cshtml" />
+    <Content Include="Areas\Admin\Views\Company\CompanyInformation.cshtml" />
+    <Content Include="Areas\Admin\Views\PatientEngagement\RecallTypes.cshtml" />
+    <Content Include="Areas\Admin\Views\Preferences\RequiredPatientProfile.cshtml" />
+    <Content Include="Areas\Admin\Views\ProductsServices\ItemTypes.cshtml" />
+    <Content Include="Areas\Admin\Views\ProductsServices\ProductAndServiceTypes.cshtml" />
+    <Content Include="Areas\Admin\Views\ProductsServices\LensBaseTierPricing.cshtml" />
+    <Content Include="Areas\Admin\Views\ProductsServices\ServiceSetup.cshtml" />
+    <Content Include="Areas\Admin\Views\Resources\ProviderSetup.cshtml" />
+    <Content Include="Areas\Admin\Views\Resources\ProviderSetupDialog.cshtml" />
+    <Content Include="Areas\Admin\Views\Resources\SecuritySetup.cshtml" />
+    <Content Include="Areas\Admin\Views\Resources\StaffSetup.cshtml" />
+    <Content Include="Areas\Admin\Views\Resources\StaffSetupDialog.cshtml" />
+    <Content Include="Areas\Admin\Views\Scheduler\AppointmentServicesSetup.cshtml" />
+    <Content Include="Areas\Admin\Views\Scheduler\ConfirmationTypes.cshtml" />
+    <Content Include="Areas\Admin\Views\Scheduler\DoctorSchedule.cshtml" />
+    <Content Include="Areas\Admin\Views\Scheduler\EmployeeSchedule.cshtml" />
+    <Content Include="Areas\Admin\Views\Scheduler\eTime.cshtml" />
+    <Content Include="Areas\Admin\Views\Scheduler\Holidays.cshtml" />
+    <Content Include="Areas\Admin\Views\Office\OfficeHours.cshtml" />
+    <Content Include="Areas\Admin\Views\Scheduler\Preferences.cshtml" />
+    <Content Include="Areas\Admin\Views\Scheduler\ResourceSchedule.cshtml" />
+    <Content Include="Areas\Admin\Views\StyleGuide\DragSortDemo.cshtml" />
+    <Content Include="Areas\Admin\Views\StyleGuide\Grids.cshtml" />
+    <Content Include="Areas\Admin\Views\StyleGuide\Index.cshtml" />
+    <Content Include="Areas\Admin\Views\_ViewStart.cshtml" />
+    <Content Include="Areas\Admin\Views\Shared\Empty.cshtml" />
+    <Content Include="Areas\Admin\Views\Shared\Layout\Error.cshtml" />
+    <Content Include="Areas\Admin\Views\Shared\_DialogLayout.cshtml" />
+    <Content Include="Areas\Admin\Views\Shared\_Layout.cshtml" />
+    <Content Include="Areas\Billing\Views\Web.config" />
+    <Content Include="Areas\Billing\Views\Home\Index.cshtml">
+      <SubType>Code</SubType>
+    </Content>
+    <Content Include="Areas\Billing\Views\BillingClaim\CMSForm.cshtml">
+      <SubType>Code</SubType>
+    </Content>
+    <Content Include="Areas\Billing\Views\BillingClaim\GatewayEDITransmission.cshtml" />
+    <Content Include="Areas\Billing\Views\BillingClaim\PatientLetter.cshtml" />
+    <Content Include="Areas\Billing\Views\BillingClaim\StatementForms.cshtml" />
+    <Content Include="Areas\Billing\Views\ProcessPayments\PatientPayments.cshtml" />
+    <Content Include="Areas\Billing\Views\_ViewStart.cshtml" />
+    <Content Include="Areas\Admin\Views\ProductsServices\ContactLensSetup.cshtml" />
+    <Content Include="Areas\Billing\Views\ProcessPayments\CarrierPayments.cshtml">
+      <SubType>Code</SubType>
+    </Content>
+    <Content Include="Areas\Billing\Views\Miscellaneous\BatchAdjustments.cshtml" />
+    <Content Include="Areas\Billing\Views\Miscellaneous\CloseActivityMonth.cshtml" />
+    <Content Include="Areas\Billing\Views\Reporting\BillingReports.cshtml">
+      <SubType>Code</SubType>
+    </Content>
+    <Content Include="Areas\Admin\Views\Resources\ResetPassword.cshtml" />
+    <Content Include="Areas\HelpPage\Views\Help\DisplayTemplates\TestClientDialogs.cshtml" />
+    <Content Include="Areas\HelpPage\Views\Help\DisplayTemplates\TestClientReferences.cshtml" />
+    <Content Include="Scripts\jquery.fileupload.js" />
+    <Content Include="Scripts\jquery.iframe-transport.js" />
+    <Content Include="Scripts\jquery.maskedinput-1.3.1.js" />
+    <Content Include="Scripts\jquery.dataTables-1.9.4.js" />
+    <Content Include="Scripts\app\Common\dataTables.js" />
+    <Content Include="Scripts\jquery.notify-1.5.js" />
+    <Content Include="Scripts\jquery.notify-1.5.min.js">
+      <DependentUpon>jquery.notify-1.5.js</DependentUpon>
+    </Content>
+    <Content Include="Content\themes\Fonts\icomoon.eot" />
+    <Content Include="Content\themes\Fonts\icomoon.ttf" />
+    <Content Include="Content\themes\Fonts\icomoon.woff" />
+    <Content Include="StyleGuideIcons.html" />
+    <Content Include="warmup.htm" />
+    <Content Include="Workflow\Appointments.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Workflow\Billing.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Workflow\OrderLab.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Workflow\OrderMisc.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <None Include="Scripts\jquery.validate-vsdoc.js">
+      <DependentUpon>jquery.validate.js</DependentUpon>
+    </None>
+    <Content Include="Scripts\jquery.validate.js" />
+    <Content Include="Scripts\jquery.validate.min.js" />
+    <Content Include="StyleGuide.html" />
+    <Content Include="Web.config">
+      <SubType>Designer</SubType>
+    </Content>
+    <Content Include="Content\Site.css" />
+    <Content Include="Views\Web.config" />
+    <Content Include="Views\_ViewStart.cshtml" />
+    <Content Include="Views\Home\Index.cshtml" />
+    <Content Include="Views\Shared\Error.cshtml" />
+    <Content Include="Views\AppointmentReports\Index.cshtml" />
+    <Content Include="Views\Appointments\AppointmentDialog.cshtml" />
+    <Content Include="Views\Appointments\Calendar.cshtml" />
+    <Content Include="Views\Appointments\Holidays.cshtml" />
+    <Content Include="Views\Appointments\OfficeHours.cshtml" />
+    <Content Include="Views\Appointments\ResourceSchedule.cshtml" />
+    <Content Include="Views\ClaimManagement\ClaimManagement.cshtml" />
+    <Content Include="Views\Common\DailyClosing.cshtml" />
+    <Content Include="Views\FeeSlips\FeeSlips.cshtml" />
+    <Content Include="Views\Management\ChangePaymentType.cshtml" />
+    <Content Include="Views\Management\ChangePaymentTypeLog.cshtml" />
+    <Content Include="Views\Management\ETime.cshtml" />
+    <Content Include="Views\Management\ResetPassword.cshtml" />
+    <Content Include="Views\Patient\AdditionalAddresses.cshtml" />
+    <Content Include="Views\Patient\Appointments.cshtml" />
+    <Content Include="Views\Patient\ContactLenses.cshtml" />
+    <Content Include="Views\Patient\Correspondence.cshtml" />
+    <Content Include="Views\Patient\Documents.cshtml" />
+    <Content Include="Views\Patient\FeeSlips.cshtml" />
+    <Content Include="Views\Patient\FinancialInfo.cshtml" />
+    <Content Include="Views\Patient\Glasses.cshtml" />
+    <Content Include="Views\Patient\HardContactLenses.cshtml" />
+    <Content Include="Views\Patient\Insurance.cshtml" />
+    <Content Include="Views\Patient\MaterialOrders.cshtml" />
+    <Content Include="Views\Patient\MeaningfulUse.cshtml" />
+    <Content Include="Views\Patient\Merge.cshtml" />
+    <Content Include="Views\Patient\Notes.cshtml" />
+    <Content Include="Views\Patient\Recalls.cshtml" />
+    <Content Include="Views\Patient\Relationships.cshtml" />
+    <Content Include="Views\Patient\Rx.cshtml" />
+    <Content Include="Views\Patient\Search.cshtml" />
+    <Content Include="Views\Product\Inventory.cshtml" />
+    <Content Include="Views\Product\Lookup.cshtml" />
+    <Content Include="Views\Product\WorkInProgress.cshtml" />
+    <Content Include="Views\Reporting\AppointmentInsurance.cshtml" />
+    <Content Include="Views\Reporting\AppointmentReschedule.cshtml" />
+    <Content Include="Views\Reporting\AppointmentSchedule.cshtml" />
+    <Content Include="Views\Reporting\AppointmentServiceType.cshtml" />
+    <Content Include="Views\Reporting\AppointmentStatus.cshtml" />
+    <Content Include="Views\Reporting\Default.cshtml" />
+    <Content Include="Views\Reporting\MyReports.cshtml" />
+    <Content Include="Views\Shared\_DialogLayout.cshtml" />
+    <Content Include="Views\Shared\_LayoutBootstrap.cshtml" />
+    <Content Include="Views\Shared\_LayoutPartial.cshtml" />
+    <Content Include="Views\User\ETime.cshtml" />
+    <Content Include="Views\User\MySchedule.cshtml" />
+    <Content Include="Views\Login\Index.cshtml" />
+    <Content Include="Views\Patient\SearchPartial.cshtml" />
+    <Content Include="Views\Shared\_LayoutPartialBootstrap.cshtml" />
+    <Content Include="Views\Login\Forbidden.cshtml" />
+    <Content Include="Views\Login\Logout.cshtml" />
+    <Content Include="Views\Appointments\AppointmentConfirmations.cshtml" />
+    <Content Include="Views\Login\Config.cshtml" />
+    <Content Include="Views\Shared\Layout\Billing\_Footer.cshtml" />
+    <Content Include="Views\Shared\Layout\Billing\_FooterQuickLinks.cshtml" />
+    <Content Include="Views\Shared\Layout\Billing\_Head.cshtml" />
+    <Content Include="Views\Shared\Layout\Billing\_Header.cshtml" />
+    <Content Include="Views\Shared\Layout\Billing\_HeaderQuickLinks.cshtml" />
+    <Content Include="Views\Shared\Layout\Billing\_Menu.cshtml" />
+    <Content Include="Views\Shared\Layout\Billing\_NotifyContainer.cshtml" />
+    <Content Include="Views\Shared\Layout\Billing\_TopNavigationBar.cshtml" />
+    <Content Include="Views\Shared\Layout\Billing\_LayoutBootstrap.cshtml" />
+    <Content Include="Views\Shared\Layout\_HeadCalendar.cshtml" />
+    <Content Include="Views\Patient\EligibilityModalPmi.cshtml" />
+    <Content Include="Views\Patient\EligibilityModal.cshtml" />
+    <Content Include="Views\Patient\ProcedureDiagnosisCodes.cshtml" />
+    <Content Include="Views\Shared\Layout\Orders\_Menu.cshtml" />
+    <Content Include="Views\Shared\Layout\Orders\_TopNavigationBar.cshtml" />
+    <Content Include="Views\Login\Compatibility.cshtml" />
+    <Content Include="Views\Reporting\PatientStatements.cshtml" />
+    <Content Include="Views\Reporting\InventoryFrameSalesByItem.cshtml" />
+    <Content Include="Views\Reporting\DailyFlashSales.cshtml" />
+    <Content Include="Views\Reporting\RefundAdjustmentSales.cshtml" />
+    <Content Include="Views\Reporting\AppointmentScheduleSummary.cshtml" />
+    <Content Include="Views\Reporting\DiscountAnalysis.cshtml" />
+    <Content Include="Views\Reporting\CashReceiptSummary.cshtml" />
+    <Content Include="Views\Reporting\PatientAccountsReceivableAging.cshtml" />
+    <Content Include="Views\Reporting\ProductionByProvider.cshtml" />
+    <Content Include="Views\Patient\OutsideProvider.cshtml" />
+    <Content Include="Views\Reporting\PatientBillingHistory.cshtml" />
+    <Content Include="Views\Reporting\PatientWorkInProgress.cshtml" />
+    <Content Include="Views\Login\VerifyUser.cshtml" />
+    <Content Include="Views\Common\ChangePassword.cshtml" />
+    <Content Include="Views\Common\SecurityQuestion.cshtml" />
+    <Content Include="Views\Reporting\DailyTransactionPayment.cshtml" />
+    <Content Include="Views\Patient\SubscriberPartial.cshtml" />
+    <Content Include="Views\Reporting\MonthlyProductionByProvider.cshtml" />
+    <Content Include="Views\Patient\Ledger.cshtml" />
+    <Content Include="Views\Reporting\MonthlyProductionSummary.cshtml" />
+    <Content Include="Views\Reporting\PdfView.cshtml" />
+    <Content Include="Views\Patient\Exams.cshtml" />
+    <Content Include="Views\Patient\NewExam.cshtml" />
+    <Content Include="Views\Patient\ContactLensOrder.cshtml" />
+    <Content Include="Views\Patient\InsurancePanelPartial.cshtml" />
+    <Content Include="Views\Patient\ContactLensOrderChooseInsPartial.cshtml" />
+    <Content Include="Views\Patient\ContactLensOrderChooseRxPartial.cshtml" />
+    <Content Include="Views\Patient\ContactLensOrderSummaryPartial.cshtml" />
+    <Content Include="Views\Reporting\CostOfSalesAnalysisByOffice.cshtml" />
+    <Content Include="Views\Reporting\UndeliveredOrders.cshtml" />
+    <Content Include="Views\Reporting\PatientOpenEehrExams.cshtml" />
+    <Content Include="Views\Reporting\PatientRemake.cshtml" />
+    <Content Include="Views\Reporting\MiscPayment.cshtml" />
+    <Content Include="Views\Reporting\TitledSalesAdjustment.cshtml" />
+    <Content Include="Views\Reporting\PatientCreditBalance.cshtml" />
+    <Content Include="Views\Patient\Overview.cshtml" />
+    <Content Include="Views\Patient\ProfilePartial.cshtml" />
+    <Content Include="Views\Patient\EyeglassOrder.cshtml" />
+    <Content Include="Views\Patient\EyeglassOrderChooseRxPartial.cshtml" />
+    <Content Include="Views\Patient\EyeglassOrderChooseInsPartial.cshtml" />
+    <Content Include="Views\Patient\EyeglassOrderTypePartial.cshtml" />
+    <Content Include="Views\Patient\EyeglassOrderChooseExtrasPartial.cshtml" />
+    <Content Include="Views\Patient\EyeglassOrderChooseFramePartial.cshtml" />
+    <Content Include="Views\Patient\EyeglassOrderSummaryPartial.cshtml" />
+    <Content Include="Views\Patient\EyeglassOrderChooseLensesPartial.cshtml" />
+    <Content Include="Views\Patient\EyeglassOrderSelectedRxPartial.cshtml" />
+    <Content Include="Views\Patient\QuickList.cshtml" />
+    <Content Include="Views\Patient\AddInsurancePartial.cshtml" />
+    <Content Include="Views\Patient\VspInsurancePartial.cshtml" />
+    <Content Include="Views\Patient\InsuranceEligibilityPartial.cshtml" />
+    <Content Include="Views\Reporting\MyDashBoardReports.cshtml" />
+    <Content Include="Views\Shared\Layout\_WalkMeThrough.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="App_Data\Uploads\" />
+    <Folder Include="Models\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="packages.config">
+      <SubType>Designer</SubType>
+    </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Legacy\Reports\AppointmentScheduleReport.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>AppointmentScheduleReport.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Legacy\Reports\CompanySavedOrders.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>CompanySavedOrders.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Legacy\Reports\ContactLensOrderSummaryReport.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>ContactLensOrderSummaryReport.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Legacy\Reports\COSAnalysisOfficeReport.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>COSAnalysisOfficeReport.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Legacy\Reports\DailyClosingReport.rpt">
+      <LastGenOutput>DailyClosingReport1.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Legacy\Reports\DailyPaymentReport.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>DailyPaymentReport.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Legacy\Reports\DailyTransactionReport.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>DailyTransactionReport1.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Legacy\Reports\DepositSummaryReport.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>DepositSummaryReport.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Legacy\Reports\DiscountAnalysisDetailDisplay.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>DiscountAnalysisDetailDisplay.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Legacy\Reports\EgOrderEstimatedChargesReport.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>EgOrderEstimatedChargesReport.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Legacy\Reports\EgOrderSummaryReport.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>EgOrderSummaryReport.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Legacy\Reports\ExamReport.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>ExamReport.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Legacy\Reports\FlashReport.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>FlashReport.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Legacy\Reports\InProgressClOrderReport.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>InProgressClOrderReport.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Legacy\Reports\InventoryFrameSaleByStyle.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>InventoryFrameSaleByStyle.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Legacy\Reports\InventoryFrameSalesByDateRangeReport.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>InventoryFrameSalesByDateRangeReport.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Legacy\Reports\InventoryFrameSalesByItem.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>InventoryFrameSalesByItem.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Legacy\Reports\InventoryValuationReport.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>InventoryValuationReport.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Legacy\Reports\MonthlyProductionSummarySubReport.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>MonthlyProductionSummarySubReport.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Legacy\Reports\MonthlyProductionSummaryReport.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>MonthlyProductionSummaryReport.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Legacy\Reports\MonthlyProductionByProviderReport.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>MonthlyProductionByProviderReport.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Legacy\Reports\MonthlyProductionByProviderSubReport.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>MonthlyProductionByProviderSubReport.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Legacy\Reports\OfficeNotesReport.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>OfficeNotesReport.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Legacy\Reports\PatientAuditNotesReport.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>PatientAuditNotesReport.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Legacy\Reports\PatientBillingHistoryTransactionReport.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>PatientBillingHistoryTransactionReport.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Legacy\Reports\PatientContactLensReport.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>PatientContactLensReport.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Legacy\Reports\PatientEyeglassesReport.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>PatientEyeglassesReport.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Legacy\Reports\PatientHardContactLensReport.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>PatientHardContactLensReport.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Legacy\Reports\PatientOpenEehrExamReport.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>PatientOpenEehrExamReport.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Legacy\Reports\PatientStatementReport.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>PatientStatementReport.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Legacy\Reports\PatientWelcomeForms.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>PatientWelcomeForms.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Legacy\Reports\PatientWelcomeFormsInsurance.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>PatientWelcomeFormsInsurance.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Legacy\Reports\ProductionByProviderReport.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>ProductionByProviderReport.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Legacy\Reports\RefundAdjustmentReport.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>RefundAdjustmentReport.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Legacy\Reports\ScheduledRecallReport.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>ScheduledRecallReport.cs</LastGenOutput>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{C0C07587-41A7-46C8-8FBD-3F9C8EBE2DDC}" />
+  </ItemGroup>
+  <ItemGroup>
+    <Reference Include="AdvanticaApplication">
+      <HintPath>..\packages\SingleLocationLibraries.1.0.0-Dev\lib\net40\AdvanticaApplication.exe</HintPath>
+    </Reference>
+    <Reference Include="AjaxMin, Version=5.14.5506.26196, Culture=neutral, PublicKeyToken=21ef50ce11b5d80f, processorArchitecture=MSIL">
+      <HintPath>..\packages\AjaxMin.5.14.5506.26202\lib\net40\AjaxMin.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Altova, Version=1.0.4057.30493, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\ManagedLibraries.1.0.0-Dev\lib\net40\Altova.dll</HintPath>
+    </Reference>
+    <Reference Include="antlr.runtime, Version=2.7.7.1, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\ManagedLibraries.1.0.0-Dev\lib\net40\antlr.runtime.dll</HintPath>
+    </Reference>
+    <Reference Include="Antlr3.Runtime, Version=3.5.0.2, Culture=neutral, PublicKeyToken=eb42632606e9261f, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\Antlr.3.5.0.2\lib\Antlr3.Runtime.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="AspNetBundling, Version=2.0.3.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\AspNetBundling.2.0.3.0\lib\net45\AspNetBundling.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Aspose.iCalendar, Version=1.2.1.0, Culture=neutral, PublicKeyToken=716fcc553a201e56">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\ManagedLibraries.1.0.0-Dev\lib\net40\Aspose.iCalendar.dll</HintPath>
+    </Reference>
+    <Reference Include="BarcodeLib.Barcode, Version=4.0.3.19, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\ManagedLibraries.1.0.0-Dev\lib\net40\BarcodeLib.Barcode.dll</HintPath>
+    </Reference>
+    <Reference Include="Billing.InsuranceCalculation, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\SingleLocationLibraries.1.0.0-Dev\lib\net40\Billing.InsuranceCalculation.dll</HintPath>
+    </Reference>
+    <Reference Include="Billing.VspProd">
+      <HintPath>..\packages\SingleLocationLibraries.1.0.0-Dev\lib\net40\Billing.VspProd.exe</HintPath>
+    </Reference>
+    <Reference Include="Billing.Xif.Tasks, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\SingleLocationLibraries.1.0.0-Dev\lib\net40\Billing.Xif.Tasks.dll</HintPath>
+    </Reference>
+    <Reference Include="Castle.Core, Version=3.2.0.0, Culture=neutral, PublicKeyToken=407dd0808d44fbdc, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\Castle.Core.3.2.1\lib\net45\Castle.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="Castle.DynamicProxy2, Version=2.0.3.0, Culture=neutral, PublicKeyToken=407dd0808d44fbdc, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\ManagedLibraries.1.0.0-Dev\lib\net40\Castle.DynamicProxy2.dll</HintPath>
+    </Reference>
+    <Reference Include="Castle.Windsor, Version=3.2.0.0, Culture=neutral, PublicKeyToken=407dd0808d44fbdc, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\Castle.Windsor.3.2.1\lib\net45\Castle.Windsor.dll</HintPath>
+    </Reference>
+    <Reference Include="CoreServices, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\SingleLocationLibraries.1.0.0-Dev\lib\net40\CoreServices.dll</HintPath>
+    </Reference>
+    <Reference Include="CrystalDecisions.CrystalReports.Engine, Version=13.0.2000.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL" />
+    <Reference Include="CrystalDecisions.ReportSource, Version=13.0.2000.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL" />
+    <Reference Include="CrystalDecisions.Shared, Version=13.0.2000.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL" />
+    <Reference Include="CrystalDecisions.Web, Version=13.0.2000.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL" />
+    <Reference Include="DHTMLX">
+      <HintPath>..\packages\DHTMLX.Scheduler.NET.3.0.5.2\lib\DHTMLX.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="DocumentStorage, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\SingleLocationLibraries.1.0.0-Dev\lib\net40\DocumentStorage.dll</HintPath>
+    </Reference>
+    <Reference Include="edtFTPnet, Version=1.3.0.0, Culture=neutral, PublicKeyToken=4b0c991f43097782">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\ManagedLibraries.1.0.0-Dev\lib\net40\edtFTPnet.dll</HintPath>
+    </Reference>
+    <Reference Include="Elmah">
+      <HintPath>..\packages\elmah.corelibrary.1.2.2\lib\Elmah.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="elmahappender_log4net, Version=1.0.1.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\ManagedLibraries.1.0.0-Dev\lib\net40\elmahappender_log4net.dll</HintPath>
+    </Reference>
+    <Reference Include="Eyefinity.WebScheduler.BLL, Version=0.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\SingleLocationLibraries.1.0.0-Dev\lib\net40\Eyefinity.WebScheduler.BLL.dll</HintPath>
+    </Reference>
+    <Reference Include="Eyefinity.WebScheduler.DAL, Version=0.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\SingleLocationLibraries.1.0.0-Dev\lib\net40\Eyefinity.WebScheduler.DAL.dll</HintPath>
+    </Reference>
+    <Reference Include="Eyefinity.WebScheduler.DataContracts, Version=0.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\SingleLocationLibraries.1.0.0-Dev\lib\net40\Eyefinity.WebScheduler.DataContracts.dll</HintPath>
+    </Reference>
+    <Reference Include="Eyefinity.WebScheduler.DataHelpers, Version=0.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\SingleLocationLibraries.1.0.0-Dev\lib\net40\Eyefinity.WebScheduler.DataHelpers.dll</HintPath>
+    </Reference>
+    <Reference Include="Eyefinity.WebScheduler.Utility, Version=0.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\SingleLocationLibraries.1.0.0-Dev\lib\net40\Eyefinity.WebScheduler.Utility.dll</HintPath>
+    </Reference>
+    <Reference Include="EyemedApplication">
+      <HintPath>..\packages\SingleLocationLibraries.1.0.0-Dev\lib\net40\EyemedApplication.exe</HintPath>
+    </Reference>
+    <Reference Include="Falcon.Message.Service, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\SingleLocationLibraries.1.0.0-Dev\lib\net40\Falcon.Message.Service.dll</HintPath>
+    </Reference>
+    <Reference Include="FeatureManager, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\FeatureManager.Core.1.0.0-Dev\lib\net40\FeatureManager.dll</HintPath>
+    </Reference>
+    <Reference Include="FluentNHibernate, Version=2.0.1.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\FluentNHibernate.2.0.1.0\lib\net40\FluentNHibernate.dll</HintPath>
+    </Reference>
+    <Reference Include="FluentValidation, Version=6.2.1.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\FluentValidation.6.2.1.0\lib\Net45\FluentValidation.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Groovv.Authorization.SecureAPI, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\SingleLocationLibraries.1.0.0-Dev\lib\net40\Groovv.Authorization.SecureAPI.dll</HintPath>
+    </Reference>
+    <Reference Include="HibernatingRhinos.Profiler.Appender, Version=3.0.0.0, Culture=neutral, PublicKeyToken=0774796e73ebf640, processorArchitecture=MSIL">
+      <HintPath>..\packages\NHibernateProfiler.Appender.3.0.3094.0\lib\HibernatingRhinos.Profiler.Appender.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="ICSharpCode.SharpCvsLib, Version=0.36.4902.7334, Culture=neutral">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\ManagedLibraries.1.0.0-Dev\lib\net40\ICSharpCode.SharpCvsLib.dll</HintPath>
+    </Reference>
+    <Reference Include="ICSharpCode.SharpZipLib, Version=0.84.0.0, Culture=neutral, PublicKeyToken=1b03e6acf1164f73">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\ManagedLibraries.1.0.0-Dev\lib\net40\ICSharpCode.SharpZipLib.dll</HintPath>
+    </Reference>
+    <Reference Include="Iesi.Collections, Version=4.0.0.0, Culture=neutral, PublicKeyToken=aa95f207798dfdb4, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\Iesi.Collections.4.0.1.4000\lib\net40\Iesi.Collections.dll</HintPath>
+    </Reference>
+    <Reference Include="ImageResizer,  Version=3.4.3.103, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\ImageResizer.3.4.3\lib\ImageResizer.dll</HintPath>
+    </Reference>
+    <Reference Include="ImageResizer.Mvc, Version=3.4.3.103, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\ImageResizer.Mvc.3.4.3\lib\ImageResizer.Mvc.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="IT2.BlinkIntegration, Version=0.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\SingleLocationLibraries.1.0.0-Dev\lib\net40\IT2.BlinkIntegration.dll</HintPath>
+    </Reference>
+    <Reference Include="IT2.Core, Version=4.2.90.10836, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\SingleLocationLibraries.1.0.0-Dev\lib\net40\IT2.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="IT2.CreditCardAuthorization, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\SingleLocationLibraries.1.0.0-Dev\lib\net40\IT2.CreditCardAuthorization.dll</HintPath>
+    </Reference>
+    <Reference Include="IT2.DataAccess, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\SingleLocationLibraries.1.0.0-Dev\lib\net40\IT2.DataAccess.dll</HintPath>
+    </Reference>
+    <Reference Include="IT2.Ioc, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\SingleLocationLibraries.1.0.0-Dev\lib\net40\IT2.Ioc.dll</HintPath>
+    </Reference>
+    <Reference Include="IT2.Services, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\SingleLocationLibraries.1.0.0-Dev\lib\net40\IT2.Services.dll</HintPath>
+    </Reference>
+    <Reference Include="IT2.Workflow, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\SingleLocationLibraries.1.0.0-Dev\lib\net40\IT2.Workflow.dll</HintPath>
+    </Reference>
+    <Reference Include="itextsharp, Version=5.5.11.0, Culture=neutral, PublicKeyToken=8354ae6d2174ddca, processorArchitecture=MSIL">
+      <HintPath>..\packages\iTextSharp.5.5.11\lib\itextsharp.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="log4net, Version=1.2.10.0, Culture=neutral, PublicKeyToken=1b44e1d426115821, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\ManagedLibraries.1.0.0-Dev\lib\net40\log4net.dll</HintPath>
+    </Reference>
+    <Reference Include="LumenWorks.Framework.IO, Version=3.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\ManagedLibraries.1.0.0-Dev\lib\net40\LumenWorks.Framework.IO.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="Microsoft.mshtml, Version=7.0.3300.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+      <EmbedInteropTypes>False</EmbedInteropTypes>
+      <Private>False</Private>
+      <HintPath>..\packages\ManagedLibraries.1.0.0-Dev\lib\net40\Microsoft.mshtml.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Web.Infrastructure, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\Microsoft.Web.Infrastructure.1.0.0.0\lib\net40\Microsoft.Web.Infrastructure.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.Web.SessionState.SqlInMemory, Version=13.0.0.0, Culture=neutral, PublicKeyToken=ae41e2615877eb90, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Web.SessionState.SqlInMemory.1.0.2\lib\net40\Microsoft.Web.SessionState.SqlInMemory.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="NAnt.CompressionTasks, Version=0.85.2478.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\ManagedLibraries.1.0.0-Dev\lib\net40\NAnt.CompressionTasks.dll</HintPath>
+    </Reference>
+    <Reference Include="NAnt.Core, Version=0.92.4543.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\ManagedLibraries.1.0.0-Dev\lib\net40\NAnt.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="Newtonsoft.Json, Version=7.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\packages\Newtonsoft.Json.7.0.1\lib\net45\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="NHibernate, Version=4.0.0.4000, Culture=neutral, PublicKeyToken=aa95f207798dfdb4, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\ManagedLibraries.1.0.0-Dev\lib\net40\NHibernate.dll</HintPath>
+    </Reference>
+    <Reference Include="NHibernate.Caches.SysCache2, Version=4.0.0.4000, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\NHibernate.Caches.SysCache2.4.0.0.4000\lib\net40\NHibernate.Caches.SysCache2.dll</HintPath>
+    </Reference>
+    <Reference Include="nunit.core, Version=2.6.2.12296, Culture=neutral, PublicKeyToken=96d09a1eb7f44a77, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\ManagedLibraries.1.0.0-Dev\lib\net40\nunit.core.dll</HintPath>
+    </Reference>
+    <Reference Include="nunit.core.interfaces, Version=2.6.2.12296, Culture=neutral, PublicKeyToken=96d09a1eb7f44a77, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\ManagedLibraries.1.0.0-Dev\lib\net40\nunit.core.interfaces.dll</HintPath>
+    </Reference>
+    <Reference Include="nunit.framework, Version=2.6.2.12296, Culture=neutral, PublicKeyToken=96d09a1eb7f44a77, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\ManagedLibraries.1.0.0-Dev\lib\net40\nunit.framework.dll</HintPath>
+    </Reference>
+    <Reference Include="nunit.util, Version=2.4.6.0, Culture=neutral, PublicKeyToken=96d09a1eb7f44a77, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\ManagedLibraries.1.0.0-Dev\lib\net40\nunit.util.dll</HintPath>
+    </Reference>
+    <Reference Include="NUnitCore, Version=1.11.786.40392, Culture=neutral, PublicKeyToken=1fd1558aebfb1c04">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\ManagedLibraries.1.0.0-Dev\lib\net40\NUnitCore.dll</HintPath>
+    </Reference>
+    <Reference Include="PDFGen, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\SingleLocationLibraries.1.0.0-Dev\lib\net40\PDFGen.dll</HintPath>
+    </Reference>
+    <Reference Include="ptDotNetSDK20, Version=6.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\ManagedLibraries.1.0.0-Dev\lib\net40\ptDotNetSDK20.dll</HintPath>
+    </Reference>
+    <Reference Include="Reports, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\SingleLocationLibraries.1.0.0-Dev\lib\net40\Reports.dll</HintPath>
+    </Reference>
+    <Reference Include="RestRequestClient, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\SingleLocationLibraries.1.0.0-Dev\lib\net40\RestRequestClient.dll</HintPath>
+    </Reference>
+    <Reference Include="SchedulerWS, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\SingleLocationLibraries.1.0.0-Dev\lib\net40\SchedulerWS.dll</HintPath>
+    </Reference>
+    <Reference Include="ScreenScrapingServices, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\SingleLocationLibraries.1.0.0-Dev\lib\net40\ScreenScrapingServices.dll</HintPath>
+    </Reference>
+    <Reference Include="SmartThreadPool, Version=1.0.2235.39078, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\ManagedLibraries.1.0.0-Dev\lib\net40\SmartThreadPool.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Linq.Dynamic, Version=1.0.5840.25917, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Linq.Dynamic.1.0.6\lib\net40\System.Linq.Dynamic.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Net.Http">
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="System.Net.Http.Formatting, Version=5.2.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebApi.Client.5.2.3\lib\net45\System.Net.Http.Formatting.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Web.Abstractions" />
+    <Reference Include="System.Web.ApplicationServices" />
+    <Reference Include="System.Web.DynamicData" />
+    <Reference Include="System.Web.Entity" />
+    <Reference Include="System.Web.Extensions" />
+    <Reference Include="System.Web.Helpers, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.3\lib\net45\System.Web.Helpers.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Web.Http, Version=5.2.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebApi.Core.5.2.3\lib\net45\System.Web.Http.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Web.Http.Tracing, Version=5.2.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebApi.Tracing.5.2.3\lib\net45\System.Web.Http.Tracing.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Web.Http.WebHost, Version=5.2.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebApi.WebHost.5.2.3\lib\net45\System.Web.Http.WebHost.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Web.Mvc, Version=5.2.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.Mvc.5.2.3\lib\net45\System.Web.Mvc.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Web.Optimization, Version=1.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\Microsoft.AspNet.Web.Optimization.1.1.3\lib\net40\System.Web.Optimization.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Razor, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.Razor.3.2.3\lib\net45\System.Web.Razor.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Web.Routing" />
+    <Reference Include="System.Web.WebPages, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.3\lib\net45\System.Web.WebPages.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Web.WebPages.Deployment, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.3\lib\net45\System.Web.WebPages.Deployment.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Web.WebPages.Razor, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.3\lib\net45\System.Web.WebPages.Razor.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.XML" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="Telerik.Reporting, Version=2.9.8.1105, Culture=neutral, PublicKeyToken=a9d7983dfcc261be, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\ManagedLibraries.1.0.0-Dev\lib\net40\Telerik.Reporting.dll</HintPath>
+    </Reference>
+    <Reference Include="TestTools, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\SingleLocationLibraries.1.0.0-Dev\lib\net40\TestTools.dll</HintPath>
+    </Reference>
+    <Reference Include="UltimateCommon, Version=3.5.404.1253, Culture=neutral, PublicKeyToken=0efede2d78b28dff, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\ManagedLibraries.1.0.0-Dev\lib\net40\UltimateCommon.dll</HintPath>
+    </Reference>
+    <Reference Include="UltimateFileSystem, Version=3.5.404.1253, Culture=neutral, PublicKeyToken=0efede2d78b28dff, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\ManagedLibraries.1.0.0-Dev\lib\net40\UltimateFileSystem.dll</HintPath>
+    </Reference>
+    <Reference Include="UltimateFtp, Version=3.5.404.1253, Culture=neutral, PublicKeyToken=0efede2d78b28dff, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\ManagedLibraries.1.0.0-Dev\lib\net40\UltimateFtp.dll</HintPath>
+    </Reference>
+    <Reference Include="UltimateProxy, Version=3.5.404.1253, Culture=neutral, PublicKeyToken=0efede2d78b28dff, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\ManagedLibraries.1.0.0-Dev\lib\net40\UltimateProxy.dll</HintPath>
+    </Reference>
+    <Reference Include="UltimateSecureShell, Version=3.5.404.1253, Culture=neutral, PublicKeyToken=0efede2d78b28dff, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\ManagedLibraries.1.0.0-Dev\lib\net40\UltimateSecureShell.dll</HintPath>
+    </Reference>
+    <Reference Include="UltimateSftp, Version=3.5.404.1253, Culture=neutral, PublicKeyToken=0efede2d78b28dff, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\ManagedLibraries.1.0.0-Dev\lib\net40\UltimateSftp.dll</HintPath>
+    </Reference>
+    <Reference Include="UltimateSshShellTelnet, Version=3.5.404.1253, Culture=neutral, PublicKeyToken=0efede2d78b28dff, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\ManagedLibraries.1.0.0-Dev\lib\net40\UltimateSshShellTelnet.dll</HintPath>
+    </Reference>
+    <Reference Include="ValidationFramework, Version=1.12.0.0, Culture=neutral, PublicKeyToken=2f07bd240683f08a, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\ManagedLibraries.1.0.0-Dev\lib\net40\ValidationFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="VUP.Common, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\SingleLocationLibraries.1.0.0-Dev\lib\net40\VUP.Common.dll</HintPath>
+    </Reference>
+    <Reference Include="VUP.DataAccess, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\SingleLocationLibraries.1.0.0-Dev\lib\net40\VUP.DataAccess.dll</HintPath>
+    </Reference>
+    <Reference Include="VUP.Security.Cryptography, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\SingleLocationLibraries.1.0.0-Dev\lib\net40\VUP.Security.Cryptography.dll</HintPath>
+    </Reference>
+    <Reference Include="WebGrease, Version=1.6.5135.21930, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\WebGrease.1.6.0\lib\WebGrease.dll</HintPath>
+    </Reference>
+    <Reference Include="Xby2.Xif, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\SingleLocationLibraries.1.0.0-Dev\lib\net40\Xby2.Xif.dll</HintPath>
+    </Reference>
+    <Reference Include="Xby2.Xif.Common.Tasks, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\SingleLocationLibraries.1.0.0-Dev\lib\net40\Xby2.Xif.Common.Tasks.dll</HintPath>
+    </Reference>
+    <Reference Include="Xby2.Xif.MapForce, Version=1.0.3324.27205, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\ManagedLibraries.1.0.0-Dev\lib\net40\Xby2.Xif.MapForce.dll</HintPath>
+    </Reference>
+    <Reference Include="XLink.Cryptography, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\SingleLocationLibraries.1.0.0-Dev\lib\net40\XLink.Cryptography.dll</HintPath>
+    </Reference>
+    <Reference Include="XLink.EncryptDecrypt, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\SingleLocationLibraries.1.0.0-Dev\lib\net40\XLink.EncryptDecrypt.dll</HintPath>
+    </Reference>
+    <Reference Include="XLink.EncryptDecryptLibrary, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\SingleLocationLibraries.1.0.0-Dev\lib\net40\XLink.EncryptDecryptLibrary.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Eyefinity.Enterprise.Business\Eyefinity.Enterprise.Business.csproj">
+      <Project>{cfec794c-b6dd-4703-97d4-69370fae80fc}</Project>
+      <Name>Eyefinity.Enterprise.Business</Name>
+      <Private>True</Private>
+    </ProjectReference>
+    <ProjectReference Include="..\Eyefinity.PracticeManagement.Business\Eyefinity.PracticeManagement.Business.csproj">
+      <Project>{8ce15523-3458-4e4b-a8fd-fb1a23236577}</Project>
+      <Name>Eyefinity.PracticeManagement.Business</Name>
+      <Private>True</Private>
+    </ProjectReference>
+    <ProjectReference Include="..\Eyefinity.PracticeManagement.Common\Eyefinity.PracticeManagement.Common.csproj">
+      <Project>{4e5dd6c6-91fe-4cdc-987c-d1beb5187d20}</Project>
+      <Name>Eyefinity.PracticeManagement.Common</Name>
+      <Private>True</Private>
+    </ProjectReference>
+    <ProjectReference Include="..\Eyefinity.PracticeManagement.Data\Eyefinity.PracticeManagement.Data.csproj">
+      <Project>{a4de5c03-7560-4c7d-b809-165f3ff0b7d0}</Project>
+      <Name>Eyefinity.PracticeManagement.Data</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Eyefinity.PracticeManagement.Model\Eyefinity.PracticeManagement.Model.csproj">
+      <Project>{a99b4ffe-707c-4e4a-86d3-695a6d479daf}</Project>
+      <Name>Eyefinity.PracticeManagement.Model</Name>
+      <Private>True</Private>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Legacy\Reports\AppointmentConfirmationsReport.rpt">
+      <LastGenOutput>AppointmentConfirmationsReport.cs</LastGenOutput>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{C0C07587-41A7-46C8-8FBD-3F9C8EBE2DDC}" />
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadata Include="Service References\" />
+  </ItemGroup>
+  <PropertyGroup>
+    <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
+    <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|x86'">
+    <DebugSymbols>true</DebugSymbols>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <DebugType>full</DebugType>
+    <PlatformTarget>x86</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|x86'">
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <Optimize>true</Optimize>
+    <DebugType>pdbonly</DebugType>
+    <PlatformTarget>x86</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|x64'">
+    <DebugSymbols>true</DebugSymbols>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <DebugType>full</DebugType>
+    <PlatformTarget>x64</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|x64'">
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <Optimize>true</Optimize>
+    <DebugType>pdbonly</DebugType>
+    <PlatformTarget>x64</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <Import Project="$(VSToolsPath)\WebApplications\Microsoft.WebApplication.targets" Condition="'$(VSToolsPath)' != ''" />
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v12.0\WebApplications\Microsoft.WebApplication.targets" Condition="false" />
+  <Target Name="MvcBuildViews" AfterTargets="AfterBuild" Condition="'$(MvcBuildViews)'=='true'">
+    <AspNetCompiler VirtualPath="temp" PhysicalPath="$(WebProjectOutputDir)" />
+  </Target>
+  <ProjectExtensions>
+    <VisualStudio>
+      <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}">
+        <WebProjectProperties>
+          <UseIIS>True</UseIIS>
+          <AutoAssignPort>False</AutoAssignPort>
+          <DevelopmentServerPort>54078</DevelopmentServerPort>
+          <DevelopmentServerVPath>/</DevelopmentServerVPath>
+          <IISUrl>https://localhost:44301/</IISUrl>
+          <NTLMAuthentication>False</NTLMAuthentication>
+          <UseCustomServer>False</UseCustomServer>
+          <CustomServerUrl>
+          </CustomServerUrl>
+          <SaveServerSettingsInUserFile>False</SaveServerSettingsInUserFile>
+        </WebProjectProperties>
+      </FlavorProperties>
+    </VisualStudio>
+  </ProjectExtensions>
+  <Import Project="$(SolutionDir)\.nuget\NuGet.targets" Condition="Exists('$(SolutionDir)\.nuget\NuGet.targets')" />
+  <Import Project="..\packages\StyleCop.MSBuild.4.7.53.0\build\StyleCop.MSBuild.Targets" Condition="Exists('..\packages\StyleCop.MSBuild.4.7.53.0\build\StyleCop.MSBuild.Targets')" />
+  <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
+    <PropertyGroup>
+      <ErrorText>This project references NuGet package(s) that are missing on this computer. Use NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=322105. The missing file is {0}.</ErrorText>
+    </PropertyGroup>
+    <Error Condition="!Exists('..\packages\StyleCop.MSBuild.4.7.53.0\build\StyleCop.MSBuild.Targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\StyleCop.MSBuild.4.7.53.0\build\StyleCop.MSBuild.Targets'))" />
+  </Target>
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target> -->
+</Project>

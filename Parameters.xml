@@ -1,0 +1,267 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<parameters >
+  <parameter name="Application Pool" description="Application Pool for EPM" tags="" defaultValue="EPM">
+  <parameterEntry kind="DeploymentObjectAttribute" scope="application" match="/application/@applicationPool" />
+  </parameter>
+  <parameter name="Virtual directory" description="Physical path where files for this Web application will be deployed." defaultValue="C:\Inetpub\wwwroot\EPM\PracticeManagement" tags="PhysicalPath">
+    <parameterEntry kind="DestinationVirtualDirectory" scope="EPM/" match="" />
+  </parameter>
+  <!-- Database Connections -->
+  <parameter name="ConnectionString-Web.config Connection String" description="ConnectionString-Web.config Connection String" defaultValue="Data Source=10.50.34.21;Initial Catalog=Blink;Persist Security Info=True;User ID=it4_epm;Password=3y3f1n1ty$1t43pm" tags="">
+    <parameterEntry kind="XmlFile" scope="Web.config" match="/configuration/location/connectionStrings/add[@name='ConnectionString']/@connectionString" />
+  </parameter>
+  <parameter name="elmah-sqlserver-Web.config Connection String" description="elmah-sqlserver-Web.config Connection String" defaultValue="Data Source=10.50.34.21;Initial Catalog=AL_SYS;User ID=it4_epm;Password=3y3f1n1ty$1t43pm;" tags="">
+    <parameterEntry kind="XmlFile" scope="Web.config" match="/configuration/location/connectionStrings/add[@name='elmah-sqlserver']/@connectionString" />
+  </parameter>
+  <parameter name="Xby2.Xif.Properties.Settings.xifConnectionString-Web.config Connection String" description="Xby2.Xif.Properties.Settings.xifConnectionString-Web.config Connection String" defaultValue="Server=10.50.34.21;Initial Catalog=Xif_Framework;User ID=it4_epm;Password=3y3f1n1ty$1t43pm;Enlist=false" tags="">
+    <parameterEntry kind="XmlFile" scope="Web.config" match="/configuration/location/connectionStrings/add[@name='Xby2.Xif.Properties.Settings.xifConnectionString']/@connectionString" />
+  </parameter>
+  <parameter name="MapForceConnectionString-Web.config Connection String" description="ConnectionStrings.MapForceConnectionString" defaultValue="Provider=SQLOLEDB.1;Data Source=10.50.34.21,1433;Initial Catalog=Blink;User ID=it4_epm;Password=3y3f1n1ty$1t43pm" tags="">
+    <parameterEntry kind="XmlFile" scope="Web.config" match="/configuration/location/connectionStrings/add[@name='MapForceConnectionString']/@connectionString" />
+  </parameter>
+  <!-- NHibernateSettings-->
+  <parameter name="NHibernateConfiguration_connection.connection_string" description="NHibernateConfiguration_connection.connection_string" defaultValue="Data Source=localhost;Initial Catalog=Blink;Persist Security Info=True;User ID=it4_epm;Password=3y3f1n1ty$1t43pm;encrypt=true;TrustServerCertificate=True;" tags="">
+    <parameterEntry kind="XmlFile" scope="Web.config" match="/configuration/*[local-name()='hibernate-configuration' and namespace-uri()='urn:nhibernate-configuration-2.2']/*[local-name()='session-factory' and namespace-uri()='urn:nhibernate-configuration-2.2']//*[local-name()='property' and namespace-uri()='urn:nhibernate-configuration-2.2'][@name='connection.connection_string']/text()" />
+  </parameter>
+  <parameter name="NHibernateConfiguration_cache.use_second_level_cache" description="NHibernateConfiguration_cache.use_second_level_cache" defaultValue="false" tags="">
+    <parameterEntry kind="XmlFile" scope="Web.config" match="/configuration/*[local-name()='hibernate-configuration' and namespace-uri()='urn:nhibernate-configuration-2.2']/*[local-name()='session-factory' and namespace-uri()='urn:nhibernate-configuration-2.2']//*[local-name()='property' and namespace-uri()='urn:nhibernate-configuration-2.2'][@name='cache.use_second_level_cache']/text()" />
+  </parameter>
+  <parameter name="NHibernateConfiguration_cache.use_query_cache" description="NHibernateConfiguration_cache.use_query_cache" defaultValue="false" tags="">
+    <parameterEntry kind="XmlFile" scope="Web.config" match="/configuration/*[local-name()='hibernate-configuration' and namespace-uri()='urn:nhibernate-configuration-2.2']/*[local-name()='session-factory' and namespace-uri()='urn:nhibernate-configuration-2.2']//*[local-name()='property' and namespace-uri()='urn:nhibernate-configuration-2.2'][@name='cache.use_query_cache']/text()" />
+  </parameter>
+  <!-- app settings -->
+  <parameter name="appSettings_webpagesVersion" description="appSettings_webpagesVersion" defaultValue="3.0.0.0" tags="">
+    <parameterEntry kind="XmlFile" scope="Web.config" match="/configuration/location/appSettings/add[@key='webpages:Version']/@value" />
+  </parameter>
+  <parameter name="appSettings_webpagesEnabled" description="appSettings_webpagesEnabled" defaultValue="false" tags="">
+    <parameterEntry kind="XmlFile" scope="Web.config" match="/configuration/location/appSettings/add[@key='webpages:Enabled']/@value" />
+  </parameter>
+  <parameter name="appSettings_ClientValidationEnabled" description="appSettings_ClientValidationEnabled" defaultValue="true" tags="">
+    <parameterEntry kind="XmlFile" scope="Web.config" match="/configuration/location/appSettings/add[@key='ClientValidationEnabled']/@value" />
+  </parameter>
+  <parameter name="appSettings_UnobtrusiveJavaScriptEnabled" description="appSettings_UnobtrusiveJavaScriptEnabled" defaultValue="true" tags="">
+    <parameterEntry kind="XmlFile" scope="Web.config" match="/configuration/location/appSettings/add[@key='UnobtrusiveJavaScriptEnabled']/@value" />
+  </parameter>
+  <parameter name="appSettings_PreserveLoginUrl" description="appSettings_PreserveLoginUrl" defaultValue="true" tags="">
+    <parameterEntry kind="XmlFile" scope="Web.config" match="/configuration/location/appSettings/add[@key='PreserveLoginUrl']/@value" />
+  </parameter>
+  <parameter name="appSettings_DefaultOfficeNumber" description="appSettings_DefaultOfficeNumber" defaultValue="999" tags="">
+    <parameterEntry kind="XmlFile" scope="Web.config" match="/configuration/location/appSettings/add[@key='DefaultOfficeNumber']/@value" />
+  </parameter>
+  <parameter name="appSettings_DefaultUserPassword" description="appSettings_DefaultUserPassword" defaultValue="start123" tags="">
+    <parameterEntry kind="XmlFile" scope="Web.config" match="/configuration/location/appSettings/add[@key='DefaultUserPassword']/@value" />
+  </parameter>
+  <parameter name="appSettings_SchedulerUrl" description="appSettings_SchedulerUrl" defaultValue="/Legacy/LegacyOrders/" tags="">
+    <parameterEntry kind="XmlFile" scope="Web.config" match="/configuration/location/appSettings/add[@key='SchedulerUrl']/@value" />
+  </parameter>
+  <parameter name="appSettings_ClaimsManagementUrl" description="appSettings_ClaimsManagementUrl" defaultValue="/Legacy/LegacyBilling/" tags="">
+    <parameterEntry kind="XmlFile" scope="Web.config" match="/configuration/location/appSettings/add[@key='ClaimsManagementUrl']/@value" />
+  </parameter>
+  <parameter name="appSettings_LegacyAdminUrl" description="appSettings_LegacyAdminUrl" defaultValue="/Legacy/LegacyAdmin/" tags="">
+    <parameterEntry kind="XmlFile" scope="Web.config" match="/configuration/location/appSettings/add[@key='LegacyAdminUrl']/@value" />
+  </parameter>
+  <parameter name="appSettings_LegacyOrdersUrl" description="appSettings_LegacyOrdersUrl" defaultValue="/Legacy/LegacyOrders/" tags="">
+    <parameterEntry kind="XmlFile" scope="Web.config" match="/configuration/location/appSettings/add[@key='LegacyOrdersUrl']/@value" />
+  </parameter>
+  <parameter name="appSettings_DocumentLocation" description="appSettings_DocumentLocation" defaultValue="C:\INETPUB\WWWROOT\DOCUMENTS\" tags="">
+    <parameterEntry kind="XmlFile" scope="Web.config" match="/configuration/location/appSettings/add[@key='DocumentLocation']/@value" />
+  </parameter>
+  <parameter name="appSettings_UserNamePlaceHolderValue" description="appSettings_UserNamePlaceHolderValue" defaultValue="PM" tags="">
+    <parameterEntry kind="XmlFile" scope="Web.config" match="/configuration/location/appSettings/add[@key='UserNamePlaceHolderValue']/@value" />
+  </parameter>
+  <parameter name="appSettings_PasswordHistory" description="appSettings_PasswordHistory" defaultValue="5" tags="">
+    <parameterEntry kind="XmlFile" scope="Web.config" match="/configuration/location/appSettings/add[@key='PasswordHistory']/@value" />
+  </parameter>
+  <parameter name="appSettings_EyefinityKey" description="appSettings_EyefinityKey" defaultValue="ALTEST-STAGING" tags="">
+    <parameterEntry kind="XmlFile" scope="Web.config" match="/configuration/location/appSettings/add[@key='EyefinityKey']/@value" />
+  </parameter>
+  <parameter name="appSettings_EyefinityAccessToken" description="appSettings_EyefinityAccessToken" defaultValue="CIPP7961" tags="">
+    <parameterEntry kind="XmlFile" scope="Web.config" match="/configuration/location/appSettings/add[@key='EyefinityAccessToken']/@value" />
+  </parameter>
+  <parameter name="appSettings_workflowDefinitionsPath" description="appSettings_workflowDefinitionsPath" defaultValue="~/Workflow" tags="">
+    <parameterEntry kind="XmlFile" scope="Web.config" match="/configuration/location/appSettings/add[@key='workflowDefinitionsPath']/@value" />
+  </parameter>
+  <parameter name="appSettings_InsurancePolicyGroup" description="appSettings_InsurancePolicyGroup" defaultValue="172" tags="">
+    <parameterEntry kind="XmlFile" scope="Web.config" match="/configuration/location/appSettings/add[@key='InsurancePolicyGroup']/@value" />
+  </parameter>
+  <parameter name="appSettings_dhx_license" description="appSettings_dhx_license" defaultValue="deepa.swamy@eyefinity.com-commercial--Kp8ZezJkAxU1hhPAuFh4h1vpDBXFsM1cRdR/Stzu+JZq6/Iyikeb5FMi4r3BA+TvrD3ghCWGR0YmfIPYNQ5caw==" tags="">
+    <parameterEntry kind="XmlFile" scope="Web.config" match="/configuration/location/appSettings/add[@key='dhx_license']/@value" />
+  </parameter>
+  <parameter name="appSettings_ForbiddenViewPath" description="appSettings_ForbiddenViewPath" defaultValue="~/Views/Login/Forbidden.cshtml" tags="">
+    <parameterEntry kind="XmlFile" scope="Web.config" match="/configuration/location/appSettings/add[@key='ForbiddenViewPath']/@value" />
+  </parameter>
+  <parameter name="appSettings_vsEnableBrowserLink" description="appSettings_vsEnableBrowserLink" defaultValue="false" tags="">
+    <parameterEntry kind="XmlFile" scope="Web.config" match="/configuration/location/appSettings/add[@key='vs:EnableBrowserLink']/@value" />
+  </parameter>
+  <parameter name="appSettings_claimsXsltPath" description="appSettings_claimsXsltPath" defaultValue="S:\Projects\HFO\trunk\Billing\PDFGen\UnitTests\ClaimXSLT.xslt" tags="">
+    <parameterEntry kind="XmlFile" scope="Web.config" match="/configuration/location/appSettings/add[@key='claimsXsltPath']/@value" />
+  </parameter>
+  <parameter name="appSettings_officeDataID" description="appSettings_officeDataID" defaultValue="999" tags="">
+    <parameterEntry kind="XmlFile" scope="Web.config" match="/configuration/location/appSettings/add[@key='officeData.ID']/@value" />
+  </parameter>
+  <parameter name="appSettings_BlinkSAAS" description="appSettings_BlinkSAAS" defaultValue="true" tags="">
+    <parameterEntry kind="XmlFile" scope="Web.config" match="/configuration/location/appSettings/add[@key='BlinkSAAS']/@value" />
+  </parameter>
+  <parameter name="appSettings_BlinkSelect" description="appSettings_BlinkSelect" defaultValue="false" tags="">
+    <parameterEntry kind="XmlFile" scope="Web.config" match="/configuration/location/appSettings/add[@key='BlinkSelect']/@value" />
+  </parameter>
+  <parameter name="appSettings_BlinkTest" description="appSettings_BlinkTest" defaultValue="false" tags="">
+    <parameterEntry kind="XmlFile" scope="Web.config" match="/configuration/location/appSettings/add[@key='BlinkTest']/@value" />
+  </parameter>
+  <parameter name="appSettings_ALogicWorkingFolder" description="appSettings_ALogicWorkingFolder" defaultValue="C:\ALogic Working\Billing Files" tags="">
+    <parameterEntry kind="XmlFile" scope="Web.config" match="/configuration/location/appSettings/add[@key='ALogicWorkingFolder']/@value" />
+  </parameter>
+  <parameter name="appSettings_ProcessingId" description="appSettings_ProcessingId" defaultValue="T" tags="">
+    <parameterEntry kind="XmlFile" scope="Web.config" match="/configuration/location/appSettings/add[@key='ProcessingId']/@value" />
+  </parameter>
+  <parameter name="appSettings_VSPEligibilityRequest" description="appSettings_VSPEligibilityRequest" defaultValue="https://secure.eyefinity.com/servlet/PMIServlet?message===|PMIVer=1.0|FMVer=1.0|Vsv=1.0|Vid=AcuityLogic|Vpw=Mu6VoSjk" tags="">
+    <parameterEntry kind="XmlFile" scope="Web.config" match="/configuration/location/appSettings/add[@key='VSPEligibilityRequest']/@value" />
+  </parameter>
+  <parameter name="appSettings_FalconConfigurationURL" description="appSettings_FalconConfigurationURL" defaultValue="https://ciserver1.eyefinity.com/Falcon/FalconService/api/EHR/Configuration/Office" tags="">
+    <parameterEntry kind="XmlFile" scope="Web.config" match="/configuration/location/appSettings/add[@key='FalconConfigurationURL']/@value" />
+  </parameter>
+  <parameter name="appSettings_FalconConfigurationExamURL" description="appSettings_FalconConfigurationExamURL" defaultValue="https://ciserver1.eyefinity.com/Falcon/RestService/api/rest/newexamnotification" tags="">
+    <parameterEntry kind="XmlFile" scope="Web.config" match="/configuration/location/appSettings/add[@key='FalconConfigurationExamURL']/@value" />
+  </parameter>
+  <parameter name="appSettings_FalconSchedulerURL" description="appSettings_FalconSchedulerURL" defaultValue="https://ciserver1.eyefinity.com/Falcon/RestService/api/Rest/Appointments/Office" tags="">
+    <parameterEntry kind="XmlFile" scope="Web.config" match="/configuration/location/appSettings/add[@key='FalconSchedulerURL']/@value" />
+  </parameter>
+  <parameter name="appSettings_FalconSchedulerVersion" description="appSettings_FalconSchedulerVersion" defaultValue="1" tags="">
+    <parameterEntry kind="XmlFile" scope="Web.config" match="/configuration/location/appSettings/add[@key='FalconSchedulerVersion']/@value" />
+  </parameter>
+  <parameter name="appSettings_FalconPatientURL" description="appSettings_FalconPatientURL" defaultValue="https://ciserver1.eyefinity.com/Falcon/RestService/api/Rest/Patient" tags="">
+    <parameterEntry kind="XmlFile" scope="Web.config" match="/configuration/location/appSettings/add[@key='FalconPatientURL']/@value" />
+  </parameter>
+  <parameter name="appSettings_FalconMergePatientURL" description="appSettings_FalconMergePatientURL" defaultValue="https://ciserver1.eyefinity.com/Falcon/RestService/api/Rest/MergePatient" tags="">
+    <parameterEntry kind="XmlFile" scope="Web.config" match="/configuration/location/appSettings/add[@key='FalconMergePatientURL']/@value" />
+  </parameter>
+  <parameter name="appSettings_EEHR_URL" description="appSettings_EEHR_URL" defaultValue="emaeye.com" tags="">
+    <parameterEntry kind="XmlFile" scope="Web.config" match="/configuration/location/appSettings/add[@key='EEHR_URL']/@value" />
+  </parameter>
+  <parameter name="appSettings_MagnoliaURL_Login" description="appSettings_MagnoliaURL_Login" defaultValue="http://www.eyefinity.com/eyefinity/practice-management/eyefinity-practice-management/epm-login-messaging" tags="">
+    <parameterEntry kind="XmlFile" scope="Web.config" match="/configuration/location/appSettings/add[@key='MagnoliaURL_Login']/@value" />
+  </parameter>
+  <parameter name="appSettings_MagnoliaURL_MessageCenter" description="appSettings_MagnoliaURL_MessageCenter" defaultValue="http://www.eyefinity.com/eyefinity/practice-management/eyefinity-practice-management/epm-login-messaging/message-center-development" tags="">
+    <parameterEntry kind="XmlFile" scope="Web.config" match="/configuration/location/appSettings/add[@key='MagnoliaURL_MessageCenter']/@value" />
+  </parameter>
+  <parameter name="appSettings_TestAutomation" description="appSettings_TestAutomation" defaultValue="off" tags="">
+    <parameterEntry kind="XmlFile" scope="Web.config" match="/configuration/location/appSettings/add[@key='TestAutomation']/@value" />
+  </parameter>
+  <parameter name="appSettings_Automation" description="appSettings_Automation" defaultValue="on" tags="">
+    <parameterEntry kind="XmlFile" scope="Web.config" match="/configuration/location/appSettings/add[@key='Automation']/@value" />
+  </parameter>
+  <parameter name="appSettings_GoogleAnalytics" description="appSettings_GoogleAnalytics" defaultValue="off" tags="">
+    <parameterEntry kind="XmlFile" scope="Web.config" match="/configuration/location/appSettings/add[@key='GoogleAnalytics']/@value" />
+  </parameter>
+  <parameter name="appSettings_NewABBCatalog" description="appSettings_NewABBCatalog" defaultValue="true" tags="">
+    <parameterEntry kind="XmlFile" scope="Web.config" match="/configuration/location/appSettings/add[@key='NewABBCatalog']/@value" />
+  </parameter>
+  <parameter name="appSettings_EnableOAuth" description="appSettings_EnableOAuth" defaultValue="false" tags="">
+    <parameterEntry kind="XmlFile" scope="Web.config" match="/configuration/location/appSettings/add[@key='EnableOAuth']/@value" />
+  </parameter>
+  <parameter name="appSettings_OAuthUrl" description="appSettings_OAuthUrl" defaultValue="https://api-sandbox.eyefinity.com/as/token.oauth2" tags="">
+    <parameterEntry kind="XmlFile" scope="Web.config" match="/configuration/location/appSettings/add[@key='OAuthUrl']/@value" />
+  </parameter>
+  <parameter name="appSettings_ClientId" description="appSettings_ClientId" defaultValue="epm" tags="">
+    <parameterEntry kind="XmlFile" scope="Web.config" match="/configuration/location/appSettings/add[@key='ClientId']/@value" />
+  </parameter>
+  <parameter name="appSettings_SecretKey" description="appSettings_SecretKey" defaultValue="PpwM7Xwy" tags="">
+    <parameterEntry kind="XmlFile" scope="Web.config" match="/configuration/location/appSettings/add[@key='SecretKey']/@value" />
+  </parameter>
+  <parameter name="appSettings_Base64ClientIdPlusSecret" description="appSettings_Base64ClientIdPlusSecret" defaultValue="ZXBtOlBwd003WHd5" tags="">
+    <parameterEntry kind="XmlFile" scope="Web.config" match="/configuration/location/appSettings/add[@key='Base64ClientIdPlusSecret']/@value" />
+  </parameter>
+  <parameter name="appSettings_OverrideOAuthCreds" description="appSettings_OverrideOAuthCreds" defaultValue="false" tags="">
+    <parameterEntry kind="XmlFile" scope="Web.config" match="/configuration/location/appSettings/add[@key='OverrideOAuthCreds']/@value" />
+  </parameter>
+  <parameter name="appSettings_OverrideOAuthUser" description="appSettings_OverrideOAuthUser" defaultValue="AdminDemo01_pm_Demo01_pm" tags="">
+    <parameterEntry kind="XmlFile" scope="Web.config" match="/configuration/location/appSettings/add[@key='OverrideOAuthUser']/@value" />
+  </parameter>
+  <parameter name="appSettings_OverrideOAuthPassword" description="appSettings_OverrideOAuthPassword" defaultValue="Qa1234567" tags="">
+    <parameterEntry kind="XmlFile" scope="Web.config" match="/configuration/location/appSettings/add[@key='OverrideOAuthPassword']/@value" />
+  </parameter>
+  <parameter name="appSettings_ElasticSearchURL" description="appSettings_ElasticSearchURL" defaultValue="https://api-ext-acpt.vsp.com/catalog-api-web/frames?query={0}" tags="">
+    <parameterEntry kind="XmlFile" scope="Web.config" match="/configuration/location/appSettings/add[@key='ElasticSearchURL']/@value" />
+  </parameter>
+  <parameter name="appSettings_EhrMessageTrackingUrl" description="appSettings_EhrMessageTrackingUrl" defaultValue="https://ciserver1.eyefinity.com/ALSupport/api/EhrMessageInfo" tags="">
+    <parameterEntry kind="XmlFile" scope="Web.config" match="/configuration/location/appSettings/add[@key='EhrMessageTrackingUrl']/@value" />
+  </parameter>
+  <parameter name="appSettings_PmMessageTrackingUrl" description="appSettings_PmMessageTrackingUrl" defaultValue="https://ciserver1.eyefinity.com/ALSupport/api/PmMessageInfo" tags="">
+    <parameterEntry kind="XmlFile" scope="Web.config" match="/configuration/location/appSettings/add[@key='PmMessageTrackingUrl']/@value" />
+  </parameter>
+  <parameter name="appSettings_IsEhrMessageTracking" description="appSettings_IsEhrMessageTracking" defaultValue="true" tags="">
+    <parameterEntry kind="XmlFile" scope="Web.config" match="/configuration/location/appSettings/add[@key='IsEhrMessageTracking']/@value" />
+  </parameter>
+  <parameter name="appSettings_IgnoreSSLCertificateForMessageTracking" description="appSettings_IgnoreSSLCertificateForMessageTracking" defaultValue="true" tags="">
+    <parameterEntry kind="XmlFile" scope="Web.config" match="/configuration/location/appSettings/add[@key='IgnoreSSLCertificateForMessageTracking']/@value" />
+  </parameter>
+  <parameter name="appSettings_EhrExamIdActivationDate" description="date after which column populates" defaultValue="04/29/2016" tags="">
+    <parameterEntry kind="XmlFile" scope="Web.config" match="/configuration/location/appSettings/add[@key='EhrExamIdActivationDate']/@value" />
+  </parameter>
+  <parameter name="appSettings_TempStorageExpirationDays" description="expiration value for temporary storage" defaultValue="2592000" tags="">
+    <parameterEntry kind="XmlFile" scope="Web.config" match="/configuration/location/appSettings/add[@key='TempStorageExpirationDays']/@value" />
+  </parameter>
+  <!--Service Model-->
+  <parameter name="endpoint_OrderIntegration" description="Order Integration Endpoint" defaultValue="https://testservices.eyefinity.com:443/aloi-1.4/orderIntegration" tags="">
+    <parameterEntry kind="XmlFile" scope="Web.config" match="/configuration/location/system.serviceModel/client/endpoint[@name='OrderIntegrationPort']/@address" />
+  </parameter>
+  <parameter name="endpoint_BenefitsEstimationProxyService310HttpsSoap11Endpoint" description="BES Integration Endpoint" defaultValue="https://ws.eyefinity.com/services/BenefitsEstimationProxyService-3.1.0.BenefitsEstimationProxyService-3.1.0HttpsSoap11Endpoint" tags="">
+    <parameterEntry kind="XmlFile" scope="Web.config" match="/configuration/location/system.serviceModel/client/endpoint[@name='BenefitsEstimationProxyService-3.1.0HttpsSoap11Endpoint']/@address" />
+  </parameter>
+  <!--Compilation Debug-->
+  <parameter name="compilation_debug" description="compilation_debug" defaultValue="false" tags="">
+    <parameterEntry kind="XmlFile" scope="Web.config" match="/configuration/location/system.web/compilation/@debug" />
+  </parameter>
+  <!--Forms Authentication-->
+  <parameter name="forms_authentication_domain" description="Forms Authentication Domain Name" defaultValue="" tags="">
+    <parameterEntry kind="XmlFile" scope="Web.config" match="/configuration/location/system.web/authentication/forms/@domain" />
+  </parameter>
+  <parameter name="forms_authentication_name" description="Forms Authentication Domain Name" defaultValue=".ASPXAUTH" tags="">
+    <parameterEntry kind="XmlFile" scope="Web.config" match="/configuration/location/system.web/authentication/forms/@name" />
+  </parameter>
+  <!--Role Manager Cookie name-->
+  <parameter name="rolemanager_cookieName" description="Role manager cookie Name" defaultValue=".ASPXROLES" tags="">
+    <parameterEntry kind="XmlFile" scope="Web.config" match="/configuration/location/system.web/roleManager/@cookieName" />
+  </parameter>
+  <!--machine key settings -->
+  <parameter name="machineKey_validationKey" description="Machine Validation Key" defaultValue="674A57782B96A860CE3FA32F2492AEA39E86DF90E81172434823B0E4FCDABD3620D3333FEB013A9D170CD5A5237D810EFCE36428E3C3B738B3F9CD9B466E0658" tags="">
+    <parameterEntry kind="XmlFile" scope="Web.config" match="/configuration/location/system.web/machineKey/@validationKey" />
+  </parameter>
+  <parameter name="machineKey_decryptionKey" description="Machine Decryption Key" defaultValue="8F0E9753195EEF4827E0654F87EF931476BD8F0FD721FC9727A84831511DC47A" tags="">
+    <parameterEntry kind="XmlFile" scope="Web.config" match="/configuration/location/system.web/machineKey/@decryptionKey" />
+  </parameter>
+  <!-- session state settings -->
+  <parameter name="sessionState_mode" description="Session state mode" defaultValue="Custom" tags="">
+    <parameterEntry kind="XmlFile" scope="Web.config" match="/configuration/location/system.web/sessionState/@mode" />
+  </parameter>
+  <parameter name="sessionState_cookieName" description="Session state cookie Name" defaultValue="ASP.NET_SessionId" tags="">
+    <parameterEntry kind="XmlFile" scope="Web.config" match="/configuration/location/system.web/sessionState/@cookieName" />
+  </parameter>
+  <parameter name="sessionState_customProvider" description="Session state custom Provider" defaultValue="SqlInMemoryProvider" tags="">
+    <parameterEntry kind="XmlFile" scope="Web.config" match="/configuration/location/system.web/sessionState/@customProvider" />
+  </parameter>
+  <parameter name="sessionState_providersName" description="Session state Provider Name" defaultValue="SqlInMemoryProvider" tags="">
+    <parameterEntry kind="XmlFile" scope="Web.config" match="/configuration/location/system.web/sessionState/providers/add/@name" />
+  </parameter>
+  <parameter name="sessionState_providersType" description="Session state Provider Type" defaultValue="Microsoft.Web.SessionState.SqlInMemoryProvider" tags="">
+    <parameterEntry kind="XmlFile" scope="Web.config" match="/configuration/location/system.web/sessionState/providers/add/@type" />
+  </parameter>
+  <parameter name="sessionState_providersConnectionString" description="Session state Provider connectionString" defaultValue="data source=10.50.34.21;initial catalog=EPMSessionState;User ID=it2;Password=it2;" tags="">
+    <parameterEntry kind="XmlFile" scope="Web.config" match="/configuration/location/system.web/sessionState/providers/add/@connectionString" />
+  </parameter>
+  <!--Application Initialization-->
+  <parameter name="Rewrite_RuleUrl" description="Rewrite_RuleUrl" defaultValue="https://{HTTP_HOST}/{REQUEST_URI}" tags="">
+    <parameterEntry kind="XmlFile" scope="Web.config" match="/configuration/location/system.webServer/rewrite/rules/rule/action/@url" />
+  </parameter>
+  <!-- elmah -->
+  <parameter name="elmah_AllowRemoteAccess" description="elmah_AllowRemoteAccess" defaultValue="false" tags="">
+    <parameterEntry kind="XmlFile" scope="Web.config" match="/configuration/elmah/security/@allowRemoteAccess" />
+  </parameter>
+  <parameter name="elmah_applicationName" description="elmah_applicationName" defaultValue="WebServerName.EPM" tags="">
+    <parameterEntry kind="XmlFile" scope="Web.config" match="/configuration/elmah/errorLog/@applicationName" />
+  </parameter>
+  <!-- log4net -->
+  <parameter name="log4net_level" description="log4net_level" defaultValue="ERROR" tags="">
+    <parameterEntry kind="XmlFile" scope="Web.config" match="/configuration/log4net/root/level/@value" />
+  </parameter>
+</parameters>

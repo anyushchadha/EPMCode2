@@ -1,0 +1,1201 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>AcuityLogic Front Office Style Guide</title>
+    
+
+
+    <link href="Content/themes/base/jquery.ui.core.css" rel="stylesheet" />
+    <link href="Content/themes/base/jquery.ui.resizable.css" rel="stylesheet" />
+    <link href="Content/themes/base/jquery.ui.selectable.css" rel="stylesheet" />
+    <link href="Content/themes/base/jquery.ui.accordion.css" rel="stylesheet" />
+    <link href="Content/themes/base/jquery.ui.autocomplete.css" rel="stylesheet" />
+    <link href="Content/themes/base/jquery.ui.button.css" rel="stylesheet" />
+    <link href="Content/themes/base/jquery.ui.dialog.css" rel="stylesheet" />
+    <link href="Content/themes/base/jquery.ui.slider.css" rel="stylesheet" />
+    <link href="Content/themes/base/jquery.ui.tabs.css" rel="stylesheet" />
+    <link href="Content/themes/base/jquery.ui.datepicker.css" rel="stylesheet" />
+    <link href="Content/themes/base/jquery.ui.progressbar.css" rel="stylesheet" />
+    <link href="Content/themes/base/jquery.ui.theme.css" rel="stylesheet" />
+    <link href="Content/themes/base/jquery.dataTables-1.9.4.css" rel="stylesheet" />
+    <link href="Content/themes/base/jquery.selectBoxIt-3.3.0.css" rel="stylesheet" />
+    <link href="Content/themes/base/jquery.notify-1.5.css" rel="stylesheet" />
+    <link href="Content/themes/base/jquery.Jcrop.css" rel="stylesheet" />
+    <link href="Content/themes/base/spectrum.css" rel="stylesheet" />
+    <link href="Content/themes/base/custom/jquery.ui.theme.custom.css" rel="stylesheet" />
+    <link href="Content/bootstrap.css" rel="stylesheet" />
+    <link href="Content/bootstrap-select.css" rel="stylesheet" />
+    <link href="Content/bootstrap-timepicker-0.4.1.css" rel="stylesheet" />
+    <link href="Content/icons.css" rel="stylesheet" />
+    <link href="Content/site.css" rel="stylesheet" />
+    <link href="Content/themes/app/Login/login.css" rel="stylesheet" />
+    <link href="Content/themes/app/Login/forbidden.css" rel="stylesheet" />
+    <link href="Content/themes/base/custom/bootstrap-select-custom.css" rel="stylesheet" />
+    <link href="Content/themes/base/custom/bootstrap-timepicker-custom.css" rel="stylesheet" />
+    <link href="Content/themes/base/custom/jquery.dataTables-custom.css" rel="stylesheet" />
+    <link href="Content/themes/base/custom/bootstrap-template.css" rel="stylesheet" />
+    <link href="Content/themes/app/styles/common.ko-combobox.css" rel="stylesheet" />
+    <link href="Content/themes/app/styles/common.ko-datatables.css" rel="stylesheet" />
+    
+</head>
+    <body id="styleguideBody" data-spy="scroll" data-target="#sideNav">
+    <div id="styleguide" class="container">
+        <div class="col-lg-2 col-md-2" id="sideNav">
+            <ul class="nav navbar col-lg-2 col-md-2">
+                <li>
+                    <a class="topLevel" href="#PAGE_AND_GLOBAL"><i class="icon-earth"></i> Page &amp; Global Level Specs</a>
+                    <ul class="nav">
+                        <li><a href="https://confluence.eyefinity.com/display/projectMgmt/User-Facing+Terminology+Specifications" target="_blank">Terminology Guide (Confluence)</a></li>
+                        <li><a href="#FONTS">Fonts</a></li>
+                        <li><a href="#ICONS">Icons</a></li>
+                        <li><a href="#BOOTSTRAP_GRID">Bootstrap Grid System</a></li>
+                        <li><a href="#MODAL_WINDOWS">Modal Windows</a></li>
+                    </ul>
+                </li>
+
+                <li>
+                    <a class="topLevel" href="#PAGE_PARTS"><i class="icon-wrench"></i> Page Parts</a>
+                    <ul class="nav">
+                        <li><a href="#DATA_GRIDS">Data Grids</a></li>
+                        <li><a href="#ACCORDIONS">Accordions</a></li>
+                    </ul>
+                </li>
+
+                <li>
+                    <a class="topLevel" href="#FORM_ELEMENTS"><i class="icon-screen"></i> Form Elements</a>
+                    <ul class="nav">
+                        <li><a href="#FORMBEHAVIOR">Form Behavior</a></li>
+                        <li><a href="#BUTTONS">Buttons</a></li>
+                        <li><a href="#TEXT_FIELDS">Text Fields and Watermarks</a></li>
+                        <li><a href="#COMBO_BOXES">Combo Boxes / Drop-down Lists</a></li>
+                        <li><a href="#RADIO_BUTTONS">Radio buttons &amp; Checkboxes</a></li>
+                        <li><a href="#TEXT_AREAS">Text Areas</a></li>
+                        <li><a href="#DATEPICKER">Datepicker</a></li>
+                        <li><a href="#TIMEPICKER">Timepicker</a></li>
+                    </ul>
+                </li>
+
+                <li>
+                    <a class="topLevel" href="#FORM_VALIDATION"><i class="icon-checkbox-checked "></i> Form Validation</a>
+                    <ul class="nav">
+                        <li><a href="#REQUIREDFIELDS">Messaging: Validation &amp; Required Fields</a></li>
+                        <li><a href="#SYSTEMPOPUPS">Messaging: System Popups</a></li>
+                    </ul>
+                </li>
+            </ul>
+        </div>
+        <div class="col-lg-10 col-md-10">
+            <h1 id="PAGE_AND_GLOBAL">ALSL Front Office Style Guide</h1>
+            
+            <!-- page title -->
+            <h3>Page and Global Level Specifications</h3>
+            <br/>
+
+            <!-- ---------- font ---------- -->
+            <fieldset>
+                <legend id="FONTS">Fonts</legend>
+                <h2>Page Title</h2>
+                <p>Page titles should use the &lt;h2&gt; tag</p><br/>
+
+                <h3>Section Headers</h3>
+                <p>Section headers should use the &lt;h3&gt; tag</p><br/>
+
+                <h4>Second-Level Section Headers</h4>
+                <p>Second-Level section headers should use the &lt;h4&gt; tag</p><br/>
+
+                <h4>Body Text</h4>
+                <p>
+                    Body text does not need a specific tag and can just be typed into the page.
+                </p><br/>
+
+                <h4>Links</h4>
+                <p>
+                    Anytime a <a class="bodyTxtLink" href="javascript:void(0)">link</a> is shown in body text, it should always be in the blue color, and should be underlined.
+                    If a link is shown stand-alone (as seen below) it should be shown without the underline by default, but the underline should appear when the mouse hovers over it.<br />
+                </p>
+                <a href="#">Lorem Ipsum</a><br /><br/>
+
+
+                <h4>Field Labels</h4>
+                <p>
+                    Field labels (when shown in a form) will be right aligned to the input field (unless specifically called out differently) and will never use a colon.  
+                    Field labels are not bold, but are normal weight text. For field labels that need to wrap, use .fieldLabelWrap class and insert a line break within the field label to get the result shown below.
+                </p>
+
+                <div class="form-horizontal">
+                    <div class="form-group">
+                        <label for="textfield1" class="col-lg-2 control-label">Name</label>
+                        <div class="col-lg-4">
+                            <input type="text" id="textfield1" class="form-control" />
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="textfield2" class="col-lg-2 control-label fieldLabelWrap">Communication<br />Preferences (MU)</label>
+                        <div class="col-lg-4">
+                            <input type="text" id="textfield2" class="form-control" />
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="textfield200" class="col-lg-2 control-label">Email</label>
+                        <div class="col-lg-4">
+                            <input type="text" id="textfield200" class="form-control" />
+                        </div>
+                    </div>
+                </div>
+
+                <p>
+                    Field labels (when shown as part of a header on a data grid) will be left aligned and shown on top of the field (unless specifically called out differently) 
+                    and will never use a colon. These labels are also smaller font size.
+                </p>
+
+                <div class="gridHeaderLeft col-lg-8 col-md-11 col-sm-12 col-xs-12 form-inline">
+                    <div class="form-group col-lg-5 col-md-5 col-sm-5">
+                        <label for="textfield3" class="control-label">Lorem Ipsum</label>
+                        <input type="text" id="textfield3" class="form-control" />
+                    </div>
+                    <div class="form-group col-lg-5 col-md-5 col-sm-5">
+                        <label for="textfield4" class="control-label">Lorem Ipsum</label>
+                        <input type="text" id="textfield4" class="form-control" />
+                    </div>
+                    <div class="form-group col-lg-2 col-md-2 col-sm-2">
+                        <!--Blank label to keep button aligned to the bottom-->
+                        <label class="control-label spacer"></label>
+                        <button id="Button1" class="btn btn-primary pull-right"><i class="icon-search"></i>Search</button>
+                    </div>
+                </div>
+            </fieldset><br/><br/>
+
+            <!-- ---------- icons ---------- -->
+            <fieldset>
+                <legend id="ICONS">Icons</legend>
+
+                <p>
+                    Icons will be pulled from the <b>IcoMoon</b> library.  If a suitable icon cannot be found from the default pack - a custom icon can be created.  These icons utilize vector graphics 
+                    - meaning that they scale (zoom) clear and don't become pixelated as an image does. 
+                </p>
+
+               <!-- <img id="icon_sprite" class="" src="/Content/themes/app/images/icons.png" alt="" title="" />
+                <br />
+                <br />
+                <p>
+                    Image sprites work by specifying a single image as a background (in CSS) for a block level element (div, span, etc..).  The dimensions of the the block level element should be 
+                    the same as the dimensions of the specific icon you want to show.  You then also specifcy the background-position (so the starting point inside the image sprite).  For example, 
+                    if the datepicker icon needs to be shown.  Your block level element should be specified width:17px, height:17px (so that whatever the background is, it only shows a 17x17 viewport 
+                    of that image).  The background-position is then specified to be <i>background-position: 102px 17px</i>.  This says that I will show a 17x17 box with a background starting at 102px 
+                    from the left side of the image and 17px tall.
+
+                </p>-->
+
+                <p>Code to show each icon is shown below (along with the CSS class you'll need to use to specify that icon) - as a new icon is added to the application, it should 
+                    be noted in this section.  The full library of icons currently available can be seen at <a href="StyleGuideIcons.html" target="_blank">IcoMoon Custom ALSL Library</a></p> 
+
+                <div class="row">
+                    <div class="col-lg-4">
+                        <i class="btn icon-calendar-3"></i> btn icon-calendar-3<br />
+                        <i class="btn icon-clock"></i> btn icon-clock<br />
+                        <i class="btn icon-remove"></i> btn icon-remove<br />
+                        <i class="btn icon-pencil"></i> btn icon-pencil<br />
+                        <i class="btn icon-file-2"></i> btn icon-file-2<br />
+                        <i class="btn icon-arrow-down"></i> btn icon-arrow-left<br />
+                    </div>
+                    <div class="col-lg-4">
+                        <i class="btn icon-arrow-left"></i> btn icon-arrow-left<br />
+                        <i class="btn icon-arrow-right"></i> btn icon-arrow-right<br />
+                        <i class="btn icon-plus"></i> btn icon-plus<br />
+                        <i class="btn icon-print"></i> btn icon-print<br />
+                        <i class="btn icon-file-pdf"></i> btn icon-file-pdf<br />
+                        <i class="btn icon-tooltip"></i> btn icon-tooltip<br />
+                        <i class="btn icon-hamburger"></i> btn icon-hamburger<br />
+                    </div>
+                    <div class="col-lg-4">
+                        <i class="btn icon-dailyclose"></i> btn icon-dailyclose<br /> 
+                        <div class="validationerror"><i class="icon-notification"></i> icon-notification<br /></div>
+                        <div class="validationsuccess"><i class="icon-checkmark"></i> icon-checkmark<br /></div>
+                        <div class="validationerror"><i class="icon-warning"></i> icon-warning</div>
+                        <div class="validationerror"><i class="icon-big icon-notification"></i> icon-big icon-notification<br /></div>
+                        <i class="btn icon-spinner-arrow-up"></i> btn icon-spinner-arrow-up<br />
+                        <i class="btn icon-spinner-arrow-down"></i> btn icon-spinner-arrow-down<br />
+                    </div>
+                </div>
+                <br />
+            </fieldset><br/>
+
+            <!-- ---------- Bootstrap Grid Layout ---------- -->
+            <fieldset>
+                <legend id="BOOTSTRAP_GRID">Bootstrap Grid System</legend>
+                <p>The grid system employed in the site is the Bootstrap responsive grid system. Documentation can be found on: <a href="http://getbootstrap.com/css/#grid" target="_blank">Bootstrap's Documentation Page</a></p>
+            </fieldset><br/>
+
+            <!-- ---------- modal windows ---------- -->
+            <fieldset>
+                <legend id="MODAL_WINDOWS">Modal Windows</legend>
+
+
+                <p>Modal Windows should always have the blue title bar with a Title on the left and the Close ("X") button on the right. The title should
+                                    be an &lt;H3&gt; tag.</p>
+                <p>A positive button (Save, Add, Go, etc..) should always be shown as a Primary Button, and should be positioned at the lower right of the dialog.</p>
+                <p>A negative button (cancel, close, exit, etc..) should always be shown as a Secondary Button, and should always be positioned at the lower left of the dialog.</p>
+
+                <a data-toggle="modal" href="#myModal" class="btn btn-primary btn-large">Launch Modal Window</a>
+
+                <!-- Modal -->
+                <div class="modal fade" id="myModal">
+                    <div class="modal-dialog">
+                        <div class="vertical-align-middle">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                                    <h3 class="modal-title">Lorem Ipsum Dolor Sit Amet</h3>
+                                </div>
+                                <div class="modal-body">
+                                    Modal Windows should always have the blue title bar with a Title on the left and the Close ("X") button on the right.  The title should
+                                    be an &lt;H3&gt; tag.<br />
+                                    <br />
+
+                                    A positive button (Save, Add, Go, etc..) should always be shown as a Primary Button, and should be positioned at the lower right of the dialog. 
+                                    <br />
+                                    <br />
+
+                                    A negative button (cancel, close, exit, etc..) should always be shown as a Secondary Button, and should always be positioned at the lower left of the dialog.<br />
+                                    <br />
+                                </div>
+                                <div class="clearfix"></div>
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-default pull-left" data-dismiss="modal">Close</button>
+                                    <button type="button" class="btn btn-primary" data-dismiss="modal">Save</button>
+                                </div>
+                            </div>
+                            <!-- /.modal-content -->
+                        </div>
+                    </div>
+                    <!-- /.modal-dialog -->
+                </div>
+                <!-- /.modal -->
+            </fieldset>
+
+            <h2 id="PAGE_PARTS">Page Parts</h2>
+            <br />
+
+            <fieldset>
+                <legend id="DATA_GRIDS">Data Grids</legend>
+                <h4>Grids in Sliding Panels</h4>
+                
+                <h4>Data Grid Behavior</h4>
+                <a href="https://datatables.net/" target="_blank">DataTables Documentation</a>
+                <ul>
+                    <li>Create - "+ noun" button is always in the upper right</li>
+                    <li>Update (or View Details) - to edit a row, click anywhere in the row except the icon area. Unless otherwise specified this will bring up the detail view in 
+                        a modal window. <br /><i>(As an exception: some grids - specifically called out by page - may also have a real link or button in the row that does something different)</i>
+                    </li>
+                    <li>Delete - to delete an item, click the garbage can icon. Confirm deletes with an alert box</li>
+                    <li>By default, an icon column header has no label unless otherwise specified.</li>
+                    <li>Checkboxes in grids are always editable and don't require putting the line item into an "edit" mode. Grids with checkboxes will have a "Save" button under the paging widget area in the lower right.</li>
+                </ul>
+                <br />
+
+
+                <p>
+                    Example of a blank data grid with no header, paging, or other extras.  When there is no data for a grid to display (i.e. no results, or has not been loaded initially yet), none of the 
+                    footer items should be displayed.
+                </p>
+                <br />
+                <p>If there is only one page of results, do not show the first, previous, next, last paging widget or the drop down list that changes the number of entries shown.</p>
+                <table id="datagrid1" ></table>
+                <br />
+                
+                <p>Example of a plain data grid with results shown + paging (no header).  This grid allows you to click on any row and an action will occur.</p>
+                <table id="datagrid2"></table>
+                <br />
+
+                <p>
+                    Example of a data grid with results shown + paging + header.  If the grid requires a button to "Add" an object to it, it will be located at the top right corner
+                    of the grid as shown.  This button will always be used for adding "something" to the grid, and should therefore have the "plus" icon displayed as shown.
+                </p>
+                <br />
+
+                <button title="Add Note" class="btn btn-primary button-grid-header-xs pull-right visible-xs"><i class="icon-plus"></i>Add</button> 
+                <div class="gridHeaderLeft col-lg-7 col-md-9 col-sm-9 col-xs-12">
+                    <div class="form-inline">
+                        <div class="form-group col-lg-4 col-md-4 col-sm-4">
+                            <label for="text5" class="control-label">Lorem Ipsum</label>
+                            <input type="text" id="text5" class="form-control" />
+                        </div>
+                        <div class="form-group col-lg-4 col-md-4 col-sm-4">
+                            <label for="text6" class="control-label">Lorem Ipsum</label>
+                            <input type="text" id="text6" class="form-control" />
+                        </div>
+                        <div class="form-group col-lg-4 col-md-4 col-sm-4">
+                            <label class="control-label spacer"></label>
+                            <button class="btn btn-primary pull-right"><i class="icon-search"></i>Search</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="gridHeaderRight col-lg-5 col-md-3 col-sm-3 hidden-xs form-inline col-no-padding">
+                    <div class="form-group pull-right col-no-padding">
+                        <label class="control-label spacer"></label>
+                        <button class="btn btn-primary"><i class="icon-plus"></i>Add</button>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <table id="datagrid3" class="hasFilters"></table>
+                </div>
+                <br />
+
+                <p>
+                    Example of a data grid with results shown + paging + double-stacked header.  If there are enough search fields or information to warrant a taller grid-header,
+                    the "Add" button on the right of the grid header should always be vertically aligned to the bottom-most row of the search filters line.  The bottom row of the search filters 
+                    (gridHeaderLeft) should be wrapped in a "form-inline" div.  The top row should not.  GridHeaderRight should always have the "col-no-padding" class.  This is to account for proper spacing.  
+
+                </p>
+
+                <br />
+                <button title="Add Note" class="btn btn-primary button-grid-header-xs pull-right visible-xs"><i class="icon-plus"></i>Add</button> 
+                <div id="styleGuideSearchGridSearchControls4" class="gridHeaderLeft col-lg-9 col-md-9 col-sm-9 col-xs-12">
+                    <div class="form-group col-lg-3 col-md-3 col-sm-3">
+                        <label for="textfield41" class="control-label">First Name</label>
+                        <input type="text" id="textfield41" class="form-control" />
+                    </div>
+                    <div class="form-group col-lg-3 col-md-3 col-sm-3">
+                        <label for="textfield42" class="control-label">Last Name</label>
+                        <input type="text" id="textfield42" class="form-control" />
+                    </div>
+                    <div class="form-group col-lg-3 col-md-3 col-sm-3">
+                        <label for="textfield43" class="control-label">Title</label>
+                        <input type="text" id="textfield43" class="form-control" />
+                    </div>
+                    <div class="form-group col-lg-3 col-md-3 col-sm-3">
+                        <label for="selectElement10" class="control-label">State</label>
+                        <select id="selectElement10" class="">
+                            <option value="Option 1">Option 1</option>
+                            <option value="Option 2">Option 2</option>
+                            <option value="Option 3">Option 3</option>
+                            <option value="Option 4">Option 4</option>
+                            <option value="Option 5">Option 5</option>
+                        </select>
+                    </div>
+
+                    <div class="form-inline">
+                        <div class="form-group col-lg-3 col-md-3 col-sm-3">
+                            <label for="selectElement11" class="control-label">Lorem Ipsum</label>
+                            <select id="selectElement11" class="">
+                                <option value="Option 1">Option 1</option>
+                                <option value="Option 2">Option 2</option>
+                                <option value="Option 3">Option 3</option>
+                                <option value="Option 4">Option 4</option>
+                                <option value="Option 5">Option 5</option>
+                            </select>
+                        </div>
+                        <div class="form-group col-lg-3 col-md-3 col-sm-3">
+                            <label for="textfield46" class="control-label">Sit Amet</label>
+                            <input type="text" id="textfield46" class="form-control" />
+                        </div>
+                        <div class="form-group col-lg-3 col-md-3 col-sm-3">
+                            <label class="control-label spacer"></label>
+                            <div class="checkbox">
+                                <label>
+                                    <input id="chkOption10" type="checkbox" name="group10" value="Option 4" />
+                                    Lorem Ipsum
+                                </label>
+                            </div>
+                        </div>
+
+                        <div class="form-group col-lg-3 col-md-3 col-sm-3">
+                            <label class="control-label spacer"></label>
+                            <button class="btn btn-primary pull-right"><i class="icon-search"></i>Search</button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="gridHeaderRight col-lg-3 col-md-3 col-sm-3 hidden-xs col-no-padding">
+                    <div class="form-group col-lg-12">
+                        <label class="control-label spacer"></label>
+                        <input type="text" id="text4" class="form-control" />
+                    </div>
+                    <div class="form-inline">
+                        <div class="form-group col-lg-12 pull-right col-lg-no-padding">
+                            <label class="control-label spacer"></label>
+                            <button class="btn btn-primary"><i class="icon-plus"></i>Add</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <table id="datagrid4" class="hasFilters"></table>
+                </div>
+
+            </fieldset>
+
+            
+            <!-- ---------- accordions ---------- -->
+            <fieldset id="ACCORDIONS">
+                <legend>Accordion Controls</legend>
+                <p>Below is an example of an accordion control that is closed by default.  Clicking on a section will expand or collapse that section.</p>
+                <br />
+
+                <div id="reportsAccordion" class="col-lg-3 col-lg-no-padding-left col-md-4 col-md-no-padding-left col-sm-4 panel-group">
+                    <div class="panel panel-default">
+                        <div class="panel-heading panel-title accordion-toggle" data-toggle="collapse" data-parent="#reportsAccordion" data-target="#marketingReports">
+                            <span aria-hidden="true" class="icomoon icon-pie"></span> Accordion 1
+                        </div>
+                        <div id="marketingReports" class="panel-collapse collapse">
+                            <div class="panel-body">
+                                <ul>
+                                    <li class="accordion-inner">Item 1</li>
+                                    <li class="accordion-inner">Item 2</li>
+                                    <li class="accordion-inner">Item 3</li>
+                                    <li class="accordion-inner">Item 4</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+        
+                    <div class="panel panel-default">
+                        <div class="panel-heading panel-title accordion-toggle" data-toggle="collapse" data-parent="#reportsAccordion" data-target="#meaningfulUseReports">
+                            <span aria-hidden="true" class="icomoon icon-signup"></span> Accordion 2
+                        </div>
+                        <div id="meaningfulUseReports" class="panel-collapse collapse">
+                            <div class="panel-body">
+                                <ul>
+                                    <li class="accordion-inner">Item 1</li>
+                                    <li class="accordion-inner">Item 2</li>
+                                    <li class="accordion-inner">Item 3</li>
+                                    <li class="accordion-inner">Item 4</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+        
+                    <div class="panel panel-default">
+                        <div class="panel-heading panel-title accordion-toggle" data-toggle="collapse" data-parent="#reportsAccordion" data-target="#patientReports">
+                            <span aria-hidden="true" class="icomoon icon-user-2"></span> Accordion 3
+                        </div>
+                        <div id="patientReports" class="panel-collapse collapse">
+                            <div class="panel-body">
+                                <ul>
+                                    <li class="accordion-inner">Item 1</li>
+                                    <li class="accordion-inner">Item 2</li>
+                                    <li class="accordion-inner">Item 3</li>
+                                    <li class="accordion-inner">Item 4</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+        
+                    <div class="panel panel-default">
+                        <div class="panel-heading panel-title accordion-toggle" data-toggle="collapse" data-parent="#reportsAccordion" data-target="#salesReports">
+                            <span aria-hidden="true" class="icomoon icon-coin"></span> Accordion 4
+                        </div>
+                        <div id="salesReports" class="panel-collapse collapse">
+                            <div class="panel-body">
+                                <ul>
+                                    <li class="accordion-inner">Item 1</li>
+                                    <li class="accordion-inner">Item 2</li>
+                                    <li class="accordion-inner">Item 3</li>
+                                    <li class="accordion-inner">Item 4</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </fieldset>
+            <br />
+
+
+
+            <!-- ---------- form elements ---------- -->
+            <h3 id="FORM_ELEMENTS">Form Elements</h3>
+            <br />
+            <fieldset>
+                <legend id="FORMBEHAVIOR">Form Behavior</legend>
+                <h4>Default Focus </h4>
+                <p>When a form loads, default focus is in the upper left field.</p>
+                <br />
+
+                <h4>Tab Order</h4>
+                <p>
+                    Tab order goes from section to section, left to right and top to bottom. So, for example, in the following screenshot, the proper tab order would be: Name (title, first, last), Nickname, Address 1, etc,
+                    all the way down the column and then on to the right column.
+                    If a section spans across columns, the tab order should be left to right and then top to bottom.
+                    Follow the sections.
+                </p>
+                <br />
+
+                <h4>Keyboard Tabbing of Radio Buttons and Checkboxes</h4>
+                <p>
+                    Radio Buttons: Tab to area containing Radio Buttons, then use left, right, or top, bottom arrows to 'tab' between individual radio buttons.<br />
+                    Checkboxes: Tab to area contaning Checkboxes, then use Spacebar to select checkbox(s). Use Tab key to tab between individual Checkboxes.
+                </p>
+                <br />
+
+                <h4>Watermark Behavior</h4>
+                <p>Watermark stays until the user types the first character. If the user deletes the characters in the field, the watermark should reappear See the <a href="#DATEPICKER">Date Picker</a> section.</p>
+
+            </fieldset>
+
+            <!-- ---------- buttons ---------- -->
+            <a id="BUTTONS"></a>
+            <fieldset>
+                <legend>Buttons</legend>
+                <p>
+                    The following are examples of Primary Buttons, one with no icon, and one with with an icon on the left.  If no icon is specified, use the button with no icon.
+                    Icons should always be placed on the left side of the button.
+                </p>
+
+                <button id="btnSave" class="btn btn-primary">Save</button>
+                <button id="btnSearch" class="btn btn-primary"><i class="icon-search"></i>Search</button>
+                <br />
+                <br />
+
+                <p>The following button is an example of a Secondary Button.  The secondary button behaves the same as primary buttons but have a different color scheme.</p>
+
+                <button id="btnClose" class="btn btn-default">Close</button>
+            </fieldset>
+
+            <!-- ---------- text fields ---------- -->
+            <fieldset id="TEXT_FIELDS">
+                <legend>Text Fields</legend>
+                <p>Text fields should use pre-defined widths to maintain uniformity.  By default, text fields have margins added to maintain consistent spacing.</p>
+                <br />
+
+                <div class="row">
+                    <div class="form-horizontal col-lg-8">
+                        <div class="form-group">
+                            <label for="textfield5" class="col-lg-5 control-label">Address Line 1</label>
+                            <div class="col-lg-7">
+                                <input type="text" id="textfield5" class="form-control" />
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="textfield7" class="col-lg-5 control-label fieldLabelWrap">
+                                Address<br />
+                                Line 2</label>
+                            <div class="col-lg-7 no-padding">
+                                <div class="col-lg-6">
+                                    <input type="text" id="textfield7" class="form-control" />
+                                </div>
+                                <div class="col-lg-6">
+                                    <input type="text" id="text3" class="form-control" />
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="textfield8" class="col-lg-5 control-label">Zip / City / State</label>
+                            <div class="col-lg-2">
+                                <input type="text" id="textfield8" class="form-control" />
+                            </div>
+                            <div class="col-lg-3">
+                                <input type="text" id="textfield9" class="form-control" />
+                            </div>
+                            <div class="col-lg-2">
+                                <input type="text" id="textfield10" class="form-control" />
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <br />
+
+                <p>
+                    Some text fields are required.  In those instances a bold, red asterisk is added to the left of the field label for the required field.  The required asterisk symbol has
+                    a margin added to maintain consistent spacing.  In addition, the field is had a dark blue border and a light blue background color to separate it from non-required fields.
+                    If a required text field has data pre-populated, it should not have the highlight applied.
+                </p>
+                <br />
+
+                <div class="row">
+                    <div class="form-horizontal col-lg-8">
+                        <div class="form-group">
+                            <label for="textfield11" class="control-label col-lg-5">Name</label>
+                            <div class="col-lg-7">
+                                <input type="text" id="textfield11" class="form-control" />
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <span class="col-lg-5 control-label">
+                                <span class="required">*</span><label for="textfield12">Address Line 1</label>
+                            </span>
+                            <div class="col-lg-7">
+                                <input type="text" id="textfield12" class="requiredField form-control" />
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <span class="col-lg-5 control-label">
+                                <span class="required">*</span><label for="textfield32">Address Line 2</label>
+                            </span>
+                            <div class="col-lg-7">
+                                <input type="text" id="textfield32" class="form-control requiredField" value="this is some previously saved data" />
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="textfield13" class="col-lg-5 control-label">City</label>
+                            <div class="col-lg-7">
+                                <input type="text" id="textfield13" class="form-control" />
+                            </div>
+                        </div>
+                        <br />
+
+                        If a text field has an error, it should be shown with a dark red border and light red background.<br />
+                        <br />
+                        <div class="form-group">
+                            <label for="textfield14" class="col-lg-5 control-label">Name</label>
+                            <div class="col-lg-7">
+                                <input type="text" id="textfield14" class="form-control" />
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <span class="col-lg-5 control-label">
+                                <span class="required">*</span><label for="textfield15">Address Line 1</label>
+                            </span>
+                            <div class="col-lg-7">
+                                <input type="text" id="textfield15" class="form-control error" />
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="textfield16" class="col-lg-5 control-label">Address Line 2</label>
+                            <div class="col-lg-7">
+                                <input type="text" id="textfield16" class="form-control" />
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </fieldset><br/>
+
+
+            <!-- ---------- combo boxes ---------- -->
+            <a id="COMBO_BOXES"></a>
+            <fieldset>
+                <legend>Combo Boxes / Drop-down Lists</legend>
+                If there is one and only one item, the list should default to that item instead of requiring the user to pick a selection. e.g. in a one doctor practice, 
+                Faith Front Desk should not have to always select the doctor to make an appointment for a patient.  Combo boxes that are not required should always have 
+                a blank option at the beginning of the list so that the user can "un-select" something if necessary.  When the user selects the blank option - the default 
+                text should be shown in the combo box.<br />
+                <br />
+                <div class="col-lg-8 form-horizontal">
+                    <div class="form-group">
+                        <label for="selectElement1" class="col-lg-5 control-label">Regular Select Dropdown</label>
+                        <div class="col-lg-7">
+                            <select id="selectElement1">
+                                <option value=""></option>
+                                <option value="Option 1">Option 1</option>
+                                <option value="Option 2">Option 2</option>
+                                <option value="Option 3">Option 3</option>
+                                <option value="Option 4">Option 4</option>
+                                <option value="Option 5">Option 5</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="selectElement2" class="col-lg-5 control-label">Another Select</label>
+                        <div class="col-lg-2">
+                            <select id="selectElement2">
+                                <option value=""></option>
+                                <option value="Mr.">Mr.</option>
+                                <option value="Ms.">Ms.</option>
+                                <option value="O.D.">O.D.</option>
+                                <option value="P.H.D.">P.H.D.</option>
+                            </select>
+                        </div>
+                        <div class="col-lg-3">
+                            <input type="text" id="textfield17" class="form-control" placeholder="Lorem Ipsum" />
+                        </div>
+                        <div class="col-lg-2">
+                            <input type="text" id="textfield18" class="form-control" placeholder="Lorem Ipsum" />
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="textfield19" class="col-lg-5 control-label">Single Option Selects</label>
+                        <div class="col-lg-3">
+                            <input type="text" id="textfield19" class="form-control" />
+                        </div>
+                        <div class="col-lg-2">
+                            <select id="selectElement3">
+                                <option value=""></option>
+                                <option value="Option 1">Op1</option>
+                                <option value="Option 2">Op2</option>
+                                <option value="Option 3">Op3</option>
+                                <option value="Option 4">Op4</option>
+                            </select>
+                        </div>
+                        <div class="col-lg-2">
+                            <select id="selectElement4" class="">
+                                <option value="Option 1">Op1</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="selectElement5" class="col-lg-5 control-label">Multi-Select Widget</label>
+                        <div class="col-lg-7">
+                            <select id="selectElement5" multiple="multiple">
+                                <option value="Option 1">Option 1</option>
+                                <option value="Option 2">Option 2</option>
+                                <option value="Option 3">Option 3</option>
+                                <option value="Option 4">Option 4</option>
+                                <option value="Option 5">Option 5</option>
+                                <option value="Option 6">Option 6</option>
+                                <option value="Option 7">Option 7</option>
+                                <option value="Option 8">Option 8</option>
+                                <option value="Option 9">Option 9</option>
+                                <option value="Option 10">Option 10</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="selectElement6" class="col-lg-5 control-label">Searchable Multi-Select Widget</label>
+                        <div class="col-lg-7">
+                            <select id="selectElement6" data-live-search="true" data-size="5" multiple>
+                                <option value="Option 1">Option 1</option>
+                                <option value="Option 2">Option 2</option>
+                                <option value="Option 3">Option 3</option>
+                                <option value="Option 4">Option 4</option>
+                                <option value="Option 5">Option 5</option>
+                                <option value="Option 6">Option 6</option>
+                                <option value="Option 7">Option 7</option>
+                                <option value="Option 8">Option 8</option>
+                                <option value="Option 9">Option 9</option>
+                                <option value="Option 10">Option 10</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+            </fieldset>
+
+            <!-- ---------- radio buttons / checkboxes ---------- -->
+            <fieldset>
+                <legend id="RADIO_BUTTONS">Radio Buttons & Checkboxes</legend>
+                Radio buttons and checkboxes should always be shown to the left of their respective labels.<br />
+                Checkboxes are used in two types of situations:<br />
+                <ol>
+                    <li>for a boolean flag, such as only showing active patients</li>
+                    <li>when the user may want to make multiple selections and there are 6 items or less</li>
+                </ol>
+
+                <p>A radio button group can either be displayed as a vertical unit or a horizontal unit.  If displayed as a vertical unit, the field label for the group should be 
+                    displayed at the top of the unit.  This will need to be accomplished on a case by case basis.</p>
+                <br />
+                <div class="row form-horizontal">
+                    <div class="form-group col-lg-6">
+                        <label for="group1" class="col-lg-6 control-label topVertAlignLabel">Lorem Ipsum</label>
+                        <div class="col-lg-6">
+                            <div class="radio">
+                                <input id="radioGroup1Option1" type="radio" name="group1" value="Option 1" checked="checked"/><label for="radioGroup1Option1" class="control-label">Option 1</label>
+                            </div>
+                            <div class="radio">
+                                <input id="radioGroup1Option2" type="radio" name="group1" value="Option 2" /><label for="radioGroup1Option2" class="control-label">Option 2</label>
+                            </div>
+                            <div class="radio">
+                                <input id="radioGroup1Option3" type="radio" name="group1" value="Option 3" /><label for="radioGroup1Option3" class="control-label">Option 3</label>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <p>If the radio group is displayed as a horizontal unit, all text should live on the same line.</p>
+                <div class="row form-horizontal">
+                    <div class="form-group col-lg-6">
+                        <label for="radioGroup1Option2" class="col-lg-4">Lorem Ipsum</label>
+                        <label class="radio-inline">
+                            <input id="radioGroup2Option1" type="radio" name="group2" value="Option 1" checked="checked"/>Option 1
+                        </label>
+                        <label class="radio-inline">
+                            <input id="radio1" type="radio" name="group2" value="Option 2" />Option 2   
+                        </label>
+                    </div>
+                </div>
+                
+
+                <p>Checkboxes will usually be displayed as a vertical unit and usually will not have an associated field label.</p>
+                <div class="row form-horizontal">
+                    <div class="form-group col-lg-6">
+                        <div class="col-lg-offset-1 checkbox">
+                            <label>
+                                <input id="Checkbox1" type="checkbox" name="group2" value="Option 4" />Option 4
+                            </label>
+                        </div>
+                        <div class="col-lg-offset-1 checkbox">
+                            <label>
+                                <input id="Checkbox2" type="checkbox" name="group2" value="Option 5" />Option 5
+                            </label>
+                        </div>
+                        <div class="col-lg-offset-1 checkbox">
+                            <label>
+                                <input id="Checkbox3" type="checkbox" name="group2" value="Option 6" />Option 6
+                            </label>
+                        </div>
+                    </div>
+                </div>
+            </fieldset>
+
+
+
+            <!-- ---------- text areas ---------- -->
+            <fieldset>
+                <legend id="TEXT_AREAS">Text Areas</legend>
+                <p>Text areas should use pre-defined widths to maintain uniformity.  By default, text areas have margins added to maintain consistent spacing.<br /></p>
+                <div class="row form-horizontal">
+                    <div class="form-group col-lg-6">
+                        <label for="textArea1" class="col-lg-4 control-label">Lorem Ipsum</label>
+                        <div class="col-lg-8">
+                            <textarea id="textArea1" class="form-control" rows="4">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. </textarea><br />
+                        </div>
+                    </div>
+                </div>
+            </fieldset>
+
+            <!-- ---------- datepicker ---------- -->
+            <fieldset>
+                <legend id="DATEPICKER">Date Picker</legend>
+                <p>Datepickers will all have the same look and feel in this application and use the same icon (as shown below).  The datepicker popup should appear 
+                    when the user clicks (or tabs into) either the date text box, or the icon itself.</p>
+                    
+                <div class="row form-horizontal col-lg-4">
+                    <div class="form-group">
+                        <label for="date1" class="col-lg-6 control-label">Date</label>
+                        <div class="col-lg-6 input-group">
+                            <input type="text" name="date1" id="date1" class="form-control requiredField" placeholder="mm/dd/yyyy" data-bind="datepicker:{}" />
+                            <label for="date1" class="input-group-addon requiredField" id="icon_datePicker"><i class="btn icon-calendar-3"></i></label>
+                        </div>
+                    </div>
+                </div>
+                <div class="clearfix"></div>
+
+                <div class="row form-horizontal col-lg-4">
+                    <div class="form-group">
+                        <label for="date2" class="col-lg-6 control-label">Date w/Month &amp; Year</label>
+                        <div class="col-lg-6 input-group">
+                            <input type="text" name="date2" id="date2" class="form-control requiredField" placeholder="mm/dd/yyyy" data-bind="datepicker:{}" />
+                            <label for="date2" class="input-group-addon requiredField" id="icon_datePicker"><i class="btn icon-calendar-3"></i></label>
+                        </div>
+                    </div>
+                </div>
+            </fieldset>
+            
+            <!-- ---------- timepicker ---------- -->
+            <fieldset>
+                <legend id="TIMEPICKER">Time Picker</legend>
+                <p>Timepickers will all have the same look and feel in this application and use the same icon (as shown below).  The timepicker popup should appear 
+                    when the user clicks (or tabs into) either the time text box, or the icon itself. 
+                    <a href="http://jdewit.github.io/bootstrap-timepicker/" target="_blank">Time Picker Documentation</a></p>
+                    
+                <div class="row form-horizontal col-lg-4">
+                    <div class="form-group">
+                        <div class="col-lg-6 control-label">
+                            <span class="required">*</span><label for="time1">Time</label>
+                        </div>
+                        <div class="col-lg-6 input-group bootstrap-timepicker requiredField">
+                            <input type="text" name="time1" id="time1" class="form-control" data-minute-step="5" data-default-time="11:45 a.m." data-show-inputs="false"/>
+                            <label for="time1" class="input-group-addon" id="icon_timePicker"><i class="btn icon-clock"></i></label>
+                        </div>
+                    </div>
+                </div>
+            </fieldset>
+
+            <h2 id="FORM_VALIDATION">Form Validation</h2>
+            <br />
+
+            <!-- ---------- messaging ---------- -->
+            <fieldset>
+                <legend id="MESSAGING_LANGUAGE">Messaging</legend>
+
+                <p>Message language needs to always precisely match field label language including capitalization patterns. So if the field is called "Phone", the validation message would be something like, "Enter a 
+                    valid Phone number." If the field is labeled "Contact Name" the validation is "Enter a Contact Name." Words like "Please" don't really make the software more polite and should be avoided to help 
+                    focus the content of the message.
+                </p>
+                
+                <p>If the validation issue is that the input is malformed, tell the user how to  make it right. e.g. "Enter a 9 digit number for NPI" or "License can only be alphanumeric characters", etc.</p>
+            </fieldset>
+
+            <!-- ---------- messaging: required fields ---------- -->
+            <fieldset>
+                <legend id="REQUIREDFIELDS">Messaging: Validation &amp; Required Fields</legend>
+
+                <p>Required fields are always marked with a red asterisk.  In addition, if the user has not saved any data to the field previously, and the field is blank, it should be 
+                    highlighted (as defined in the Text Fields section above).  If, when the page loads, the field has data pre-populated (meaning the form may have been saved before, etc.), 
+                    any required fields that have data already populated should not show as highlighted (but will still always show the asterisk).
+                </p>
+
+                <p>Once a blank, required field has data entered in it - the highlight on the field should be removed, leaving only the red asterisk.
+                </p>
+
+                <p>If the value in the field changed (blank -> data, data -> different data, data -> blank) validation should be kicked off when the user exits the field (tabs out, clicks out, etc.)
+                    If validation fails, the field should be highlighted in the error style (as defined in the Text Fields section above) and should show the appropriate error messages directly 
+                    below the field.  Once the errors have been corrected in the field, the error style will be removed when the user exits the field (tabs out or clicks somewhere else on the page).
+                </p>
+
+                <p>If validation passes, the field should return to it's default state - with no highlighting.</p><br />
+
+                <form id="validationSection" method="post">
+                    <div class="row summaryMessages"></div>
+                    <div class="row form-horizontal">
+                        <div class="col-lg-6">
+                            <div class="form-group">
+                                <div class="col-lg-3 control-label">
+                                    <span class="required">*</span><label for="title">Name</label>
+                                </div>
+                                <div class="col-lg-3">
+                                    <select id="title" class="">
+                                        <option value=""></option>
+                                        <option value="Mr.">Mr.</option>
+                                        <option value="Ms.">Ms.</option>
+                                        <option value="O.D.">O.D.</option>
+                                        <option value="P.H.D.">P.H.D.</option>
+                                    </select>
+                                </div>
+                                <div class="col-lg-3">
+                                    <input type="text" name="first" id="first" class="form-control requiredField" placeholder="First Name" />
+                                </div>
+                                <div class="col-lg-3">
+                                    <input type="text" name="last" id="last" class="form-control requiredField" placeholder="Last Name" />
+                                </div>
+                            </div>
+                            <div class="col-lg-offset-3 fieldMessages"></div>
+
+                            <div class="form-group">
+                                <label for="nickName" class="col-lg-3 control-label">Nickname</label>
+                                <div class="col-lg-9">
+                                    <input type="text" name="nickName" id="nickName" class="form-control" />
+                                </div>
+                            </div>
+                            <div class="col-lg-offset-3 fieldMessages"></div>
+
+                            <div class="form-group">
+                                <div class="col-lg-3 control-label">
+                                    <span class="required">*</span><label for="address_1">Address 1</label>
+                                </div>
+                                <div class="col-lg-9">
+                                    <input type="text" name="address_1" id="address_1" class="form-control requiredField" />
+                                </div>
+                            </div>
+                            <div class="col-lg-offset-3 fieldMessages"></div>
+
+                            <div class="form-group">
+                                <label for="address_2" class="col-lg-3 control-label">Address 2</label>
+                                <div class="col-lg-9">
+                                    <input type="text" name="address_2" id="address_2" class="form-control" />
+                                </div>
+                            </div>
+                            <div class="col-lg-offset-3 fieldMessages"></div>
+
+                            <div class="form-group">
+                                <div class="col-lg-3 control-label">
+                                    <span class="required">*</span><label for="zipcode">Zip City/State</label>
+                                </div>
+                                <div class="col-lg-2">
+                                    <input type="text" name="zipcode" id="zipcode" class="form-control requiredField" placeholder="ZIP" />
+                                </div>
+                                <div class="col-lg-5">
+                                    <input type="text" name="city" id="city" class="form-control requiredField" placeholder="City" />
+                                </div>
+                                <div class="col-lg-2">
+                                    <input type="text" name="state" id="state" class="form-control requiredField" placeholder="State" />
+                                </div>
+                            </div>
+                            <div class="col-lg-offset-3 fieldMessages"></div>
+
+                            <div class="form-group">
+                                <button id="btnValidationClear" class="btn btn-default">Reset</button>
+                                <button id="btnShowServerMsgs" class="btn btn-default">Show Server Msgs</button>
+                                <button id="btnClearServerMsgs" class="btn btn-default">Clear Server Msgs</button>
+                                <div class="pull-right">
+                                    <button id="btnValidationSave" class="btn btn-primary">Save</button>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-lg-6">
+                            <div class="form-group">
+                                <label for="practice" class="control-label col-lg-3">Practice</label>
+                                <div class="col-lg-9">
+                                    <input type="text" name="practice" id="practice" class="form-control" />
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="txt50" class="control-label col-lg-3">Lorem Ipsum</label>
+                                <div class="col-lg-9">
+                                    <input type="text" name="txt50" id="txt50" class="form-control" />
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+
+                    <br />
+                    <br />
+                    <br />
+
+                </form>
+            </fieldset>
+            <br />
+
+            <!-- ---------- messaging: required fields ---------- -->
+            <h3 id="SYSTEMPOPUPS">Messaging: System Popups</h3>
+            <br />
+            <fieldset>
+                <legend>Unsaved Data</legend>
+                On some pages, the user enters data that needs to be saved.  On those pages, a modal dialog box should popup and inform the user that there is unsaved data on the page.  
+                The user should have the choice to continue to the new page anyway, or go back and save the data before going to the new page.<br />
+                <br />
+                The text is "You are trying to navigate to a new page, but you have unsaved data."<br />
+                <br />
+                Button text: "Go Back" / "Continue"<br />
+                <br />
+
+                The link below is a functional example of this type of popup.  If you click "Continue" you will be taken to the Patient Search page.  If you click "Go Back" you will remain in the StyleGuide.<br />
+                <br />
+                <a id="linkToPatientSearch" href="Patient/Search">Search Patients</a><br />
+                <div class="modal fade" id="unsavedData">
+                    <div class="modal-dialog">
+                        <div class="vertical-align-middle">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                                    <h4 class="modal-title">Unsaved data</h4>
+                                </div>
+                                <div class="modal-body">
+                                    You are trying to navigate to a new page, but you have unsaved data.
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-default pull-left" data-dismiss="modal">Go Back</button>
+                                    <button type="button" class="btn btn-primary">Continue</button>
+                                </div>
+                            </div>
+                            <!-- /.modal-content -->
+                        </div>
+                    </div>
+                    <!-- /.modal-dialog -->
+                </div>
+                <br />
+                <br />
+
+                <h4>System Blocker</h4>
+                Sometimes the user needs to take action on something and the system cannot continue until the action is taken.  In this instance, a system blocker message should be shown to the user.<br />
+                <br />
+                The link below is a functional example of this type of popup.  When you click "Ok" or click the "X" in the upper right, "some action" will occur. 
+                <br />
+                <br />
+                <a id="linkToSystemBlocker" href="#SYSTEMPOPUPS">Show System Blocker Message</a><br />
+                <div class="modal fade" id="systemBlocker">
+                    <div class="modal-dialog">
+                        <div class="vertical-align-middle">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                                    <h4 class="modal-title">Daily Closing Needs to be Performed</h4>
+                                </div>
+                                <div class="modal-body">
+                                    In order to post any transactions, a Daily Closing must be performed.
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-primary pull-right" data-dismiss="modal">OK</button>
+                                </div>
+                            </div>
+                            <!-- /.modal-content -->
+                        </div>
+                    </div>
+                    <!-- /.modal-dialog -->
+                </div>
+                <br />
+
+                <h4>System Save</h4>
+                When the users saves data, a success message will be shown.  The message should disappear automatically after a short 
+                time - or the user can click "x" to close the message.  Click the link below for an example<br />
+                <br />
+                <a id="linkToSystemSuccess" href="#SYSTEMPOPUPS">Show System Success Message</a><br />
+                <br />
+
+                <h4>Tooltips</h4>
+                There are 2 different ways to open up a tooltip. Each tooltip should default to type 1 unless otherwise specified...<br />
+                <br />
+                1) In most areas, the user will need to click on the tooltip icon to bring up the tooltip.  Clicking anywhere inside the tooltip (or on the "X") will close it.  Hitting the ESCAPE key will also close it.  
+                However, the tooltip will remain open as until one of the closing mechanisms is triggered. Here is an example:<br />
+                <br />
+
+                <div class="row">
+                    <div class="form-horizontal col-lg-8">
+                        <div class="form-group">
+                            <label for="textfield70" class="col-lg-3 control-label">First Name <i class="btn tt icon-tooltip-2" data-title="Why should I enter my First Name?" data-content="First Name should be entered because lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."></i></label>
+                            <div class="col-lg-7">
+                                <input type="text" id="textfield70" class="form-control" />
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="textfield71" class="col-lg-3 control-label">Last Name <i class="btn tt icon-tooltip-2" data-content="This tooltip does not show a title.  As you can see though, <span class='required bold'>it does have an example of HTML content.</span>  CSS classes should always be used when specifying tooltip content - rather than inline styles."></i></label>
+                            <div class="col-lg-7">
+                                <input type="text" id="textfield71" class="form-control" />
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <br />
+
+                2) In some areas, simply mousing over the tooltip icon will bring up the tooltip.  The tooltip will remain open for as long as the mouse is inside the tooltip icon - and then will 
+                automatically close when the mouse leaves the icon.  Here is an example:<br />
+
+                <div class="row">
+                    <div class="form-horizontal col-lg-8">
+                        <div class="form-group">
+                            <label for="textfield72" class="col-lg-3 control-label">SSN <i class="btn tt icon-tooltip-2" data-title="Social Security Number" data-content="Social Security Number should be entered because lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua." data-trigger="hover"></i></label>
+                            <div class="col-lg-7">
+                                <input type="text" id="textfield72" class="form-control" />
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </fieldset>
+            <br />
+        </div>
+        
+        <div id="notifyContainer">
+            <div id="tooltip-template">
+                <a class="ui-notify-cross ui-notify-close" href="#">x</a>
+                <div id="notifyContainerTitle">#{title}</div>
+                <div id="notifyContainerText">#{text}</div> 
+            </div>
+            <div id="systemSuccess-template">
+                <i class="icon-checkmark icon-big"></i>
+                #{text}
+            </div>
+        </div>
+        <footer>Styleguide Footer</footer>
+    </div>
+
+        <script src="Scripts/jquery-2.0.3.js"></script>
+        <script src="Scripts/jquery-ui-1.10.3.js"></script>
+        <script src="Scripts/jquery.validate.js"></script>
+        <script src="Scripts/modernizr-2.7.2.js"></script>
+        <script src="Scripts/bootstrap.js"></script>
+        <script src="Scripts/bootstrap-select.js"></script>
+        <script src="Scripts/respond.js"></script>
+        <script src="Scripts/bootstrap-timepicker-0.4.1.js"></script>
+        <script src="Scripts/sugar.js"></script>
+        <script src="Scripts/knockout-2.2.1.debug.js"></script>
+        <script src="Scripts/jquery.dataTables-1.9.4.js"></script>
+        <script src="Scripts/app/Common/dataTables.bootstrap.js"></script>
+        <script src="Scripts/jquery.notify-1.5.js"></script>
+        <script src="Scripts/dateJS.js"></script>
+        <script src="Scripts/app/Common/common.accordion.js"></script>
+        <script src="Scripts/app/Common/common.apiclient.js"></script>
+        <script src="Scripts/app/Common/common.bootstrap-select.js"></script>
+        <script src="Scripts/app/Common/common.date.js"></script>
+        <script src="Scripts/app/Common/common.dialog.js"></script>
+        <script src="Scripts/app/Common/common.js"></script>
+        <script src="Scripts/app/Common/common.ko-combobox.js"></script>
+        <script src="Scripts/app/Common/common.ko-dataTable-1.9.4.js"></script>
+        <script src="Scripts/app/Common/common.progressTimer.js"></script>
+        <script src="Scripts/app/Common/common.utility.js"></script>
+        <script src="Scripts/app/Common/jquery.ajax.spinner.js"></script>
+        <script src="Scripts/app/Common/common.validation.js"></script>
+        <script src="Scripts/jquery.spinner.js"></script>
+        <script src="Scripts/jquery.maskedinput-1.3.1.js"></script>
+        <script src="Scripts/jquery.fileupload.js"></script>
+        <script src="Scripts/jquery.iframe-transport.js"></script>
+        <script src="Scripts/app/Common/messaging.bootstrap.js"></script>
+        <script src="Scripts/app/Common/StyleGuide.js"></script>
+</body>
+</html>
